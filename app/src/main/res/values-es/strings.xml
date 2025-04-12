@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Phone For Film</string>
+    <string name="call_simulation">Simulación de llamada</string>
+    <string name="chat_simulation">Simulación de chat</string>
+    <string name="dark_mode">Modo oscuro</string>
+    <string name="end_call">Terminar llamada</string>
+    <string name="answer">Responder</string>
+    <string name="decline">Rechazar</string>
+    <string name="send">Enviar</string>
+    <string name="type_message">Escribe un mensaje</string>
+</resources>
