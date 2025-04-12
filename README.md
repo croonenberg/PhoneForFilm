@@ -1,6 +1,5 @@
-# PhoneForFilm
+# PhoneForFilm NL
 Pro Chat and Call Simulator
-
 
 Phone For Film is een Android-app speciaal voor de filmindustrie.  
 Simuleer eenvoudig:
@@ -10,29 +9,30 @@ Simuleer eenvoudig:
 - Verander thema's (Dark/Light + Chat Green)
 - Pas schermhelderheid aan met slider
 - Proximity sensor laat scherm zwart worden bij oor
-- Opslaan en bewerken van berichten (Room Database)
+- Opslaan en bewerken van berichten
+- Meertalig
 
-## Gebruiksaanwijzing
+## Licentie
+Phone For Film © 2025 — Art Department Tools
+Gebruik binnen eigen productie is toegestaan volgens voorwaarden.
 
-1. Download project.
-2. Open in Android Studio.
-3. Voer Gradle Sync uit.
-4. Run op je Android toestel.
+# PhoneForFilm EN
+Pro Chat and Call Simulator
 
-### Functionaliteit:
-- Start `MainActivity` → Kies Call of Chat simulatie.
-- Wissel van thema met switch.
-- Pas helderheid aan met slider.
-- Berichten worden opgeslagen.
-- Dummy contact: D. Croonenberg.
+Phone For Film is an Android-app specially made for the movie industry
 
-## Klaar voor:
-- Meertaligheid (NL, EN, DE, FR, ES)
-- Direct klaar voor verdere uitbreiding.
+## Features
+- Fake Call Simulation
+- Fake Chat Simulation
+- Room Database
+- Theme Switching
+- Proximity Sensor Integration
+- Brightness Control
+- Multi-language
 
----
+## licensing
+Phone For Film © 2025 — Art Department Tools
+Use within your own production is permitted in accordance with the terms and conditions
 
-Laat me weten als je alles hebt — dan gaan we daarna verder met stap B:  
-→ Uitleg hoe je lokaal alles ZIPt en naar je GitHub uploadt.
 
-Klaar voor de ZIP uitleg?
+
