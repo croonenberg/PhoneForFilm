@@ -7,4 +7,9 @@
     <color name="textLight">#000000</color>
     <color name="textDark">#FFFFFF</color>
     <color name="statusRead">#34B7F1</color> <!-- NIEUW: blauw vinkje -->
+    <color name="theme_greenroom">#075E54</color>
+<color name="theme_bluestage">#2196F3</color>
+<color name="theme_greycard">#757575</color>
+<color name="theme_neutrallight">#FFFFFF</color>
+<color name="theme_darkroom">#121212</color>
 </resources>
