@@ -1,7 +1,8 @@
 package com.example.phoneforfilm.view
 
 import android.os.Bundle
-import android.view.View
+import android.os.Handler
+import android.os.Looper
 import android.widget.Button
 import android.widget.Chronometer
 import androidx.activity.viewModels
@@ -11,30 +12,36 @@ import com.example.phoneforfilm.viewmodel.CallViewModel
 
 class CallActivity : AppCompatActivity() {
 
-    private lateinit var blackOverlay: View
     private val viewModel: CallViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_call)
 
-        val endCallButton = findViewById<Button>(R.id.btnEndCall)
-        val chronometer = findViewById<Chronometer>(R.id.callChronometer)
-        blackOverlay = findViewById(R.id.blackOverlay)
+        val btnEndCall = findViewById<Button>(R.id.btnEndCall)
+        val callTimer = findViewById<Chronometer>(R.id.callTimer)
 
-        chronometer.start()
-
-        endCallButton.setOnClickListener {
-            finish()
-        }
+        callTimer.start()
 
         viewModel.registerProximitySensor(this) { isNear ->
-            blackOverlay.visibility = if (isNear) View.VISIBLE else View.GONE
+            if (isNear) {
+                window.decorView.post {
+                    window.decorView.alpha = 0f
+                }
+            } else {
+                window.decorView.post {
+                    window.decorView.alpha = 1f
+                }
+            }
+        }
+
+        btnEndCall.setOnClickListener {
+            finish()
         }
     }
 
-    override fun onPause() {
-        super.onPause()
+    override fun onDestroy() {
+        super.onDestroy()
         viewModel.unregisterProximitySensor()
     }
 }
