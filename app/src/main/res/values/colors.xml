@@ -6,4 +6,5 @@
     <color name="backgroundDark">#121212</color>
     <color name="textLight">#000000</color>
     <color name="textDark">#FFFFFF</color>
+    <color name="statusRead">#34B7F1</color> <!-- NIEUW: blauw vinkje -->
 </resources>
