@@ -1,15 +1,22 @@
 <resources>
+    <!-- Standaard kleuren -->
     <color name="colorPrimary">#075E54</color>
     <color name="colorPrimaryDark">#054C44</color>
     <color name="colorAccent">#25D366</color>
+
     <color name="backgroundLight">#FFFFFF</color>
     <color name="backgroundDark">#121212</color>
+
     <color name="textLight">#000000</color>
     <color name="textDark">#FFFFFF</color>
-    <color name="statusRead">#34B7F1</color> <!-- NIEUW: blauw vinkje -->
-    <color name="theme_greenroom">#075E54</color>
-<color name="theme_bluestage">#2196F3</color>
-<color name="theme_greycard">#757575</color>
-<color name="theme_neutrallight">#FFFFFF</color>
-<color name="theme_darkroom">#121212</color>
+
+    <!-- Thema kleuren per chat -->
+    <color name="theme_greenroom">#075E54</color>       <!-- WhatsApp-achtig groen -->
+    <color name="theme_bluestage">#2196F3</color>      <!-- iMessage blauw -->
+    <color name="theme_greycard">#757575</color>       <!-- SMS grijs -->
+    <color name="theme_neutrallight">#FFFFFF</color>   <!-- Licht/neutraal -->
+    <color name="theme_darkroom">#121212</color>       <!-- Donker thema -->
+
+    <!-- Extra kleur voor blauwe vinkjes bij gelezen berichten -->
+    <color name="statusRead">#34B7F1</color>
 </resources>
