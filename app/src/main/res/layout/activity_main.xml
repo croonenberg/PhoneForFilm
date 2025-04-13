@@ -1,34 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="24dp"
-    android:gravity="center"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center"
+    tools:context=".view.MainActivity">
 
     <Button
         android:id="@+id/btnCall"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Call Simulation" />
+        android:text="@string/call_simulation"
+        android:layout_marginBottom="16dp" />
 
     <Button
         android:id="@+id/btnChat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Chat Simulation"
-        android:layout_marginTop="16dp" />
+        android:text="@string/chat_simulation"
+        android:layout_marginBottom="16dp" />
 
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/switchTheme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Dark Mode"
-        android:layout_marginTop="24dp" />
+        android:text="@string/dark_mode"
+        android:layout_marginBottom="16dp" />
 
     <SeekBar
         android:id="@+id/brightnessSeekBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp" />
+        android:layout_marginBottom="16dp" />
+
+    <Button
+        android:id="@+id/btnLanguage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Change Language" />
+
 </LinearLayout>
