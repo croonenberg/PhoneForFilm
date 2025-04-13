@@ -7,5 +7,6 @@ import androidx.room.PrimaryKey
 data class Contact(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val name: String,
-    val phone: String
+    val phone: String,
+    val themeId: Int = 0 // 0=Greenroom, 1=Blue Stage, 2=Grey Card, 3=Neutral Light, 4=Darkroom
 )
