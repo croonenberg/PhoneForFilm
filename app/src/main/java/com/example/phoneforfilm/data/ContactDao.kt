@@ -1,14 +1,2 @@
-package com.example.phoneforfilm.data
-
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-
-@Dao
-interface ContactDao {
-    @Insert
-    fun insert(contact: Contact)
-
-    @Query("SELECT * FROM Contact")
-    fun getAll(): List<Contact>
-}
+@Query("UPDATE Contact SET themeId = :themeId WHERE id = :contactId")
+fun updateTheme(contactId: Int, themeId: Int)
