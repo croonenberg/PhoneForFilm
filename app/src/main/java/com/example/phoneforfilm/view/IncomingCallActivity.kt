@@ -17,28 +17,27 @@ class IncomingCallActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_incoming_call)
 
-        val answerButton = findViewById<Button>(R.id.btnAnswer)
-        val declineButton = findViewById<Button>(R.id.btnDecline)
+        val btnAnswer = findViewById<Button>(R.id.btnAnswer)
+        val btnDecline = findViewById<Button>(R.id.btnDecline)
 
-        val notification: Uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE)
-        ringtone = RingtoneManager.getRingtone(applicationContext, notification)
+        val uri: Uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE)
+        ringtone = RingtoneManager.getRingtone(applicationContext, uri)
         ringtone?.play()
 
-        answerButton.setOnClickListener {
+        btnAnswer.setOnClickListener {
             ringtone?.stop()
-            val intent = Intent(this, CallActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, CallActivity::class.java))
             finish()
         }
 
-        declineButton.setOnClickListener {
+        btnDecline.setOnClickListener {
             ringtone?.stop()
             finish()
         }
     }
 
-    override fun onPause() {
-        super.onPause()
+    override fun onDestroy() {
+        super.onDestroy()
         ringtone?.stop()
     }
 }
