@@ -5,22 +5,22 @@ import android.content.SharedPreferences
 
 class PreferencesHelper(context: Context) {
 
-    private val prefs: SharedPreferences =
-        context.getSharedPreferences("phone_for_film_prefs", Context.MODE_PRIVATE)
-
-    fun isDarkMode(): Boolean {
-        return prefs.getBoolean("dark_mode", false)
-    }
+    private val sharedPreferences: SharedPreferences =
+        context.getSharedPreferences("PhoneForFilmPrefs", Context.MODE_PRIVATE)
 
     fun setDarkMode(enabled: Boolean) {
-        prefs.edit().putBoolean("dark_mode", enabled).apply()
+        sharedPreferences.edit().putBoolean("dark_mode", enabled).apply()
+    }
+
+    fun isDarkMode(): Boolean {
+        return sharedPreferences.getBoolean("dark_mode", false)
+    }
+
+    fun setBrightness(brightness: Float) {
+        sharedPreferences.edit().putFloat("brightness", brightness).apply()
     }
 
     fun getBrightness(): Float {
-        return prefs.getFloat("brightness", 0.5f)
-    }
-
-    fun setBrightness(value: Float) {
-        prefs.edit().putFloat("brightness", value).apply()
+        return sharedPreferences.getFloat("brightness", 1.0f)
     }
 }
