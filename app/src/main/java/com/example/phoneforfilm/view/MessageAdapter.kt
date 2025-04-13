@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.phoneforfilm.R
-import com.example.phoneforfilm.model.Message
+import com.example.phoneforfilm.data.Message
 
 class MessageAdapter : ListAdapter<Message, MessageAdapter.MessageViewHolder>(DiffCallback()) {
 
@@ -32,29 +32,24 @@ class MessageAdapter : ListAdapter<Message, MessageAdapter.MessageViewHolder>(Di
     }
 
     class MessageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
         fun bind(message: Message) {
             val messageTextView: TextView = itemView.findViewById(R.id.textMessage)
             val statusTextView: TextView = itemView.findViewById(R.id.textStatus)
 
             messageTextView.text = message.content
 
-            // Berichtstatus bepalen
             val statusSymbol = when (message.status) {
-                0 -> "✓"    // Sent
-                1 -> "✓✓"  // Delivered
-                2 -> "✓✓"  // Read (met blauwe kleur)
+                0 -> "✓"
+                1 -> "✓✓"
+                2 -> "✓✓"
                 else -> ""
             }
 
             statusTextView.text = statusSymbol
 
-            // Status kleur instellen
             val statusColor = if (message.status == 2) {
-                // Gelezen = blauw (statusRead kleur uit colors.xml)
                 itemView.context.getColor(R.color.statusRead)
             } else {
-                // Anders = normale text kleur
                 itemView.context.getColor(R.color.textLight)
             }
 
