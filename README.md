@@ -1,75 +1,44 @@
-# PhoneForFilm NL
-Pro Chat and Call Simulator
+# PhoneForFilm NL  
+Pro Chat en Call Simulator voor Filmsets  
 
 Phone For Film is een Android-app speciaal ontwikkeld voor de filmindustrie.  
-Simuleer eenvoudig telefoongesprekken en chatberichten op een smartphone zonder netwerkverbinding.  
+Simuleer eenvoudig:  
 
-Ideaal voor gebruik op filmsets.
+- Inkomende oproepen  
+- Chat gesprekken  
+- Thema wisselen per chat (Greenroom, Blue Stage, Grey Card, Neutral Light, Darkroom)  
+- Verander taal direct in de app  
+- Pas schermhelderheid aan met een slider  
+- Scherm wordt zwart bij het oor (proximity sensor)  
+- Berichten opslaan en later aanpassen  
+- Werkt volledig offline  
 
-## Functionaliteit
-- Inkomende oproepen simuleren
-- Chat gesprekken nabootsen
-- Thema's aanpassen (Dark/Light/Chat Green)
-- Schermhelderheid instelbaar met slider
-- Scherm wordt zwart bij oor (proximity sensor)
-- Opslaan en bewerken van berichten
-- Volledige meertalige ondersteuning (NL, EN, DE, FR, ES)
-
-## Installatie
-1. Clone de repository:
-
-git clone https://github.com/croonenberg/PhoneForFilm.git
-
-2. Open in Android Studio.
-
-3. Voer een Gradle Sync uit.
-
-4. Run op een Android toestel.
-
-## Licentie
+## Licentie  
 Phone For Film © 2025 — Art Department Tools  
+Gebruik binnen eigen productie is toegestaan volgens voorwaarden.  
 
-Werk je aan meerdere projecten binnen je licentieperiode?  
-Geen probleem, je mag de toestellen gewoon gebruiken zolang je ze zelf beheert.
-
-Gebruik buiten je eigen productie of het doorverkopen van de app of licentiecodes is niet toegestaan.
+Werk je aan meerdere projecten binnen je licentieperiode? Geen probleem, je mag de toestellen gewoon gebruiken zolang je ze zelf beheert.  
 
 ---
 
-# PhoneForFilm EN
-Pro Chat and Call Simulator
+# PhoneForFilm EN  
+Pro Chat and Call Simulator for Filmmakers  
 
-Phone For Film is an Android app specially developed for the movie industry.  
-Simulate realistic phone calls and chat conversations on a smartphone without network connection.  
+Phone For Film is an Android app specially made for the film industry.  
 
-Perfect for use on film sets.
+Simulate easily:  
 
-## Features
-- Fake Call Simulation
-- Fake Chat Simulation
-- Theme Switching (Dark/Light/Chat Green)
-- Brightness Control Slider
-- Proximity Sensor Screen Behavior (screen goes black near ear)
-- Room Database for storing and editing messages
-- Fully Multi-language Ready (NL, EN, DE, FR, ES)
+- Incoming call simulation  
+- Chat simulation  
+- Switch themes per chat (Greenroom, Blue Stage, Grey Card, Neutral Light, Darkroom)  
+- Change language directly in the app  
+- Screen brightness control with slider  
+- Screen turns black when held to ear (proximity sensor)  
+- Save and edit messages later  
+- Fully offline functionality  
 
-## Installation
-1. Clone the repository:
-
-git clone https://github.com/croonenberg/PhoneForFilm.git
-
-2. Open in Android Studio.
-
-3. Perform a Gradle Sync.
-
-4. Run on an Android device.
-
-## Licensing
+## Licensing  
 Phone For Film © 2025 — Art Department Tools  
+Use within your own production is permitted in accordance with the terms and conditions.  
 
-Are you working on multiple projects during your license period?  
-No problem — you may use the app on your own devices as long as you manage them yourself.
-
-Distributing, reselling or sharing license codes outside of your own production is not permitted.
-
-
+Working on multiple productions within your license period? No problem, you can use the devices as long as you manage them yourself.
