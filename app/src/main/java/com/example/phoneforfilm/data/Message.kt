@@ -8,5 +8,6 @@ data class Message(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val content: String,
     val timestamp: Long,
-    val sentByUser: Boolean
+    val sentByUser: Boolean,
+    val status: Int // 0=Sent, 1=Delivered, 2=Read
 )
