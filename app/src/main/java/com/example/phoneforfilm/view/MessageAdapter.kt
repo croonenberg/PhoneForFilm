@@ -32,7 +32,25 @@ class MessageAdapter : ListAdapter<Message, MessageAdapter.MessageViewHolder>(Di
 
     class MessageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(message: Message) {
-            itemView.findViewById<TextView>(R.id.textMessage).text = message.content
+            val textMessage = itemView.findViewById<TextView>(R.id.textMessage)
+            val textStatus = itemView.findViewById<TextView>(R.id.textStatus)
+
+            textMessage.text = message.content
+
+            val statusSymbol = when (message.status) {
+                0 -> "✓"
+                1 -> "✓✓"
+                2 -> "✓✓"
+                else -> ""
+            }
+
+            textStatus.text = statusSymbol
+
+            if (message.status == 2) {
+                textStatus.setTextColor(itemView.context.getColor(R.color.colorAccent)) // Blauw bij gelezen
+            } else {
+                textStatus.setTextColor(itemView.context.getColor(R.color.textLight)) // Normale kleur
+            }
         }
     }
 
