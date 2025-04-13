@@ -11,11 +11,11 @@
     <color name="textDark">#FFFFFF</color>
 
     <!-- Thema kleuren per chat -->
-    <color name="theme_greenroom">#075E54</color>       <!-- WhatsApp-achtig groen -->
-    <color name="theme_bluestage">#2196F3</color>      <!-- iMessage blauw -->
-    <color name="theme_greycard">#757575</color>       <!-- SMS grijs -->
-    <color name="theme_neutrallight">#FFFFFF</color>   <!-- Licht/neutraal -->
-    <color name="theme_darkroom">#121212</color>       <!-- Donker thema -->
+    <color name="theme_greenroom">#075E54</color>       
+    <color name="theme_bluestage">#2196F3</color>      
+    <color name="theme_greycard">#757575</color>       
+    <color name="theme_neutrallight">#FFFFFF</color>   
+    <color name="theme_darkroom">#121212</color>
 
     <!-- Extra kleur voor blauwe vinkjes bij gelezen berichten -->
     <color name="statusRead">#34B7F1</color>
