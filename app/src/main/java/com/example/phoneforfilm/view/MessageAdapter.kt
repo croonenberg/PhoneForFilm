@@ -23,7 +23,8 @@ class MessageAdapter : ListAdapter<Message, MessageAdapter.MessageViewHolder>(Di
     }
 
     override fun onBindViewHolder(holder: MessageViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        val message = getItem(position)
+        holder.bind(message)
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -31,26 +32,33 @@ class MessageAdapter : ListAdapter<Message, MessageAdapter.MessageViewHolder>(Di
     }
 
     class MessageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
         fun bind(message: Message) {
-            val textMessage = itemView.findViewById<TextView>(R.id.textMessage)
-            val textStatus = itemView.findViewById<TextView>(R.id.textStatus)
+            val messageTextView: TextView = itemView.findViewById(R.id.textMessage)
+            val statusTextView: TextView = itemView.findViewById(R.id.textStatus)
 
-            textMessage.text = message.content
+            messageTextView.text = message.content
 
+            // Berichtstatus bepalen
             val statusSymbol = when (message.status) {
-                0 -> "✓"
-                1 -> "✓✓"
-                2 -> "✓✓"
+                0 -> "✓"    // Sent
+                1 -> "✓✓"  // Delivered
+                2 -> "✓✓"  // Read (met blauwe kleur)
                 else -> ""
             }
 
-            textStatus.text = statusSymbol
+            statusTextView.text = statusSymbol
 
-            if (message.status == 2) {
-                textStatus.setTextColor(itemView.context.getColor(R.color.colorAccent)) // Blauw bij gelezen
+            // Status kleur instellen
+            val statusColor = if (message.status == 2) {
+                // Gelezen = blauw (statusRead kleur uit colors.xml)
+                itemView.context.getColor(R.color.statusRead)
             } else {
-                textStatus.setTextColor(itemView.context.getColor(R.color.textLight)) // Normale kleur
+                // Anders = normale text kleur
+                itemView.context.getColor(R.color.textLight)
             }
+
+            statusTextView.setTextColor(statusColor)
         }
     }
 
