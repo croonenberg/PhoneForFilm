@@ -1,22 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Standaard kleuren -->
-    <color name="colorPrimary">#075E54</color>
-    <color name="colorPrimaryDark">#054C44</color>
-    <color name="colorAccent">#25D366</color>
+    <!-- Algemene kleuren -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="grey_light">#F5F5F5</color>
+    <color name="grey_dark">#212121</color>
 
-    <color name="backgroundLight">#FFFFFF</color>
-    <color name="backgroundDark">#121212</color>
+    <!-- Primaire kleuren voor Light Theme -->
+    <color name="primary_light">#4CAF50</color> <!-- Greenroom Theme -->
+    <color name="secondary_light">#8BC34A</color>
 
-    <color name="textLight">#000000</color>
-    <color name="textDark">#FFFFFF</color>
+    <!-- Primaire kleuren voor Dark Theme -->
+    <color name="primary_dark">#1B5E20</color> <!-- Donkere variant Greenroom Theme -->
+    <color name="secondary_dark">#33691E</color>
 
-    <!-- Thema kleuren per chat -->
-    <color name="theme_greenroom">#075E54</color>       
-    <color name="theme_bluestage">#2196F3</color>      
-    <color name="theme_greycard">#757575</color>       
-    <color name="theme_neutrallight">#FFFFFF</color>   
-    <color name="theme_darkroom">#121212</color>
+    <!-- Extra kleuren per thema (optioneel) -->
+    <color name="blue_stage_primary">#2196F3</color>
+    <color name="blue_stage_secondary">#03A9F4</color>
 
-    <!-- Extra kleur voor blauwe vinkjes bij gelezen berichten -->
-    <color name="statusRead">#34B7F1</color>
+    <color name="grey_card_primary">#9E9E9E</color>
+    <color name="grey_card_secondary">#BDBDBD</color>
+
+    <color name="neutral_light_primary">#FAFAFA</color>
+    <color name="neutral_light_secondary">#EEEEEE</color>
+
+    <color name="darkroom_primary">#121212</color>
+    <color name="darkroom_secondary">#1F1F1F</color>
+
+    <!-- Chat bubble kleuren -->
+    <color name="message_sent_background">#DCF8C6</color> <!-- Lichtgroen -->
+    <color name="message_received_background">#ECECEC</color> <!-- Lichtgrijs -->
+
+    <!-- Tekstkleuren -->
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
 </resources>

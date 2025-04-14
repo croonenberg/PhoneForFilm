@@ -45,7 +45,9 @@ class MainViewModel : ViewModel() {
             else -> "en"
         }
         val config = context.resources.configuration
-        config.setLocale(Locale(locale))
+        val newLocale = Locale(locale)
+        Locale.setDefault(newLocale)
+        config.setLocale(newLocale)
         context.resources.updateConfiguration(config, context.resources.displayMetrics)
         (context as Activity).recreate()
     }

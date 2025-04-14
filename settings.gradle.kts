@@ -1,9 +1,7 @@
-// settings.gradle.kts
-
 pluginManagement {
     repositories {
-        gradlePluginPortal()
         google()
+        gradlePluginPortal()
         mavenCentral()
     }
 }

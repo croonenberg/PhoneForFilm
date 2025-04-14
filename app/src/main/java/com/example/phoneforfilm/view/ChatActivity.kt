@@ -1,54 +1,81 @@
 package com.example.phoneforfilm.view
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.phoneforfilm.R
+import com.example.phoneforfilm.data.AppDatabase
+import com.example.phoneforfilm.databinding.ActivityChatBinding
+import com.example.phoneforfilm.model.Message
 import com.example.phoneforfilm.viewmodel.ChatViewModel
+import com.example.phoneforfilm.R
 
 class ChatActivity : AppCompatActivity() {
 
-    private val viewModel: ChatViewModel by viewModels()
+    private lateinit var binding: ActivityChatBinding
     private lateinit var adapter: MessageAdapter
+    private val viewModel: ChatViewModel by viewModels()
+
+    private var contactId: Int = 0
+    private var contactName: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_chat)
+        binding = ActivityChatBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewChat)
-        val editTextMessage = findViewById<EditText>(R.id.editTextMessage)
-        val btnSend = findViewById<Button>(R.id.btnSend)
-        val btnChangeTheme = findViewById<Button>(R.id.btnChangeTheme)
+        contactId = intent.getIntExtra(EXTRA_CONTACT_ID, 0)
+        contactName = intent.getStringExtra(EXTRA_CONTACT_NAME) ?: ""
 
-        adapter = MessageAdapter()
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = adapter
+        supportActionBar?.title = contactName
 
-        viewModel.messages.observe(this) { messages ->
-            adapter.submitList(messages)
-            recyclerView.scrollToPosition(messages.size - 1)
-        }
+        val database = AppDatabase.getDatabase(this)
+        viewModel.setMessageDao(database.messageDao())
 
-        btnSend.setOnClickListener {
-            val text = editTextMessage.text.toString()
-            if (text.isNotEmpty()) {
-                viewModel.sendMessage(text)
-                editTextMessage.text.clear()
+        adapter = MessageAdapter(emptyList())
+        binding.recyclerViewMessages.layoutManager = LinearLayoutManager(this)
+        binding.recyclerViewMessages.adapter = adapter
+
+        observeMessages()
+
+        binding.buttonSend.setOnClickListener {
+            val messageText = binding.editTextMessage.text.toString()
+            if (messageText.isNotBlank()) {
+                viewModel.insertMessage(
+                    Message(
+                        contactId = contactId,
+                        content = messageText,
+                        timestamp = System.currentTimeMillis(),
+                        isSent = true,
+                        status = 1 // 1 = verzonden
+                    )
+                )
+                binding.editTextMessage.text.clear()
+            } else {
+                Toast.makeText(this, getString(R.string.enter_message), Toast.LENGTH_SHORT).show()
             }
         }
+    }
 
-        btnChangeTheme.setOnClickListener {
-            val themes = arrayOf("Greenroom", "Blue Stage", "Grey Card", "Neutral Light", "Darkroom")
-            androidx.appcompat.app.AlertDialog.Builder(this)
-                .setTitle("Kies Thema")
-                .setItems(themes) { _, which ->
-                    viewModel.setChatTheme(which)
-                }
-                .show()
+    private fun observeMessages() {
+        viewModel.getMessagesForContact(contactId).observe(this) { messages ->
+            adapter.updateMessages(messages)
+            binding.recyclerViewMessages.scrollToPosition(messages.size - 1)
+        }
+    }
+
+    companion object {
+        private const val EXTRA_CONTACT_ID = "extra_contact_id"
+        private const val EXTRA_CONTACT_NAME = "extra_contact_name"
+
+        fun newIntent(context: Context, contactId: Int = 0, contactName: String = ""): Intent {
+            return Intent(context, ChatActivity::class.java).apply {
+                putExtra(EXTRA_CONTACT_ID, contactId)
+                putExtra(EXTRA_CONTACT_NAME, contactName)
+            }
         }
     }
 }

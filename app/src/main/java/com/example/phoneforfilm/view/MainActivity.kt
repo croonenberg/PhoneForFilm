@@ -1,66 +1,63 @@
 package com.example.phoneforfilm.view
 
-import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.SeekBar
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.SwitchCompat
-import com.example.phoneforfilm.R
+import com.example.phoneforfilm.databinding.ActivityMainBinding
 import com.example.phoneforfilm.utils.PreferencesHelper
 import com.example.phoneforfilm.viewmodel.MainViewModel
+import android.widget.SeekBar
+import com.example.phoneforfilm.R
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityMainBinding
     private val viewModel: MainViewModel by viewModels()
+    private lateinit var preferences: PreferencesHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val btnCall = findViewById<Button>(R.id.btnCall)
-        val btnChat = findViewById<Button>(R.id.btnChat)
-        val btnLanguage = findViewById<Button>(R.id.btnLanguage)
-        val switchTheme = findViewById<SwitchCompat>(R.id.switchTheme)
-        val brightnessSeekBar = findViewById<SeekBar>(R.id.brightnessSeekBar)
+        preferences = PreferencesHelper(this)
+        viewModel.setPreferences(preferences)
 
-        viewModel.setPreferences(PreferencesHelper(this))
-
-        btnCall.setOnClickListener {
-            startActivity(Intent(this, IncomingCallActivity::class.java))
-        }
-
-        btnChat.setOnClickListener {
-            startActivity(Intent(this, ChatActivity::class.java))
-        }
-
-        btnLanguage.setOnClickListener {
-            val languages = arrayOf("English", "Nederlands", "Deutsch", "Français", "Español")
-            androidx.appcompat.app.AlertDialog.Builder(this)
-                .setTitle("Choose Language")
-                .setItems(languages) { _, which ->
-                    viewModel.setLanguage(this, which)
-                }
-                .show()
-        }
-
-        switchTheme.setOnCheckedChangeListener { _, isChecked ->
+        // Dark mode switch
+        binding.switchTheme.isChecked = preferences.isDarkMode()
+        binding.switchTheme.setOnCheckedChangeListener { _, isChecked ->
             viewModel.setDarkMode(isChecked)
         }
 
-        brightnessSeekBar.progress = (viewModel.preferences.getBrightness() * 100).toInt()
+        // Brightness SeekBar
+        val savedBrightness = (preferences.getBrightness() * 100).toInt()
+        binding.brightnessSeekBar.progress = savedBrightness
 
-        brightnessSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+        binding.brightnessSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 viewModel.updateBrightness(window, progress)
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
-
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                viewModel.saveBrightness(seekBar?.progress ?: 100)
+                viewModel.saveBrightness(seekBar?.progress ?: 50)
             }
         })
+
+        // Language selection
+        binding.languageButton.setOnClickListener {
+            val selectedLanguage = binding.languageSpinner.selectedItemPosition
+            viewModel.setLanguage(this, selectedLanguage)
+        }
+
+        // Navigate to Chat Screen
+        binding.startChatButton.setOnClickListener {
+            startActivity(ChatActivity.newIntent(this))
+        }
+
+        // Navigate to Call Screen
+        binding.startCallButton.setOnClickListener {
+            startActivity(CallActivity.newIntent(this))
+        }
     }
 }

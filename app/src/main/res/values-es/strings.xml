@@ -1,8 +1,16 @@
+
 <resources>
-    <string name="app_name">Phone For Film</string>
-    <string name="call_simulation">Simulación de llamada</string>
-    <string name="chat_simulation">Simulación de chat</string>
-    <string name="dark_mode">Tema oscuro</string>
-    <string name="type_message">Escribe un mensaje</string>
+    <string name="app_name">Teléfono Para Películas</string>
+    <string name="start_chat">Iniciar Chat</string>
+    <string name="incoming_call">Llamada Entrante</string>
+    <string name="answer">Responder</string>
+    <string name="decline">Rechazar</string>
+    <string name="brightness">Brillo</string>
+    <string name="language">Idioma</string>
+    <string name="theme">Tema</string>
+    <string name="dark_mode">Modo Oscuro</string>
+    <string name="open_chat">Abrir Chat</string>
+    <string name="type_message">Escribir un mensaje...</string>
     <string name="send">Enviar</string>
+    <string name="end_call">Finalizar Llamada</string>
 </resources>

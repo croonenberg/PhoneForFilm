@@ -1,64 +1,50 @@
+
 package com.example.phoneforfilm.view
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.phoneforfilm.R
 import com.example.phoneforfilm.data.Message
+import com.example.phoneforfilm.databinding.ItemMessageReceivedBinding
+import com.example.phoneforfilm.databinding.ItemMessageSentBinding
 
-class MessageAdapter : ListAdapter<Message, MessageAdapter.MessageViewHolder>(DiffCallback()) {
+class MessageAdapter(private var messages: List<Message>) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MessageViewHolder {
-        val layout = if (viewType == 1) {
-            R.layout.item_message_sent
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return if (viewType == 1) {
+            val binding = ItemMessageSentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            SentMessageViewHolder(binding)
         } else {
-            R.layout.item_message_received
+            val binding = ItemMessageReceivedBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ReceivedMessageViewHolder(binding)
         }
-        val view = LayoutInflater.from(parent.context).inflate(layout, parent, false)
-        return MessageViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: MessageViewHolder, position: Int) {
-        val message = getItem(position)
-        holder.bind(message)
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        val message = messages[position]
+        if (holder is SentMessageViewHolder) {
+            holder.binding.textViewMessage.text = message.text
+        } else if (holder is ReceivedMessageViewHolder) {
+            holder.binding.textViewMessage.text = message.text
+        }
     }
 
     override fun getItemViewType(position: Int): Int {
-        return if (getItem(position).sentByUser) 1 else 0
+        return if (messages[position].isSent) 1 else 0
     }
 
-    class MessageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(message: Message) {
-            val messageTextView: TextView = itemView.findViewById(R.id.textMessage)
-            val statusTextView: TextView = itemView.findViewById(R.id.textStatus)
+    override fun getItemCount() = messages.size
 
-            messageTextView.text = message.content
-
-            val statusSymbol = when (message.status) {
-                0 -> "✓"
-                1 -> "✓✓"
-                2 -> "✓✓"
-                else -> ""
-            }
-
-            statusTextView.text = statusSymbol
-
-            val statusColor = if (message.status == 2) {
-                itemView.context.getColor(R.color.statusRead)
-            } else {
-                itemView.context.getColor(R.color.textLight)
-            }
-
-            statusTextView.setTextColor(statusColor)
-        }
+    fun updateMessages(newMessages: List<Message>) {
+        messages = newMessages
+        notifyDataSetChanged()
     }
 
-    class DiffCallback : DiffUtil.ItemCallback<Message>() {
-        override fun areItemsTheSame(oldItem: Message, newItem: Message) = oldItem.id == newItem.id
-        override fun areContentsTheSame(oldItem: Message, newItem: Message) = oldItem == newItem
-    }
+    inner class SentMessageViewHolder(val binding: ItemMessageSentBinding) :
+        RecyclerView.ViewHolder(binding.root)
+
+    inner class ReceivedMessageViewHolder(val binding: ItemMessageReceivedBinding) :
+        RecyclerView.ViewHolder(binding.root)
 }

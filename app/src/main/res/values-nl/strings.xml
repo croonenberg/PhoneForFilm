@@ -1,8 +1,15 @@
 <resources>
-    <string name="app_name">Phone For Film</string>
-    <string name="call_simulation">Oproepsimulatie</string>
-    <string name="chat_simulation">Chatsimulatie</string>
-    <string name="dark_mode">Donker thema</string>
-    <string name="type_message">Typ een bericht</string>
+    <string name="app_name">Telefoon Voor Film</string>
+    <string name="start_chat">Start Chat</string>
+    <string name="incoming_call">Binnenkomend Gesprek</string>
+    <string name="answer">Opnemen</string>
+    <string name="decline">Weigeren</string>
+    <string name="brightness">Helderheid</string>
+    <string name="language">Taal</string>
+    <string name="theme">Thema</string>
+    <string name="dark_mode">Donkere Modus</string>
+    <string name="open_chat">Chat Openen</string>
+    <string name="type_message">Typ een bericht...</string>
     <string name="send">Verstuur</string>
+    <string name="end_call">Oproep Beëindigen</string>
 </resources>

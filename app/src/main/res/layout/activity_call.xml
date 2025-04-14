@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:padding="16dp"
-    tools:context=".view.CallActivity">
-
-    <TextView
-        android:id="@+id/textCallerName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="John Doe"
-        android:textSize="24sp"
-        android:layout_marginBottom="8dp" />
+    android:layout_height="match_parent">
 
     <Chronometer
-        android:id="@+id/callTimer"
+        android:id="@+id/callChronometer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:layout_marginBottom="16dp" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:textSize="24sp"
+        android:textColor="@color/white" />
 
     <Button
         android:id="@+id/btnEndCall"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="End Call" />
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="32dp"
+        android:text="@string/end_call" />
 
-</LinearLayout>
+    <View
+        android:id="@+id/blackOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/black"
+        android:alpha="0.8"
+        android:visibility="gone" />
+
+</RelativeLayout>

@@ -1,3 +1,4 @@
+
 package com.example.phoneforfilm.data
 
 import android.content.Context
@@ -19,8 +20,8 @@ abstract class AppDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,
-                    "phone_for_film_db"
-                ).allowMainThreadQueries().build()
+                    "phone_for_film_database"
+                ).fallbackToDestructiveMigration().build()
                 INSTANCE = instance
                 instance
             }

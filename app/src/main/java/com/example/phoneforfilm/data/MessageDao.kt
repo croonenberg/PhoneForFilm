@@ -1,14 +1,14 @@
+
 package com.example.phoneforfilm.data
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.lifecycle.LiveData
+import androidx.room.*
 
 @Dao
 interface MessageDao {
-    @Insert
-    fun insert(message: Message)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(message: Message)
 
-    @Query("SELECT * FROM Message")
-    fun getAll(): List<Message>
+    @Query("SELECT * FROM messages WHERE contactId = :contactId ORDER BY timestamp ASC")
+    fun getMessagesForContact(contactId: Int): LiveData<List<Message>>
 }
