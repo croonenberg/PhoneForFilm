@@ -1,18 +1,21 @@
-pluginManagement {
-    repositories {
-        google()
-        gradlePluginPortal()
-        mavenCentral()
-    }
-}
-
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+/*
+ * Top-level build file where you can add configuration options common to all sub-projects/modules.
+ */
+buildscript {
     repositories {
         google()
         mavenCentral()
     }
+    dependencies {
+        // Voeg hier eventuele buildscript dependencies toe als dat nodig is.
+    }
 }
 
-rootProject.name = "PhoneForFilm"
-include(":app")
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+// Eventuele extra configuraties voor alle projecten kun je hieronder plaatsen.
