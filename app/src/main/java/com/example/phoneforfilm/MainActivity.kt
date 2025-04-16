@@ -1,65 +1,47 @@
 package com.example.phoneforfilm
 
-import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import android.widget.SeekBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import com.example.phoneforfilm.utils.PreferencesHelper
+import com.example.phoneforfilm.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var preferences: PreferencesHelper
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        preferences = PreferencesHelper(this)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val btnCall = findViewById<Button>(R.id.btnCall)
-        val btnChat = findViewById<Button>(R.id.btnChat)
-        val switchTheme = findViewById<androidx.appcompat.widget.SwitchCompat>(R.id.switchTheme)
-        val brightnessSeekBar = findViewById<SeekBar>(R.id.brightnessSeekBar)
-
-        // Call Simulation
-        btnCall.setOnClickListener {
-            startActivity(Intent(this, IncomingCallActivity::class.java))
+        binding.btnCall.setOnClickListener {
+            // TODO: Implement call simulation
         }
 
-        // Chat Simulation
-        btnChat.setOnClickListener {
-            startActivity(Intent(this, ChatActivity::class.java))
+        binding.btnChat.setOnClickListener {
+            // TODO: Implement chat simulation
         }
 
-        // Theme switch
-        switchTheme.isChecked = preferences.isDarkMode()
-        switchTheme.setOnCheckedChangeListener { _, isChecked ->
+        binding.switchTheme.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                preferences.setDarkMode(true)
             } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                preferences.setDarkMode(false)
             }
         }
 
-        // Brightness control
-        brightnessSeekBar.progress = (preferences.getBrightness() * 100).toInt()
-        brightnessSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+        binding.brightnessSeekBar.max = 255
+        binding.brightnessSeekBar.progress = 128
+
+        binding.brightnessSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                val brightness = progress / 100.0f
-                val lp = window.attributes
-                lp.screenBrightness = brightness
-                window.attributes = lp
+                // TODO: Implement screen brightness simulation (if desired)
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
-            override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                val brightness = seekBar?.progress?.div(100.0f) ?: 0.5f
-                preferences.setBrightness(brightness)
-            }
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {}
         })
     }
 }

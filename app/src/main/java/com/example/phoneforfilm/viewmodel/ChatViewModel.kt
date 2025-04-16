@@ -1,37 +1,19 @@
 package com.example.phoneforfilm.viewmodel
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.phoneforfilm.data.AppDatabase
 import com.example.phoneforfilm.data.Message
-import kotlinx.coroutines.Dispatchers
+import com.example.phoneforfilm.data.MessageRepository
 import kotlinx.coroutines.launch
 
-class ChatViewModel(application: Application) : AndroidViewModel(application) {
+class ChatViewModel(private val repository: MessageRepository) : ViewModel() {
 
-    private val messageDao = AppDatabase.getDatabase(application).messageDao()
+    val allMessages: LiveData<List<Message>> = repository.getAllMessages()
 
     fun insertMessage(message: Message) {
-        viewModelScope.launch(Dispatchers.IO) {
-            messageDao.insert(message)
-        }
-    }
-
-    fun getMessagesByContact(contactId: Int): LiveData<List<Message>> {
-        return messageDao.getMessagesByContact(contactId)
-    }
-
-    fun deleteMessage(message: Message) {
-        viewModelScope.launch(Dispatchers.IO) {
-            messageDao.delete(message)
-        }
-    }
-
-    fun updateMessage(message: Message) {
-        viewModelScope.launch(Dispatchers.IO) {
-            messageDao.update(message)
+        viewModelScope.launch {
+            repository.insert(message)
         }
     }
 }

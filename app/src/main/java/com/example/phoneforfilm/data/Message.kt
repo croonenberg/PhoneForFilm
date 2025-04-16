@@ -11,5 +11,5 @@ data class Message(
     val text: String,
     val timestamp: Long,
     val isSent: Boolean,
-    val status: Int
+    val status: String
 )
