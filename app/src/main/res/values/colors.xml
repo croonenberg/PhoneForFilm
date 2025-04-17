@@ -1,47 +1,20 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Algemene kleuren -->
+    <!-- Basic colors -->
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
-    <color name="grey_light">#F5F5F5</color>
-    <color name="grey_dark">#212121</color>
 
-    <!-- Primaire kleuren voor Light Theme -->
-    <color name="primary_light">#4CAF50</color>
-    <color name="secondary_light">#8BC34A</color>
+    <!-- Primary/secondary -->
+    <color name="primary_light">#FFFFFF</color>
+    <color name="primary_dark">#000000</color>
+    <color name="secondary_light">#F5F5F5</color>
+    <color name="secondary_dark">#303030</color>
 
-    <!-- Primaire kleuren voor Dark Theme -->
-    <color name="primary_dark">#1B5E20</color>
-    <color name="secondary_dark">#33691E</color>
+    <!-- Chat background -->
+    <color name="chat_background">#ECECEC</color>
 
-    <!-- Material Design verplichte kleuren -->
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryVariant">#3700B3</color>
-    <color name="colorOnPrimary">#FFFFFF</color>
-    <color name="colorSecondary">#03DAC6</color>
-    <color name="colorOnSecondary">#000000</color>
-    <color name="colorSurface">#FFFFFF</color>
-    <color name="colorOnSurface">#000000</color>
-    <color name="colorBackground">#FFFFFF</color>
-    <color name="colorOnBackground">#000000</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC6</color>
-
-    <!-- Extra kleuren per thema (optioneel) -->
-    <color name="blue_stage_primary">#2196F3</color>
-    <color name="blue_stage_secondary">#03A9F4</color>
-    <color name="grey_card_primary">#9E9E9E</color>
-    <color name="grey_card_secondary">#BDBDBD</color>
-    <color name="neutral_light_primary">#FAFAFA</color>
-    <color name="neutral_light_secondary">#EEEEEE</color>
-    <color name="darkroom_primary">#121212</color>
-    <color name="darkroom_secondary">#1F1F1F</color>
-
-    <!-- Chat bubble kleuren -->
-    <color name="message_sent_background">#DCF8C6</color>
-    <color name="message_received_background">#ECECEC</color>
-
-    <!-- Tekstkleuren -->
-    <color name="text_primary">#212121</color>
-    <color name="text_secondary">#757575</color>
+    <!-- Existing contrast helpers -->
+    <color name="greenroom_primary">#2E7D32</color>
+    <color name="onSurface">#212121</color>
+    <color name="onSurfaceVariant">#757575</color>
 </resources>

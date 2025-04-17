@@ -1,16 +1,27 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Teléfono Para Películas</string>
-    <string name="start_chat">Iniciar Chat</string>
-    <string name="incoming_call">Llamada Entrante</string>
-    <string name="answer">Responder</string>
-    <string name="decline">Rechazar</string>
+    <string name="app_name">Phone For Film</string>
+    <string name="start_chat">Iniciar chat</string>
+    <string name="open_chat">Abrir chat</string>
+    <string name="hint_message">Escribe un mensaje</string>
+    <string name="send">Enviar mensaje</string>
+    <string name="me">Yo</string>
+    <string name="them">Ellos</string>
+    <string name="toggle_sender">Cambiar remitente</string>
+    <string name="edit">Editar mensaje</string>
+    <string name="change_time">Cambiar hora</string>
+    <string name="change_status">Cambiar estado</string>
+    <string name="delete">Eliminar</string>
+    <string name="chat_history">Historial de chat</string>
     <string name="brightness">Brillo</string>
     <string name="language">Idioma</string>
     <string name="theme">Tema</string>
-    <string name="dark_mode">Modo Oscuro</string>
-    <string name="open_chat">Abrir Chat</string>
-    <string name="type_message">Escribir un mensaje...</string>
-    <string name="send">Enviar</string>
-    <string name="end_call">Finalizar Llamada</string>
+    <string name="dark_mode">Modo oscuro</string>
+    <string name="incoming_call">Llamada entrante</string>
+    <string name="answer">Responder</string>
+    <string name="decline">Rechazar</string>
+    <string name="in_call">En llamada…</string>
+    <string name="end_call">Finalizar llamada</string>
+    <string name="search">Buscar</string>
+    <string name="more">Más</string>
 </resources>

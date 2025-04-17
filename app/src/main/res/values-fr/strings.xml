@@ -1,16 +1,27 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Téléphone Pour Film</string>
-    <string name="start_chat">Démarrer un chat</string>
+    <string name="app_name">Phone For Film</string>
+    <string name="start_chat">Démarrer le chat</string>
+    <string name="open_chat">Ouvrir le chat</string>
+    <string name="hint_message">Tapez un message</string>
+    <string name="send">Envoyer le message</string>
+    <string name="me">Moi</string>
+    <string name="them">Eux</string>
+    <string name="toggle_sender">Basculer l\'expéditeur</string>
+    <string name="edit">Modifier le message</string>
+    <string name="change_time">Modifier l\'heure</string>
+    <string name="change_status">Modifier le statut</string>
+    <string name="delete">Supprimer</string>
+    <string name="chat_history">Historique du chat</string>
+    <string name="brightness">Luminosité</string>
     <string name="language">Langue</string>
     <string name="theme">Thème</string>
     <string name="dark_mode">Mode sombre</string>
-    <string name="brightness">Luminosité</string>
-    <string name="open_chat">Ouvrir un chat</string>
     <string name="incoming_call">Appel entrant</string>
     <string name="answer">Répondre</string>
     <string name="decline">Refuser</string>
-    <string name="end_call">Raccrocher</string>
-    <string name="type_message">Tapez un message...</string>
-    <string name="send">Envoyer</string>
+    <string name="in_call">En appel…</string>
+    <string name="end_call">Terminer l\'appel</string>
+    <string name="search">Rechercher</string>
+    <string name="more">Plus</string>
 </resources>

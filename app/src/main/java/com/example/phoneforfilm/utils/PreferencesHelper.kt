@@ -5,22 +5,30 @@ import android.content.SharedPreferences
 
 class PreferencesHelper(context: Context) {
 
-    private val sharedPreferences: SharedPreferences =
+    private val prefs: SharedPreferences =
         context.getSharedPreferences("PhoneForFilmPrefs", Context.MODE_PRIVATE)
 
-    fun setDarkMode(enabled: Boolean) {
-        sharedPreferences.edit().putBoolean("dark_mode", enabled).apply()
-    }
+    /* ---------- Dark mode ---------- */
 
-    fun isDarkMode(): Boolean {
-        return sharedPreferences.getBoolean("dark_mode", false)
-    }
+    fun setDarkMode(enabled: Boolean) =
+        prefs.edit().putBoolean("dark_mode", enabled).apply()
 
-    fun setBrightness(brightness: Float) {
-        sharedPreferences.edit().putFloat("brightness", brightness).apply()
-    }
+    fun isDarkMode(): Boolean =
+        prefs.getBoolean("dark_mode", false)
 
-    fun getBrightness(): Float {
-        return sharedPreferences.getFloat("brightness", 1.0f)
-    }
+    /* ---------- Brightness ---------- */
+
+    fun setBrightness(value: Float) =
+        prefs.edit().putFloat("brightness", value).apply()
+
+    fun getBrightness(): Float =
+        prefs.getFloat("brightness", 1f)
+
+    /* ---------- Language ---------- */
+
+    fun setLanguage(tag: String) =
+        prefs.edit().putString("language", tag).apply()
+
+    fun getLanguage(): String =
+        prefs.getString("language", "en") ?: "en"
 }

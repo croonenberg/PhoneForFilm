@@ -1,19 +1,37 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.phoneforfilm">
 
-    <!--suppress AndroidDomInspection, AndroidDomInspection -->
-    <application android:allowBackup="true" android:label="Phone For Film" android:icon="@mipmap/ic_launcher" android:roundIcon="@mipmap/ic_launcher_round" android:supportsRtl="true" android:theme="@style/Theme.PhoneForFilm">
+    <application
+        android:allowBackup="true"
+        android:label="PhoneForFilm"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.PhoneForFilm">
 
-        <activity android:name=".view.IncomingCallActivity" android:exported="true"/>
+        <!-- Inkomend gespreksscherm (optioneel) -->
+        <activity
+            android:name=".IncomingCallActivity"
+            android:exported="true" />
 
-        <activity android:name=".view.CallActivity" android:exported="false"/>
+        <!-- Gespreksscherm -->
+        <activity
+            android:name=".CallActivity"
+            android:exported="false" />
 
-        <activity android:name=".view.ChatActivity" android:exported="false"/>
+        <!-- Chat / berichten -->
+        <activity
+            android:name=".ChatActivity"
+            android:exported="false" />
 
-        <activity android:name=".view.MainActivity" android:exported="true">
+        <!-- Launcher‑scherm -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 

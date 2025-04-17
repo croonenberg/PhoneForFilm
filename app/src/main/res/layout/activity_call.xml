@@ -1,10 +1,23 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent">
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/callLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="24dp">
 
-    <Chronometer android:id="@+id/callChronometer" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:layout_marginTop="32dp" android:textSize="24sp" android:textColor="@color/white"/>
+    <TextView
+        android:id="@+id/callText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="In Call..."
+        android:textSize="24sp" />
 
-    <Button android:id="@+id/btnEndCall" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:layout_alignParentBottom="true" android:layout_marginBottom="32dp" android:text="@string/end_call"/>
-
-    <View android:id="@+id/blackOverlay" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@android:color/black" android:alpha="0.8" android:visibility="gone"/>
-
-</RelativeLayout>
+    <Button
+        android:id="@+id/endCallButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Einde gesprek"
+        android:layout_marginTop="20dp" />
+</LinearLayout>
