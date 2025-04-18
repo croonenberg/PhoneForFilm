@@ -18,10 +18,15 @@
     <string name="theme">Tema</string>
     <string name="dark_mode">Modo oscuro</string>
     <string name="incoming_call">Llamada entrante</string>
-    <string name="answer">Responder</string>
+    <string name="answer">Contestar</string>
     <string name="decline">Rechazar</string>
     <string name="in_call">En llamada…</string>
     <string name="end_call">Finalizar llamada</string>
     <string name="search">Buscar</string>
     <string name="more">Más</string>
+    <string name="choose_language">Elige tu idioma</string>
+    <string name="choose_theme">Elige un tema</string>
+    <string name="type_message">Escribe un mensaje</string>
+    <string name="accept_call">Aceptar llamada</string>
+    <string name="decline_call">Rechazar llamada</string>
 </resources>

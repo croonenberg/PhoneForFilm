@@ -27,7 +27,7 @@ abstract class AppDatabase : RoomDatabase() {
                     "app_database"
                 )
                     // Alleen voor development: verwijdert ALLE tabellen bij schema‑wijziging
-                    .fallbackToDestructiveMigration(true)
+                    .fallbackToDestructiveMigration()
                     .build()
                     .also { INSTANCE = it }
             }

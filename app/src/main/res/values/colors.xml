@@ -1,20 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Basic colors -->
+    <!-- Algemene kleuren -->
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
 
-    <!-- Primary/secondary -->
-    <color name="primary_light">#FFFFFF</color>
-    <color name="primary_dark">#000000</color>
-    <color name="secondary_light">#F5F5F5</color>
-    <color name="secondary_dark">#303030</color>
+    <!-- Thema-kleuren (voor thema wisselen) -->
+    <color name="greenroom_primary">#075E54</color>
+    <color name="greenroom_background">#ECE5DD</color>
 
-    <!-- Chat background -->
-    <color name="chat_background">#ECECEC</color>
+    <color name="blue_stage_primary">#007AFF</color>
+    <color name="blue_stage_background">#E5E5EA</color>
 
-    <!-- Existing contrast helpers -->
-    <color name="greenroom_primary">#2E7D32</color>
-    <color name="onSurface">#212121</color>
-    <color name="onSurfaceVariant">#757575</color>
+    <color name="grey_card_primary">#4A4A4A</color>
+    <color name="grey_card_background">#F2F2F2</color>
+
+    <color name="neutral_light_primary">#0088CC</color>
+    <color name="neutral_light_background">#FFFFFF</color>
+
+    <color name="darkroom_primary">#121212</color>
+    <color name="darkroom_background">#1E1E1E</color>
+
+    <!-- Bellen scherm -->
+    <color name="call_button_green">#4CAF50</color>
+    <color name="call_button_red">#F44336</color>
+
+    <!-- Bubbles -->
+    <color name="message_sent_background">#0084FF</color>
+    <color name="message_received_background">#E5E5EA</color>
 </resources>

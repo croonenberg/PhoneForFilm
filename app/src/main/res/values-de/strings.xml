@@ -9,7 +9,7 @@
     <string name="them">Sie</string>
     <string name="toggle_sender">Absender wechseln</string>
     <string name="edit">Nachricht bearbeiten</string>
-    <string name="change_time">Uhrzeit ändern</string>
+    <string name="change_time">Zeit ändern</string>
     <string name="change_status">Status ändern</string>
     <string name="delete">Löschen</string>
     <string name="chat_history">Chatverlauf</string>
@@ -24,4 +24,9 @@
     <string name="end_call">Gespräch beenden</string>
     <string name="search">Suchen</string>
     <string name="more">Mehr</string>
+    <string name="choose_language">Sprache wählen</string>
+    <string name="choose_theme">Thema wählen</string>
+    <string name="type_message">Nachricht eingeben</string>
+    <string name="accept_call">Anruf annehmen</string>
+    <string name="decline_call">Anruf ablehnen</string>
 </resources>

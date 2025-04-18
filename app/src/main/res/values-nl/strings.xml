@@ -7,11 +7,11 @@
     <string name="send">Verstuur bericht</string>
     <string name="me">Ik</string>
     <string name="them">Zij</string>
-    <string name="toggle_sender">Schakel afzender</string>
+    <string name="toggle_sender">Wissel afzender</string>
     <string name="edit">Bewerk bericht</string>
-    <string name="change_time">Tijd wijzigen</string>
-    <string name="change_status">Status wijzigen</string>
-    <string name="delete">Verwijderen</string>
+    <string name="change_time">Wijzig tijd</string>
+    <string name="change_status">Wijzig status</string>
+    <string name="delete">Verwijder</string>
     <string name="chat_history">Chatgeschiedenis</string>
     <string name="brightness">Helderheid</string>
     <string name="language">Taal</string>
@@ -21,7 +21,12 @@
     <string name="answer">Beantwoorden</string>
     <string name="decline">Weigeren</string>
     <string name="in_call">In gesprek…</string>
-    <string name="end_call">Gesprek beëindigen</string>
+    <string name="end_call">Beëindig gesprek</string>
     <string name="search">Zoeken</string>
     <string name="more">Meer</string>
+    <string name="choose_language">Kies je taal</string>
+    <string name="choose_theme">Kies een thema</string>
+    <string name="type_message">Typ een bericht</string>
+    <string name="accept_call">Gesprek accepteren</string>
+    <string name="decline_call">Oproep weigeren</string>
 </resources>

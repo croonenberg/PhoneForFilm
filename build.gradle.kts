@@ -1,15 +1,12 @@
-// Root build.gradle.kts
+// build.gradle.kts in root van het project
 
 plugins {
-    kotlin("jvm") version "2.1.10" apply false
-    kotlin("kapt") version "2.1.10" apply false
-    id("com.android.application") version "8.6.1" apply false
-    id("com.android.library") version "8.6.1" apply false
+    // (optioneel) root plugins
 }
 
 allprojects {
-    repositories {
-        google()
-        mavenCentral()
-    }
+    // GEEN repositories hier meer!
+}
+repositories {
+    google()
 }

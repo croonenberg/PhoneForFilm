@@ -24,4 +24,10 @@
     <string name="end_call">End call</string>
     <string name="search">Search</string>
     <string name="more">More</string>
+    <string name="accept_call">Accept</string>
+    <string name="decline_call">Decline</string>
+    <string name="choose_language">Choose language</string>
+    <string name="choose_theme">Choose theme</string>
+    <string name="type_message">Type your message</string>
+    <string name="start_call">Start Call</string>
 </resources>
