@@ -4,3 +4,18 @@
 build/
 local.properties
 *.iml
+# Android/Java specific
+*.iml
+.gradle
+/local.properties
+/.idea
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+
+# Kotlin
+*.kotlin_module
+
+# Log & debug
+*.log
