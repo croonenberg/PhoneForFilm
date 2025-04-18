@@ -1,12 +1,14 @@
-// build.gradle.kts in root van het project
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
 
-plugins {
-    // (optioneel) root plugins
+    dependencies {
+        classpath("com.android.tools.build:gradle:8.2.2")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.22")
+        classpath("com.google.devtools.ksp:symbol-processing-gradle-plugin:1.9.22-1.0.16")
+    }
 }
 
-allprojects {
-    // GEEN repositories hier meer!
-}
-repositories {
-    google()
-}
+
