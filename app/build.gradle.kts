@@ -11,6 +11,7 @@ android {
     defaultConfig {
         applicationId = "com.example.phoneforfilm"
         minSdk = 30
+        //noinspection OldTargetApi
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
