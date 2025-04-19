@@ -1,4 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/messageContainer"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -10,8 +11,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_message_received"
-        android:text="\HELLO"
+        android:text="HELLO"
         android:textColor="#000000"
         android:textSize="16sp"
-        android:padding="12dp" />
+        android:padding="12dp"
+        tools:ignore="HardcodedText" />
 </LinearLayout>
