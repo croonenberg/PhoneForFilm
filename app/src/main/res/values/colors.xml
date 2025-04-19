@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Algemene kleuren -->
     <color name="white">#FFFFFF</color>
@@ -27,4 +26,11 @@
     <!-- Bubbles -->
     <color name="message_sent_background">#0084FF</color>
     <color name="message_received_background">#E5E5EA</color>
+
+    <!-- Night mode overrides -->
+    <color name="primary_light">#000000</color>
+    <color name="primary_dark">#FFFFFF</color>
+    <color name="secondary_light">#424242</color>
+    <color name="secondary_dark">#1A1A1A</color>
+    <color name="chat_background">#121212</color>
 </resources>
