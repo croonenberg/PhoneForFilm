@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Phone For Film</string>
     <string name="start_chat">Iniciar chat</string>
@@ -24,11 +23,13 @@
     <string name="end_call">Finalizar llamada</string>
     <string name="search">Buscar</string>
     <string name="more">Más</string>
-    <string name="choose_language">Elige tu idioma</string>
-    <string name="choose_theme">Elige un tema</string>
-    <string name="type_message">Escribe un mensaje</string>
-    <string name="accept_call">Aceptar llamada</string>
-    <string name="decline_call">Rechazar llamada</string>
+    <string name="accept_call">Aceptar</string>
+    <string name="decline_call">Rechazar</string>
+    <string name="choose_language">Elegir idioma</string>
+    <string name="choose_theme">Elegir tema</string>
+    <string name="type_message">Escribe tu mensaje</string>
+    <string name="start_call">Iniciar llamada</string>
     <string name="messages_list">Lista de mensajes</string>
-    <string name="change_theme">Change Theme</string>
+    <string name="change_theme">Cambiar tema</string>
+    <string name="hello">HOLA</string>
 </resources>
