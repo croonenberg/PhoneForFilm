@@ -10,7 +10,9 @@ import com.example.phoneforfilm.data.Message
 import com.example.phoneforfilm.databinding.ItemMessageReceivedBinding
 import com.example.phoneforfilm.databinding.ItemMessageSentBinding
 
-class MessageAdapter : ListAdapter<Message, RecyclerView.ViewHolder>(MessageDiffCallback()) {
+class MessageAdapter(
+    private val onMessageLongClick: (Message) -> Unit
+) : ListAdapter<Message, RecyclerView.ViewHolder>(MessageDiffCallback()) {
 
     override fun getItemViewType(position: Int): Int {
         return if (getItem(position).isSent) 0 else 1
@@ -32,15 +34,25 @@ class MessageAdapter : ListAdapter<Message, RecyclerView.ViewHolder>(MessageDiff
         }
     }
 
-    class SentMessageViewHolder(private val binding: ItemMessageSentBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class SentMessageViewHolder(private val binding: ItemMessageSentBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(message: Message) {
-            binding.textMessageSent.text = message.content
+            binding.textMessageSent.text = message.text
+            binding.root.setOnLongClickListener {
+                onMessageLongClick(message)
+                true
+            }
         }
     }
 
-    class ReceivedMessageViewHolder(private val binding: ItemMessageReceivedBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ReceivedMessageViewHolder(private val binding: ItemMessageReceivedBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(message: Message) {
-            binding.textMessageReceived.text = message.content
+            binding.textMessageReceived.text = message.text
+            binding.root.setOnLongClickListener {
+                onMessageLongClick(message)
+                true
+            }
         }
     }
 

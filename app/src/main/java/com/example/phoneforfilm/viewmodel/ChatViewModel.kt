@@ -20,8 +20,8 @@ class ChatViewModel(private val repository: MessageRepository) : ViewModel() {
         }
     }
 
-    fun sendMessage(chatId: Int, content: String) {
-        val message = Message(chatId = chatId, content = content, isSent = true, timestamp = System.currentTimeMillis())
+    fun sendMessage(chatId: Int, text: String) {
+        val message = Message(chatId = chatId, text = text, isSent = true, timestamp = System.currentTimeMillis())
         insertMessage(message)
     }
 
