@@ -1,11 +1,12 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources >
     <style name="Theme.PhoneForFilm" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/greenroom_primary</item>
         <item name="colorOnPrimary">@android:color/white</item>
         <item name="colorSurface">@color/chat_background</item>
-        <item name="android:textColorPrimary">@android:color/white</item>  <!-- Added for button text color -->
+        <item name="android:textColorPrimary">@android:color/white</item>
         <item name="toolbarStyle">@style/Widget.PhoneForFilm.Toolbar</item>
-    </style>
+
+         </style>
 
     <style name="Widget.PhoneForFilm.Toolbar" parent="Widget.Material3.Toolbar">
         <item name="titleTextAppearance">@style/TextAppearance.PhoneForFilm.Toolbar.Title</item>

@@ -16,24 +16,6 @@
         android:layout_height="wrap_content"
         android:text="@string/language" />
 
-    <Button
-        android:id="@+id/btnTheme"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/theme" />
-
-<Button
-        android:id="@+id/btnAnswer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/answer" />
-
-<Button
-        android:id="@+id/btnDecline"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/decline_call" />
-
 <Button
         android:id="@+id/btnStartChat"
         android:layout_width="match_parent"
