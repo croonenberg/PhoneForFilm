@@ -5,31 +5,26 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(
-    entities = [Message::class, Contact::class],
-    version = 3,                 // schema‑wijziging ⇒ versie ophogen
-    exportSchema = false
-)
+@Database(entities = [Message::class, Contact::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun messageDao(): MessageDao
-    abstract fun contactDao(): ContactDao
 
     companion object {
         @Volatile
         private var INSTANCE: AppDatabase? = null
 
-        fun getDatabase(context: Context): AppDatabase =
-            INSTANCE ?: synchronized(this) {
-                Room.databaseBuilder(
+        fun getDatabase(context: Context): AppDatabase {
+            return INSTANCE ?: synchronized(this) {
+                val instance = Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,
-                    "app_database"
-                )
-                    // Alleen voor development: verwijdert ALLE tabellen bij schema‑wijziging
-                    .fallbackToDestructiveMigration()
+                    "phone_for_film_database"
+                ).fallbackToDestructiveMigration()
                     .build()
-                    .also { INSTANCE = it }
+                INSTANCE = instance
+                instance
             }
+        }
     }
 }
