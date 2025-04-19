@@ -12,12 +12,3 @@ class IncomingCallActivity : AppCompatActivity() {
         binding = ActivityIncomingCallBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnAnswer.setOnClickListener {
-            // Handle answer
-        }
-
-        binding.btnDecline.setOnClickListener {
-            // Handle decline
-        }
-    }
-}
