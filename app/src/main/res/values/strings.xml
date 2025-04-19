@@ -30,4 +30,5 @@
     <string name="choose_theme">Choose theme</string>
     <string name="type_message">Type your message</string>
     <string name="start_call">Start Call</string>
+    <string name="messages_list">Messages list</string>
 </resources>

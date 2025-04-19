@@ -29,4 +29,5 @@
     <string name="type_message">Escribe un mensaje</string>
     <string name="accept_call">Aceptar llamada</string>
     <string name="decline_call">Rechazar llamada</string>
+    <string name="messages_list">Lista de mensajes</string>
 </resources>

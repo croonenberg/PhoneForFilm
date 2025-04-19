@@ -29,4 +29,5 @@
     <string name="type_message">Typ een bericht</string>
     <string name="accept_call">Gesprek accepteren</string>
     <string name="decline_call">Oproep weigeren</string>
+    <string name="messages_list">Lijst met berichten</string>
 </resources>
