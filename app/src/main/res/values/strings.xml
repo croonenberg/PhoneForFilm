@@ -1,5 +1,4 @@
-<resources> xmlns:tools="http://schemas.android.com/tools" tools:locale="en">
-
+<resources>
     <string name="app_name">Phone For Film</string>
     <string name="start_chat">Start chat</string>
     <string name="open_chat">Open chat</string>
