@@ -10,4 +10,10 @@
         android:layout_height="wrap_content"
         android:text="@string/end_call" />
 
+    <Button
+        android:id="@+id/btnStartCall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/start_call" />
+
 </LinearLayout>

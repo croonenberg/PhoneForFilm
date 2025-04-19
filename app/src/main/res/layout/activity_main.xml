@@ -4,23 +4,29 @@
     android:orientation="vertical"
     android:padding="16dp">
 
+
     <Button
         android:id="@+id/btnStartCall"
-        android:layout_width="match_parent"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="@string/start_call" />
 
     <Button
-        android:id="@+id/btnLanguage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/language" />
-
-<Button
         android:id="@+id/btnStartChat"
-        android:layout_width="match_parent"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="@string/start_chat"/>
 
+    <Button
+        android:id="@+id/btnTheme"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Change Theme" />
+
+    <Button
+        android:id="@+id/btnLanguage"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Language" />
 
 </LinearLayout>
