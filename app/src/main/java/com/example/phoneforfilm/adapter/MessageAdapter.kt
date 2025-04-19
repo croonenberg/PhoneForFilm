@@ -1,41 +1,103 @@
 package com.example.phoneforfilm.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.phoneforfilm.data.Message
-import com.example.phoneforfilm.databinding.ItemMessageBinding
+import com.example.phoneforfilm.databinding.ItemMessageReceivedBinding
+import com.example.phoneforfilm.databinding.ItemMessageSentBinding
+import java.text.SimpleDateFormat
+import java.util.*
 
-class MessageAdapter :
-    ListAdapter<Message, MessageAdapter.ViewHolder>(MessageDiffCallback()) {
+class MessageAdapter(
+    private val currentUserId: Long,
+    private val onMessageLongClick: (Message) -> Unit
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ItemMessageBinding.inflate(
-            LayoutInflater.from(parent.context),
-            parent,
-            false
-        )
-        return ViewHolder(binding)
+    private val messages = mutableListOf<Message>()
+
+    companion object {
+        private const val VIEW_TYPE_SENT = 1
+        private const val VIEW_TYPE_RECEIVED = 2
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position))
-    }
-
-    class ViewHolder(private val binding: ItemMessageBinding) :
+    inner class SentViewHolder(val binding: ItemMessageSentBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(message: Message) {
-            binding.tvMessage.text = message.text
+            binding.tvSentMessage.text = message.text
+            binding.tvSentTime.text =
+                SimpleDateFormat("HH:mm", Locale.getDefault()).format(Date(message.timestamp))
+            // status icons logic
+            when (message.status) {
+                0 -> binding.ivStatus.setImageResource(com.example.phoneforfilm.R.drawable.ic_status_sent)
+                1 -> binding.ivStatus.setImageResource(com.example.phoneforfilm.R.drawable.ic_status_delivered)
+                2 -> binding.ivStatus.setImageResource(com.example.phoneforfilm.R.drawable.ic_status_read)
+            }
+            // pin/favorite visibility
+            binding.ivPin.visibility = if (message.pinned) View.VISIBLE else View.GONE
+            binding.ivFavorite.visibility = if (message.favorite) View.VISIBLE else View.GONE
+
+            binding.root.setOnLongClickListener {
+                onMessageLongClick(message)
+                true
+            }
         }
     }
 
-    class MessageDiffCallback : DiffUtil.ItemCallback<Message>() {
-        override fun areItemsTheSame(old: Message, new: Message) =
-            old.id == new.id
+    inner class ReceivedViewHolder(val binding: ItemMessageReceivedBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(message: Message) {
+            binding.tvReceivedMessage.text = message.text
+            binding.tvReceivedTime.text =
+                SimpleDateFormat("HH:mm", Locale.getDefault()).format(Date(message.timestamp))
+            binding.ivPin.visibility = if (message.pinned) View.VISIBLE else View.GONE
+            binding.ivFavorite.visibility = if (message.favorite) View.VISIBLE else View.GONE
 
-        override fun areContentsTheSame(old: Message, new: Message) =
-            old == new
+            binding.root.setOnLongClickListener {
+                onMessageLongClick(message)
+                true
+            }
+        }
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return if (messages[position].senderId == currentUserId) VIEW_TYPE_SENT else VIEW_TYPE_RECEIVED
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
+        if (viewType == VIEW_TYPE_SENT) {
+            SentViewHolder(
+                ItemMessageSentBinding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent, false
+                )
+            )
+        } else {
+            ReceivedViewHolder(
+                ItemMessageReceivedBinding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent, false
+                )
+            )
+        }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        val msg = messages[position]
+        if (holder is SentViewHolder) holder.bind(msg)
+        else if (holder is ReceivedViewHolder) holder.bind(msg)
+    }
+
+    override fun getItemCount(): Int = messages.size
+
+    fun submitList(list: List<Message>) {
+        messages.clear()
+        messages.addAll(
+            list.sortedWith(
+                compareByDescending<Message> { it.pinned }
+                    .thenBy { it.timestamp }
+            )
+        )
+        notifyDataSetChanged()
     }
 }

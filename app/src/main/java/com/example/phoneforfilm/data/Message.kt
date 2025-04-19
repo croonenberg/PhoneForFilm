@@ -9,5 +9,8 @@ data class Message(
     val chatId: Int,
     val text: String,
     val isSent: Boolean,
-    val timestamp: Long
+    val timestamp: Long,
+    val status: Int = 0,        // 0 = sent, 1 = delivered, 2 = read
+    val pinned: Boolean = false,
+    val favorite: Boolean = false
 )

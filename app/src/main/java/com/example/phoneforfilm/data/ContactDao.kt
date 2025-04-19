@@ -12,11 +12,13 @@ interface ContactDao {
     @Query("SELECT * FROM contacts")
     fun getAll(): LiveData<List<Contact>>
 
-    //  nieuw – aansluitend op CallViewModel
+    // suspend function to get list of contacts synchronously
+    @Query("SELECT * FROM contacts")
+    suspend fun getAllList(): List<Contact>
+
     @Query("SELECT * FROM contacts WHERE id = :id")
     fun getContactById(id: Int): LiveData<Contact>
 
-    //  nieuw – voor updaten van contactgegevens
     @Update
     suspend fun update(contact: Contact)
 }
