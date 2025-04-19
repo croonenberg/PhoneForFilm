@@ -3,12 +3,12 @@ package com.example.phoneforfilm.data
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "messages")
+@Entity
 data class Message(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
-    val chatId: Int,
-    val sender: String,
-    val content: String,
+    val contactId: Int,
     val timestamp: Long,
-    val isSent: Boolean
+    val text: String,
+    val isSent: Boolean,
+    val status: String
 )

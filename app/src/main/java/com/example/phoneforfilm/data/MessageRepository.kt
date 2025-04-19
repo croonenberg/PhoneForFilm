@@ -1,13 +1,21 @@
+
 package com.example.phoneforfilm.data
 
-class MessageRepository(private val dao: MessageDao) {
+class MessageRepository(private val messageDao: MessageDao) {
 
-    fun getMessages(contactId: Int) = dao.getMessagesForContact(contactId)
+    suspend fun insert(message: Message) {
+        messageDao.insertMessage(message)
+    }
 
-    suspend fun insertMessage(message: Message) = dao.insert(message)
+    suspend fun update(message: Message) {
+        messageDao.updateMessage(message)
+    }
 
-    suspend fun updateMessage(message: Message) = dao.update(message)
+    suspend fun delete(message: Message) {
+        messageDao.deleteMessage(message)
+    }
 
-    suspend fun deleteMessage(message: Message) = dao.delete(message)
+    suspend fun getMessagesByChatId(chatId: Int): List<Message> {
+        return messageDao.getMessagesByChatId(chatId)
+    }
 }
-
