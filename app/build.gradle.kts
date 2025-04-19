@@ -41,6 +41,7 @@ dependencies {
 
     // Room with KSP
     implementation("androidx.room:room-runtime:2.7.0")
+    implementation("androidx.coordinatorlayout:coordinatorlayout:1.3.0")
     annotationProcessor("androidx.room:room-compiler:2.7.0")
     implementation("androidx.room:room-ktx:2.7.0")
     //nieuwe shit
