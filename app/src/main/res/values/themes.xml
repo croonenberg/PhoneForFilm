@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
     <style name="Theme.PhoneForFilm" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/greenroom_primary</item>
         <item name="colorOnPrimary">@android:color/white</item>
         <item name="colorSurface">@color/chat_background</item>
+        <item name="android:textColorPrimary">@android:color/white</item>  <!-- Added for button text color -->
         <item name="toolbarStyle">@style/Widget.PhoneForFilm.Toolbar</item>
     </style>
 
