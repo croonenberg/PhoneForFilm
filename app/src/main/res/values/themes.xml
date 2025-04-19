@@ -5,8 +5,7 @@
         <item name="colorSurface">@color/chat_background</item>
         <item name="android:textColorPrimary">@android:color/white</item>
         <item name="toolbarStyle">@style/Widget.PhoneForFilm.Toolbar</item>
-
-         </style>
+    </style>
 
     <style name="Widget.PhoneForFilm.Toolbar" parent="Widget.Material3.Toolbar">
         <item name="titleTextAppearance">@style/TextAppearance.PhoneForFilm.Toolbar.Title</item>
