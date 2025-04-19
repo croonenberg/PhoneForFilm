@@ -30,4 +30,5 @@
     <string name="accept_call">Gesprek accepteren</string>
     <string name="decline_call">Oproep weigeren</string>
     <string name="messages_list">Lijst met berichten</string>
+    <string name="change_theme">Change Theme</string>
 </resources>
