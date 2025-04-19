@@ -32,4 +32,19 @@
     <string name="messages_list">Lista de mensajes</string>
     <string name="change_theme">Cambiar tema</string>
     <string name="hello">HOLA</string>
+
+    <string name="edit_message">Editar mensaje</string>
+    <string name="edit_time">Editar hora</string>
+    <string name="change_status">Cambiar estado</string>
+    <string name="status_sent">✓ enviado</string>
+    <string name="status_delivered">✓✓ entregado</string>
+    <string name="status_read">✓✓ leído</string>
+    <string name="change_sender">Cambiar remitente</string>
+    <string name="pin">Fijar mensaje</string>
+    <string name="unpin">Desfijar mensaje</string>
+    <string name="favorite">Marcar como favorito</string>
+    <string name="unfavorite">Quitar de favoritos</string>
+    <string name="delete_message">Eliminar mensaje</string>
+    <string name="cancel">Cancelar</string>
+    <string name="new_conversation">Nueva conversación</string>
 </resources>

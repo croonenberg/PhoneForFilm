@@ -32,4 +32,19 @@
     <string name="messages_list">Messages list</string>
     <string name="change_theme">Change Theme</string>
     <string name="hello">HELLO</string>
+
+    <string name="edit_message">Edit message</string>
+    <string name="edit_time">Edit time</string>
+    <string name="change_status">Change status</string>
+    <string name="status_sent">✓ sent</string>
+    <string name="status_delivered">✓✓ delivered</string>
+    <string name="status_read">✓✓ read</string>
+    <string name="change_sender">Change sender</string>
+    <string name="pin">Pin message</string>
+    <string name="unpin">Unpin message</string>
+    <string name="favorite">Mark as favorite</string>
+    <string name="unfavorite">Unfavorite</string>
+    <string name="delete_message">Delete message</string>
+    <string name="cancel">Cancel</string>
+    <string name="new_conversation">New conversation</string>
 </resources>

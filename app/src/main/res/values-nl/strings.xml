@@ -32,4 +32,19 @@
     <string name="messages_list">Berichtenlijst</string>
     <string name="change_theme">Verander thema</string>
     <string name="hello">HALLO</string>
+
+    <string name="edit_message">Bewerk bericht</string>
+    <string name="edit_time">Bewerk tijd</string>
+    <string name="change_status">Verander status</string>
+    <string name="status_sent">✓ verzonden</string>
+    <string name="status_delivered">✓✓ afgeleverd</string>
+    <string name="status_read">✓✓ gelezen</string>
+    <string name="change_sender">Verander afzender</string>
+    <string name="pin">Pin bericht</string>
+    <string name="unpin">Maak los-pin</string>
+    <string name="favorite">Markeer favoriet</string>
+    <string name="unfavorite">Verwijder favoriet</string>
+    <string name="delete_message">Verwijder bericht</string>
+    <string name="cancel">Annuleer</string>
+    <string name="new_conversation">Nieuwe conversatie</string>
 </resources>
