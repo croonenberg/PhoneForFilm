@@ -1,5 +1,6 @@
+package com.example.phoneforfilm.view
+
 import android.os.Bundle
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.example.phoneforfilm.R
 import com.example.phoneforfilm.databinding.ActivityChatBinding
@@ -15,7 +16,6 @@ class ChatActivity : AppCompatActivity() {
 
         // Voorbeeld van het gebruiken van R
         binding.buttonSend.setText(R.string.send)  // Verwijst naar een string resource
-        // Als je een menu-item wilt gebruiken
-        val editItem: MenuItem = findViewById(R.id.menu_edit)  // Verwijst naar een menu item
+
     }
 }
