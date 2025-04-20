@@ -1,23 +1,27 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
 pluginManagement {
     repositories {
-        gradlePluginPortal() // Kotlin plugins, etc.
-        google()              // Android plugins
-        mavenCentral()        // Other dependencies
-    }
-    plugins {
-        id("com.android.application") version "8.9.1" apply false
-        id("com.android.library")     version "8.9.1" apply false
-        id("org.jetbrains.kotlin.android") version "2.1.10" apply false
-        // id("com.google.devtools.ksp") version "1.9.10-1.0.13" apply false
+        gradlePluginPortal()
+        google()
+        mavenCentral()
     }
 }
 
 dependencyResolutionManagement {
+    // Fail if any project tries to declare repositories on its own
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
     }
 }
 
+// Set the name of the root project
 rootProject.name = "PhoneForFilm"
+
+// Include application and library modules
 include(":app")
+include(":phoneforfilm-data")
+include(":phoneforfilm-view")
+// TODO: include additional modules as needed, e.g. :phoneforfilm-common, :phoneforfilm-domain
