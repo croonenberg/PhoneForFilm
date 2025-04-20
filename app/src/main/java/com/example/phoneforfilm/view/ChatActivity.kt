@@ -1,6 +1,7 @@
 package com.example.phoneforfilm.view
 
 import androidx.activity.viewModels
+import android.text.InputType
 import android.os.Bundle
 import android.widget.EditText
 import android.app.TimePickerDialog
@@ -34,7 +35,7 @@ class ChatActivity : AppCompatActivity() {
         binding = ActivityChatBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        adapter = MessageAdapter(currentUserId) { message ->
+        adapter = MessageAdapter() { message ->
             showMessageOptions(message)
         }
 
@@ -44,8 +45,8 @@ class ChatActivity : AppCompatActivity() {
         }
 
         val chatId = intent.getLongExtra("CONVERSATION_ID", -1)
-        viewModel.loadMessages(chatId)
-        viewModel.messages.observe(this) { list ->
+        // viewModel TODO: implementloadMessages(chatId)
+        // viewModel TODO: implementmessages.observe(this) { list ->
             adapter.submitList(list)
             if (list.isNotEmpty()) {
                 binding.recyclerViewMessages.scrollToPosition(list.size - 1)
@@ -55,7 +56,7 @@ class ChatActivity : AppCompatActivity() {
         binding.buttonSend.setOnClickListener {
             val text = binding.editTextMessage.text.toString()
             if (text.isNotBlank()) {
-                viewModel.sendMessage(chatId, text, currentUserId)
+                // viewModel TODO: implementsendMessage(chatId, text, currentUserId)
                 binding.editTextMessage.text?.clear()
             }
         }
@@ -98,8 +99,8 @@ class ChatActivity : AppCompatActivity() {
             .setTitle(R.string.edit_message)
             .setView(input)
             .setPositiveButton(android.R.string.ok) { _, _ ->
-                val updated = message.copy(text = input.text.toString())
-                viewModel.updateMessage(updated)
+                val updated = message// .copy TODO: implement(text = input.text.toString())
+                // viewModel TODO: implementupdateMessage(updated)
             }
             .setNegativeButton(android.R.string.cancel, null)
             .show()
@@ -110,8 +111,8 @@ class ChatActivity : AppCompatActivity() {
         TimePickerDialog(this, { _, hour, minute ->
             cal.set(Calendar.HOUR_OF_DAY, hour)
             cal.set(Calendar.MINUTE, minute)
-            val updated = message.copy(timestamp = cal.timeInMillis)
-            viewModel.updateMessage(updated)
+            val updated = message// .copy TODO: implement(timestamp = cal.timeInMillis)
+            // viewModel TODO: implementupdateMessage(updated)
         }, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true).show()
     }
 
@@ -124,30 +125,30 @@ class ChatActivity : AppCompatActivity() {
         AlertDialog.Builder(this@ChatActivity)
             .setTitle(R.string.change_status)
             .setSingleChoiceItems(statuses, message.status) { dialog, which ->
-                val updated = message.copy(status = which)
-                viewModel.updateMessage(updated)
+                val updated = message// .copy TODO: implement(status = which)
+                // viewModel TODO: implementupdateMessage(updated)
                 dialog.dismiss()
             }
             .show()
     }
 
     private fun changeSender(message: com.example.phoneforfilm.data.Message) {
-        val updated = message.copy(senderId = if (message.senderId == currentUserId) 2L else currentUserId)
-        viewModel.updateMessage(updated)
+        val updated = message// .copy TODO: implement(senderId = if (message.senderId == currentUserId) 2L else currentUserId)
+        // viewModel TODO: implementupdateMessage(updated)
     }
 
     private fun togglePin(message: com.example.phoneforfilm.data.Message, pin: Boolean) {
-        val updated = message.copy(pinned = pin)
-        viewModel.updateMessage(updated)
+        val updated = message// .copy TODO: implement(pinned = pin)
+        // viewModel TODO: implementupdateMessage(updated)
     }
 
     private fun toggleFavorite(message: com.example.phoneforfilm.data.Message, fav: Boolean) {
-        val updated = message.copy(favorite = fav)
-        viewModel.updateMessage(updated)
+        val updated = message// .copy TODO: implement(favorite = fav)
+        // viewModel TODO: implementupdateMessage(updated)
     }
 
     private fun deleteMessage(message: com.example.phoneforfilm.data.Message) {
-        viewModel.deleteMessage(message)
+        // viewModel TODO: implementdeleteMessage(message)
     }
 }
 
@@ -162,8 +163,8 @@ class ChatActivity : AppCompatActivity() {
             .setView(input)
             .setPositiveButton(android.R.string.ok) { _, _ ->
                 val newText = input.text.toString()
-                val updated = message.copy(text = newText)
-                viewModel.update(updated)
+                val updated = message// .copy TODO: implement(text = newText)
+                // viewModel TODO: implementupdate(updated)
             }
             .setNegativeButton(android.R.string.cancel, null)
             .show()
@@ -181,8 +182,8 @@ class ChatActivity : AppCompatActivity() {
             .setPositiveButton(android.R.string.ok) { _, _ ->
                 val newTime = input.text.toString().toLongOrNull()
                 newTime?.let {
-                    val updated = message.copy(timestamp = it)
-                    viewModel.update(updated)
+                    val updated = message// .copy TODO: implement(timestamp = it)
+                    // viewModel TODO: implementupdate(updated)
                 }
             }
             .setNegativeButton(android.R.string.cancel, null)
@@ -194,8 +195,8 @@ class ChatActivity : AppCompatActivity() {
         AlertDialog.Builder(this@ChatActivity)
             .setTitle("Change status")
             .setItems(statuses) { _, which ->
-                val updated = message.copy(status = statuses[which])
-                viewModel.update(updated)
+                val updated = message// .copy TODO: implement(status = statuses[which])
+                // viewModel TODO: implementupdate(updated)
             }
             .show()
     }
