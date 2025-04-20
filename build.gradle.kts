@@ -9,7 +9,7 @@ plugins {
     kotlin("android") version "2.1.10" apply false
 
     // KSP (voor Room)
-    id("com.google.devtools.ksp") version "1.9.22" apply false
+    id("com.google.devtools.ksp") version "1.9.22-1.0.18" apply false
 }
 
 tasks.register("clean", Delete::class) {
