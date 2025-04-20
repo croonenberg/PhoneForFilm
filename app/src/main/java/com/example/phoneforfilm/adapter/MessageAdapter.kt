@@ -58,6 +58,13 @@ class MessageAdapter : ListAdapter<Message, RecyclerView.ViewHolder> {
         when (holder) {
             is SentViewHolder -> holder.bind(message)
         
+        if (message.isDeleted) {
+            holder.binding.tvMessage.text = holder.itemView.context.getString(R.string.message_deleted)
+        } else {
+            holder.binding.tvMessage.text = message.text
+        }
+    
+        
         val pinIcon = holder.itemView.findViewById<ImageView>(R.id.pinIcon)
         pinIcon.visibility = if (message.isPinned) View.VISIBLE else View.GONE
     
@@ -99,6 +106,13 @@ class MessageAdapter : ListAdapter<Message, RecyclerView.ViewHolder> {
             }
 
             is ReceivedViewHolder -> holder.bind(message)
+        
+        if (message.isDeleted) {
+            holder.binding.tvMessage.text = holder.itemView.context.getString(R.string.message_deleted)
+        } else {
+            holder.binding.tvMessage.text = message.text
+        }
+    
         
         val pinIcon = holder.itemView.findViewById<ImageView>(R.id.pinIcon)
         pinIcon.visibility = if (message.isPinned) View.VISIBLE else View.GONE
