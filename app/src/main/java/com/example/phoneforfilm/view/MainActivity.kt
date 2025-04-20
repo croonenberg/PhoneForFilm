@@ -6,7 +6,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.phoneforfilm.R
 import com.example.phoneforfilm.databinding.ActivityMainBinding
-import com.example.phoneforfilm.util.ThemeManager
+import com.example.phoneforfilm.utils.ThemeManager
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         // ✨ Thema toepassen vóór de layout geladen wordt
         ThemeManager.applyTheme(this)
+
 
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
