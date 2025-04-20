@@ -1,3 +1,6 @@
+// Root-level build.gradle.kts
+// Defines plugin versions and global tasks for the entire project
+
 plugins {
     // Android Gradle Plugin versions (apply false to defer to subprojects)
     id("com.android.application") version "8.1.1" apply false
