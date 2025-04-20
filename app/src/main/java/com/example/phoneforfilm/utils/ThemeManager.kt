@@ -2,6 +2,7 @@ package com.example.phoneforfilm.util
 
 import android.app.Activity
 import android.content.Context
+import androidx.core.content.edit
 import com.example.phoneforfilm.R
 
 object ThemeManager {
@@ -21,7 +22,7 @@ object ThemeManager {
 
     fun setTheme(context: Context, themeName: String) {
         val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-        prefs.edit().putString(KEY_THEME, themeName).apply()
+        prefs.edit() { putString(KEY_THEME, themeName) }
     }
 
     private fun getSavedTheme(context: Context): String? {
