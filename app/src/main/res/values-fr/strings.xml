@@ -38,7 +38,7 @@
     <string name="status_sent">✓ envoyé</string>
     <string name="status_delivered">✓✓ livré</string>
     <string name="status_read">✓✓ lu</string>
-    <string name="change_sender">Changer l'expéditeur</string>
+    <string name="change_sender">Changer l\'expéditeur</string>
     <string name="pin">Épingler le message</string>
     <string name="unpin">Désépingler le message</string>
     <string name="favorite">Marquer comme favori</string>
