@@ -32,6 +32,7 @@
     <string name="change_theme">Change Theme</string>
     <string name="hello">HELLO</string>
 
+    <string name="profile_picture">Profile Picture</string>
     <string name="edit_message">Edit message</string>
     <string name="edit_time">Edit time</string>
     <string name="change_status">Change status</string>
