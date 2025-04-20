@@ -10,8 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.phoneforfilm.R
 import com.example.phoneforfilm.adapter.MessageAdapter
-import com.example.phoneforfilm.data.AppDatabase
 import com.example.phoneforfilm.data.Message
+import com.example.phoneforfilm.data.AppDatabase
 import com.example.phoneforfilm.data.MessageRepository
 import com.example.phoneforfilm.databinding.ActivityChatBinding
 import com.example.phoneforfilm.viewmodel.ChatViewModel
@@ -91,5 +91,64 @@ class ChatActivity : AppCompatActivity() {
             .show()
     }
 
-    // editMessage, editTime, changeStatus, changeSender, togglePin, toggleFavorite, deleteMessage implementations...
+    private fun editMessage(message: Message) {
+        val input = EditText(this).apply {
+            setText(message.text)
+            inputType = android.text.InputType.TYPE_CLASS_TEXT or android.text.InputType.TYPE_TEXT_FLAG_MULTI_LINE
+        }
+        AlertDialog.Builder(this)
+            .setTitle(R.string.edit_message)
+            .setView(input)
+            .setPositiveButton(android.R.string.ok) { _, _ ->
+                val updated = message.copy(text = input.text.toString())
+                viewModel.updateMessage(updated)
+            }
+            .setNegativeButton(android.R.string.cancel, null)
+            .show()
+    }
+
+    private fun editTime(message: Message) {
+        val cal = Calendar.getInstance().apply { timeInMillis = message.timestamp }
+        TimePickerDialog(this, { _, hour, minute ->
+            cal.set(Calendar.HOUR_OF_DAY, hour)
+            cal.set(Calendar.MINUTE, minute)
+            val updated = message.copy(timestamp = cal.timeInMillis)
+            viewModel.updateMessage(updated)
+        }, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true).show()
+    }
+
+    private fun changeStatus(message: Message) {
+        val statuses = arrayOf(
+            getString(R.string.status_sent),
+            getString(R.string.status_delivered),
+            getString(R.string.status_read)
+        )
+        AlertDialog.Builder(this)
+            .setTitle(R.string.change_status)
+            .setSingleChoiceItems(statuses, message.status) { dialog, which ->
+                val updated = message.copy(status = which)
+                viewModel.updateMessage(updated)
+                dialog.dismiss()
+            }
+            .show()
+    }
+
+    private fun changeSender(message: Message) {
+        val updated = message.copy(senderId = if (message.senderId == currentUserId) 2L else currentUserId)
+        viewModel.updateMessage(updated)
+    }
+
+    private fun togglePin(message: Message, pin: Boolean) {
+        val updated = message.copy(pinned = pin)
+        viewModel.updateMessage(updated)
+    }
+
+    private fun toggleFavorite(message: Message, fav: Boolean) {
+        val updated = message.copy(favorite = fav)
+        viewModel.updateMessage(updated)
+    }
+
+    private fun deleteMessage(message: Message) {
+        viewModel.deleteMessage(message)
+    }
 }
