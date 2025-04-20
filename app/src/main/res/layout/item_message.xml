@@ -1,19 +1,25 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/messageContainer"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:padding="8dp">
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <TextView
-        android:id="@+id/tvMessage"
-        android:layout_width="wrap_content"
+    <data>
+        <!-- Geen databinding nodig, ViewBinding wordt gebruikt -->
+    </data>
+
+    <LinearLayout
+        android:id="@+id/messageContainer"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_message_received"
-        android:text="@string/hello"
-        android:textColor="?attr/colorOnPrimary"
-        android:textSize="16sp"
-        android:padding="12dp"
-        />
-</LinearLayout>
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/tvMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_message_received"
+            android:text="@string/hello"
+            android:textColor="?attr/colorOnPrimary"
+            android:textSize="16sp"
+            android:padding="12dp" />
+    </LinearLayout>
+</layout>
