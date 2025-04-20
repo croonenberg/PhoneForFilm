@@ -150,3 +150,52 @@ class ChatActivity : AppCompatActivity() {
         viewModel.deleteMessage(message)
     }
 }
+
+
+    private fun showEditMessageDialog(message: Message) {
+        val input = EditText(this).apply {
+            setText(message.text)
+        }
+
+        AlertDialog.Builder(this)
+            .setTitle(getString(R.string.edit_message))
+            .setView(input)
+            .setPositiveButton(android.R.string.ok) { _, _ ->
+                val newText = input.text.toString()
+                val updated = message.copy(text = newText)
+                viewModel.update(updated)
+            }
+            .setNegativeButton(android.R.string.cancel, null)
+            .show()
+    }
+
+    private fun showTimeChangeDialog(message: Message) {
+        val input = EditText(this).apply {
+            inputType = InputType.TYPE_CLASS_DATETIME
+            hint = "New timestamp (ms)"
+        }
+
+        AlertDialog.Builder(this)
+            .setTitle("Change time")
+            .setView(input)
+            .setPositiveButton(android.R.string.ok) { _, _ ->
+                val newTime = input.text.toString().toLongOrNull()
+                newTime?.let {
+                    val updated = message.copy(timestamp = it)
+                    viewModel.update(updated)
+                }
+            }
+            .setNegativeButton(android.R.string.cancel, null)
+            .show()
+    }
+
+    private fun showStatusChangeDialog(message: Message) {
+        val statuses = arrayOf("sent", "delivered", "read")
+        AlertDialog.Builder(this)
+            .setTitle("Change status")
+            .setItems(statuses) { _, which ->
+                val updated = message.copy(status = statuses[which])
+                viewModel.update(updated)
+            }
+            .show()
+    }

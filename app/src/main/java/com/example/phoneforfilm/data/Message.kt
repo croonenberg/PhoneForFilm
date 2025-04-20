@@ -5,6 +5,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "messages")
 data class Message(
+    val isPinned: Boolean = false,
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val chatId: Int,
     val senderId: Long,

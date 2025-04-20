@@ -57,7 +57,89 @@ class MessageAdapter : ListAdapter<Message, RecyclerView.ViewHolder> {
         val message = getItem(position)
         when (holder) {
             is SentViewHolder -> holder.bind(message)
+        
+        val pinIcon = holder.itemView.findViewById<ImageView>(R.id.pinIcon)
+        pinIcon.visibility = if (message.isPinned) View.VISIBLE else View.GONE
+    
+        
+        val statusIcon = holder.itemView.findViewById<ImageView>(R.id.statusIcon)
+        when (message.status) {
+            "sent" -> statusIcon.setImageResource(R.drawable.ic_status_sent)
+            "delivered" -> statusIcon.setImageResource(R.drawable.ic_status_delivered)
+            "read" -> statusIcon.setImageResource(R.drawable.ic_status_read)
+        }
+    
+
+            holder.itemView.setOnLongClickListener {
+                val popup = PopupMenu(holder.itemView.context, holder.itemView)
+                popup.menuInflater.inflate(R.menu.message_options_menu, popup.menu)
+                popup.setOnMenuItemClickListener { menuItem ->
+                    when (menuItem.itemId) {
+                        R.id.menu_edit -> {
+                            onMessageEdit?.invoke(message)
+                            true
+                        }
+                        R.id.menu_change_time -> {
+                            onMessageTimeChange?.invoke(message)
+                            true
+                        }
+                        R.id.menu_change_status -> {
+                            onMessageStatusChange?.invoke(message)
+                            true
+                        }
+                        R.id.menu_delete -> {
+                            onMessageDelete?.invoke(message)
+                            true
+                        }
+                        else -> false
+                    }
+                }
+                popup.show()
+                true
+            }
+
             is ReceivedViewHolder -> holder.bind(message)
+        
+        val pinIcon = holder.itemView.findViewById<ImageView>(R.id.pinIcon)
+        pinIcon.visibility = if (message.isPinned) View.VISIBLE else View.GONE
+    
+        
+        val statusIcon = holder.itemView.findViewById<ImageView>(R.id.statusIcon)
+        when (message.status) {
+            "sent" -> statusIcon.setImageResource(R.drawable.ic_status_sent)
+            "delivered" -> statusIcon.setImageResource(R.drawable.ic_status_delivered)
+            "read" -> statusIcon.setImageResource(R.drawable.ic_status_read)
+        }
+    
+
+            holder.itemView.setOnLongClickListener {
+                val popup = PopupMenu(holder.itemView.context, holder.itemView)
+                popup.menuInflater.inflate(R.menu.message_options_menu, popup.menu)
+                popup.setOnMenuItemClickListener { menuItem ->
+                    when (menuItem.itemId) {
+                        R.id.menu_edit -> {
+                            onMessageEdit?.invoke(message)
+                            true
+                        }
+                        R.id.menu_change_time -> {
+                            onMessageTimeChange?.invoke(message)
+                            true
+                        }
+                        R.id.menu_change_status -> {
+                            onMessageStatusChange?.invoke(message)
+                            true
+                        }
+                        R.id.menu_delete -> {
+                            onMessageDelete?.invoke(message)
+                            true
+                        }
+                        else -> false
+                    }
+                }
+                popup.show()
+                true
+            }
+
         }
     }
 

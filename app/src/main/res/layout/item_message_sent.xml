@@ -57,6 +57,69 @@
                 android:src="@drawable/ic_favorite"
                 android:contentDescription="@string/favorite" />
 
-        </LinearLayout>
-    </LinearLayout>
+        
+        <ImageView
+            android:id="@+id/statusIcon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="8dp"
+            android:layout_gravity="bottom"
+            android:src="@drawable/ic_status_sent"
+            android:contentDescription="@string/status_icon" />
+    
+
+        <ImageView
+            android:id="@+id/pinIcon"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="4dp"
+            android:src="@drawable/ic_pin"
+            android:visibility="gone"
+            android:contentDescription="@string/pinned_icon" />
+    
+</LinearLayout>
+    
+        <ImageView
+            android:id="@+id/statusIcon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="8dp"
+            android:layout_gravity="bottom"
+            android:src="@drawable/ic_status_sent"
+            android:contentDescription="@string/status_icon" />
+    
+
+        <ImageView
+            android:id="@+id/pinIcon"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="4dp"
+            android:src="@drawable/ic_pin"
+            android:visibility="gone"
+            android:contentDescription="@string/pinned_icon" />
+    
+</LinearLayout>
+
+        <ImageView
+            android:id="@+id/statusIcon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="8dp"
+            android:layout_gravity="bottom"
+            android:src="@drawable/ic_status_sent"
+            android:contentDescription="@string/status_icon" />
+    
+
+        <ImageView
+            android:id="@+id/pinIcon"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="4dp"
+            android:src="@drawable/ic_pin"
+            android:visibility="gone"
+            android:contentDescription="@string/pinned_icon" />
+    
 </LinearLayout>
