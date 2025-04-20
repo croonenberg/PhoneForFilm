@@ -72,7 +72,7 @@ class ChatActivity : AppCompatActivity() {
             getString(R.string.delete_message),
             getString(R.string.cancel)
         )
-        AlertDialog.Builder(this)
+        AlertDialog.Builder(this@ChatActivity)
             .setItems(options) { _, which ->
                 when (options[which]) {
                     getString(R.string.edit_message) -> editMessage(message)
@@ -90,11 +90,11 @@ class ChatActivity : AppCompatActivity() {
     }
 
     private fun editMessage(message: com.example.phoneforfilm.data.Message) {
-        val input = EditText(this).apply {
+        val input = EditText(this@ChatActivity).apply {
             setText(message.text)
             inputType = android.text.InputType.TYPE_CLASS_TEXT or android.text.InputType.TYPE_TEXT_FLAG_MULTI_LINE
         }
-        AlertDialog.Builder(this)
+        AlertDialog.Builder(this@ChatActivity)
             .setTitle(R.string.edit_message)
             .setView(input)
             .setPositiveButton(android.R.string.ok) { _, _ ->
@@ -121,7 +121,7 @@ class ChatActivity : AppCompatActivity() {
             getString(R.string.status_delivered),
             getString(R.string.status_read)
         )
-        AlertDialog.Builder(this)
+        AlertDialog.Builder(this@ChatActivity)
             .setTitle(R.string.change_status)
             .setSingleChoiceItems(statuses, message.status) { dialog, which ->
                 val updated = message.copy(status = which)
@@ -153,11 +153,11 @@ class ChatActivity : AppCompatActivity() {
 
 
     private fun showEditMessageDialog(message: Message) {
-        val input = EditText(this).apply {
+        val input = EditText(this@ChatActivity).apply {
             setText(message.text)
         }
 
-        AlertDialog.Builder(this)
+        AlertDialog.Builder(this@ChatActivity)
             .setTitle(getString(R.string.edit_message))
             .setView(input)
             .setPositiveButton(android.R.string.ok) { _, _ ->
@@ -170,12 +170,12 @@ class ChatActivity : AppCompatActivity() {
     }
 
     private fun showTimeChangeDialog(message: Message) {
-        val input = EditText(this).apply {
+        val input = EditText(this@ChatActivity).apply {
             inputType = InputType.TYPE_CLASS_DATETIME
             hint = "New timestamp (ms)"
         }
 
-        AlertDialog.Builder(this)
+        AlertDialog.Builder(this@ChatActivity)
             .setTitle("Change time")
             .setView(input)
             .setPositiveButton(android.R.string.ok) { _, _ ->
@@ -191,7 +191,7 @@ class ChatActivity : AppCompatActivity() {
 
     private fun showStatusChangeDialog(message: Message) {
         val statuses = arrayOf("sent", "delivered", "read")
-        AlertDialog.Builder(this)
+        AlertDialog.Builder(this@ChatActivity)
             .setTitle("Change status")
             .setItems(statuses) { _, which ->
                 val updated = message.copy(status = statuses[which])
