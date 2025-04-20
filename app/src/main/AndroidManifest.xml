@@ -22,6 +22,7 @@
         <activity android:name=".view.ChatActivity" />
         <activity android:name=".view.CallActivity" />
         <activity android:name=".view.IncomingCallActivity" />
+        <activity android:name=".view.LanguageSelectionActivity" />
     </application>
 
 </manifest>

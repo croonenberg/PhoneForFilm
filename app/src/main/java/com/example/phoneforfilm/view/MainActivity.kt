@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AlertDialog
 import com.example.phoneforfilm.databinding.ActivityMainBinding
 import com.example.phoneforfilm.util.ThemeManager
+import com.example.phoneforfilm.view.LanguageSelectionActivity
 
 class MainActivity : AppCompatActivity() {
 
