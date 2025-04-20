@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -17,8 +18,8 @@
             android:id="@+id/tvSentMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?attr/textAppearanceBody1"/>
-        
+            android:textAppearance="?attr/textAppearanceBody1" />
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -30,7 +31,7 @@
                 android:id="@+id/tvSentTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?attr/textAppearanceCaption"/>
+                android:textAppearance="?attr/textAppearanceCaption" />
 
             <ImageView
                 android:id="@+id/ivStatus"
@@ -45,7 +46,7 @@
                 android:layout_height="16dp"
                 android:layout_marginStart="4dp"
                 android:src="@drawable/ic_pin"
-                android:contentDescription="@string/pin"/>
+                android:contentDescription="@string/pin" />
 
             <ImageView
                 android:id="@+id/ivFavorite"
@@ -53,7 +54,8 @@
                 android:layout_height="16dp"
                 android:layout_marginStart="4dp"
                 android:src="@drawable/ic_favorite"
-                android:contentDescription="@string/favorite"/>
+                android:contentDescription="@string/favorite" />
+
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
