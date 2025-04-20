@@ -1,4 +1,4 @@
-package com.example.phoneforfilm.utils.
+package com.example.phoneforfilm.utils
 
 import android.app.Activity
 import android.content.Context
