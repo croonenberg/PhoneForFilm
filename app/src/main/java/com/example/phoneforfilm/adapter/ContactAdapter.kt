@@ -3,8 +3,8 @@ package com.example.phoneNumberforfilm.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.phoneNumberforfilm.data.Contact
-import com.example.phoneNumberforfilm.databinding.ItemContactBinding
+import com.example.phoneforfilm.data.Contact
+import com.example.phoneforfilm.databinding.ItemContactBinding
 
 class ContactAdapter(
     private val contacts: List<Contact>,
