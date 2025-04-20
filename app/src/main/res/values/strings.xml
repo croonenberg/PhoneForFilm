@@ -53,10 +53,9 @@
     <string name="contact_list">Contact list</string>
     <string name="new_contact">New contact</string>
 
-    <string name="phone">Phone</string>
-    <string name="last_message">last Message</string>
+    <string name="phone">Telefoon</string>
+    <string name="last_message">Laatste bericht</string>
     <string name="example_phone_number">+31 6 12345678</string>
 
-    <string name="pinned_icon">Pinned Icon</string>
-    <string name="status_icon">Status Icon</string>
+    <string name="message_deleted">Bericht verwijderd</string>
 </resources>
