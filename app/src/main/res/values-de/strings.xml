@@ -47,4 +47,7 @@
     <string name="cancel">Abbrechen</string>
     <string name="new_conversation">Neues Gespräch</string>
     <string name="chat_list">Chatliste</string>
+    <string name="name">Name</string>
+    <string name="phone_number">Telefonnummer</string>
+    <string name="save">Speichern</string>
 </resources>

@@ -47,4 +47,7 @@
     <string name="cancel">Annuleer</string>
     <string name="new_conversation">Nieuwe conversatie</string>
     <string name="chat_list">Chatlijst</string>
+    <string name="name">Naam</string>
+    <string name="phone_number">Telefoonnummer</string>
+    <string name="save">Opslaan</string>
 </resources>
