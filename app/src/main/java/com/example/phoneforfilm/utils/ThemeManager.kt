@@ -26,6 +26,6 @@ object ThemeManager {
 
     private fun getSavedTheme(context: Context): String? {
         val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-        return prefs.getString(KEY_THEME, null)
+        return prefs.getString(KEY_THEME, "Greenroom")
     }
 }
