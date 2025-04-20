@@ -31,7 +31,6 @@
     <string name="messages_list">Nachrichtenliste</string>
     <string name="change_theme">Thema ändern</string>
     <string name="hello">HALLO</string>
-
     <string name="profile_picture">Profilbild</string>
     <string name="edit_message">Nachricht bearbeiten</string>
     <string name="edit_time">Uhrzeit bearbeiten</string>
@@ -47,4 +46,5 @@
     <string name="delete_message">Nachricht löschen</string>
     <string name="cancel">Abbrechen</string>
     <string name="new_conversation">Neues Gespräch</string>
+    <string name="chat_list">Chatliste</string>
 </resources>
