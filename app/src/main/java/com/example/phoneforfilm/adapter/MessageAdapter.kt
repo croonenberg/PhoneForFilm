@@ -11,12 +11,20 @@ import com.example.phoneforfilm.data.Message
 import com.example.phoneforfilm.databinding.ItemMessageReceivedBinding
 import com.example.phoneforfilm.databinding.ItemMessageSentBinding
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Date
+import java.util.Locale
 
-class MessageAdapter(
-    private val currentUserId: Long,
+class MessageAdapter : ListAdapter<Message, RecyclerView.ViewHolder> {
+
+    private val currentUserId: Long
     private val onMessageLongClick: (Message) -> Unit
-) : ListAdapter<Message, RecyclerView.ViewHolder>(MessageDiffCallback()) {
+
+    constructor(currentUserId: Long, onMessageLongClick: (Message) -> Unit) : super(
+        MessageDiffCallback()
+    ) {
+        this.currentUserId = currentUserId
+        this.onMessageLongClick = onMessageLongClick
+    }
 
     companion object {
         private const val VIEW_TYPE_SENT = 1
