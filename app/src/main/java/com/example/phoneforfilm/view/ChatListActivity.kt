@@ -58,7 +58,7 @@ class ChatListActivity : AppCompatActivity() {
                 val names = contacts.map { it.name }.toTypedArray()
                 AlertDialog.Builder(this@ChatListActivity)
                     .setTitle(R.string.new_conversation)
-                    .setItems(names) { _, which ->
+                    .setItems(names) { dialogInterface, which ->
                         val contact = contacts[which]
                         lifecycleScope.launch {
                             val convId = ConversationRepository(

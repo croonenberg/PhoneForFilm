@@ -1,5 +1,7 @@
 package com.example.phoneforfilm.data
 
+import androidx.lifecycle.LiveData
+
 @Suppress("unused")
 class ConversationRepository(private val dao: ConversationDao) {
     val allConversations: LiveData<List<Conversation>> = dao.getAllConversations()

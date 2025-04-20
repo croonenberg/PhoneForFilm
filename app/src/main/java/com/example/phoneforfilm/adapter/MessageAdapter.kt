@@ -23,12 +23,11 @@ class MessageAdapter(
         private const val VIEW_TYPE_RECEIVED = 2
     }
 
-    override fun getItemViewType(position: Int): Int {
-        return if (getItem(position).senderId == currentUserId) VIEW_TYPE_SENT else VIEW_TYPE_RECEIVED
-    }
+    override fun getItemViewType(position: Int): Int =
+        if (getItem(position).senderId == currentUserId) VIEW_TYPE_SENT else VIEW_TYPE_RECEIVED
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return if (viewType == VIEW_TYPE_SENT) {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
+        if (viewType == VIEW_TYPE_SENT) {
             SentViewHolder(
                 ItemMessageSentBinding.inflate(
                     LayoutInflater.from(parent.context),
@@ -45,7 +44,6 @@ class MessageAdapter(
                 )
             )
         }
-    }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val message = getItem(position)
@@ -59,8 +57,8 @@ class MessageAdapter(
         RecyclerView.ViewHolder(binding.root) {
         fun bind(message: Message) {
             binding.tvSentMessage.text = message.text
-            binding.tvSentTime.text = SimpleDateFormat("HH:mm", Locale.getDefault())
-                .format(Date(message.timestamp))
+            binding.tvSentTime.text =
+                SimpleDateFormat("HH:mm", Locale.getDefault()).format(Date(message.timestamp))
             when (message.status) {
                 0 -> binding.ivStatus.setImageResource(R.drawable.ic_status_sent)
                 1 -> binding.ivStatus.setImageResource(R.drawable.ic_status_delivered)
@@ -79,8 +77,8 @@ class MessageAdapter(
         RecyclerView.ViewHolder(binding.root) {
         fun bind(message: Message) {
             binding.tvReceivedMessage.text = message.text
-            binding.tvReceivedTime.text = SimpleDateFormat("HH:mm", Locale.getDefault())
-                .format(Date(message.timestamp))
+            binding.tvReceivedTime.text =
+                SimpleDateFormat("HH:mm", Locale.getDefault()).format(Date(message.timestamp))
             binding.ivPin.visibility = if (message.pinned) View.VISIBLE else View.GONE
             binding.ivFavorite.visibility = if (message.favorite) View.VISIBLE else View.GONE
             binding.root.setOnLongClickListener {

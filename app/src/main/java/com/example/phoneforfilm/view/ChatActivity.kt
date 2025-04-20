@@ -3,14 +3,12 @@ package com.example.phoneforfilm.view
 import android.os.Bundle
 import android.widget.EditText
 import android.app.TimePickerDialog
-import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.phoneforfilm.R
 import com.example.phoneforfilm.adapter.MessageAdapter
-import com.example.phoneforfilm.data.Message
 import com.example.phoneforfilm.data.AppDatabase
 import com.example.phoneforfilm.data.MessageRepository
 import com.example.phoneforfilm.databinding.ActivityChatBinding
@@ -63,7 +61,7 @@ class ChatActivity : AppCompatActivity() {
         }
     }
 
-    private fun showMessageOptions(message: Message) {
+    private fun showMessageOptions(message: com.example.phoneforfilm.data.Message) {
         val options = arrayOf(
             getString(R.string.edit_message),
             getString(R.string.edit_time),
@@ -91,7 +89,7 @@ class ChatActivity : AppCompatActivity() {
             .show()
     }
 
-    private fun editMessage(message: Message) {
+    private fun editMessage(message: com.example.phoneforfilm.data.Message) {
         val input = EditText(this).apply {
             setText(message.text)
             inputType = android.text.InputType.TYPE_CLASS_TEXT or android.text.InputType.TYPE_TEXT_FLAG_MULTI_LINE
@@ -107,7 +105,7 @@ class ChatActivity : AppCompatActivity() {
             .show()
     }
 
-    private fun editTime(message: Message) {
+    private fun editTime(message: com.example.phoneforfilm.data.Message) {
         val cal = Calendar.getInstance().apply { timeInMillis = message.timestamp }
         TimePickerDialog(this, { _, hour, minute ->
             cal.set(Calendar.HOUR_OF_DAY, hour)
@@ -117,7 +115,7 @@ class ChatActivity : AppCompatActivity() {
         }, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true).show()
     }
 
-    private fun changeStatus(message: Message) {
+    private fun changeStatus(message: com.example.phoneforfilm.data.Message) {
         val statuses = arrayOf(
             getString(R.string.status_sent),
             getString(R.string.status_delivered),
@@ -133,22 +131,22 @@ class ChatActivity : AppCompatActivity() {
             .show()
     }
 
-    private fun changeSender(message: Message) {
+    private fun changeSender(message: com.example.phoneforfilm.data.Message) {
         val updated = message.copy(senderId = if (message.senderId == currentUserId) 2L else currentUserId)
         viewModel.updateMessage(updated)
     }
 
-    private fun togglePin(message: Message, pin: Boolean) {
+    private fun togglePin(message: com.example.phoneforfilm.data.Message, pin: Boolean) {
         val updated = message.copy(pinned = pin)
         viewModel.updateMessage(updated)
     }
 
-    private fun toggleFavorite(message: Message, fav: Boolean) {
+    private fun toggleFavorite(message: com.example.phoneforfilm.data.Message, fav: Boolean) {
         val updated = message.copy(favorite = fav)
         viewModel.updateMessage(updated)
     }
 
-    private fun deleteMessage(message: Message) {
+    private fun deleteMessage(message: com.example.phoneforfilm.data.Message) {
         viewModel.deleteMessage(message)
     }
 }
