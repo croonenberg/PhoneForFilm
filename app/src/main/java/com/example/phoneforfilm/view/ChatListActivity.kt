@@ -2,11 +2,13 @@ package com.example.phoneforfilm.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.phoneforfilm.R
 import com.example.phoneforfilm.adapter.ConversationAdapter
 import com.example.phoneforfilm.data.AppDatabase
 import com.example.phoneforfilm.data.Conversation
@@ -45,6 +47,8 @@ class ChatListActivity : AppCompatActivity() {
         binding.rvConversations.apply {
             layoutManager = LinearLayoutManager(this@ChatListActivity)
             this.adapter = adapter
+            contentDescription = getString(R.string.chat_history)
+            importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_YES
         }
 
         binding.fabNewConversation.setOnClickListener {
@@ -56,7 +60,6 @@ class ChatListActivity : AppCompatActivity() {
                     .setTitle(R.string.new_conversation)
                     .setItems(names) { _, which ->
                         val contact = contacts[which]
-                        // create new conversation and navigate
                         lifecycleScope.launch {
                             val convId = ConversationRepository(
                                 AppDatabase.getDatabase(this@ChatListActivity).conversationDao()

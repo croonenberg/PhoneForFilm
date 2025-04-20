@@ -1,4 +1,3 @@
-
 package com.example.phoneforfilm.viewmodel
 
 import androidx.lifecycle.LiveData
@@ -14,35 +13,28 @@ class ChatViewModel(private val repository: MessageRepository) : ViewModel() {
     private val _messages = MutableLiveData<List<Message>>()
     val messages: LiveData<List<Message>> get() = _messages
 
-    fun loadMessages(chatId: Int) {
-        viewModelScope.launch {
-            _messages.value = repository.getMessagesByChatId(chatId)
-        }
+    fun loadMessages(chatId: Long) = viewModelScope.launch {
+        _messages.postValue(repository.getMessagesByChatId(chatId.toInt()))
     }
 
-    fun sendMessage(chatId: Int, text: String) {
-        val message = Message(chatId = chatId, text = text, isSent = true, timestamp = System.currentTimeMillis())
-        insertMessage(message)
+    fun sendMessage(chatId: Long, text: String, senderId: Long) = viewModelScope.launch {
+        val msg = Message(
+            chatId = chatId.toInt(),
+            senderId = senderId,
+            text = text,
+            timestamp = System.currentTimeMillis()
+        )
+        repository.insert(msg)
+        loadMessages(chatId)
     }
 
-    fun insertMessage(message: Message) {
-        viewModelScope.launch {
-            repository.insert(message)
-            loadMessages(message.chatId)
-        }
+    fun updateMessage(message: Message) = viewModelScope.launch {
+        repository.update(message)
+        loadMessages(message.chatId.toLong())
     }
 
-    fun updateMessage(message: Message) {
-        viewModelScope.launch {
-            repository.update(message)
-            loadMessages(message.chatId)
-        }
-    }
-
-    fun deleteMessage(message: Message) {
-        viewModelScope.launch {
-            repository.delete(message)
-            loadMessages(message.chatId)
-        }
+    fun deleteMessage(message: Message) = viewModelScope.launch {
+        repository.delete(message)
+        loadMessages(message.chatId.toLong())
     }
 }

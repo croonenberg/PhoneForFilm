@@ -11,3 +11,5 @@ class IncomingCallActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityIncomingCallBinding.inflate(layoutInflater)
         setContentView(binding.root)
+    }
+}

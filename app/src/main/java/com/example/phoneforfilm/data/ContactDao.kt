@@ -12,7 +12,6 @@ interface ContactDao {
     @Query("SELECT * FROM contacts")
     fun getAll(): LiveData<List<Contact>>
 
-    // suspend function to get list of contacts synchronously
     @Query("SELECT * FROM contacts")
     suspend fun getAllList(): List<Contact>
 
