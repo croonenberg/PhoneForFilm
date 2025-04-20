@@ -1,9 +1,9 @@
 package com.example.phoneforfilm.view
 
+import androidx.activity.viewModels
 import android.os.Bundle
 import android.widget.EditText
 import android.app.TimePickerDialog
-import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
