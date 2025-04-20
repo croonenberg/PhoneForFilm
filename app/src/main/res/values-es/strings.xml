@@ -52,4 +52,11 @@
     <string name="save">Guardar</string>
     <string name="contact_list">Lista de contactos</string>
     <string name="new_contact">Nuevo contacto</string>
+    <string name="pin_unpin">Fijar/Desfijar</string>
+    <string name="pinned_icon">Icono fijado</string>
+    <string name="status_icon">Icono de estado</string>
+    <string name="phone">Teléfono</string>
+    <string name="last_message">Último mensaje</string>
+    <string name="example_phone_number">+34 612 34 56 78</string>
+    <string name="message_deleted">Mensaje eliminado</string>
 </resources>

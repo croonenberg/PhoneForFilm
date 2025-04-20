@@ -52,4 +52,11 @@
     <string name="save">Speichern</string>
     <string name="contact_list">Kontaktliste</string>
     <string name="new_contact">Neuer Kontakt</string>
+    <string name="pin_unpin">Anheften/Lösen</string>
+    <string name="pinned_icon">Angeheftetes Symbol</string>
+    <string name="status_icon">Statussymbol</string>
+    <string name="phone">Telefon</string>
+    <string name="last_message">Letzte Nachricht</string>
+    <string name="example_phone_number">+49 170 1234567</string>
+    <string name="message_deleted">Nachricht gelöscht</string>
 </resources>
