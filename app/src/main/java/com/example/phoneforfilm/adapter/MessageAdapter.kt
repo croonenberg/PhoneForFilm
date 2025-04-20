@@ -1,11 +1,11 @@
 package com.example.phoneforfilm.adapter
 
+import com.example.phoneforfilm.R
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.View
 import android.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView
-import com.example.phoneforfilm.R
 import com.example.phoneforfilm.data.Message
 import com.example.phoneforfilm.databinding.ItemMessageSentBinding
 

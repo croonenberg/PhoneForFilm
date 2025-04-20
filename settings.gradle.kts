@@ -22,6 +22,4 @@ rootProject.name = "PhoneForFilm"
 
 // Include application and library modules
 include(":app")
-include(":phoneforfilm-data")
-include(":phoneforfilm-view")
 // TODO: include additional modules as needed, e.g. :phoneforfilm-common, :phoneforfilm-domain
