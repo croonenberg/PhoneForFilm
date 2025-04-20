@@ -9,7 +9,6 @@
     <string name="toggle_sender">Changer l\'expéditeur</string>
     <string name="edit">Modifier le message</string>
     <string name="change_time">Changer l\'heure</string>
-    <string name="change_status">Changer le statut</string>
     <string name="delete">Supprimer</string>
     <string name="chat_history">Historique des conversations</string>
     <string name="brightness">Luminosité</string>

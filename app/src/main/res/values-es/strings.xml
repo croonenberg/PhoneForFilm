@@ -9,7 +9,6 @@
     <string name="toggle_sender">Cambiar remitente</string>
     <string name="edit">Editar mensaje</string>
     <string name="change_time">Cambiar hora</string>
-    <string name="change_status">Cambiar estado</string>
     <string name="delete">Eliminar</string>
     <string name="chat_history">Historial de chat</string>
     <string name="brightness">Brillo</string>
