@@ -21,8 +21,8 @@ class EditContactActivity : AppCompatActivity() {
         binding.buttonSaveContact.setOnClickListener {
             val name = binding.editTextName.text.toString()
             val phoneNumber = binding.editTextPhone.text.toString()
-            if (name.isNotBlank() && phone.isNotBlank()) {
-                val newContact = Contact(name = name, phoneNumber = phone)
+            if (name.isNotBlank() && phoneNumber.isNotBlank()) {
+                val newContact = Contact(name = name, phoneNumber = phoneNumber)
                 CoroutineScope(Dispatchers.IO).launch {
                     AppDatabase.getDatabase(this@EditContactActivity)
                         .contactDao()
