@@ -37,7 +37,8 @@
                 android:id="@+id/ivStatus"
                 android:layout_width="16dp"
                 android:layout_height="16dp"
-                android:layout_marginStart="4dp"/>
+                android:layout_marginStart="4dp"
+                android:importantForAccessibility="no" />
 
             <ImageView
                 android:id="@+id/ivPin"
