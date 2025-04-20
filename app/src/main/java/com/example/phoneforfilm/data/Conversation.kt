@@ -5,9 +5,8 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "conversations")
 data class Conversation(
-    @PrimaryKey(autoGenerate = true) val id: Long = 0,
-    val contactId: Long,
-    val name: String,
+    @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    val contactId: Int,
     val lastMessage: String,
     val timestamp: Long
 )

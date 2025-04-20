@@ -3,22 +3,23 @@ package com.example.phoneforfilm.data
 import androidx.lifecycle.LiveData
 import androidx.room.*
 
-@Suppress("unused")
 @Dao
 interface ContactDao {
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(contact: Contact)
-
-    @Query("SELECT * FROM contacts")
+    @Query("SELECT * FROM contacts ORDER BY name ASC")
     fun getAll(): LiveData<List<Contact>>
 
     @Query("SELECT * FROM contacts")
-    suspend fun getAllList(): List<Contact>
+    fun getAllNow(): List<Contact>
 
-    @Query("SELECT * FROM contacts WHERE id = :id")
-    fun getContactById(id: Int): LiveData<Contact>
+    @Query("SELECT * FROM contacts WHERE id = :id LIMIT 1")
+    fun getContactById(id: Int): Contact?
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(contact: Contact): Long
 
     @Update
     suspend fun update(contact: Contact)
+
+    @Delete
+    suspend fun delete(contact: Contact)
 }
