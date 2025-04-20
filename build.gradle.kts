@@ -6,7 +6,7 @@ plugins {
     id("com.android.library")     version "8.9.1" apply false
 
     // Kotlin plugins
-    kotlin("android") version "1.9.0" apply false
+    kotlin("android") version "2.1.10" apply false
 
     // KSP (voor Room)
     id("com.google.devtools.ksp") version "1.9.22-1.0.18" apply false
