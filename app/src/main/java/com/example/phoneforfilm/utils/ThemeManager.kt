@@ -1,32 +1,31 @@
 package com.example.phoneforfilm.util
 
+import android.app.Activity
 import android.content.Context
-import androidx.appcompat.app.AppCompatDelegate
+import com.example.phoneforfilm.R
 
 object ThemeManager {
     private const val PREFS_NAME = "theme_prefs"
     private const val KEY_THEME = "selected_theme"
 
-    // Voeg hier je eigen thema's toe (optioneel kun je styles koppelen aan displayName)
-    enum class Theme(val displayName: String, val mode: Int) {
-        GREENROOM("Greenroom", AppCompatDelegate.MODE_NIGHT_NO),
-        BLUE_STAGE("Blue Stage", AppCompatDelegate.MODE_NIGHT_NO),
-        DARKROOM("Darkroom", AppCompatDelegate.MODE_NIGHT_YES),
-        NEUTRAL_LIGHT("Neutral Light", AppCompatDelegate.MODE_NIGHT_NO),
-        GREY_CARD("Grey Card", AppCompatDelegate.MODE_NIGHT_NO)
+    fun applyTheme(activity: Activity) {
+        when (getSavedTheme(activity)) {
+            "Greenroom" -> activity.setTheme(R.style.Theme_PhoneForFilm_Greenroom)
+            "Blue Stage" -> activity.setTheme(R.style.Theme_PhoneForFilm_BlueStage)
+            "Grey Card" -> activity.setTheme(R.style.Theme_PhoneForFilm_GreyCard)
+            "Neutral Light" -> activity.setTheme(R.style.Theme_PhoneForFilm_NeutralLight)
+            "Darkroom" -> activity.setTheme(R.style.Theme_PhoneForFilm_Darkroom)
+            else -> activity.setTheme(R.style.Theme_PhoneForFilm)
+        }
     }
 
-    fun applyTheme(context: Context) {
+    fun setTheme(context: Context, themeName: String) {
         val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-        val name = prefs.getString(KEY_THEME, Theme.GREENROOM.name)
-        val theme = Theme.valueOf(name ?: Theme.GREENROOM.name)
-        AppCompatDelegate.setDefaultNightMode(theme.mode)
+        prefs.edit().putString(KEY_THEME, themeName).apply()
     }
 
-    fun saveTheme(context: Context, theme: Theme) {
+    private fun getSavedTheme(context: Context): String? {
         val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-        prefs.edit().putString(KEY_THEME, theme.name).apply()
+        return prefs.getString(KEY_THEME, null)
     }
-
-    fun getThemes(): List<Theme> = Theme.values().toList()
 }
