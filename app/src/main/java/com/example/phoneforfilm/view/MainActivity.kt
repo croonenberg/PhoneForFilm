@@ -19,6 +19,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        // 🎨 Thema kiezen
+        binding.btnTheme.setOnClickListener {
+            val themes = arrayOf("Greenroom", "Blue Stage", "Grey Card", "Neutral Light", "Darkroom")
+            AlertDialog.Builder(this)
+                .setTitle(R.string.choose_theme)
+                .setItems(themes) { _, which ->
+                    ThemeManager.setTheme(this, themes[which])
+                    recreate()
+                }
+                .show()
+        }
+
 
         // 🌐 Chatknop
         binding.btnStartChat.setOnClickListener {
