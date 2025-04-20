@@ -2,6 +2,8 @@ package com.example.phoneforfilm.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.phoneforfilm.data.Conversation
 import com.example.phoneforfilm.databinding.ItemConversationBinding
@@ -9,9 +11,7 @@ import com.example.phoneforfilm.databinding.ItemConversationBinding
 class ConversationAdapter(
     private val onClick: (Conversation) -> Unit,
     private val onDelete: (Conversation) -> Unit
-) : RecyclerView.Adapter<ConversationAdapter.ConversationViewHolder>() {
-
-    private val conversations = mutableListOf<Conversation>()
+) : ListAdapter<Conversation, ConversationAdapter.ConversationViewHolder>(DiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ConversationViewHolder {
         val binding = ItemConversationBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -19,15 +19,7 @@ class ConversationAdapter(
     }
 
     override fun onBindViewHolder(holder: ConversationViewHolder, position: Int) {
-        holder.bind(conversations[position])
-    }
-
-    override fun getItemCount(): Int = conversations.size
-
-    fun submitList(list: List<Conversation>) {
-        conversations.clear()
-        conversations.addAll(list)
-        notifyDataSetChanged()
+        holder.bind(getItem(position))
     }
 
     inner class ConversationViewHolder(private val binding: ItemConversationBinding) :
@@ -43,6 +35,16 @@ class ConversationAdapter(
                 onDelete(conversation)
                 true
             }
+        }
+    }
+
+    companion object DiffCallback : DiffUtil.ItemCallback<Conversation>() {
+        override fun areItemsTheSame(oldItem: Conversation, newItem: Conversation): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+        override fun areContentsTheSame(oldItem: Conversation, newItem: Conversation): Boolean {
+            return oldItem == newItem
         }
     }
 }
