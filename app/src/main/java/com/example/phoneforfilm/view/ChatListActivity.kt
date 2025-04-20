@@ -38,7 +38,7 @@ class ChatListActivity : AppCompatActivity() {
         val adapter = com.example.phoneforfilm.adapter.ConversationAdapter(
             onClick = { conversation ->
                 val intent = Intent(this, ChatActivity::class.java)
-                intent.putExtra("CONVERSATION_ID", conversation.id ?: 0L)
+                intent.putExtra("CONVERSATION_ID", conversation.id)
                 startActivity(intent)
             },
             onDelete = { conversation ->
