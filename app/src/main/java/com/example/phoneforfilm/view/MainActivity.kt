@@ -14,20 +14,20 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnStartChat.setOnClickListener {
-            startActivity(Intent(this, ChatActivity::class.java))
-        }
-
         binding.btnStartCall.setOnClickListener {
             startActivity(Intent(this, CallActivity::class.java))
         }
 
-        binding.btnLanguage.setOnClickListener {
-            // Taal wijzigen functionaliteit (optioneel)
+        binding.btnStartChat.setOnClickListener {
+            startActivity(Intent(this, ChatListActivity::class.java))
         }
 
         binding.btnTheme.setOnClickListener {
             // Thema wijzigen functionaliteit (optioneel)
+        }
+
+        binding.btnLanguage.setOnClickListener {
+            // Taal wijzigen functionaliteit (optioneel)
         }
     }
 }
