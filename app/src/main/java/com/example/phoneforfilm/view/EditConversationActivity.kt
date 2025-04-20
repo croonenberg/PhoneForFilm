@@ -3,7 +3,6 @@ package com.example.phoneforfilm.view
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import com.example.phoneforfilm.data.AppDatabase
 import com.example.phoneforfilm.data.Conversation
 import com.example.phoneforfilm.data.Contact
