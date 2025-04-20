@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.phoneforfilm.data.Contact
 import com.example.phoneforfilm.databinding.ActivityContactListBinding
 import com.example.phoneforfilm.viewmodel.ContactViewModel
 
