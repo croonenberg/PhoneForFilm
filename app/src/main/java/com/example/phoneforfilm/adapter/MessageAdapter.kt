@@ -33,7 +33,7 @@ class MessageAdapter : RecyclerView.Adapter<MessageAdapter.MessageViewHolder>() 
             binding.pinIcon.visibility = if (message.isPinned) View.VISIBLE else View.GONE
 
             
-// Verzendstatus-icoon zonder when()
+// Verzendstatus-icoon
 val statusIconRes = when (message.status) {
     "sent" -> R.drawable.ic_status_sent
     "delivered" -> R.drawable.ic_status_delivered
