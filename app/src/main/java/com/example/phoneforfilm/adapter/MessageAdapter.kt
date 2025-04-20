@@ -35,8 +35,8 @@ class MessageAdapter : RecyclerView.Adapter<MessageAdapter.MessageViewHolder>() 
             // Verzendstatus-icoon
             when (message.status) {
                 "sent" -> binding.statusIcon.setImageResource(R.drawable.ic_status_sent)
-                "delivered" -> binding.statusIcon.setImageResource("delivered")
-                "read" -> binding.statusIcon.setImageResource("read")
+                "delivered" -> binding.statusIcon.setImageResource(R.drawable.ic_status_delivered)
+                "read" -> binding.statusIcon.setImageResource(R.drawable.ic_status_read)
                 else -> binding.statusIcon.setImageResource(R.drawable.ic_status_sent)
             }
 
