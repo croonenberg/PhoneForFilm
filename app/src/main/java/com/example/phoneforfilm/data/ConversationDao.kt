@@ -9,6 +9,9 @@ interface ConversationDao {
     @Query("SELECT * FROM conversations ORDER BY timestamp DESC")
     fun getAll(): LiveData<List<Conversation>>
 
+    @Query("SELECT * FROM conversations ORDER BY timestamp DESC")
+    fun getAllNow(): List<Conversation>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(conversation: Conversation): Long
 

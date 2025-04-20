@@ -1,52 +1,44 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:padding="8dp"
-    android:gravity="start">
+    android:orientation="vertical"
+    android:background="@drawable/bg_message_received"
+    android:padding="12dp">
+
+    <TextView
+        android:id="@+id/tvReceivedMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?attr/textAppearanceBody1" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@drawable/bg_message_received"
-        android:padding="12dp">
+        android:orientation="horizontal"
+        android:gravity="start"
+        android:layout_marginTop="4dp">
 
         <TextView
-            android:id="@+id/tvReceivedMessage"
+            android:id="@+id/tvReceivedTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?attr/textAppearanceBody1"/>
+            android:textAppearance="?attr/textAppearanceCaption" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="start"
-            android:layout_marginTop="4dp">
+        <ImageView
+            android:id="@+id/ivPin"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="4dp"
+            android:src="@drawable/ic_pin"
+            android:contentDescription="@string/pin"/>
 
-            <TextView
-                android:id="@+id/tvReceivedTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?attr/textAppearanceCaption"/>
-
-            <ImageView
-                android:id="@+id/ivPin"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_marginStart="4dp"
-                android:src="@drawable/ic_pin"
-                android:contentDescription="@string/pin"/>
-
-            <ImageView
-                android:id="@+id/ivFavorite"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_marginStart="4dp"
-                android:src="@drawable/ic_favorite"
-                android:contentDescription="@string/favorite"/>
-        </LinearLayout>
+        <ImageView
+            android:id="@+id/ivFavorite"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="4dp"
+            android:src="@drawable/ic_favorite"
+            android:contentDescription="@string/favorite"/>
     </LinearLayout>
 </LinearLayout>

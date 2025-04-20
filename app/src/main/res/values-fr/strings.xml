@@ -50,4 +50,6 @@
     <string name="name">Nom</string>
     <string name="phone_number">Numéro de téléphone</string>
     <string name="save">Enregistrer</string>
+    <string name="contact_list">Liste de contacts</string>
+    <string name="new_contact">Nouveau contact</string>
 </resources>

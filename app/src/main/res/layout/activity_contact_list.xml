@@ -5,14 +5,16 @@
     android:padding="16dp">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewContacts"
+        android:id="@+id/rvContacts"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        android:contentDescription="@string/contact_list"
+        android:importantForAccessibility="yes" />
 
     <Button
-        android:id="@+id/buttonAddContact"
+        android:id="@+id/btnAddContact"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nieuw contact" />
+        android:text="@string/new_contact" />
 </LinearLayout>

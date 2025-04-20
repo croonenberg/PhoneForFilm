@@ -50,4 +50,6 @@
     <string name="name">Naam</string>
     <string name="phone_number">Telefoonnummer</string>
     <string name="save">Opslaan</string>
+    <string name="contact_list">Contactlijst</string>
+    <string name="new_contact">Nieuw contact</string>
 </resources>

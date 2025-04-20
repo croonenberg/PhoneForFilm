@@ -25,7 +25,7 @@ class ChatListActivity : AppCompatActivity() {
         val db = AppDatabase.getDatabase(this)
 
         lifecycleScope.launch {
-            val conversations = withContext(Dispatchers.IO) {
+            val conversations: List<Conversation> = withContext(Dispatchers.IO) {
                 db.conversationDao().getAllNow()
             }
             val contacts = withContext(Dispatchers.IO) {
