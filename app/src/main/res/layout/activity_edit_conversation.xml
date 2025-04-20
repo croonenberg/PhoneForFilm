@@ -20,5 +20,5 @@
         android:id="@+id/buttonSaveConversation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Opslaan" />
+        android:text="@string/save" />
 </LinearLayout>

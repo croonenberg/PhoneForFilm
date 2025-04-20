@@ -47,4 +47,5 @@
     <string name="cancel">Cancel</string>
     <string name="new_conversation">New conversation</string>
     <string name="chat_list">Chat list</string>
+    <string name="save">Opslaan</string>
 </resources>
