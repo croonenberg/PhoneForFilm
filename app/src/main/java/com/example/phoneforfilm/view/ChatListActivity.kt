@@ -1,22 +1,10 @@
 package com.example.phoneforfilm.view
 
+import androidx.activity.viewModels
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.phoneforfilm.R
-import com.example.phoneforfilm.adapter.ConversationAdapter
-import com.example.phoneforfilm.data.AppDatabase
-import com.example.phoneforfilm.data.Conversation
-import com.example.phoneforfilm.data.ConversationRepository
-import com.example.phoneforfilm.databinding.ActivityChatListBinding
-import com.example.phoneforfilm.viewmodel.ChatListViewModel
-import com.example.phoneforfilm.viewmodel.ChatListViewModelFactory
-import kotlinx.coroutines.launch
 
 class ChatListActivity : AppCompatActivity() {
     private lateinit var binding: ActivityChatListBinding
