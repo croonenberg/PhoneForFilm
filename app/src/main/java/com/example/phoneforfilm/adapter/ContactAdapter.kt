@@ -1,10 +1,10 @@
-package com.example.phoneforfilm.adapter
+package com.example.phoneNumberforfilm.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.phoneforfilm.data.Contact
-import com.example.phoneforfilm.databinding.ItemContactBinding
+import com.example.phoneNumberforfilm.data.Contact
+import com.example.phoneNumberforfilm.databinding.ItemContactBinding
 
 class ContactAdapter(
     private val contacts: List<Contact>,
@@ -15,7 +15,7 @@ class ContactAdapter(
         RecyclerView.ViewHolder(binding.root) {
         fun bind(contact: Contact) {
             binding.tvContactName.text = contact.name
-            binding.tvPhoneNumber.text = contact.phone
+            binding.tvPhoneNumber.text = contact.phoneNumber
             binding.root.setOnClickListener {
                 onClick?.invoke(contact)
             }

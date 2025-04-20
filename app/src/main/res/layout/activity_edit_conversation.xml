@@ -11,6 +11,8 @@
         android:layout_marginBottom="16dp"/>
 
     <EditText
+        android:inputType="text"
+        android:autofillHints="autofillHintName"
         android:id="@+id/editTextMessage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

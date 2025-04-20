@@ -24,7 +24,7 @@
         android:id="@+id/textViewPhoneNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="+31 6 12345678"
+        android:text="@string/example_phone_number"
         android:textSize="20sp"
         android:textColor="@color/textDark"
         app:layout_constraintTop_toBottomOf="@id/textViewCallerName"

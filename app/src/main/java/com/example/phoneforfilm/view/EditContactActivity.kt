@@ -20,9 +20,9 @@ class EditContactActivity : AppCompatActivity() {
 
         binding.buttonSaveContact.setOnClickListener {
             val name = binding.editTextName.text.toString()
-            val phone = binding.editTextPhone.text.toString()
+            val phoneNumber = binding.editTextPhone.text.toString()
             if (name.isNotBlank() && phone.isNotBlank()) {
-                val newContact = Contact(name = name, phone = phone)
+                val newContact = Contact(name = name, phoneNumber = phone)
                 CoroutineScope(Dispatchers.IO).launch {
                     AppDatabase.getDatabase(this@EditContactActivity)
                         .contactDao()

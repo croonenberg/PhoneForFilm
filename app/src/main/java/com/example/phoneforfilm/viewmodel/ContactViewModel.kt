@@ -9,6 +9,7 @@ import com.example.phoneforfilm.data.Contact
 import com.example.phoneforfilm.data.ContactRepository
 import kotlinx.coroutines.launch
 
+@Suppress("unused")
 class ContactViewModel(application: Application) : AndroidViewModel(application) {
     private val repository: ContactRepository
     val allContacts: LiveData<List<Contact>>
