@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 
 class ConversationRepository(private val dao: ConversationDao) {
 
-    fun getAll(): LiveData<List<Conversation>> = dao.getAll()
+    val allConversations: LiveData<List<Conversation>> = dao.getAll()
 
     suspend fun insert(conversation: Conversation): Long = dao.insert(conversation)
 
