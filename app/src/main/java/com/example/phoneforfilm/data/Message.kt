@@ -7,10 +7,10 @@ import androidx.room.PrimaryKey
 data class Message(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val chatId: Int,
+    val senderId: Long,
     val text: String,
-    val isSent: Boolean,
     val timestamp: Long,
-    val status: Int = 0,        // 0 = sent, 1 = delivered, 2 = read
+    val status: Int = 0,
     val pinned: Boolean = false,
     val favorite: Boolean = false
 )
