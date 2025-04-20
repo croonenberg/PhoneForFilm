@@ -44,16 +44,15 @@ class MainActivity : AppCompatActivity() {
 
         // 🌈 Thema kiezen
         binding.btnTheme.setOnClickListener {
-            val themes = ThemeManager.getThemes()
-            val names = themes.map { it.displayName }.toTypedArray()
+            val themes = arrayOf("Greenroom", "Blue Stage", "Grey Card", "Neutral Light", "Darkroom")
             AlertDialog.Builder(this)
-                .setTitle(getString(R.string.choose_theme))
-                .setItems(names) { _, which ->
-                    val selected = themes[which]
-                    ThemeManager.saveTheme(this, selected)
+                .setTitle(R.string.choose_theme)
+                .setItems(themes) { _, which ->
+                    ThemeManager.setTheme(this, themes[which])
                     recreate()
                 }
                 .show()
+
         }
 
         // 🌐 Taal kiezen (optioneel)
