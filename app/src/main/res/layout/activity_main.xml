@@ -27,6 +27,6 @@
         android:id="@+id/btnLanguage"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="Language" />
+        android:text="@string/language" />
 
 </LinearLayout>
