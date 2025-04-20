@@ -9,4 +9,6 @@
     <string name="message_deleted">Message deleted</string>
     <string name="change_time">Change time</string>
     <string name="change_status">Change status</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
 </resources>
