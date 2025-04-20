@@ -1,8 +1,3 @@
-plugins {
-    id("com.android.application")
-    kotlin("android")
-}
-
 android {
     namespace = "com.example.phoneforfilm"
     compileSdk = 34
