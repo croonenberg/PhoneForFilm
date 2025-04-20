@@ -8,17 +8,21 @@
         android:id="@+id/editTextName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Naam" />
+        android:hint="@string/name"
+        android:inputType="textPersonName"
+        android:autofillHints="name" />
 
     <EditText
         android:id="@+id/editTextPhone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Telefoonnummer" />
+        android:hint="@string/phone_number"
+        android:inputType="phone"
+        android:autofillHints="phone" />
 
     <Button
         android:id="@+id/buttonSave"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Opslaan" />
+        android:text="@string/save" />
 </LinearLayout>
