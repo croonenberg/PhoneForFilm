@@ -52,5 +52,5 @@ dependencies {
     // extra herrie
     implementation("androidx.activity:activity-ktx:1.10.1")
     // CoordinatorLayout
-    implementation("androidx.coordinatorlayout:coordinatorlayout:1.2.0")
+    implementation("androidx.coordinatorlayout:coordinatorlayout:1.3.0")
 }
