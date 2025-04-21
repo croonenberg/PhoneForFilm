@@ -32,13 +32,7 @@ class MessageAdapter : RecyclerView.Adapter<MessageAdapter.MessageViewHolder>() 
             // Pin-icoon tonen
             binding.pinIcon.visibility = if (message.isPinned) View.VISIBLE else View.GONE
 
-            // Verzendstatus-icoon
-            when (message.status) {
-                "sent" -> binding.statusIcon.setImageResource(R.drawable.ic_status_sent)
-                "delivered" -> binding.statusIcon.setImageResource(R.drawable.ic_status_delivered)
-                "read" -> binding.statusIcon.setImageResource(R.drawable.ic_status_read)
-                else -> binding.statusIcon.setImageResource(R.drawable.ic_status_sent)
-            }
+
 
             binding.root.setOnLongClickListener {
                 val popup = PopupMenu(binding.root.context, binding.root)
