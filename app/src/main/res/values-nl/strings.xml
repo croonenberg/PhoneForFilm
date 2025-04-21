@@ -55,7 +55,7 @@
     <string name="new_contact">Nieuw contact</string>
     <string name="pin_unpin">Vastzetten/Losmaken</string>
     <string name="pinned_icon">Vastgezet pictogram</string>
-    <string name="status_icon">Statuspictogram</string>
+    <string name="status_icon">Status icoon</string>
     <string name="phone">Telefoon</string>
     <string name="last_message">Laatste bericht</string>
     <string name="example_phone_number">+31 6 12345678</string>
@@ -69,7 +69,7 @@
     <string name="menu_status_sent">Sent</string>
     <string name="menu_status_delivered">Delivered</string>
     <string name="menu_status_read">Read</string>
-    <string name="reject">Afwijzen</string>
+    <string name="reject">Weigeren</string>
     <string name="contact_name">Contact</string>
     <string name="isPinned">Is vastgezet</string>
-</resources>
+<string name="favorite_icon">Favoriet</string></resources>

@@ -61,7 +61,7 @@
     <string name="message_deleted">Bericht verwijderd</string>
     <string name="pin_unpin">Pin/Unpin</string>
     <string name="pinned_icon">Pinned icon</string>
-    <string name="status_icon">Status icon</string>
+    <string name="status_icon">Status</string>
 
     <string name="toggle_pin">Pin / Unpin</string>
     <string name="toggle_favorite">Favorite / Unfavorite</string>
