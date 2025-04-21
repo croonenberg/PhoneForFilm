@@ -1,33 +1,35 @@
-<LinearLayout     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:padding="16dp">
-
-
-    <Button
-        android:id="@+id/btnStartCall"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:text="@string/start_call" />
 
     <Button
         android:id="@+id/btnStartChat"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="@string/start_chat"/>
+        android:text="@string/start_chat" />
+
+    <Button
+        android:id="@+id/btnStartCall"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="@string/start_call"
+        android:layout_marginTop="8dp" />
 
     <Button
         android:id="@+id/btnTheme"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="@string/change_theme" />
+        android:text="@string/change_theme"
+        android:layout_marginTop="8dp" />
 
     <Button
         android:id="@+id/btnLanguage"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="@string/language" />
-
+        android:text="@string/language"
+        android:layout_marginTop="8dp" />
 </LinearLayout>
