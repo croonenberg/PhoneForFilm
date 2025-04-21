@@ -1,3 +1,4 @@
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
     <string name="app_name">Phone For Film</string>
     <string name="start_chat">Start chat</string>
@@ -62,11 +63,6 @@
     <string name="pinned_icon">Pinned icon</string>
     <string name="status_icon">Status icon</string>
 
-    <string name="edit_message">Edit message</string>
-    <string name="change_time">Change time</string>
-    <string name="change_status">Change status</string>
-    <string name="change_sender">Change sender</string>
     <string name="toggle_pin">Pin / Unpin</string>
     <string name="toggle_favorite">Favorite / Unfavorite</string>
-    <string name="delete">Delete</string>
-</resources>
+    </resources>

@@ -1,5 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <!-- Night mode overrides -->
+    
     <color name="primary_light">#000000</color>
     <color name="primary_dark">#FFFFFF</color>
     <color name="secondary_light">#424242</color>

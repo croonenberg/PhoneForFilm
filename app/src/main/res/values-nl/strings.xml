@@ -1,3 +1,4 @@
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
     <string name="app_name">Phone For Film</string>
     <string name="start_chat">Start gesprek</string>
@@ -60,11 +61,6 @@
     <string name="example_phone_number">+31 6 12345678</string>
     <string name="message_deleted">Bericht verwijderd</string>
 
-    <string name="edit_message">Bericht bewerken</string>
-    <string name="change_time">Tijd wijzigen</string>
-    <string name="change_status">Status wijzigen</string>
-    <string name="change_sender">Zender wijzigen</string>
     <string name="toggle_pin">Vastzetten / Losmaken</string>
     <string name="toggle_favorite">Favoriet / Niet favoriet</string>
-    <string name="delete">Verwijderen</string>
-</resources>
+    </resources>
