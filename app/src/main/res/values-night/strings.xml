@@ -16,11 +16,11 @@
     <string name="language">Language</string>
     <string name="theme">Theme</string>
     <string name="dark_mode">Dark mode</string>
-    <string name="incoming_call">Incoming call</string>
+    <string name="incoming_call">Incoming all</string>
     <string name="answer">Answer</string>
     <string name="decline">Decline</string>
-    <string name="in_call">In call…</string>
-    <string name="end_call">End call</string>
+    <string name="in_call">In Call…</string>
+    <string name="end_call">End Call</string>
     <string name="search">Search</string>
     <string name="more">More</string>
     <string name="accept_call">Accept</string>
@@ -74,4 +74,5 @@
     <string name="reject">Reject</string>
     <string name="contact_name">Contact</string>
     <string name="isPinned">Is Pinned</string>
+    <string name="favorite_icon">Favorite</string>
 </resources>
