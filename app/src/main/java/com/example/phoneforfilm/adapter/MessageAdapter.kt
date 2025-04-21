@@ -30,7 +30,9 @@ class MessageAdapter : RecyclerView.Adapter<MessageAdapter.MessageViewHolder>() 
             }
 
             // Pin-icoon tonen
-            binding.pinIcon.visibility = if (message.isPinned) View.VISIBLE else View.GONE
+            binding.pinIcon.visibility = if (message.pinned) View.VISIBLE else View.GONE
+
+            binding.favoriteIcon.visibility = if (message.favorite) View.VISIBLE else View.GONE
 
             binding.root.setOnLongClickListener {
                 val popup = PopupMenu(binding.root.context, binding.root)
