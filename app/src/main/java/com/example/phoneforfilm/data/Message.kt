@@ -5,14 +5,14 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "messages")
 data class Message(
-    val isDeleted: Boolean = false,
-    val isPinned: Boolean = false,
-    @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    @PrimaryKey(autoGenerate = true)
+    val id: Int = 0,
     val chatId: Int,
     val senderId: Long,
     val text: String,
     val timestamp: Long,
-    val status: Int = 0,
+    val status: Int,
     val pinned: Boolean = false,
-    val favorite: Boolean = false
+    val favorite: Boolean = false,
+    val isDeleted: Boolean = false
 )
