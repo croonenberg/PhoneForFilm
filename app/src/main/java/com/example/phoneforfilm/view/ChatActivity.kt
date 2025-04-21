@@ -55,7 +55,7 @@ class ChatActivity : AppCompatActivity() {
         viewModel.loadMessages(chatId)
         viewModel.messages.observe(this) { list ->
             adapter.messages = list
-        adapter.notifyItemInserted(list.size - 1)
+            adapter.notifyDataSetChanged()
             if (list.isNotEmpty()) {
                 binding.recyclerViewMessages.scrollToPosition(list.size - 1)
             }
