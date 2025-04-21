@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
     <string name="app_name">Phone For Film</string>
-    <string name="start_chat">Start gesprek</string>
+    <string name="start_chat">Start chat</string>
     <string name="open_chat">Open gesprek</string>
     <string name="hint_message">Typ een bericht</string>
     <string name="send">Verstuur bericht</string>
@@ -63,10 +63,4 @@
 
     <string name="toggle_pin">Vastzetten / Losmaken</string>
     <string name="toggle_favorite">Favoriet / Niet favoriet</string>
-    <string name="menu_time_now">Nu</string>
-    <string name="menu_time_5min_ago">5 minuten geleden</string>
-    <string name="menu_time_custom">Aangepast…</string>
-    <string name="menu_status_sent">Verzonden</string>
-    <string name="menu_status_delivered">Ontvangen</string>
-    <string name="menu_status_read">Gelezen</string>
-</resources>
+    <string name="menu_time_now">Now</string><string name="menu_time_5min_ago">5 minutes ago</string><string name="menu_time_custom">Custom…</string><string name="menu_status_sent">Sent</string><string name="menu_status_delivered">Delivered</string><string name="menu_status_read">Read</string></resources>
