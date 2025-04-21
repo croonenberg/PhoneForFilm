@@ -35,7 +35,7 @@ class ChatActivity : AppCompatActivity() {
         binding = ActivityChatBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        adapter = MessageAdapter()
+        val adapter = MessageAdapter()
 
         adapter.onMessageEdit         = { message -> editMessage(message) }
         adapter.onMessageTimeChange   = { message -> editTime(message) }
