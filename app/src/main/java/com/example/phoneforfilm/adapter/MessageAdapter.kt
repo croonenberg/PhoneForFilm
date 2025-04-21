@@ -32,8 +32,6 @@ class MessageAdapter : RecyclerView.Adapter<MessageAdapter.MessageViewHolder>() 
             // Pin-icoon tonen
             binding.pinIcon.visibility = if (message.isPinned) View.VISIBLE else View.GONE
 
-
-
             binding.root.setOnLongClickListener {
                 val popup = PopupMenu(binding.root.context, binding.root)
                 popup.menuInflater.inflate(R.menu.message_options_menu, popup.menu)
@@ -43,11 +41,11 @@ class MessageAdapter : RecyclerView.Adapter<MessageAdapter.MessageViewHolder>() 
                             onMessageEdit?.invoke(message)
                             true
                         }
-                        R.id.R.id.menu_change_time -> {
+                        R.id.menu_change_time -> {
                             onMessageTimeChange?.invoke(message)
                             true
                         }
-                        R.id.R.id.menu_change_status -> {
+                        R.id.menu_change_status -> {
                             onMessageStatusChange?.invoke(message)
                             true
                         }
