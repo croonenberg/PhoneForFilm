@@ -1,20 +1,28 @@
-<?xml version='1.0' encoding='utf-8'?>
-<manifest xmlns:ns0="http://schemas.android.com/apk/res/android">
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.example.phoneforfilm">
 
-    <application ns0:allowBackup="true" ns0:label="Phone For Film" ns0:icon="@mipmap/ic_launcher" ns0:roundIcon="@mipmap/ic_launcher_round" ns0:supportsRtl="true" ns0:theme="@style/Theme.PhoneForFilm" ns0:name=".PhoneForFilmApp">
+    <application
+        android:allowBackup="true"
+        android:label="Phone For Film"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.PhoneForFilm">
 
-        <activity ns0:name=".view.MainActivity" ns0:exported="true">
+        <activity
+            android:name=".view.MainActivity"
+            android:exported="true">
             <intent-filter>
-                <action ns0:name="android.intent.action.MAIN" />
-                <category ns0:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity ns0:name=".view.ChatListActivity" />
-        <activity ns0:name=".view.ChatActivity" />
-        <activity ns0:name=".view.CallActivity" />
-        <activity ns0:name=".view.IncomingCallActivity" />
-        <activity ns0:name=".view.LanguageSelectionActivity" />
+        <activity android:name=".view.ChatListActivity" />
+        <activity android:name=".view.ChatActivity" />
+        <activity android:name=".view.CallActivity" />
+        <activity android:name=".view.IncomingCallActivity" />
+        <activity android:name=".view.LanguageSelectionActivity" />
     </application>
 
 </manifest>
