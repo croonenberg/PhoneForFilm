@@ -35,17 +35,15 @@ class ChatActivity : AppCompatActivity() {
         binding = ActivityChatBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // 1) Adapter zonder lambda‑constructor
         adapter = MessageAdapter()
 
-        // 2) Callback‑properties instellen
         adapter.onMessageEdit         = { message -> editMessage(message) }
         adapter.onMessageTimeChange   = { message -> editTime(message) }
         adapter.onMessageStatusChange = { message -> changeStatus(message) }
         adapter.onMessageDelete       = { message -> deleteMessage(message) }
         adapter.onMessagePinToggle    = { message ->
-            // togglet pin-status
-            togglePin(message, !message.isPinned)
+            // Toggle pin-status using 'pinned' property
+            togglePin(message, !message.pinned)
         }
 
         binding.recyclerViewMessages.apply {
@@ -53,29 +51,25 @@ class ChatActivity : AppCompatActivity() {
             adapter = this@ChatActivity.adapter
         }
 
-        // 3) ViewModel: berichten laden en observeren
         val chatId = intent.getLongExtra("CONVERSATION_ID", -1L)
-        viewModel.loadMessages(chatId)  // veronderstelde methode in ViewModel
+        viewModel.loadMessages(chatId)
         viewModel.messages.observe(this) { list ->
-            // manueel bijwerken, i.p.v. submitList
             adapter.messages = list
             adapter.notifyDataSetChanged()
             if (list.isNotEmpty()) {
-                binding.recyclerViewMessages
-                    .scrollToPosition(list.size - 1)
+                binding.recyclerViewMessages.scrollToPosition(list.size - 1)
             }
         }
 
         binding.buttonSend.setOnClickListener {
             val text = binding.editTextMessage.text.toString()
             if (text.isNotBlank()) {
-                viewModel.sendMessage(chatId, text, currentUserId)  // veronderstelde methode
+                viewModel.sendMessage(chatId, text, currentUserId)
                 binding.editTextMessage.text?.clear()
             }
         }
     }
 
-    // 4) Bestaande helper‑methodes blijven binnen de class
     private fun editMessage(message: com.example.phoneforfilm.data.Message) {
         val input = EditText(this).apply {
             setText(message.text)
@@ -129,7 +123,8 @@ class ChatActivity : AppCompatActivity() {
     }
 
     private fun togglePin(message: com.example.phoneforfilm.data.Message, pin: Boolean) {
-        val updated = message.copy(isPinned = pin)
+        // Use 'pinned' parameter name
+        val updated = message.copy(pinned = pin)
         viewModel.updateMessage(updated)
     }
 }
