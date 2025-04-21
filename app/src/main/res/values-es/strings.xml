@@ -69,4 +69,7 @@
     <string name="menu_status_sent">Enviado</string>
     <string name="menu_status_delivered">Entregado</string>
     <string name="menu_status_read">Leído</string>
+    <string name="isPinned">Está fijado</string>
+    <string name="contact_name">Contacto</string>
+    <string name="reject">Rechazar</string>
 </resources>

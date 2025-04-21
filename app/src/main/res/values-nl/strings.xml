@@ -71,4 +71,5 @@
     <string name="menu_status_read">Read</string>
     <string name="reject">Afwijzen</string>
     <string name="contact_name">Contact</string>
+    <string name="isPinned">Is vastgezet</string>
 </resources>
