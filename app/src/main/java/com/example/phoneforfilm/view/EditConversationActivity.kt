@@ -28,20 +28,24 @@ class EditConversationActivity : AppCompatActivity() {
             val names = contacts.map { it.name }
 
             runOnUiThread {
-                val adapter = ArrayAdapter(this@EditConversationActivity, android.R.layout.simple_spinner_item, names)
+                val adapter = ArrayAdapter(
+                    this@EditConversationActivity,
+                    android.R.layout.simple_spinner_item,
+                    names
+                )
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 binding.spinnerContacts.adapter = adapter
             }
         }
 
         binding.buttonSaveConversation.setOnClickListener {
-            val message = binding.editTextMessage.text.toString()
-            val selectedPosition = binding.spinnerContacts.selectedItemPosition
-            if (selectedPosition >= 0 && message.isNotBlank()) {
-                selectedContactId = contacts[selectedPosition].id
+            val messageText = binding.editTextConversationMessage.text.toString()
+            val position = binding.spinnerContacts.selectedItemPosition
+            if (position >= 0 && messageText.isNotBlank()) {
+                selectedContactId = contacts[position].id
                 val conversation = Conversation(
                     contactId = selectedContactId,
-                    lastMessage = message,
+                    lastMessage = messageText,
                     timestamp = System.currentTimeMillis()
                 )
                 CoroutineScope(Dispatchers.IO).launch {
