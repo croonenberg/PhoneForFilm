@@ -63,4 +63,10 @@
 
     <string name="toggle_pin">Fijar / Desfijar</string>
     <string name="toggle_favorite">Favorito / No favorito</string>
-    <string name="menu_time_now">Ahora</string><string name="menu_time_5min_ago">Hace 5 minutos</string><string name="menu_time_custom">Personalizado…</string><string name="menu_status_sent">Enviado</string><string name="menu_status_delivered">Entregado</string><string name="menu_status_read">Leído</string></resources>
+    <string name="menu_time_now">Ahora</string>
+    <string name="menu_time_5min_ago">Hace 5 minutos</string>
+    <string name="menu_time_custom">Personalizado…</string>
+    <string name="menu_status_sent">Enviado</string>
+    <string name="menu_status_delivered">Entregado</string>
+    <string name="menu_status_read">Leído</string>
+</resources>

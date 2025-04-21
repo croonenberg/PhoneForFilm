@@ -64,4 +64,10 @@
 
     <string name="toggle_pin">Pin / Unpin</string>
     <string name="toggle_favorite">Favorite / Unfavorite</string>
-    <string name="menu_time_now">Now</string><string name="menu_time_5min_ago">5 minutes ago</string><string name="menu_time_custom">Custom…</string><string name="menu_status_sent">Sent</string><string name="menu_status_delivered">Delivered</string><string name="menu_status_read">Read</string></resources>
+    <string name="menu_time_now">Now</string>
+    <string name="menu_time_5min_ago">5 minutes ago</string>
+    <string name="menu_time_custom">Custom…</string>
+    <string name="menu_status_sent">Sent</string>
+    <string name="menu_status_delivered">Delivered</string>
+    <string name="menu_status_read">Read</string>
+</resources>

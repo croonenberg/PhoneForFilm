@@ -63,4 +63,10 @@
 
     <string name="toggle_pin">Anheften / Lösen</string>
     <string name="toggle_favorite">Favorit / Nicht Favorit</string>
-    <string name="menu_time_now">Jetzt</string><string name="menu_time_5min_ago">Vor 5 Minuten</string><string name="menu_time_custom">Benutzerdefiniert…</string><string name="menu_status_sent">Gesendet</string><string name="menu_status_delivered">Zugestellt</string><string name="menu_status_read">Gelesen</string></resources>
+    <string name="menu_time_now">Jetzt</string>
+    <string name="menu_time_5min_ago">Vor 5 Minuten</string>
+    <string name="menu_time_custom">Benutzerdefiniert…</string>
+    <string name="menu_status_sent">Gesendet</string>
+    <string name="menu_status_delivered">Zugestellt</string>
+    <string name="menu_status_read">Gelesen</string>
+</resources>

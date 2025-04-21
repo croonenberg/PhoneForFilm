@@ -63,4 +63,10 @@
 
     <string name="toggle_pin">Vastzetten / Losmaken</string>
     <string name="toggle_favorite">Favoriet / Niet favoriet</string>
-    <string name="menu_time_now">Nu</string><string name="menu_time_5min_ago">5 minuten geleden</string><string name="menu_time_custom">Aangepast…</string><string name="menu_status_sent">Verzonden</string><string name="menu_status_delivered">Ontvangen</string><string name="menu_status_read">Gelezen</string></resources>
+    <string name="menu_time_now">Nu</string>
+    <string name="menu_time_5min_ago">5 minuten geleden</string>
+    <string name="menu_time_custom">Aangepast…</string>
+    <string name="menu_status_sent">Verzonden</string>
+    <string name="menu_status_delivered">Ontvangen</string>
+    <string name="menu_status_read">Gelezen</string>
+</resources>
