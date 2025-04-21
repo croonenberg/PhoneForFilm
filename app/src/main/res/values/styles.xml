@@ -1,0 +1,34 @@
+<resources>
+    <!-- Base -->
+    <style name="AppTheme.Base" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="windowBackground">?attr/colorPrimary</item>
+        <item name="materialCardViewStyle">@style/Widget.MaterialComponents.CardView</item>
+    </style>
+
+    <!-- WhatsApp-style -->
+    <style name="AppTheme.WhatsApp" parent="AppTheme.Base">
+        <item name="colorPrimary">@color/wa_primary</item>
+        <item name="colorPrimaryVariant">@color/wa_secondary</item>
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="incomingBubbleColor">@color/wa_incoming_bg</item>
+        <item name="outgoingBubbleColor">@color/wa_outgoing_bg</item>
+    </style>
+
+    <!-- iMessage-style -->
+    <style name="AppTheme.iMessage" parent="AppTheme.Base">
+        <item name="colorPrimary">@color/im_primary</item>
+        <item name="colorOnPrimary">@color/im_secondary</item>
+        <item name="android:statusBarColor">@color/im_primary</item>
+        <item name="incomingBubbleColor">@color/im_incoming_bg</item>
+        <item name="outgoingBubbleColor">@color/im_outgoing_bg</item>
+    </style>
+
+    <!-- Telegram-style -->
+    <style name="AppTheme.Telegram" parent="AppTheme.Base">
+        <item name="colorPrimary">@color/tg_primary</item>
+        <item name="colorOnPrimary">@color/tg_secondary</item>
+        <item name="android:statusBarColor">@color/tg_primary</item>
+        <item name="incomingBubbleColor">@color/tg_incoming_bg</item>
+        <item name="outgoingBubbleColor">@color/tg_outgoing_bg</item>
+    </style>
+</resources>

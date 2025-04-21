@@ -1,40 +1,19 @@
 <resources>
-    <!-- Algemene kleuren -->
-    <color name="white">#FFFFFF</color>
-    <color name="black">#000000</color>
+    <!-- WhatsApp -->
+    <color name="wa_primary">#075E54</color>
+    <color name="wa_secondary">#25D366</color>
+    <color name="wa_incoming_bg">#FFFFFF</color>
+    <color name="wa_outgoing_bg">#DCF8C6</color>
 
-    <!-- Thema-kleuren (voor thema wisselen) -->
-    <color name="greenroom_primary">#075E54</color>
-    <color name="greenroom_background">#ECE5DD</color>
+    <!-- iMessage -->
+    <color name="im_primary">#FFFFFF</color>
+    <color name="im_secondary">#34C759</color>
+    <color name="im_incoming_bg">#E5E5EA</color>
+    <color name="im_outgoing_bg">#34C759</color>
 
-    <color name="blue_stage_primary">#007AFF</color>
-    <color name="blue_stage_background">#E5E5EA</color>
-
-    <color name="grey_card_primary">#4A4A4A</color>
-    <color name="grey_card_background">#F2F2F2</color>
-
-    <color name="neutral_light_primary">#0088CC</color>
-    <color name="neutral_light_background">#FFFFFF</color>
-
-    <color name="darkroom_primary">#121212</color>
-    <color name="darkroom_background">#1E1E1E</color>
-
-    <!-- Bellen scherm -->
-    <color name="call_button_green">#4CAF50</color>
-    <color name="call_button_red">#F44336</color>
-
-    <!-- Bubbles -->
-    <color name="message_sent_background">#0084FF</color>
-    <color name="message_received_background">#E5E5EA</color>
-
-    <!-- Night mode overrides -->
-    <color name="primary_light">#000000</color>
-    <color name="primary_dark">#FFFFFF</color>
-    <color name="secondary_light">#424242</color>
-    <color name="secondary_dark">#1A1A1A</color>
-    <color name="chat_background">#121212</color>
-
-    <!-- oude layout -->
-    <color name="textDark">#000000</color>
-    <color name="light_grey">#D3D3D3</color>
+    <!-- Telegram -->
+    <color name="tg_primary">#0088CC</color>
+    <color name="tg_secondary">#FFFFFF</color>
+    <color name="tg_incoming_bg">#FFFFFF</color>
+    <color name="tg_outgoing_bg">#E1F5FE</color>
 </resources>

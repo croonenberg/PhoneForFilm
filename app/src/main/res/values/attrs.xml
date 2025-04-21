@@ -1,0 +1,4 @@
+<resources>
+    <attr name="incomingBubbleColor" format="reference|color"/>
+    <attr name="outgoingBubbleColor" format="reference|color"/>
+</resources>
