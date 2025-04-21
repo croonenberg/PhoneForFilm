@@ -30,9 +30,7 @@ class ChatViewModel(private val repository: MessageRepository) : ViewModel() {
             text = text,
             senderId = senderId,
             timestamp = System.currentTimeMillis(),
-            status = 0,
-            isPinned = false,
-            isFavorite = false
+            status = 0
         )
         repository.insert(msg)
         loadMessages(chatId)
