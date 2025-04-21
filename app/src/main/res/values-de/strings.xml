@@ -59,4 +59,12 @@
     <string name="last_message">Letzte Nachricht</string>
     <string name="example_phone_number">+49 170 1234567</string>
     <string name="message_deleted">Nachricht gelöscht</string>
+
+    <string name="edit_message">Nachricht bearbeiten</string>
+    <string name="change_time">Zeit ändern</string>
+    <string name="change_status">Status ändern</string>
+    <string name="change_sender">Absender ändern</string>
+    <string name="toggle_pin">Anheften / Lösen</string>
+    <string name="toggle_favorite">Favorit / Nicht Favorit</string>
+    <string name="delete">Löschen</string>
 </resources>

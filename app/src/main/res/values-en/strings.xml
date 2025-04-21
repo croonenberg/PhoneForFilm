@@ -60,4 +60,12 @@
     <string name="last_message">Last message</string>
     <string name="example_phone_number">+31 6 12345678</string>
     <string name="message_deleted">Message deleted</string>
+
+    <string name="edit_message">Edit message</string>
+    <string name="change_time">Change time</string>
+    <string name="change_status">Change status</string>
+    <string name="change_sender">Change sender</string>
+    <string name="toggle_pin">Pin / Unpin</string>
+    <string name="toggle_favorite">Favorite / Unfavorite</string>
+    <string name="delete">Delete</string>
 </resources>

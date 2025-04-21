@@ -59,4 +59,12 @@
     <string name="last_message">Último mensaje</string>
     <string name="example_phone_number">+34 612 34 56 78</string>
     <string name="message_deleted">Mensaje eliminado</string>
+
+    <string name="edit_message">Editar mensaje</string>
+    <string name="change_time">Cambiar hora</string>
+    <string name="change_status">Cambiar estado</string>
+    <string name="change_sender">Cambiar remitente</string>
+    <string name="toggle_pin">Fijar / Desfijar</string>
+    <string name="toggle_favorite">Favorito / No favorito</string>
+    <string name="delete">Eliminar</string>
 </resources>
