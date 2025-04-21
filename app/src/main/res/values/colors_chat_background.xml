@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <color name="chat_received_background">#E0E0E0</color>
-    <color name="chat_sent_background">#DCF8C6</color>
-</resources>

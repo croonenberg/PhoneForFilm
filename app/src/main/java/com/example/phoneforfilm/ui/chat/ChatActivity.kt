@@ -1,0 +1,17 @@
+package com.example.phoneforfilm.ui.chat
+
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.example.phoneforfilm.R
+
+class ChatActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        // Retrieve theme key passed via Intent
+        val themeKey = intent.getStringExtra("theme_key") ?: "default"
+        // Apply the selected theme before super.onCreate
+        setTheme(ThemeHelper.getThemeResId(themeKey))
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_chat)
+        // ...
+    }
+}
