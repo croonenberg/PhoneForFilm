@@ -3,14 +3,14 @@
 
     <item
         android:id="@+id/action_status_sent"
-        android:title="Sent" />
+        android:title="@string/menu_status_sent" />
 
     <item
         android:id="@+id/action_status_delivered"
-        android:title="Delivered" />
+        android:title="@string/menu_status_delivered" />
 
     <item
         android:id="@+id/action_status_read"
-        android:title="Read" />
+        android:title="@string/menu_status_read" />
 
 </menu>

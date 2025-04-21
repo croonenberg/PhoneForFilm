@@ -3,14 +3,14 @@
 
     <item
         android:id="@+id/action_time_now"
-        android:title="Now" />
+        android:title="@string/menu_time_now" />
 
     <item
         android:id="@+id/action_time_5min_ago"
-        android:title="5 minutes ago" />
+        android:title="@string/menu_time_5min_ago" />
 
     <item
         android:id="@+id/action_time_custom"
-        android:title="Custom…" />
+        android:title="@string/menu_time_custom" />
 
 </menu>
