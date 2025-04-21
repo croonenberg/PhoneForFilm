@@ -58,7 +58,7 @@
     <string name="last_message">Last Message</string>
     <string name="example_phone_number">+31 6 12345678</string>
 
-    <string name="message_deleted">Bericht verwijderd</string>
+    <string name="message_deleted">Message deleted</string>
     <string name="pin_unpin">Pin/Unpin</string>
     <string name="pinned_icon">Pinned icon</string>
     <string name="status_icon">Status icon</string>
