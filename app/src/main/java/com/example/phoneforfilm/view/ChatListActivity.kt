@@ -7,8 +7,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.phoneforfilm.adapter.ConversationAdapter
 import com.example.phoneforfilm.data.AppDatabase
-import com.example.phoneforfilm.data.Conversation
 import com.example.phoneforfilm.data.Contact
+import com.example.phoneforfilm.data.Conversation
 import com.example.phoneforfilm.data.Message
 import com.example.phoneforfilm.databinding.ActivityChatListBinding
 import kotlinx.coroutines.Dispatchers
@@ -34,7 +34,7 @@ class ChatListActivity : AppCompatActivity() {
         binding.fabNewConversation.setOnClickListener {
             lifecycleScope.launch(Dispatchers.IO) {
                 // Dummy contact
-                val contactId = db.contactDao().insert(Contact(name = "Dummy", photoUri = ""))
+                val contactId = db.contactDao().insert(Contact(name = "Dummy", phoneNumber = ""))
                 // Dummy conversatie
                 val convId = db.conversationDao().insert(
                     Conversation(
