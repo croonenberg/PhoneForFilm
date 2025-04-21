@@ -7,18 +7,10 @@ import java.util.Locale
 
 class PhoneForFilmApp : Application() {
     override fun attachBaseContext(base: Context) {
-        // Force default locale (English default resources)
+        // Force default locale to English for all contexts
         val config = Configuration(base.resources.configuration)
         config.setLocale(Locale.ENGLISH)
-        val context = base.createConfigurationContext(config)
-        super.attachBaseContext(context)
-    }
-
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        super.onConfigurationChanged(newConfig)
-        // Ensure locale remains English
-        val config = resources.configuration
-        config.setLocale(Locale.ENGLISH)
-        applyOverrideConfiguration(config)
+        val localizedContext = base.createConfigurationContext(config)
+        super.attachBaseContext(localizedContext)
     }
 }
