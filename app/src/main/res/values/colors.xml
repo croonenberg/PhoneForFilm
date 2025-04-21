@@ -23,4 +23,11 @@
     <color name="blue_stage_background">#E3F2FD</color>
     <color name="darkroom_primary">#212121</color>
     <color name="darkroom_background">#121212</color>
+
+    <color name="greenroom_primary">#388E3C</color>
+    <color name="greenroom_background">#E8F5E9</color>
+    <color name="grey_card_primary">#F5F5F5</color>
+    <color name="grey_card_background">#FFFFFF</color>
+    <color name="neutral_light_primary">#BDBDBD</color>
+    <color name="neutral_light_background">#F5F5F5</color>
 </resources>
