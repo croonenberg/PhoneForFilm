@@ -2,9 +2,10 @@ package com.example.phoneforfilm.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.phoneforfilm.view.BaseActivity
 import com.example.phoneforfilm.databinding.ActivityLanguageSelectionBinding
 
-class LanguageSelectionActivity : AppCompatActivity() {
+class LanguageSelectionActivity : BaseActivity() {
 
     private lateinit var binding: ActivityLanguageSelectionBinding
 

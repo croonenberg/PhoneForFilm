@@ -4,11 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.phoneforfilm.view.BaseActivity
 import com.example.phoneforfilm.R
 import com.example.phoneforfilm.databinding.ActivityMainBinding
 import com.example.phoneforfilm.utils.ThemeManager
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private lateinit var binding: ActivityMainBinding
 

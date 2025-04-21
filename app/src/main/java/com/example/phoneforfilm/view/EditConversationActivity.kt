@@ -3,6 +3,7 @@ package com.example.phoneforfilm.view
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
+import com.example.phoneforfilm.view.BaseActivity
 import com.example.phoneforfilm.data.AppDatabase
 import com.example.phoneforfilm.data.Conversation
 import com.example.phoneforfilm.data.Contact
@@ -11,7 +12,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class EditConversationActivity : AppCompatActivity() {
+class EditConversationActivity : BaseActivity() {
 
     private lateinit var binding: ActivityEditConversationBinding
     private lateinit var contacts: List<Contact>
