@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.sqlite.db.SupportSQLiteDatabase
 
 @Database(
     entities = [Contact::class, Message::class, Conversation::class],
@@ -26,8 +27,17 @@ abstract class AppDatabase : RoomDatabase() {
                     context.applicationContext,
                     AppDatabase::class.java,
                     "phone_for_film_database"
-                ).fallbackToDestructiveMigration(true)
-                 .build()
+                )
+                    .fallbackToDestructiveMigration(true)
+                    .addCallback(object : RoomDatabase.Callback() {
+                        override fun onCreate(db: SupportSQLiteDatabase) {
+                            super.onCreate(db)
+                            // Eerste dummy data
+                            db.execSQL("INSERT INTO conversations(contactId, lastMessage, timestamp) VALUES(1, 'Dummy eerste bericht', strftime('%s','now')*1000)")
+                            db.execSQL("INSERT INTO messages(chatId, senderId, text, timestamp, status, pinned, favorite, isDeleted) VALUES(1, 1, 'Hallo, dit is een dummybericht!', strftime('%s','now')*1000, 0, 0, 0, 0)")
+                        }
+                    })
+                    .build()
                 INSTANCE = instance
                 instance
             }
