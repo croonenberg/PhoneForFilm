@@ -5,10 +5,10 @@ import com.example.phoneforfilm.R
 object ThemeHelper {
     fun getThemeResId(key: String): Int {
         return when (key) {
-            "wa" -> R.style.AppTheme_WhatsApp
-            "im" -> R.style.AppTheme_iMessage
-            "tg" -> R.style.AppTheme_Telegram
-            else -> R.style.AppTheme_Base
+            "Greenroom" -> R.style.Theme_PhoneForFilm_Greenroom
+            "BlueStage" -> R.style.Theme_PhoneForFilm_BlueStage
+            "Darkroom" -> R.style.Theme_PhoneForFilm_Darkroom
+            else -> R.style.Theme_PhoneForFilm
         }
     }
 }
