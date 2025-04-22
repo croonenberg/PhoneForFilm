@@ -2,7 +2,7 @@ package com.example.phoneforfilm.view
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import com.example.phoneforfilm.view.BaseActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.phoneforfilm.adapter.ConversationAdapter
@@ -15,7 +15,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class ChatListActivity : AppCompatActivity() {
+class ChatListActivity : BaseActivity() {
 
     private lateinit var binding: ActivityChatListBinding
     private lateinit var db: AppDatabase

@@ -1,10 +1,10 @@
 package com.example.phoneforfilm.view
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import com.example.phoneforfilm.view.BaseActivity
 import com.example.phoneforfilm.databinding.ActivityCallBinding
 
-class CallActivity : AppCompatActivity() {
+class CallActivity : BaseActivity() {
     private lateinit var binding: ActivityCallBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
