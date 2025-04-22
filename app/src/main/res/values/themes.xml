@@ -1,31 +1,35 @@
 <resources>
 
-    <!-- Greenroom (WhatsApp-stijl) -->
+    <!-- Greenroom (WhatsApp-style) -->
     <style name="Theme.PhoneForFilm.Greenroom" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/greenroom_primary</item>
         <item name="colorOnPrimary">@android:color/white</item>
         <item name="colorSurface">@color/greenroom_background</item>
+        <item name="android:windowBackground">?attr/colorSurface</item>
     </style>
 
-    <!-- Blue Stage (iMessage-stijl) -->
+    <!-- Blue Stage (iMessage-style) -->
     <style name="Theme.PhoneForFilm.BlueStage" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/blue_stage_primary</item>
         <item name="colorOnPrimary">@android:color/white</item>
         <item name="colorSurface">@color/blue_stage_background</item>
+        <item name="android:windowBackground">?attr/colorSurface</item>
     </style>
 
-    <!-- Grey Card (SMS-stijl) -->
+    <!-- Grey Card -->
     <style name="Theme.PhoneForFilm.GreyCard" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/grey_card_primary</item>
-        <item name="colorOnPrimary">@android:color/black</item>
+        <item name="colorOnPrimary">@android:color/white</item>
         <item name="colorSurface">@color/grey_card_background</item>
+        <item name="android:windowBackground">?attr/colorSurface</item>
     </style>
 
-    <!-- Neutral Light (lichte stijl) -->
+    <!-- Neutral Light -->
     <style name="Theme.PhoneForFilm.NeutralLight" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/neutral_light_primary</item>
         <item name="colorOnPrimary">@android:color/white</item>
         <item name="colorSurface">@color/neutral_light_background</item>
+        <item name="android:windowBackground">?attr/colorSurface</item>
     </style>
 
     <!-- Darkroom (donkere stijl) -->
@@ -33,9 +37,10 @@
         <item name="colorPrimary">@color/darkroom_primary</item>
         <item name="colorOnPrimary">@android:color/white</item>
         <item name="colorSurface">@color/darkroom_background</item>
+        <item name="android:windowBackground">?attr/colorSurface</item>
     </style>
 
-    <!-- Default stijl, verwijst standaard naar Greenroom -->
+    <!-- Default stijl, verwijst naar Greenroom -->
     <style name="Theme.PhoneForFilm" parent="Theme.PhoneForFilm.Greenroom" />
 
 </resources>
