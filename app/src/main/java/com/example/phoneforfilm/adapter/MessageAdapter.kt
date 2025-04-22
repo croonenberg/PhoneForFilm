@@ -1,7 +1,6 @@
 package com.example.phoneforfilm.adapter
 
 import android.text.format.DateFormat
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -21,7 +20,7 @@ class MessageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemViewType(position: Int): Int {
         return if (messages[position].senderId == /* your user id or condition */ 0L) VIEW_TYPE_SENT
-               else VIEW_TYPE_RECEIVED
+        else VIEW_TYPE_RECEIVED
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -46,13 +45,14 @@ class MessageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(message: Message) {
+            // Message text
             binding.tvMessage.text = if (message.isDeleted)
                 binding.root.context.getString(R.string.message_deleted) else message.text
 
-            // timestamp
+            // Timestamp
             binding.tvSentTime.text = DateFormat.format("HH:mm", message.timestamp).toString()
 
-            // status icon
+            // Status icon
             binding.statusIcon.setImageResource(
                 when (message.status) {
                     0 -> R.drawable.ic_status_sent
@@ -60,16 +60,6 @@ class MessageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                     2 -> R.drawable.ic_status_read
                     else -> R.drawable.ic_status_sent
                 }
-            )
-
-            // dynamic text color on bubble
-            val typedValue = TypedValue()
-            val colorAttr = if (message.status >= 0) android.R.attr.colorOnPrimary
-                            else android.R.attr.colorOnPrimary
-            binding.tvMessage.setTextColor(
-                TypedValue()
-                    .apply { binding.root.context.theme.resolveAttribute(colorAttr, this, true) }
-                    .data
             )
         }
     }

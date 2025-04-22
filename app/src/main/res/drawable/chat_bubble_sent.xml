@@ -1,9 +1,9 @@
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="wrap_content"
-    android:height="wrap_content"
+    android:width="100dp"
+    android:height="100dp"
     android:viewportWidth="100"
     android:viewportHeight="100">
     <path
-        android:fillColor="?attr/colorBubbleSent"
+        android:fillColor="@color/chatBubbleSent"
         android:pathData="M10,0 h80 a10,10 0 0,1 10,10 v60 a10,10 0 0,1 -10,10 h-50 l-10,10 l0,-10 h-30 a10,10 0 0,1 -10,-10 z"/>
 </vector>
