@@ -45,33 +45,3 @@ class MessageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(message: Message) {
-            // Message text
-            binding.tvMessage.text = if (message.isDeleted)
-                binding.root.context.getString(R.string.message_deleted) else message.text
-
-            // Timestamp
-            binding.tvSentTime.text = DateFormat.format("HH:mm", message.timestamp).toString()
-
-            // Status icon
-            binding.statusIcon.setImageResource(
-                when (message.status) {
-                    0 -> R.drawable.ic_status_sent
-                    1 -> R.drawable.ic_status_delivered
-                    2 -> R.drawable.ic_status_read
-                    else -> R.drawable.ic_status_sent
-                }
-            )
-        }
-    }
-
-    inner class ReceivedViewHolder(private val binding: ItemMessageReceivedBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-
-        fun bind(message: Message) {
-            binding.tvReceivedMessage.text = if (message.isDeleted)
-                binding.root.context.getString(R.string.message_deleted) else message.text
-
-            binding.tvReceivedTime.text = DateFormat.format("HH:mm", message.timestamp).toString()
-        }
-    }
-}
