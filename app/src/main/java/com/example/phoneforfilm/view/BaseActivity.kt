@@ -4,8 +4,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.phoneforfilm.utils.ThemeManager
 
-abstract class BaseActivity : AppCompatActivity() {
+open class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        // Apply the saved theme before layout inflation
         ThemeManager.applyTheme(this)
         super.onCreate(savedInstanceState)
     }
