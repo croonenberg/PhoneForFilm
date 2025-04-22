@@ -23,9 +23,7 @@
     <color name="call_button_green">#4CAF50</color>
     <color name="call_button_red">#F44336</color>
 
-    <!-- Bubbles -->
-    <color name="message_sent_background">#0084FF</color>
-    <color name="message_received_background">#E5E5EA</color>
+
 
     <!-- Night mode overrides -->
     <color name="primary_light">#000000</color>
