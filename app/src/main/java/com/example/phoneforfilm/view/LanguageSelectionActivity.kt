@@ -1,6 +1,8 @@
 package com.example.phoneforfilm.view
 
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.example.phoneforfilm.view.BaseActivity
 import com.example.phoneforfilm.databinding.ActivityLanguageSelectionBinding
 
 class LanguageSelectionActivity : BaseActivity() {
@@ -12,6 +14,6 @@ class LanguageSelectionActivity : BaseActivity() {
         binding = ActivityLanguageSelectionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // TODO: Implement language selection
+        // Voeg hier je logica toe voor taalkeuze
     }
 }

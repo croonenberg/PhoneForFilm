@@ -1,11 +1,16 @@
 package com.example.phoneforfilm
 
 import android.app.Application
-import com.example.phoneforfilm.utils.ThemeManager
+import android.content.Context
+import android.content.res.Configuration
+import java.util.Locale
 
 class PhoneForFilmApp : Application() {
-    override fun onCreate() {
-        super.onCreate()
-        ThemeManager.applyTheme(this)
+    override fun attachBaseContext(base: Context) {
+        // Force default locale to English
+        val config = Configuration(base.resources.configuration)
+        config.setLocale(Locale.ENGLISH)
+        val localizedContext = base.createConfigurationContext(config)
+        super.attachBaseContext(localizedContext)
     }
 }

@@ -1,28 +1,31 @@
 package com.example.phoneforfilm.utils
 
+import android.app.Activity
 import android.content.Context
-import androidx.appcompat.app.AppCompatDelegate
+import com.example.phoneforfilm.R
 
 object ThemeManager {
-    private const val PREFS_NAME = "prefs"
-    private const val KEY_THEME = "theme"
+    private const val PREFS_NAME = "theme_prefs"
+    private const val KEY_THEME = "selected_theme"
 
-    fun setTheme(context: Context, theme: String) {
-        val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-        prefs.edit().putString(KEY_THEME, theme).apply()
-        when (theme) {
-            "Light" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            "Dark" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            else -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+    fun applyTheme(activity: Activity) {
+        when (getSavedTheme(activity)) {
+            "Greenroom" -> activity.setTheme(R.style.Theme_PhoneForFilm_Greenroom)
+            "Blue Stage" -> activity.setTheme(R.style.Theme_PhoneForFilm_BlueStage)
+            "Grey Card" -> activity.setTheme(R.style.Theme_PhoneForFilm_GreyCard)
+            "Neutral Light" -> activity.setTheme(R.style.Theme_PhoneForFilm_NeutralLight)
+            "Darkroom" -> activity.setTheme(R.style.Theme_PhoneForFilm_Darkroom)
+            else -> activity.setTheme(R.style.Theme_PhoneForFilm)
         }
     }
 
-    fun applyTheme(context: Context) {
+    fun setTheme(context: Context, themeName: String) {
         val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-        when (prefs.getString(KEY_THEME, "System Default")) {
-            "Light" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            "Dark" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            else -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-        }
+        prefs.edit().putString(KEY_THEME, themeName).apply()
+    }
+
+    private fun getSavedTheme(context: Context): String? {
+        val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        return prefs.getString(KEY_THEME, "Greenroom")
     }
 }
