@@ -3,6 +3,7 @@ package com.example.phoneforfilm.adapter
 import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView
 import com.example.phoneforfilm.R
 import com.example.phoneforfilm.data.Message
@@ -16,10 +17,18 @@ class MessageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         private const val VIEW_TYPE_RECEIVED = 2
     }
 
+    // List of messages
     var messages: List<Message> = emptyList()
 
+    // Callbacks for actions
+    var onMessageEdit: ((Message) -> Unit)? = null
+    var onMessageTimeChange: ((Message) -> Unit)? = null
+    var onMessageStatusChange: ((Message) -> Unit)? = null
+    var onMessageDelete: ((Message) -> Unit)? = null
+    var onMessagePinToggle: ((Message) -> Unit)? = null
+
     override fun getItemViewType(position: Int): Int {
-        return if (messages[position].senderId == /* your user id or condition */ 0L) VIEW_TYPE_SENT
+        return if (messages[position].senderId == /* your user id */ 0L) VIEW_TYPE_SENT
         else VIEW_TYPE_RECEIVED
     }
 
@@ -45,3 +54,52 @@ class MessageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(message: Message) {
+            binding.tvMessage.text = if (message.isDeleted)
+                binding.root.context.getString(R.string.message_deleted)
+            else message.text
+
+            // Timestamp
+            binding.tvSentTime.text = DateFormat.format("HH:mm", message.timestamp).toString()
+
+            // Status icon
+            binding.statusIcon.setImageResource(
+                when (message.status) {
+                    0 -> R.drawable.ic_status_sent
+                    1 -> R.drawable.ic_status_delivered
+                    2 -> R.drawable.ic_status_read
+                    else -> R.drawable.ic_status_sent
+                }
+            )
+
+            // Long-press menu for actions
+            binding.root.setOnLongClickListener {
+                PopupMenu(binding.root.context, binding.root).apply {
+                    inflate(R.menu.message_context_menu)
+                    setOnMenuItemClickListener { menuItem ->
+                        when (menuItem.itemId) {
+                            R.id.menu_edit -> onMessageEdit?.invoke(message)
+                            R.id.menu_change_time -> onMessageTimeChange?.invoke(message)
+                            R.id.menu_change_status -> onMessageStatusChange?.invoke(message)
+                            R.id.menu_delete -> onMessageDelete?.invoke(message)
+                            R.id.menu_pin -> onMessagePinToggle?.invoke(message)
+                        }
+                        true
+                    }
+                }.show()
+                true
+            }
+        }
+    }
+
+    inner class ReceivedViewHolder(private val binding: ItemMessageReceivedBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(message: Message) {
+            binding.tvReceivedMessage.text = if (message.isDeleted)
+                binding.root.context.getString(R.string.message_deleted)
+            else message.text
+
+            binding.tvReceivedTime.text = DateFormat.format("HH:mm", message.timestamp).toString()
+        }
+    }
+}
