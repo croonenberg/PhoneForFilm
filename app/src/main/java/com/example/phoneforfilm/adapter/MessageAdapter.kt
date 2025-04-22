@@ -1,81 +1,87 @@
 package com.example.phoneforfilm.adapter
 
-import com.example.phoneforfilm.R
+import android.text.format.DateFormat
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.view.View
-import android.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView
+import com.example.phoneforfilm.R
 import com.example.phoneforfilm.data.Message
+import com.example.phoneforfilm.databinding.ItemMessageReceivedBinding
 import com.example.phoneforfilm.databinding.ItemMessageSentBinding
 
-class MessageAdapter : RecyclerView.Adapter<MessageAdapter.MessageViewHolder>() {
+class MessageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+    companion object {
+        private const val VIEW_TYPE_SENT = 1
+        private const val VIEW_TYPE_RECEIVED = 2
+    }
 
     var messages: List<Message> = emptyList()
 
-    var onMessageEdit: ((Message) -> Unit)? = null
-    var onMessageTimeChange: ((Message) -> Unit)? = null
-    var onMessageStatusChange: ((Message) -> Unit)? = null
-    var onMessageDelete: ((Message) -> Unit)? = null
-    var onMessagePinToggle: ((Message) -> Unit)? = null
+    override fun getItemViewType(position: Int): Int {
+        return if (messages[position].senderId == /* your user id or condition */ 0L) VIEW_TYPE_SENT
+               else VIEW_TYPE_RECEIVED
+    }
 
-    inner class MessageViewHolder(val binding: ItemMessageSentBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun bind(message: Message) {
-
-            if (message.isDeleted) {
-                binding.tvMessage.text = binding.root.context.getString(R.string.message_deleted)
-            } else {
-                binding.tvMessage.text = message.text
-            }
-
-            // Pin-icoon tonen
-            binding.pinIcon.visibility = if (message.pinned) View.VISIBLE else View.GONE
-
-            binding.favoriteIcon.visibility = if (message.favorite) View.VISIBLE else View.GONE
-
-            binding.root.setOnLongClickListener {
-                val popup = PopupMenu(binding.root.context, binding.root)
-                popup.menuInflater.inflate(R.menu.message_options_menu, popup.menu)
-                popup.setOnMenuItemClickListener { item ->
-                    when (item.itemId) {
-                        R.id.menu_edit -> {
-                            onMessageEdit?.invoke(message)
-                            true
-                        }
-                        R.id.menu_change_time -> {
-                            onMessageTimeChange?.invoke(message)
-                            true
-                        }
-                        R.id.menu_change_status -> {
-                            onMessageStatusChange?.invoke(message)
-                            true
-                        }
-                        R.id.menu_delete -> {
-                            onMessageDelete?.invoke(message)
-                            true
-                        }
-                        R.id.menu_pin -> {
-                            onMessagePinToggle?.invoke(message)
-                            true
-                        }
-                        else -> false
-                    }
-                }
-                popup.show()
-                true
-            }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return if (viewType == VIEW_TYPE_SENT) {
+            val binding = ItemMessageSentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            SentViewHolder(binding)
+        } else {
+            val binding = ItemMessageReceivedBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ReceivedViewHolder(binding)
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MessageViewHolder {
-        val binding = ItemMessageSentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return MessageViewHolder(binding)
-    }
-
-    override fun onBindViewHolder(holder: MessageViewHolder, position: Int) {
-        holder.bind(messages[position])
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        val message = messages[position]
+        if (holder is SentViewHolder) holder.bind(message)
+        else if (holder is ReceivedViewHolder) holder.bind(message)
     }
 
     override fun getItemCount(): Int = messages.size
+
+    inner class SentViewHolder(private val binding: ItemMessageSentBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(message: Message) {
+            binding.tvMessage.text = if (message.isDeleted)
+                binding.root.context.getString(R.string.message_deleted) else message.text
+
+            // timestamp
+            binding.tvSentTime.text = DateFormat.format("HH:mm", message.timestamp).toString()
+
+            // status icon
+            binding.statusIcon.setImageResource(
+                when (message.status) {
+                    0 -> R.drawable.ic_status_sent
+                    1 -> R.drawable.ic_status_delivered
+                    2 -> R.drawable.ic_status_read
+                    else -> R.drawable.ic_status_sent
+                }
+            )
+
+            // dynamic text color on bubble
+            val typedValue = TypedValue()
+            val colorAttr = if (message.status >= 0) android.R.attr.colorOnPrimary
+                            else android.R.attr.colorOnPrimary
+            binding.tvMessage.setTextColor(
+                TypedValue()
+                    .apply { binding.root.context.theme.resolveAttribute(colorAttr, this, true) }
+                    .data
+            )
+        }
+    }
+
+    inner class ReceivedViewHolder(private val binding: ItemMessageReceivedBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(message: Message) {
+            binding.tvReceivedMessage.text = if (message.isDeleted)
+                binding.root.context.getString(R.string.message_deleted) else message.text
+
+            binding.tvReceivedTime.text = DateFormat.format("HH:mm", message.timestamp).toString()
+        }
+    }
 }

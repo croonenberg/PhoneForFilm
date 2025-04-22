@@ -53,3 +53,9 @@ long as you manage them yourself.
 - Unified sent/received chat bubble drawables: now using `background_chat_bubble_sent.xml` and `background_chat_bubble_received.xml` with standardized radius and padding.
 - Removed deprecated drawables: `bg_message_sent.xml`, `bg_message_received.xml`, and unused `bubble_*.xml`.
 - Updated item_message layouts to reference the unified drawables.
+
+## v18.0.8 Enhancements
+- Added vector‐based chat bubbles with tail shapes for sent/received messages.
+- Unified text coloring using theme attributes (`colorOnPrimary`, `colorOnSurface`).
+- Added timestamp (`tvSentTime`, `tvReceivedTime`) and status icons binding in adapter.
+- Refactored `MessageAdapter` to support sent vs received view types.
