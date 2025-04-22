@@ -1,5 +1,4 @@
 package com.example.phoneforfilm.view
-import com.example.phoneforfilm.view.BaseActivity
 
 import android.content.Intent
 import android.os.Bundle
