@@ -69,14 +69,6 @@ class MessageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             }
             binding.tvSentTime.setCompoundDrawablesWithIntrinsicBounds(0, 0, iconRes, 0)
 
-            // Status icon
-                when (message.status) {
-                    0 -> R.drawable.ic_status_sent
-                    1 -> R.drawable.ic_status_delivered
-                    2 -> R.drawable.ic_status_read
-                    else -> R.drawable.ic_status_sent
-                }
-            )
 
             // Long-press menu for actions
             binding.root.setOnLongClickListener {
