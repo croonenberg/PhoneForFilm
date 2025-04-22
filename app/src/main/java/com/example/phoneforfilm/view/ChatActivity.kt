@@ -7,7 +7,6 @@ import android.widget.EditText
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.example.phoneforfilm.view.BaseActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.phoneforfilm.R
 import com.example.phoneforfilm.adapter.MessageAdapter
@@ -18,7 +17,7 @@ import com.example.phoneforfilm.viewmodel.ChatViewModel
 import com.example.phoneforfilm.viewmodel.ChatViewModelFactory
 import java.util.Calendar
 
-class ChatActivity : BaseActivity() {
+class ChatActivity : AppCompatActivity() {
     private lateinit var binding: ActivityChatBinding
     private val viewModel: ChatViewModel by viewModels {
         ChatViewModelFactory(

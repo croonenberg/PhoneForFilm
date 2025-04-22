@@ -2,7 +2,6 @@ package com.example.phoneforfilm.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.phoneforfilm.view.BaseActivity
 import com.example.phoneforfilm.data.AppDatabase
 import com.example.phoneforfilm.data.Contact
 import com.example.phoneforfilm.databinding.ActivityEditContactBinding
@@ -10,7 +9,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class EditContactActivity : BaseActivity() {
+class EditContactActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityEditContactBinding
 
