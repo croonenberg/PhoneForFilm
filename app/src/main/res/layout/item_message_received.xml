@@ -6,24 +6,44 @@
       android:layout_height="wrap_content"
       android:orientation="vertical"
       android:background="@drawable/chat_bubble_received"
-      android:padding="8dp">
+      android:padding="12dp">
 
       <TextView
           android:id="@+id/tvReceivedMessage"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:textColor="@color/chatTextDark"
+          android:textColor="?attr/colorOnSurface"
           android:textAppearance="?attr/textAppearanceBody1" />
 
-      <TextView
-          android:id="@+id/tvReceivedTime"
+      <LinearLayout
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_marginTop="4dp"
-          android:gravity="end"
-          android:textColor="@color/chatTextDark"
-          android:textAppearance="?attr/textAppearanceCaption"
-          android:drawablePadding="4dp" />
+          android:orientation="horizontal"
+          android:gravity="start"
+          android:layout_marginTop="4dp">
 
+          <TextView
+              android:id="@+id/tvReceivedTime"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textColor="?attr/colorOnSurface"
+              android:textAppearance="?attr/textAppearanceCaption" />
+
+          <ImageView
+              android:id="@+id/ivPin"
+              android:layout_width="16dp"
+              android:layout_height="16dp"
+              android:layout_marginStart="4dp"
+              android:src="@drawable/ic_pin"
+              android:contentDescription="@string/pin"/>
+
+          <ImageView
+              android:id="@+id/ivFavorite"
+              android:layout_width="16dp"
+              android:layout_height="16dp"
+              android:layout_marginStart="4dp"
+              android:src="@drawable/ic_favorite"
+              android:contentDescription="@string/favorite"/>
+      </LinearLayout>
   </LinearLayout>
 </layout>

@@ -6,7 +6,9 @@
         <item name="colorOnPrimary">@android:color/white</item>
         <item name="colorSurface">@color/greenroom_background</item>
         <item name="android:windowBackground">?attr/colorSurface</item>
-    </style>
+    
+        <item name="colorOnSurface">@android:color/black</item>
+</style>
 
     <!-- Blue Stage (iMessage-style) -->
     <style name="Theme.PhoneForFilm.BlueStage" parent="Theme.Material3.DayNight.NoActionBar">
@@ -14,7 +16,9 @@
         <item name="colorOnPrimary">@android:color/white</item>
         <item name="colorSurface">@color/blue_stage_background</item>
         <item name="android:windowBackground">?attr/colorSurface</item>
-    </style>
+    
+        <item name="colorOnSurface">@android:color/black</item>
+</style>
 
     <!-- Grey Card -->
     <style name="Theme.PhoneForFilm.GreyCard" parent="Theme.Material3.DayNight.NoActionBar">
@@ -38,7 +42,9 @@
         <item name="colorOnPrimary">@android:color/white</item>
         <item name="colorSurface">@color/darkroom_background</item>
         <item name="android:windowBackground">?attr/colorSurface</item>
-    </style>
+    
+        <item name="colorOnSurface">@android:color/white</item>
+</style>
 
     <!-- Default stijl, verwijst naar Greenroom -->
     <style name="Theme.PhoneForFilm" parent="Theme.PhoneForFilm.Greenroom" />
