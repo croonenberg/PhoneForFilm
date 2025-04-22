@@ -48,3 +48,8 @@ Use within your own production is permitted in accordance with the terms and con
 
 Working on multiple productions within your license period? No problem, you can use the devices as
 long as you manage them yourself.
+
+## Changelog - Unified Chat Bubbles
+- Unified sent/received chat bubble drawables: now using `background_chat_bubble_sent.xml` and `background_chat_bubble_received.xml` with standardized radius and padding.
+- Removed deprecated drawables: `bg_message_sent.xml`, `bg_message_received.xml`, and unused `bubble_*.xml`.
+- Updated item_message layouts to reference the unified drawables.
