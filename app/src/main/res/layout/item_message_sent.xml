@@ -1,43 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
+  <data/>
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      android:background="@drawable/chat_bubble_sent"
+      android:padding="8dp">
 
-    <data></data>
+      <TextView
+          android:id="@+id/tvMessage"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textColor="@color/chatTextLight"
+          android:textAppearance="?attr/textAppearanceBody1" />
 
-    <LinearLayout
-        android:background="@drawable/chat_bubble_sent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="8dp">
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal"
+          android:gravity="end"
+          android:layout_marginTop="4dp">
 
-        <TextView
-            android:id="@+id/tvMessage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="?attr/colorOnPrimary"
-            android:textAppearance="?attr/textAppearanceBody1" />
+          <TextView
+              android:id="@+id/tvSentTime"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textColor="@color/chatTextLight"
+              android:textAppearance="?attr/textAppearanceCaption" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="end"
-            android:layout_marginTop="4dp">
+          <ImageView
+              android:id="@+id/statusIcon"
+              android:layout_width="20dp"
+              android:layout_height="20dp"
+              android:layout_marginStart="4dp"
+              android:contentDescription="@string/status_icon" />
 
-            <TextView
-                android:id="@+id/tvSentTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="?attr/colorOnPrimary"
-                android:textAppearance="?attr/textAppearanceCaption" />
-
-            <ImageView
-                android:id="@+id/statusIcon"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginStart="4dp"
-                android:contentDescription="@string/status_icon" />
-
-        </LinearLayout>
-    </LinearLayout>
+      </LinearLayout>
+  </LinearLayout>
 </layout>
