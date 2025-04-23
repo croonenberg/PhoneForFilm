@@ -4,9 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import com.example.phoneforfilm.R
-import com.example.phoneforfilm.util.ThemeManager
 import com.example.phoneforfilm.databinding.ActivityMainBinding
-import com.example.phoneforfilm.view.BaseActivity
+import com.example.phoneforfilm.utils.ThemeManager
 
 class MainActivity : BaseActivity() {
 
