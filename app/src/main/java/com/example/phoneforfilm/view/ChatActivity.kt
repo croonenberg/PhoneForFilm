@@ -6,13 +6,13 @@ import android.text.InputType
 import android.widget.EditText
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
-import com.example.phoneforfilm.view.BaseActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.phoneforfilm.R
 import com.example.phoneforfilm.adapter.MessageAdapter
 import com.example.phoneforfilm.data.AppDatabase
 import com.example.phoneforfilm.data.MessageRepository
 import com.example.phoneforfilm.databinding.ActivityChatBinding
+import com.example.phoneforfilm.utils.ThemeManager
 import com.example.phoneforfilm.viewmodel.ChatViewModel
 import com.example.phoneforfilm.viewmodel.ChatViewModelFactory
 import java.util.Calendar
@@ -56,7 +56,7 @@ class ChatActivity : BaseActivity() {
         viewModel.loadMessages(chatId)
         viewModel.messages.observe(this) { list ->
             adapter.messages = list
-        adapter.notifyItemInserted(adapter.itemCount - 1)
+            adapter.notifyDataSetChanged()
             if (list.isNotEmpty()) {
                 binding.recyclerViewMessages.scrollToPosition(list.size - 1)
             }
