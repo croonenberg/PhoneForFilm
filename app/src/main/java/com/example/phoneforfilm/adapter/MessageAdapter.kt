@@ -60,7 +60,7 @@ class MessageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
             // Timestamp
             binding.tvSentTime.text = DateFormat.format("HH:mm", message.timestamp).toString()
-            // Set status icon as compound drawable
+            // Status icon
             val iconRes = when (message.status) {
                 0 -> R.drawable.ic_status_sent
                 1 -> R.drawable.ic_status_delivered
@@ -68,6 +68,11 @@ class MessageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 else -> R.drawable.ic_status_sent
             }
             binding.tvSentTime.setCompoundDrawablesWithIntrinsicBounds(0, 0, iconRes, 0)
+                0 -> R.drawable.ic_status_sent
+                1 -> R.drawable.ic_status_delivered
+                2 -> R.drawable.ic_status_read
+                else -> R.drawable.ic_status_sent
+            }
 
 
             // Long-press menu for actions

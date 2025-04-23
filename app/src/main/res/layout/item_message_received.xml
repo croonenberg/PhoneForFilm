@@ -15,35 +15,14 @@
           android:textColor="?attr/colorOnSurface"
           android:textAppearance="?attr/textAppearanceBody1" />
 
-      <LinearLayout
+      <TextView
+          android:id="@+id/tvReceivedTime"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:orientation="horizontal"
+          android:layout_marginTop="4dp"
           android:gravity="start"
-          android:layout_marginTop="4dp">
+          android:textColor="?attr/colorOnSurface"
+          android:textAppearance="?attr/textAppearanceCaption" />
 
-          <TextView
-              android:id="@+id/tvReceivedTime"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:textColor="?attr/colorOnSurface"
-              android:textAppearance="?attr/textAppearanceCaption" />
-
-          <ImageView
-              android:id="@+id/ivPin"
-              android:layout_width="16dp"
-              android:layout_height="16dp"
-              android:layout_marginStart="4dp"
-              android:src="@drawable/ic_pin"
-              android:contentDescription="@string/pin"/>
-
-          <ImageView
-              android:id="@+id/ivFavorite"
-              android:layout_width="16dp"
-              android:layout_height="16dp"
-              android:layout_marginStart="4dp"
-              android:src="@drawable/ic_favorite"
-              android:contentDescription="@string/favorite"/>
-      </LinearLayout>
   </LinearLayout>
 </layout>
