@@ -31,6 +31,7 @@ class ChatActivity : BaseActivity() {
     private val currentUserId: Long = 1L
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        ThemeManager.applyTheme(this)
         super.onCreate(savedInstanceState)
         binding = ActivityChatBinding.inflate(layoutInflater)
         setContentView(binding.root)
