@@ -11,25 +11,29 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textAppearance="?attr/textAppearanceSubtitle1"
+        android:textColor="?attr/colorOnSurface"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/tvTimestamp"/ android:textColor="?attr/colorOnSurface">
+        app:layout_constraintEnd_toStartOf="@id/tvTimestamp"/>
 
     <TextView
         android:id="@+id/tvTimestamp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?attr/textAppearanceCaption"
+        android:textColor="?attr/colorOnSurface"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tvContactName"/ android:textColor="?attr/colorOnSurface">
+        app:layout_constraintTop_toTopOf="@id/tvContactName"/>
 
     <TextView
         android:id="@+id/tvLastMessage"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textAppearance="?attr/textAppearanceBody2"
+        android:textColor="?attr/colorOnSurface"
         app:layout_constraintStart_toStartOf="@id/tvContactName"
         app:layout_constraintTop_toBottomOf="@id/tvContactName"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="4dp"/ android:textColor="?attr/colorOnSurface">
+        android:layout_marginTop="4dp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
