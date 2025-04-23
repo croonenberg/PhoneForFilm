@@ -73,14 +73,14 @@ class MessageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             // Long-press menu for actions
             binding.root.setOnLongClickListener {
                 PopupMenu(binding.root.context, binding.root).apply {
-                    inflate(R.menu.message_context_menu)
+                    inflate(R.menu.message_options_menu)
                     setOnMenuItemClickListener { menuItem ->
                         when (menuItem.itemId) {
-                            R.id.menu_edit -> onMessageEdit?.invoke(message)
+                            R.id.menu_edit_message -> onMessageEdit?.invoke(message)
                             R.id.menu_change_time -> onMessageTimeChange?.invoke(message)
                             R.id.menu_change_status -> onMessageStatusChange?.invoke(message)
                             R.id.menu_delete -> onMessageDelete?.invoke(message)
-                            R.id.menu_pin -> onMessagePinToggle?.invoke(message)
+                            R.id.menu_toggle_pin -> onMessagePinToggle?.invoke(message)
                         }
                         true
                     }
