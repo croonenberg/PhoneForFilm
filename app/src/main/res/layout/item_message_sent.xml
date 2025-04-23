@@ -1,28 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
-  <data/>
-  <LinearLayout
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:orientation="vertical"
-      android:background="@drawable/chat_bubble_sent"
-      android:padding="8dp">
+    <data/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/chat_bubble_sent"
+        android:padding="8dp"
+    android:clickable="true"
+    android:focusable="true">
 
-      <TextView
-          android:id="@+id/tvSentMessage"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:textColor="?attr/colorOnPrimary"
-          android:textAppearance="?attr/textAppearanceBody1" />
+        <TextView
+            android:id="@+id/tvSentMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="?attr/colorOnPrimary"
+            android:textAppearance="?attr/textAppearanceBody1" />
 
-      <TextView
-          android:id="@+id/tvSentTime"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_marginTop="4dp"
-          android:gravity="end"
-          android:textColor="?attr/colorOnPrimary"
-          android:textAppearance="?attr/textAppearanceCaption"
-          android:drawablePadding="4dp"/>
-  </LinearLayout>
+        <!-- Timestamp with status icon as compound drawable -->
+        <TextView
+            android:id="@+id/tvSentTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="end"
+            android:textColor="?attr/colorOnPrimary"
+            android:textAppearance="?attr/textAppearanceCaption"
+            android:drawablePadding="4dp" />
+
+    </LinearLayout>
 </layout>

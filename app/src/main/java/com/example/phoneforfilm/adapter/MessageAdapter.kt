@@ -72,6 +72,7 @@ class MessageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
             // Long-press menu for actions
             binding.root.setOnLongClickListener {
+            // Note: uses default long-click (system threshold). For custom 3s press, use setOnTouchListener with Handler.
                 PopupMenu(binding.root.context, binding.root).apply {
                     inflate(R.menu.message_options_menu)
                     setOnMenuItemClickListener { menuItem ->
