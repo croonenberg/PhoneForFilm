@@ -23,7 +23,7 @@ class MainActivity : BaseActivity() {
         }
 
         // 📞 Start Call
-        binding.btnStartCall.setOnClickListener {
+        binding.btnStartCallMain.setOnClickListener {
             startActivity(Intent(this, CallActivity::class.java))
         }
 

@@ -15,7 +15,7 @@ class ConversationAdapter(
     inner class ConversationViewHolder(val binding: ItemConversationBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(conversation: Conversation) {
-            binding.tvContactName.text = contactNames[conversation.contactId] ?: "Onbekend"
+            binding.tvContactNameConversation.text = contactNames[conversation.contactId] ?: "Onbekend"
             binding.tvLastMessage.text = conversation.lastMessage
             binding.tvTimestamp.text = android.text.format.DateFormat.format("HH:mm", conversation.timestamp)
             binding.root.setOnClickListener { onClick(conversation) }
