@@ -2,7 +2,6 @@ package com.example.phoneforfilm.view
 
 import android.content.Intent
 import android.os.Bundle
-import com.example.phoneforfilm.view.BaseActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.phoneforfilm.adapter.ContactAdapter
 import com.example.phoneforfilm.data.AppDatabase
@@ -27,8 +26,9 @@ class ContactListActivity : BaseActivity() {
             val contacts = db.contactDao().getAllNow()
 
             withContext(Dispatchers.Main) {
-                val adapter = ContactAdapter(contacts)
+                val adapter = ContactAdapter()
                 binding.recyclerViewContacts.layoutManager = LinearLayoutManager(this@ContactListActivity)
+                adapter.submitList(contacts)
                 binding.recyclerViewContacts.adapter = adapter
             }
         }
