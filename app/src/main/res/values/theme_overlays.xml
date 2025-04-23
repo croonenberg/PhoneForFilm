@@ -1,25 +1,31 @@
 
 <resources>
 
-    <!-- WhatsApp‑look -->
-    <style name="ThemeOverlay.Chat.WhatsApp" parent="">
+    <!-- WhatsApp -->
+    <style name="ThemeOverlay.Chat.WhatsApp">
         <item name="colorPrimary">#075E54</item>
         <item name="colorBubbleSent">#DCF8C6</item>
+        <item name="colorBubbleSentText">#000000</item>
         <item name="colorBubbleReceived">#FFFFFF</item>
+        <item name="colorBubbleReceivedText">#000000</item>
     </style>
 
-    <!-- iMessage‑look -->
-    <style name="ThemeOverlay.Chat.iMessage" parent="">
+    <!-- iMessage -->
+    <style name="ThemeOverlay.Chat.iMessage">
         <item name="colorPrimary">#007AFF</item>
         <item name="colorBubbleSent">#007AFF</item>
+        <item name="colorBubbleSentText">#FFFFFF</item>
         <item name="colorBubbleReceived">#E5E5EA</item>
+        <item name="colorBubbleReceivedText">#000000</item>
     </style>
 
-    <!-- Telegram‑look -->
-    <style name="ThemeOverlay.Chat.Telegram" parent="">
+    <!-- Telegram -->
+    <style name="ThemeOverlay.Chat.Telegram">
         <item name="colorPrimary">#0088CC</item>
         <item name="colorBubbleSent">#0088CC</item>
+        <item name="colorBubbleSentText">#FFFFFF</item>
         <item name="colorBubbleReceived">#FFFFFF</item>
+        <item name="colorBubbleReceivedText">#000000</item>
     </style>
 
 </resources>
