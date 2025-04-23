@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Night mode variant of generic chat overlay -->
+    <style name="ThemeOverlay.Chat" parent="ThemeOverlay.Material3.DayNight.Dialog.Alert">
+        <item name="colorPrimary">@color/chat_sent_background</item>
+        <item name="colorOnPrimary">@android:color/white</item>
+
+        <item name="colorSecondary">@color/chat_received_background</item>
+        <item name="colorOnSecondary">@android:color/white</item>
+
+        <item name="android:textColorPrimary">@android:color/white</item>
+    </style>
+
+</resources>
