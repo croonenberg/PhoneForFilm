@@ -15,7 +15,7 @@ class ContactAdapter(
     inner class ContactViewHolder(val binding: ItemContactBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(contact: Contact) {
-            binding.tvContactName.text = contact.name
+            binding.tvContactNameContact.text = contact.name
             binding.root.setOnClickListener { onClick(contact) }
         }
     }
@@ -30,11 +30,6 @@ class ContactAdapter(
     }
 
     override fun getItemCount(): Int = contacts.size
-
-    fun submitList(newList: List<Contact>) {
-        contacts = newList
-        notifyDataSetChanged()
-    }
 
     fun submitList(newList: List<Contact>) {
         contacts = newList
