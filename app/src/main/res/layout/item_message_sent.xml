@@ -6,6 +6,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:background="@drawable/chat_bubble_sent"
+    android:foreground="?attr/selectableItemBackground"
         android:padding="8dp"
     android:clickable="true"
     android:focusable="true">

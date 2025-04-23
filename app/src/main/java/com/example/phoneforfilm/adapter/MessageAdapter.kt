@@ -52,6 +52,26 @@ class MessageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     inner class SentViewHolder(private val binding: ItemMessageSentBinding) :
         RecyclerView.ViewHolder(binding.root) {
+        init {
+            binding.root.isClickable = true
+            binding.root.setOnLongClickListener {
+                PopupMenu(binding.root.context, binding.root).apply {
+                    inflate(R.menu.message_options_menu)
+                    setOnMenuItemClickListener { menuItem ->
+                        when (menuItem.itemId) {
+                            R.id.menu_edit_message -> onMessageEdit?.invoke(binding.message!!)
+                            R.id.menu_change_time -> onMessageTimeChange?.invoke(binding.message!!)
+                            R.id.menu_change_status -> onMessageStatusChange?.invoke(binding.message!!)
+                            R.id.menu_toggle_pin -> onMessagePinToggle?.invoke(binding.message!!)
+                            R.id.menu_toggle_favorite -> onMessageFavoriteToggle?.invoke(binding.message!!)
+                            R.id.menu_delete -> onMessageDelete?.invoke(binding.message!!)
+                        }
+                        true
+                    }
+                }.show()
+                true
+            }
+        }
 
         fun bind(message: Message) {
             binding.tvSentMessage.text = if (message.isDeleted)
@@ -71,10 +91,7 @@ class MessageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 
             // Long-press menu for actions
-            binding.root.setOnLongClickListener {
             // Note: uses default long-click (system threshold). For custom 3s press, use setOnTouchListener with Handler.
-                PopupMenu(binding.root.context, binding.root).apply {
-                    inflate(R.menu.message_options_menu)
                     setOnMenuItemClickListener { menuItem ->
                         when (menuItem.itemId) {
                             R.id.menu_edit_message -> onMessageEdit?.invoke(message)
