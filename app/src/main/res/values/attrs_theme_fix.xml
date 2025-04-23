@@ -1,4 +1,0 @@
-<resources>
-    <!-- Define text color attribute for bubbles -->
-    <attr name="bubbleTextColor" format="reference|color"/>
-</resources>
