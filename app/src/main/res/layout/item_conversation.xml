@@ -7,7 +7,7 @@
     android:padding="12dp">
 
     <TextView
-        android:id="@+id/tvContactName"
+        android:id="@+id/tvContactNameConversation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textAppearance="?attr/textAppearanceSubtitle1"
@@ -23,7 +23,7 @@
         android:textAppearance="?attr/textAppearanceCaption"
         android:textColor="?attr/colorOnSurface"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tvContactName"/>
+        app:layout_constraintTop_toTopOf="@id/tvContactNameConversation"/>
 
     <TextView
         android:id="@+id/tvLastMessage"
@@ -31,8 +31,8 @@
         android:layout_height="wrap_content"
         android:textAppearance="?attr/textAppearanceBody2"
         android:textColor="?attr/colorOnSurface"
-        app:layout_constraintStart_toStartOf="@id/tvContactName"
-        app:layout_constraintTop_toBottomOf="@id/tvContactName"
+        app:layout_constraintStart_toStartOf="@id/tvContactNameConversation"
+        app:layout_constraintTop_toBottomOf="@id/tvContactNameConversation"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="4dp"/>
 
