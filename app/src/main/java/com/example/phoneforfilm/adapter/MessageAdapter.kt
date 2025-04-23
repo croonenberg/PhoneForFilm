@@ -1,3 +1,4 @@
+
 package com.example.phoneforfilm.adapter
 
 import android.text.format.DateFormat
@@ -10,7 +11,14 @@ import com.example.phoneforfilm.data.Message
 import com.example.phoneforfilm.databinding.ItemMessageReceivedBinding
 import com.example.phoneforfilm.databinding.ItemMessageSentBinding
 
-class MessageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+/**
+ * RecyclerView‑adapter met long‑click‑menu, status‑vinkjes en themakleuren.
+ * De adapter krijgt nu het huidige userId binnen zodat sent/received
+ * correct bepaald wordt.
+ */
+class MessageAdapter(
+    private val currentUserId: Long
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object {
         private const val VIEW_TYPE_SENT = 1
@@ -19,7 +27,7 @@ class MessageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var messages: List<Message> = emptyList()
 
-    // Callbacks for message actions
+    // Callbacks voor message‑acties
     var onMessageEdit: ((Message) -> Unit)? = null
     var onMessageTimeChange: ((Message) -> Unit)? = null
     var onMessageStatusChange: ((Message) -> Unit)? = null
@@ -28,7 +36,7 @@ class MessageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var onMessageFavoriteToggle: ((Message) -> Unit)? = null
 
     override fun getItemViewType(position: Int): Int {
-        return if (messages[position].senderId == /* your user id */ 0L) VIEW_TYPE_SENT
+        return if (messages[position].senderId == currentUserId) VIEW_TYPE_SENT
         else VIEW_TYPE_RECEIVED
     }
 
@@ -58,15 +66,12 @@ class MessageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(message: Message) {
-            // Message text
             binding.tvSentMessage.text = if (message.isDeleted)
                 binding.root.context.getString(R.string.message_deleted)
             else message.text
 
-            // Timestamp
+            // Tijd + status‑vinkje
             binding.tvSentTime.text = DateFormat.format("HH:mm", message.timestamp).toString()
-
-            // Status icon (checkmarks)
             val iconRes = when (message.status) {
                 0 -> R.drawable.ic_status_sent
                 1 -> R.drawable.ic_status_delivered
@@ -75,24 +80,7 @@ class MessageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             }
             binding.tvSentTime.setCompoundDrawablesWithIntrinsicBounds(0, 0, iconRes, 0)
 
-            // Long press for message actions
-            binding.root.setOnLongClickListener {
-                PopupMenu(binding.root.context, binding.root).apply {
-                    inflate(R.menu.message_options_menu)
-                    setOnMenuItemClickListener { menuItem ->
-                        when (menuItem.itemId) {
-                            R.id.menu_edit_message -> onMessageEdit?.invoke(message)
-                            R.id.menu_change_time -> onMessageTimeChange?.invoke(message)
-                            R.id.menu_change_status -> onMessageStatusChange?.invoke(message)
-                            R.id.menu_toggle_pin -> onMessagePinToggle?.invoke(message)
-                            R.id.menu_toggle_favorite -> onMessageFavoriteToggle?.invoke(message)
-                            R.id.menu_delete -> onMessageDelete?.invoke(message)
-                        }
-                        true
-                    }
-                }.show()
-                true
-            }
+            showOptionsMenuIfLongPressed(binding.root, message)
         }
     }
 
@@ -104,7 +92,31 @@ class MessageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 binding.root.context.getString(R.string.message_deleted)
             else message.text
 
-            binding.tvReceivedTime.text = DateFormat.format("HH:mm", message.timestamp).toString()
+            binding.tvReceivedTime.text =
+                DateFormat.format("HH:mm", message.timestamp).toString()
+
+            // Optioneel: ook received‑bubbles een menu geven
+            showOptionsMenuIfLongPressed(binding.root, message)
+        }
+    }
+
+    private fun showOptionsMenuIfLongPressed(view: android.view.View, message: Message) {
+        view.setOnLongClickListener {
+            PopupMenu(view.context, view).apply {
+                inflate(R.menu.message_options_menu)
+                setOnMenuItemClickListener { item ->
+                    when (item.itemId) {
+                        R.id.menu_edit_message     -> onMessageEdit?.invoke(message)
+                        R.id.menu_change_time      -> onMessageTimeChange?.invoke(message)
+                        R.id.menu_change_status    -> onMessageStatusChange?.invoke(message)
+                        R.id.menu_toggle_pin       -> onMessagePinToggle?.invoke(message)
+                        R.id.menu_toggle_favorite  -> onMessageFavoriteToggle?.invoke(message)
+                        R.id.menu_delete           -> onMessageDelete?.invoke(message)
+                    }
+                    true
+                }
+            }.show()
+            true
         }
     }
 }

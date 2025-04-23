@@ -1,3 +1,4 @@
+
 package com.example.phoneforfilm.view
 
 import android.app.TimePickerDialog
@@ -17,18 +18,18 @@ import com.example.phoneforfilm.viewmodel.ChatViewModel
 import com.example.phoneforfilm.viewmodel.ChatViewModelFactory
 import java.util.Calendar
 
+/** Chat‑scherm met thema‑ondersteuning en long‑click menu. */
 class ChatActivity : BaseActivity() {
+
     private lateinit var binding: ActivityChatBinding
     private val viewModel: ChatViewModel by viewModels {
         ChatViewModelFactory(
-            MessageRepository(
-                AppDatabase.getDatabase(this).messageDao()
-            )
+            MessageRepository(AppDatabase.getDatabase(this).messageDao())
         )
     }
 
-    private lateinit var adapter: MessageAdapter
     private val currentUserId: Long = 1L
+    private lateinit var adapter: MessageAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         ThemeManager.applyTheme(this)
@@ -36,21 +37,17 @@ class ChatActivity : BaseActivity() {
         binding = ActivityChatBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        adapter = MessageAdapter()
-
-        adapter.onMessageEdit         = { message -> editMessage(message) }
-        adapter.onMessageTimeChange   = { message -> editTime(message) }
-        adapter.onMessageStatusChange = { message -> changeStatus(message) }
-        adapter.onMessageDelete       = { message -> deleteMessage(message) }
-        adapter.onMessagePinToggle    = { message ->
-            // Toggle pin-status using 'pinned' property
-            togglePin(message, !message.pinned)
+        adapter = MessageAdapter(currentUserId).apply {
+            onMessageEdit         = { message -> editMessage(message) }
+            onMessageTimeChange   = { message -> editTime(message) }
+            onMessageStatusChange = { message -> changeStatus(message) }
+            onMessageDelete       = { message -> deleteMessage(message) }
+            onMessagePinToggle    = { message -> togglePin(message, !message.pinned) }
         }
 
-        binding.recyclerViewMessages.apply {
-            layoutManager = LinearLayoutManager(this@ChatActivity)
-            adapter = this@ChatActivity.adapter
-        }
+        binding.recyclerViewMessages.layoutManager =
+            LinearLayoutManager(this@ChatActivity)
+        binding.recyclerViewMessages.adapter = adapter
 
         val chatId = intent.getLongExtra("CONVERSATION_ID", -1L)
         viewModel.loadMessages(chatId)
@@ -71,6 +68,7 @@ class ChatActivity : BaseActivity() {
         }
     }
 
+    // ----- helpers (identiek aan origineel) -----
     private fun editMessage(message: com.example.phoneforfilm.data.Message) {
         val input = EditText(this).apply {
             setText(message.text)
@@ -91,11 +89,12 @@ class ChatActivity : BaseActivity() {
         val cal = Calendar.getInstance().apply { timeInMillis = message.timestamp }
         TimePickerDialog(
             this,
-            { _, hour, minute ->
-                cal.set(Calendar.HOUR_OF_DAY, hour)
-                cal.set(Calendar.MINUTE, minute)
-                val updated = message.copy(timestamp = cal.timeInMillis)
-                viewModel.updateMessage(updated)
+            { _, h, m ->
+                val newTime = cal.apply {
+                    set(Calendar.HOUR_OF_DAY, h)
+                    set(Calendar.MINUTE, m)
+                }.timeInMillis
+                viewModel.updateMessage(message.copy(timestamp = newTime))
             },
             cal.get(Calendar.HOUR_OF_DAY),
             cal.get(Calendar.MINUTE),
@@ -105,27 +104,23 @@ class ChatActivity : BaseActivity() {
 
     private fun changeStatus(message: com.example.phoneforfilm.data.Message) {
         val statuses = arrayOf(
-            getString(R.string.menu_status_sent),
-            getString(R.string.menu_status_delivered),
-            getString(R.string.menu_status_read)
+            getString(R.string.status_sent),
+            getString(R.string.status_delivered),
+            getString(R.string.status_read)
         )
         AlertDialog.Builder(this)
             .setTitle(R.string.change_status)
-            .setSingleChoiceItems(statuses, message.status) { dialog, which ->
-                val updated = message.copy(status = which)
-                viewModel.updateMessage(updated)
-                dialog.dismiss()
+            .setItems(statuses) { _, which ->
+                viewModel.updateMessage(message.copy(status = which))
             }
             .show()
     }
 
     private fun deleteMessage(message: com.example.phoneforfilm.data.Message) {
-        viewModel.deleteMessage(message)
+        viewModel.updateMessage(message.copy(isDeleted = true))
     }
 
     private fun togglePin(message: com.example.phoneforfilm.data.Message, pin: Boolean) {
-        // Use 'pinned' parameter name
-        val updated = message.copy(pinned = pin)
-        viewModel.updateMessage(updated)
+        viewModel.updateMessage(message.copy(pinned = pin))
     }
 }
