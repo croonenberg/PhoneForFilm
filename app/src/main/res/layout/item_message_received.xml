@@ -6,9 +6,9 @@
       android:layout_height="wrap_content"
       android:orientation="vertical"
       android:background="@drawable/chat_bubble_received"
-      android:padding="12dp"
-    android:clickable="true"
-    android:focusable="true">
+      android:clickable="true"
+      android:focusable="true"
+      android:padding="8dp">
 
       <TextView
           android:id="@+id/tvReceivedMessage"
@@ -24,7 +24,6 @@
           android:layout_marginTop="4dp"
           android:gravity="start"
           android:textColor="?attr/colorOnSurface"
-          android:textAppearance="?attr/textAppearanceCaption" />
-
+          android:textAppearance="?attr/textAppearanceCaption"/>
   </LinearLayout>
 </layout>

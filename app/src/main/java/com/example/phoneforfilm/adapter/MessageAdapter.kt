@@ -17,15 +17,15 @@ class MessageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         private const val VIEW_TYPE_RECEIVED = 2
     }
 
-    // List of messages
     var messages: List<Message> = emptyList()
 
-    // Callbacks for actions
+    // Callbacks for message actions
     var onMessageEdit: ((Message) -> Unit)? = null
     var onMessageTimeChange: ((Message) -> Unit)? = null
     var onMessageStatusChange: ((Message) -> Unit)? = null
     var onMessageDelete: ((Message) -> Unit)? = null
     var onMessagePinToggle: ((Message) -> Unit)? = null
+    var onMessageFavoriteToggle: ((Message) -> Unit)? = null
 
     override fun getItemViewType(position: Int): Int {
         return if (messages[position].senderId == /* your user id */ 0L) VIEW_TYPE_SENT
@@ -34,10 +34,14 @@ class MessageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == VIEW_TYPE_SENT) {
-            val binding = ItemMessageSentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            val binding = ItemMessageSentBinding.inflate(
+                LayoutInflater.from(parent.context), parent, false
+            )
             SentViewHolder(binding)
         } else {
-            val binding = ItemMessageReceivedBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            val binding = ItemMessageReceivedBinding.inflate(
+                LayoutInflater.from(parent.context), parent, false
+            )
             ReceivedViewHolder(binding)
         }
     }
@@ -52,35 +56,17 @@ class MessageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     inner class SentViewHolder(private val binding: ItemMessageSentBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        init {
-            binding.root.isClickable = true
-            binding.root.setOnLongClickListener {
-                PopupMenu(binding.root.context, binding.root).apply {
-                    inflate(R.menu.message_options_menu)
-                    setOnMenuItemClickListener { menuItem ->
-                        when (menuItem.itemId) {
-                            R.id.menu_edit_message -> onMessageEdit?.invoke(binding.message!!)
-                            R.id.menu_change_time -> onMessageTimeChange?.invoke(binding.message!!)
-                            R.id.menu_change_status -> onMessageStatusChange?.invoke(binding.message!!)
-                            R.id.menu_toggle_pin -> onMessagePinToggle?.invoke(binding.message!!)
-                            R.id.menu_toggle_favorite -> onMessageFavoriteToggle?.invoke(binding.message!!)
-                            R.id.menu_delete -> onMessageDelete?.invoke(binding.message!!)
-                        }
-                        true
-                    }
-                }.show()
-                true
-            }
-        }
 
         fun bind(message: Message) {
+            // Message text
             binding.tvSentMessage.text = if (message.isDeleted)
                 binding.root.context.getString(R.string.message_deleted)
             else message.text
 
             // Timestamp
             binding.tvSentTime.text = DateFormat.format("HH:mm", message.timestamp).toString()
-            // Set status icon as compound drawable
+
+            // Status icon (checkmarks)
             val iconRes = when (message.status) {
                 0 -> R.drawable.ic_status_sent
                 1 -> R.drawable.ic_status_delivered
@@ -89,16 +75,18 @@ class MessageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             }
             binding.tvSentTime.setCompoundDrawablesWithIntrinsicBounds(0, 0, iconRes, 0)
 
-
-            // Long-press menu for actions
-            // Note: uses default long-click (system threshold). For custom 3s press, use setOnTouchListener with Handler.
+            // Long press for message actions
+            binding.root.setOnLongClickListener {
+                PopupMenu(binding.root.context, binding.root).apply {
+                    inflate(R.menu.message_options_menu)
                     setOnMenuItemClickListener { menuItem ->
                         when (menuItem.itemId) {
                             R.id.menu_edit_message -> onMessageEdit?.invoke(message)
                             R.id.menu_change_time -> onMessageTimeChange?.invoke(message)
                             R.id.menu_change_status -> onMessageStatusChange?.invoke(message)
-                            R.id.menu_delete -> onMessageDelete?.invoke(message)
                             R.id.menu_toggle_pin -> onMessagePinToggle?.invoke(message)
+                            R.id.menu_toggle_favorite -> onMessageFavoriteToggle?.invoke(message)
+                            R.id.menu_delete -> onMessageDelete?.invoke(message)
                         }
                         true
                     }
