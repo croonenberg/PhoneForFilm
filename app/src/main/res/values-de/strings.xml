@@ -40,10 +40,6 @@
     <string name="status_delivered">✓✓ zugestellt</string>
     <string name="status_read">✓✓ gelesen</string>
     <string name="change_sender">Absender ändern</string>
-    <string name="pin">Nachricht anheften</string>
-    <string name="unpin">Löse Anheftung</string>
-    <string name="favorite">Als Favorit markieren</string>
-    <string name="unfavorite">Favorit entfernen</string>
     <string name="delete_message">Nachricht löschen</string>
     <string name="cancel">Abbrechen</string>
     <string name="new_conversation">Neues Gespräch</string>
@@ -53,16 +49,12 @@
     <string name="save">Speichern</string>
     <string name="contact_list">Kontaktliste</string>
     <string name="new_contact">Neuer Kontakt</string>
-    <string name="pin_unpin">Anheften/Lösen</string>
-    <string name="pinned_icon">Angeheftetes Symbol</string>
     <string name="status_icon">Statussymbol</string>
     <string name="phone">Telefon</string>
     <string name="last_message">Letzte Nachricht</string>
     <string name="example_phone_number">+49 170 1234567</string>
     <string name="message_deleted">Nachricht gelöscht</string>
 
-    <string name="toggle_pin">Anheften / Lösen</string>
-    <string name="toggle_favorite">Favorit / Nicht Favorit</string>
     <string name="menu_time_now">Jetzt</string>
     <string name="menu_time_5min_ago">Vor 5 Minuten</string>
     <string name="menu_time_custom">Benutzerdefiniert…</string>
@@ -72,4 +64,3 @@
     <string name="isPinned">Ist angeheftet</string>
     <string name="reject">Ablehnen</string>
     <string name="contact_name">Kontakt</string>
-<string name="favorite_icon">Favorit</string></resources>

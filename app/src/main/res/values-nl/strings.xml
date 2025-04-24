@@ -40,10 +40,6 @@
     <string name="status_delivered">✓✓ afgeleverd</string>
     <string name="status_read">✓✓ gelezen</string>
     <string name="change_sender">Verander afzender</string>
-    <string name="pin">Pin bericht</string>
-    <string name="unpin">Maak los-pin</string>
-    <string name="favorite">Markeer favoriet</string>
-    <string name="unfavorite">Verwijder favoriet</string>
     <string name="delete_message">Verwijder bericht</string>
     <string name="cancel">Annuleer</string>
     <string name="new_conversation">Nieuwe conversatie</string>
@@ -53,16 +49,12 @@
     <string name="save">Opslaan</string>
     <string name="contact_list">Contactlijst</string>
     <string name="new_contact">Nieuw contact</string>
-    <string name="pin_unpin">Vastzetten/Losmaken</string>
-    <string name="pinned_icon">Vastgezet pictogram</string>
     <string name="status_icon">Status icoon</string>
     <string name="phone">Telefoon</string>
     <string name="last_message">Laatste bericht</string>
     <string name="example_phone_number">+31 6 12345678</string>
     <string name="message_deleted">Bericht verwijderd</string>
 
-    <string name="toggle_pin">Vastzetten / Losmaken</string>
-    <string name="toggle_favorite">Favoriet / Niet favoriet</string>
     <string name="menu_time_now">Now</string>
     <string name="menu_time_5min_ago">5 minutes ago</string>
     <string name="menu_time_custom">Custom…</string>
@@ -72,4 +64,3 @@
     <string name="reject">Weigeren</string>
     <string name="contact_name">Contact</string>
     <string name="isPinned">Is vastgezet</string>
-<string name="favorite_icon">Favoriet</string></resources>

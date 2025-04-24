@@ -40,10 +40,6 @@
     <string name="status_delivered">✓✓ delivered</string>
     <string name="status_read">✓✓ read</string>
     <string name="change_sender">Change sender</string>
-    <string name="pin">Pin message</string>
-    <string name="unpin">Unpin message</string>
-    <string name="favorite">Mark as favorite</string>
-    <string name="unfavorite">Unfavorite</string>
     <string name="delete_message">Delete message</string>
     <string name="cancel">Cancel</string>
     <string name="new_conversation">New conversation</string>
@@ -59,12 +55,8 @@
     <string name="example_phone_number">+31 6 12345678</string>
 
     <string name="message_deleted">Message deleted</string>
-    <string name="pin_unpin">Pin/Unpin</string>
-    <string name="pinned_icon">Pinned icon</string>
     <string name="status_icon">Status</string>
 
-    <string name="toggle_pin">Pin / Unpin</string>
-    <string name="toggle_favorite">Favorite / Unfavorite</string>
     <string name="menu_time_now">Now</string>
     <string name="menu_time_5min_ago">5 minutes ago</string>
     <string name="menu_time_custom">Custom…</string>
@@ -74,5 +66,7 @@
     <string name="reject">Reject</string>
     <string name="contact_name">Contact</string>
     <string name="isPinned">Is Pinned</string>
-    <string name="favorite_icon">Favorite</string>
+    <string name="toggle_direction">Toggle direction</string>
+    <string name="contact_photo">Contact photo</string>
+    <string name="unknown_contact">Unknown</string>
 </resources>

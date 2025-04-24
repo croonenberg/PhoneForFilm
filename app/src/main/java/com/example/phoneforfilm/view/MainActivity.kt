@@ -1,3 +1,4 @@
+
 package com.example.phoneforfilm.view
 
 import android.content.Intent
@@ -7,29 +8,41 @@ import com.example.phoneforfilm.R
 import com.example.phoneforfilm.databinding.ActivityMainBinding
 import com.example.phoneforfilm.utils.ThemeManager
 
+/**
+ * Home screen with quick‑action buttons.
+ *
+ *  • Start Chat → opens the list of conversations
+ *  • Start Call → existing demo functionality
+ *  • Theme & Language selectors
+ */
 class MainActivity : BaseActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        // apply the currently selected theme before setContentView
         ThemeManager.applyTheme(this)
         super.onCreate(savedInstanceState)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // 🌐 Start Chat
+        /*──────────────────────────────────────────
+         * Navigation
+         *─────────────────────────────────────────*/
         binding.btnStartChat.setOnClickListener {
             startActivity(Intent(this, ChatListActivity::class.java))
         }
 
-        // 📞 Start Call
         binding.btnStartCallMain.setOnClickListener {
             startActivity(Intent(this, CallActivity::class.java))
         }
 
-        // 🌈 Choose Theme
+        /*──────────────────────────────────────────
+         * Theme picker
+         *─────────────────────────────────────────*/
         binding.btnTheme.setOnClickListener {
-            val themes = arrayOf("Greenroom", "Blue Stage", "Grey Card", "Neutral Light", "Darkroom")
+            val themes = arrayOf("Classic", "Dark", "Ocean")
             AlertDialog.Builder(this)
                 .setTitle(R.string.choose_theme)
                 .setItems(themes) { _, which ->
@@ -39,7 +52,9 @@ class MainActivity : BaseActivity() {
                 .show()
         }
 
-        // 🌐 Choose Language (optional)
+        /*──────────────────────────────────────────
+         * Language picker
+         *─────────────────────────────────────────*/
         binding.btnLanguage.setOnClickListener {
             startActivity(Intent(this, LanguageSelectionActivity::class.java))
         }

@@ -3,8 +3,5 @@
     <item android:id="@+id/menu_edit_message" android:title="@string/edit_message"/>
     <item android:id="@+id/menu_change_time" android:title="@string/change_time"/>
     <item android:id="@+id/menu_change_status" android:title="@string/change_status"/>
-    <item android:id="@+id/menu_change_sender" android:title="@string/change_sender"/>
-    <item android:id="@+id/menu_toggle_pin" android:title="@string/toggle_pin"/>
-    <item android:id="@+id/menu_toggle_favorite" android:title="@string/toggle_favorite"/>
-    <item android:id="@+id/menu_delete" android:title="@string/delete"/>
+    <item android:id="@+id/menu_change_sender" android:title="@string/change_sender"/><item android:id="@+id/menu_delete" android:title="@string/delete"/>
 </menu>

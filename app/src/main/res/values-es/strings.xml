@@ -40,10 +40,6 @@
     <string name="status_delivered">✓✓ entregado</string>
     <string name="status_read">✓✓ leído</string>
     <string name="change_sender">Cambiar remitente</string>
-    <string name="pin">Fijar mensaje</string>
-    <string name="unpin">Desfijar mensaje</string>
-    <string name="favorite">Marcar como favorito</string>
-    <string name="unfavorite">Quitar de favoritos</string>
     <string name="delete_message">Eliminar mensaje</string>
     <string name="cancel">Cancelar</string>
     <string name="new_conversation">Nueva conversación</string>
@@ -53,16 +49,12 @@
     <string name="save">Guardar</string>
     <string name="contact_list">Lista de contactos</string>
     <string name="new_contact">Nuevo contacto</string>
-    <string name="pin_unpin">Fijar/Desfijar</string>
-    <string name="pinned_icon">Icono fijado</string>
     <string name="status_icon">Icono de estado</string>
     <string name="phone">Teléfono</string>
     <string name="last_message">Último mensaje</string>
     <string name="example_phone_number">+34 612 34 56 78</string>
     <string name="message_deleted">Mensaje eliminado</string>
 
-    <string name="toggle_pin">Fijar / Desfijar</string>
-    <string name="toggle_favorite">Favorito / No favorito</string>
     <string name="menu_time_now">Ahora</string>
     <string name="menu_time_5min_ago">Hace 5 minutos</string>
     <string name="menu_time_custom">Personalizado…</string>
@@ -72,4 +64,3 @@
     <string name="isPinned">Está fijado</string>
     <string name="contact_name">Contacto</string>
     <string name="reject">Rechazar</string>
-<string name="favorite_icon">Favorito</string></resources>

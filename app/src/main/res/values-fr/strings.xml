@@ -40,10 +40,6 @@
     <string name="status_delivered">✓✓ livré</string>
     <string name="status_read">✓✓ lu</string>
     <string name="change_sender">Changer l\'expéditeur</string>
-    <string name="pin">Épingler le message</string>
-    <string name="unpin">Désépingler le message</string>
-    <string name="favorite">Marquer comme favori</string>
-    <string name="unfavorite">Retirer des favoris</string>
     <string name="delete_message">Supprimer le message</string>
     <string name="cancel">Annuler</string>
     <string name="new_conversation">Nouvelle conversation</string>
@@ -53,16 +49,12 @@
     <string name="save">Enregistrer</string>
     <string name="contact_list">Liste de contacts</string>
     <string name="new_contact">Nouveau contact</string>
-    <string name="pin_unpin">Épingler/Désépingler</string>
-    <string name="pinned_icon">Icône épinglée</string>
     <string name="status_icon">Icône de statut</string>
     <string name="phone">Téléphone</string>
     <string name="last_message">Dernier message</string>
     <string name="example_phone_number">+33 6 12 34 56 78</string>
     <string name="message_deleted">Message supprimé</string>
 
-    <string name="toggle_pin">Épingler / Détacher</string>
-    <string name="toggle_favorite">Favori / Pas favori</string>
     <string name="menu_time_now">Maintenant</string>
     <string name="menu_time_5min_ago">Il y a 5 minutes</string>
     <string name="menu_time_custom">Personnalisé…</string>
@@ -72,4 +64,3 @@
     <string name="isPinned">Est épinglé</string>
     <string name="reject">Refuser</string>
     <string name="contact_name">Contact</string>
-<string name="favorite_icon">Favori</string></resources>

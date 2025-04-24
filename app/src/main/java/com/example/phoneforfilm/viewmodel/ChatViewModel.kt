@@ -1,3 +1,4 @@
+
 package com.example.phoneforfilm.viewmodel
 
 import androidx.lifecycle.LiveData
@@ -18,15 +19,16 @@ class ChatViewModel(private val repository: MessageRepository) : ViewModel() {
         _messages.postValue(list)
     }
 
+    /**
+     * Store a brand‑new outgoing message and refresh the list.
+     */
     fun sendMessage(chatId: Long, text: String, senderId: Long) = viewModelScope.launch {
         val msg = Message(
             chatId = chatId.toInt(),
             senderId = senderId,
             text = text,
             timestamp = System.currentTimeMillis(),
-            status = 0,
-            pinned = false,
-            favorite = false
+            status = 0
         )
         repository.insert(msg)
         loadMessages(chatId)
