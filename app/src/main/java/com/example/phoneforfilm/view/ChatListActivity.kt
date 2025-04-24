@@ -1,10 +1,13 @@
 package com.example.phoneforfilm.view
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.provider.ContactsContract
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.phoneforfilm.adapter.ConversationAdapter
@@ -16,14 +19,16 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-/**
- * Lists all conversations and lets the user start a new one
- * by picking a contact from the address‑book.
- */
 class ChatListActivity : BaseActivity() {
 
     private lateinit var binding: ActivityChatListBinding
     private val db by lazy { AppDatabase.getDatabase(this) }
+
+    private val pickContactPermission = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { granted ->
+        if (granted) pickContact.launch(null)
+    }
 
     private val pickContact = registerForActivityResult(
         ActivityResultContracts.PickContact()
@@ -37,7 +42,15 @@ class ChatListActivity : BaseActivity() {
         setContentView(binding.root)
 
         binding.rvConversations.layoutManager = LinearLayoutManager(this)
-        binding.fabNewConversation.setOnClickListener { pickContact.launch(null) }
+        binding.fabNewConversation.setOnClickListener {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS)
+                == PackageManager.PERMISSION_GRANTED
+            ) {
+                pickContact.launch(null)
+            } else {
+                pickContactPermission.launch(Manifest.permission.READ_CONTACTS)
+            }
+        }
 
         loadConversations()
     }
@@ -61,16 +74,9 @@ class ChatListActivity : BaseActivity() {
         startActivity(intent)
     }
 
-    /**
-     * Ensures we have a local Contact row and Conversation row for the selected Android contact.
-     * Then opens the chat.
-     */
     private fun handlePickedContact(uri: Uri) {
         lifecycleScope.launch(Dispatchers.IO) {
-            // Get contact id & name
-            var contactId: Long = -1
-            var displayName = ""
-            contentResolver.query(
+            val cursor = contentResolver.query(
                 uri,
                 arrayOf(
                     ContactsContract.Contacts._ID,
@@ -79,16 +85,18 @@ class ChatListActivity : BaseActivity() {
                 null,
                 null,
                 null
-            )?.use { cur ->
-                if (cur.moveToFirst()) {
-                    contactId = cur.getLong(0)
-                    displayName = cur.getString(1) ?: ""
+            ) ?: return@launch
+
+            var contactId = -1L
+            var displayName = ""
+            cursor.use {
+                if (it.moveToFirst()) {
+                    contactId = it.getLong(0)
+                    displayName = it.getString(1) ?: ""
                 }
             }
+            if (contactId == -1L) return@launch
 
-            if (contactId == -1L) return@launch // no valid result
-
-            // first phone number (optional)
             var phoneNumber = ""
             contentResolver.query(
                 ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
@@ -100,7 +108,6 @@ class ChatListActivity : BaseActivity() {
                 if (pCur.moveToFirst()) phoneNumber = pCur.getString(0)
             }
 
-            // ensure local contact
             var localId = db.contactDao().getIdByAndroidId(contactId)
             if (localId == null) {
                 localId = db.contactDao().insert(
@@ -112,7 +119,6 @@ class ChatListActivity : BaseActivity() {
                 ).toInt()
             }
 
-            // ensure conversation
             var convId = db.conversationDao().getIdByContact(localId)
             if (convId == null) {
                 convId = db.conversationDao().insert(
@@ -126,7 +132,7 @@ class ChatListActivity : BaseActivity() {
 
             withContext(Dispatchers.Main) {
                 openChat(convId)
-                loadConversations() // refresh list
+                loadConversations()
             }
         }
     }
