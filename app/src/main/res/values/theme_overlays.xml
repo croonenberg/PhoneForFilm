@@ -1,5 +1,8 @@
 
 <resources>
+    <!-- Base Chat theme overlay -->
+    <style name="ThemeOverlay.Chat" parent="ThemeOverlay.MaterialComponents.DayNight" />
+
 
     <!-- WhatsApp -->
     <style name="ThemeOverlay.Chat.WhatsApp">
