@@ -21,8 +21,8 @@ import com.example.phoneforfilm.databinding.ItemConversationBinding
  * Shows avatar (initials), contact name, last message snippet, and time.
  */
 class ConversationAdapter(
-    private val conversations: List<Conversation>,
-    private val contactNames: Map<Int, String>,
+    private var conversations: List<Conversation>,
+    private var contactNames: Map<Int, String>,
     private val onClick: (Conversation) -> Unit
 ) : RecyclerView.Adapter<ConversationAdapter.ConversationViewHolder>() {
 
