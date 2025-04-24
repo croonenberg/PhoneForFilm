@@ -1,4 +1,3 @@
-
 package com.example.phoneforfilm.view
 
 import android.app.Activity
@@ -19,13 +18,13 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 /**
- * Displays all conversations and allows the user to start a new one by picking
- * a contact from the device address‑book.
+ * Shows a RecyclerView with one‑line previews of each conversation.  The user can tap
+ * the FAB to create a new conversation by selecting someone from the Android address book.
  */
 class ChatListActivity : BaseActivity() {
 
     private lateinit var binding: ActivityChatListBinding
-    private lateinit var db: AppDatabase
+    private val db by lazy { AppDatabase.getInstance(this) }
 
     private val pickContact =
         registerForActivityResult(ActivityResultContracts.PickContact()) { uri: Uri? ->
@@ -37,16 +36,8 @@ class ChatListActivity : BaseActivity() {
         binding = ActivityChatListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        db = AppDatabase.getDatabase(this)
-
         binding.rvConversations.layoutManager = LinearLayoutManager(this)
-
-        /*──────────────────────────────────────────
-         * FAB – start new conversation
-         *─────────────────────────────────────────*/
-        binding.fabNewConversation.setOnClickListener {
-            pickContact.launch(null)
-        }
+        binding.fab.setOnClickListener { pickContact.launch(null) }
     }
 
     override fun onResume() {
@@ -63,11 +54,12 @@ class ChatListActivity : BaseActivity() {
                 db.contactDao().getAllNow()
             }
             val contactNameMap = contacts.associateBy({ it.id }, { it.name })
-            val adapter = ConversationAdapter(conversations, contactNameMap) { conversation ->
-                val intent = Intent(this@ChatListActivity, ChatActivity::class.java)
-                intent.putExtra("CONVERSATION_ID", conversation.id.toLong())
-                startActivity(intent)
-            }
+            val adapter =
+                ConversationAdapter(conversations, contactNameMap) { conversation ->
+                    val intent = Intent(this@ChatListActivity, ChatActivity::class.java)
+                    intent.putExtra("CONVERSATION_ID", conversation.id.toLong())
+                    startActivity(intent)
+                }
             binding.rvConversations.adapter = adapter
         }
     }
@@ -78,7 +70,7 @@ class ChatListActivity : BaseActivity() {
      */
     private fun handlePickedContact(uri: Uri) {
         lifecycleScope.launch(Dispatchers.IO) {
-            val cursor = contentResolver.query(
+            contentResolver.query(
                 uri,
                 arrayOf(
                     ContactsContract.CommonDataKinds.Phone.CONTACT_ID,
@@ -89,20 +81,19 @@ class ChatListActivity : BaseActivity() {
                 null,
                 null,
                 null
-            )
-            cursor?.use {
-                if (it.moveToFirst()) {
-                    val id = it.getLong(0)
-                    val name = it.getString(1) ?: "Onbekend"
-                    val number = it.getString(2) ?: ""
-                    val photo = it.getString(3)
+            )?.use { cursor ->
+                if (cursor.moveToFirst()) {
+                    val androidId = cursor.getLong(0)
+                    val name = cursor.getString(1) ?: "Onbekend"
+                    val number = cursor.getString(2) ?: ""
+                    val photo = cursor.getString(3)
 
-                    // make sure we have a local Contact row
-                    var contactDbId = db.contactDao().getIdByAndroidId(id)
+                    // ---------- Ensure a Contact row exists ----------
+                    var contactDbId: Int? = db.contactDao().getIdByAndroidId(androidId)
                     if (contactDbId == null) {
                         contactDbId = db.contactDao().insert(
                             Contact(
-                                androidContactId = id,
+                                androidContactId = androidId,
                                 name = name,
                                 phoneNumber = number,
                                 photoUri = photo
@@ -110,8 +101,8 @@ class ChatListActivity : BaseActivity() {
                         ).toInt()
                     }
 
-                    // look for existing conversation
-                    var convId = db.conversationDao().getIdByContact(contactDbId)
+                    // ---------- Ensure a Conversation row exists ----------
+                    var convId: Int? = db.conversationDao().getIdByContact(contactDbId)
                     if (convId == null) {
                         convId = db.conversationDao().insert(
                             Conversation(
@@ -124,7 +115,7 @@ class ChatListActivity : BaseActivity() {
 
                     withContext(Dispatchers.Main) {
                         val intent = Intent(this@ChatListActivity, ChatActivity::class.java)
-                        intent.putExtra("CONVERSATION_ID", convId.toLong())
+                        intent.putExtra("CONVERSATION_ID", convId!!.toLong())
                         startActivity(intent)
                     }
                 }
