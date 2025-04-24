@@ -18,12 +18,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // 'btnStart' heette in sommige layouts 'btnStartChat'; probeer beide
-        val startBtn =
-            binding.root.findViewById<android.view.View>(R.id.btnStart)
-                ?: binding.root.findViewById(R.id.btnStartChat)
-
-        startBtn?.setOnClickListener {
+        // Button in layout heeft id 'btnStartChat'
+        binding.btnStartChat.setOnClickListener {
             startActivity(Intent(this, ChatListActivity::class.java))
         }
 
