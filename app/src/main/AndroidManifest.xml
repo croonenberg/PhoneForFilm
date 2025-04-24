@@ -1,22 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.phoneforfilm">
 
-<activity
-    android:name=".view.MainActivity"
-    android:exported="true">
-
-    <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
-        <category android:name="android.intent.category.LAUNCHER" />
-    </intent-filter>
-
-</activity>
-
-<!-- overige activiteiten -->
-<activity android:name=".view.ChatListActivity" />
-<activity android:name=".view.ChatActivity" />
-
-    <!-- Machtigingen -->
+    <!-- Machtigingen (staan altijd buiten <application>) -->
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
@@ -25,18 +11,21 @@
         android:label="PhoneForFilm"
         android:theme="@style/Theme.PhoneForFilm">
 
-        <!-- Declareer hier je activiteiten -->
-        <!--
-        <activity android:name=".view.MainActivity">
+        <!-- Launcher-activity -->
+        <activity
+            android:name=".view.MainActivity"
+            android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
+        <!-- Overige schermen -->
         <activity android:name=".view.ChatListActivity" />
         <activity android:name=".view.ChatActivity" />
-        -->
+
     </application>
 
 </manifest>
