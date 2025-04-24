@@ -75,4 +75,6 @@
     <string name="contact_name">Contact</string>
     <string name="isPinned">Is Pinned</string>
     <string name="favorite_icon">Favorite</string>
+    <!-- Toggle the message-direction (swap bubble side) -->
+    <string name="toggle_direction">Toggle direction</string>
 </resources>

@@ -72,4 +72,7 @@
     <string name="isPinned">Est épinglé</string>
     <string name="reject">Refuser</string>
     <string name="contact_name">Contact</string>
-<string name="favorite_icon">Favori</string></resources>
+    <string name="favorite_icon">Favori</string>
+    <!-- Basculer la direction du message -->
+    <string name="toggle_direction">Basculer la direction</string>
+</resources>

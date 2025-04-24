@@ -72,4 +72,7 @@
     <string name="isPinned">Está fijado</string>
     <string name="contact_name">Contacto</string>
     <string name="reject">Rechazar</string>
-<string name="favorite_icon">Favorito</string></resources>
+<string name="favorite_icon">Favorito</string>
+    <!-- Alternar la dirección del mensaje -->
+    <string name="toggle_direction">Alternar dirección</string>
+</resources>

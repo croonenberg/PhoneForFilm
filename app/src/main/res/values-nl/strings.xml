@@ -72,4 +72,7 @@
     <string name="reject">Weigeren</string>
     <string name="contact_name">Contact</string>
     <string name="isPinned">Is vastgezet</string>
-<string name="favorite_icon">Favoriet</string></resources>
+    <string name="favorite_icon">Favoriet</string>
+    <!-- Wissel de berichtrichting om -->
+    <string name="toggle_direction">Richting wisselen</string>
+</resources>
