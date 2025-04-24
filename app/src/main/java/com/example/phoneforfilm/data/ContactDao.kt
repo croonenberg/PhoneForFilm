@@ -14,6 +14,8 @@ interface ContactDao {
 
     @Query("SELECT id FROM contacts WHERE androidContactId = :androidId LIMIT 1")
     fun getIdByAndroidId(androidId: Long): Int?
+    @Query("SELECT * FROM contacts WHERE id = :id LIMIT 1")
+    fun getContactById(id: Int): Contact?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(contact: Contact): Long
