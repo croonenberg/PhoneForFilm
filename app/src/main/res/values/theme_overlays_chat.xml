@@ -1,0 +1,27 @@
+<resources>
+
+    <!-- WhatsApp‑like bubble colors -->
+    <style name="ThemeOverlay_Chat_WhatsApp">
+        <item name="colorBubbleSent">@color/greenroom_primary</item>
+        <item name="colorBubbleSentText">@android:color/white</item>
+        <item name="colorBubbleReceived">@color/chat_received_background</item>
+        <item name="colorBubbleReceivedText">@android:color/black</item>
+    </style>
+
+    <!-- iMessage style -->
+    <style name="ThemeOverlay_Chat_iMessage">
+        <item name="colorBubbleSent">@color/blue_stage_primary</item>
+        <item name="colorBubbleSentText">@android:color/white</item>
+        <item name="colorBubbleReceived">@color/chat_received_background</item>
+        <item name="colorBubbleReceivedText">@android:color/black</item>
+    </style>
+
+    <!-- Telegram style (reuse neutral light) -->
+    <style name="ThemeOverlay_Chat_Telegram">
+        <item name="colorBubbleSent">@color/neutral_light_primary</item>
+        <item name="colorBubbleSentText">@android:color/white</item>
+        <item name="colorBubbleReceived">@color/chat_received_background</item>
+        <item name="colorBubbleReceivedText">@android:color/black</item>
+    </style>
+
+</resources>

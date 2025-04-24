@@ -1,7 +1,0 @@
-<resources>
-<!-- Neutral / Grey card palette -->
-<color name="grey_card_primary">#F5F5F5</color>
-<color name="grey_card_background">#EEEEEE</color>
-<color name="neutral_light_primary">#FAFAFA</color>
-<color name="neutral_light_background">#E0E0E0</color>
-</resources>

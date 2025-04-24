@@ -6,8 +6,8 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.ContactsContract
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.lifecycle.lifecycleScope
 import com.example.phoneforfilm.adapter.ConversationAdapter
 import com.example.phoneforfilm.data.AppDatabase
 import com.example.phoneforfilm.data.Contact
@@ -18,18 +18,20 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 /**
- * Shows a RecyclerView with one‑line previews of each conversation.  The user can tap
- * the FAB to create a new conversation by selecting someone from the Android address book.
+ * Shows the list of conversations. When the user presses the floating action‑button he can
+ * pick a contact from the address‑book.  If a conversation with that contact already exists
+ * we jump straight into it, otherwise we create a fresh Conversation row first.
  */
 class ChatListActivity : BaseActivity() {
 
     private lateinit var binding: ActivityChatListBinding
     private val db by lazy { AppDatabase.getDatabase(this) }
 
-    private val pickContact =
-        registerForActivityResult(ActivityResultContracts.PickContact()) { uri: Uri? ->
-            uri?.let { handlePickedContact(it) }
-        }
+    private val pickContact = registerForActivityResult(
+        ActivityResultContracts.PickContact()
+    ) { uri: Uri? ->
+        uri?.let { handlePickedContact(it) }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,72 +39,63 @@ class ChatListActivity : BaseActivity() {
         setContentView(binding.root)
 
         binding.rvConversations.layoutManager = LinearLayoutManager(this)
-        binding.fabNewConversation.setOnClickListener { pickContact.launch(null) }
-    }
 
-    override fun onResume() {
-        super.onResume()
-        loadConversations()
-    }
+        binding.fabNewChat.setOnClickListener { pickContact.launch(null) }
 
-    private fun loadConversations() {
-        lifecycleScope.launch {
-            val conversations: List<Conversation> = withContext(Dispatchers.IO) {
-                db.conversationDao().getAllNow()
+        lifecycleScope.launch(Dispatchers.IO) {
+            val conversations = db.conversationDao().getAllWithContact()
+            withContext(Dispatchers.Main) {
+                binding.rvConversations.adapter =
+                    ConversationAdapter(conversations) { convId ->
+                        val intent = Intent(this@ChatListActivity, ChatActivity::class.java)
+                        intent.putExtra("CONVERSATION_ID", convId)
+                        startActivity(intent)
+                    }
             }
-            val contacts = withContext(Dispatchers.IO) {
-                db.contactDao().getAllNow()
-            }
-            val contactNameMap = contacts.associateBy({ it.id }, { it.name })
-            val adapter =
-                ConversationAdapter(conversations, contactNameMap) { conversation ->
-                    val intent = Intent(this@ChatListActivity, ChatActivity::class.java)
-                    intent.putExtra("CONVERSATION_ID", conversation.id.toLong())
-                    startActivity(intent)
-                }
-            binding.rvConversations.adapter = adapter
         }
     }
 
     /**
-     * After the user chose a person from the address book we either open an existing
-     * conversation or create a fresh one.
+     * Reads the contact the user chose and makes sure there is a Conversation row for it.
+     * The ACTION_PICK result‑uri might point to either Contacts or Data, therefore we treat the
+     * returned cursor as opaque and simply request _ID & DISPLAY_NAME which are guaranteed to be
+     * present on both tables.
      */
     private fun handlePickedContact(uri: Uri) {
         lifecycleScope.launch(Dispatchers.IO) {
+
             contentResolver.query(
                 uri,
                 arrayOf(
-                    ContactsContract.CommonDataKinds.Phone.CONTACT_ID,
-                    ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
-                    ContactsContract.CommonDataKinds.Phone.NUMBER,
-                    ContactsContract.Contacts.PHOTO_URI
+                    ContactsContract.Contacts._ID,
+                    ContactsContract.Contacts.DISPLAY_NAME_PRIMARY
                 ),
                 null,
                 null,
                 null
             )?.use { cursor ->
                 if (cursor.moveToFirst()) {
-                    val androidId = cursor.getLong(0)
-                    val name = cursor.getString(1) ?: "Onbekend"
-                    val number = cursor.getString(2) ?: ""
-                    val photo = cursor.getString(3)
+                    val contactId =
+                        cursor.getLong(cursor.getColumnIndexOrThrow(ContactsContract.Contacts._ID))
+                    val displayName =
+                        cursor.getString(
+                            cursor.getColumnIndexOrThrow(
+                                ContactsContract.Contacts.DISPLAY_NAME_PRIMARY
+                            )
+                        )
 
-                    // ---------- Ensure a Contact row exists ----------
-                    var contactDbId: Int? = db.contactDao().getIdByAndroidId(androidId)
+                    // ensure contact is stored locally
+                    var contactDbId = db.contactDao().getIdByAndroidContactId(contactId)
                     if (contactDbId == null) {
                         contactDbId = db.contactDao().insert(
                             Contact(
-                                androidContactId = androidId,
-                                name = name,
-                                phoneNumber = number,
-                                photoUri = photo
+                                androidContactId = contactId,
+                                name = displayName
                             )
                         ).toInt()
                     }
 
-                    // ---------- Ensure a Conversation row exists ----------
-                    var convId: Int? = db.conversationDao().getIdByContact(contactDbId)
+                    var convId = db.conversationDao().getIdByContact(contactDbId)
                     if (convId == null) {
                         convId = db.conversationDao().insert(
                             Conversation(
