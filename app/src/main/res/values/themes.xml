@@ -1,58 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- Greenroom (WhatsApp-style) --> 
-    <style name="Theme.PhoneForFilm.Greenroom" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Theme.PhoneForFilm" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/greenroom_primary</item>
         <item name="colorOnPrimary">@android:color/white</item>
-        <item name="colorOnSurface">@android:color/black</item>
-        <item name="colorSurface">@color/greenroom_background</item>
-        <item name="android:windowBackground">?attr/colorSurface</item>
+        <item name="colorSurface">@color/chat_background</item>
+        <item name="toolbarStyle">@style/Widget.PhoneForFilm.Toolbar</item>
+        <!-- Default MaterialAlertDialog theme (overlay) -->
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.Material3.DayNight.Dialog.Alert</item>
     </style>
 
-    <!-- Blue Stage (iMessage-style) -->
-    <style name="Theme.PhoneForFilm.BlueStage" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/blue_stage_primary</item>
-        <item name="colorOnPrimary">@android:color/white</item>
-        <item name="colorOnSurface">@android:color/black</item>
-        <item name="colorSurface">@color/blue_stage_background</item>
-        <item name="android:windowBackground">?attr/colorSurface</item>
-    </style>
-
-    <!-- Grey Card -->
-    <style name="Theme.PhoneForFilm.GreyCard" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/grey_card_primary</item>
-        <item name="colorOnPrimary">@android:color/white</item>
-        <item name="colorOnSurface">@android:color/black</item>
-        <item name="colorSurface">@color/grey_card_background</item>
-        <item name="android:windowBackground">?attr/colorSurface</item>
-    </style>
-
-    <!-- Neutral Light -->
-    <style name="Theme.PhoneForFilm.NeutralLight" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/neutral_light_primary</item>
-        <item name="colorOnPrimary">@android:color/white</item>
-        <item name="colorOnSurface">@android:color/black</item>
-        <item name="colorSurface">@color/neutral_light_background</item>
-        <item name="android:windowBackground">?attr/colorSurface</item>
-    </style>
-
-    <!-- Darkroom (donkere stijl) -->
-    <style name="Theme.PhoneForFilm.Darkroom" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/darkroom_primary</item>
-        <item name="colorOnPrimary">@android:color/white</item>
-        <item name="colorOnSurface">@android:color/black</item>
-        <item name="colorSurface">@color/darkroom_background</item>
-        <item name="android:windowBackground">?attr/colorSurface</item>
-    </style>
-
-    <!-- Default stijl, verwijst naar Greenroom -->
-    <style name="Theme.PhoneForFilm" parent="Theme.PhoneForFilm.Greenroom" />
     <style name="Widget.PhoneForFilm.Toolbar" parent="Widget.Material3.Toolbar">
-    <item name="titleTextAppearance">@style/TextAppearance.PhoneForFilm.Toolbar.Title</item>
+        <item name="titleTextAppearance">@style/TextAppearance.PhoneForFilm.Toolbar.Title</item>
     </style>
 
     <style name="TextAppearance.PhoneForFilm.Toolbar.Title" parent="TextAppearance.Material3.TitleLarge">
-    <item name="android:textColor">@android:color/white</item>
+        <item name="android:textColor">@android:color/white</item>
     </style>
 
 </resources>
