@@ -1,7 +1,6 @@
 
 package com.example.phoneforfilm.adapter
 
-import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Rect
@@ -11,6 +10,8 @@ import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.createBitmap
+import androidx.core.graphics.drawable.toDrawable
 import androidx.recyclerview.widget.RecyclerView
 import com.example.phoneforfilm.R
 import com.example.phoneforfilm.data.Conversation
@@ -47,7 +48,7 @@ class ConversationAdapter(
                 ?.joinToString("") { it.first().uppercase() }
                 ?: "?"
             val size = 128
-            val bitmap = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888)
+            val bitmap = createBitmap(size, size)
             val canvas = Canvas(bitmap)
             val paint = Paint(Paint.ANTI_ALIAS_FLAG)
             paint.color = ContextCompat.getColor(binding.root.context, R.color.teal_700)
@@ -64,7 +65,7 @@ class ConversationAdapter(
                 size / 2f + bounds.height() / 2f,
                 paint
             )
-            return BitmapDrawable(binding.root.resources, bitmap)
+            return bitmap.toDrawable(binding.root.resources)
         }
     }
 
