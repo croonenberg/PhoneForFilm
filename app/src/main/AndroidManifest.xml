@@ -1,12 +1,27 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.phoneforfilm">
 
-    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <!-- Machtigingen -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
         android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
         android:label="PhoneForFilm"
         android:theme="@style/Theme.PhoneForFilm">
-        <!-- activities declared elsewhere -->
+
+        <!-- Declareer hier je activiteiten -->
+        <!--
+        <activity android:name=".view.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".view.ChatListActivity" />
+        <activity android:name=".view.ChatActivity" />
+        -->
     </application>
+
 </manifest>
