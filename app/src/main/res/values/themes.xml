@@ -1,6 +1,6 @@
 <resources>
 
-    <!-- Greenroom (WhatsApp-style) -->
+    <!-- Greenroom (WhatsApp-style) --> 
     <style name="Theme.PhoneForFilm.Greenroom" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/greenroom_primary</item>
         <item name="colorOnPrimary">@android:color/white</item>
