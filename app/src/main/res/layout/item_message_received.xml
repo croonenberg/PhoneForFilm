@@ -1,26 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
-    <data/>
+    <data>
+        <variable name="message" type="com.example.phoneforfilm.data.Message"/>
+    </data>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="start"
         android:orientation="vertical"
-        android:background="@drawable/chat_bubble_received"
+        android:gravity="start"
         android:padding="4dp">
-
         <TextView
-            android:id="@+id/tvReceivedMessage"
+            android:id="@+id/tvMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:maxWidth="260dp"
+            android:textSize="16sp"
+            android:background="?attr/bubbleReceivedBackground"
             android:textColor="?attr/colorBubbleReceivedText"
-            android:textAppearance="?android:textAppearanceMedium"/>
-
+            android:text="@{message.text}"/>
         <TextView
             android:id="@+id/tvReceivedTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:textColor="?attr/colorBubbleReceivedText"
-            android:textAppearance="?android:textAppearanceSmall"/>
+            android:textSize="12sp"
+            android:textColor="#808080"/>
     </LinearLayout>
 </layout>

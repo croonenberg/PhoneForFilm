@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.PhoneForFilm.Greenroom" parent="Theme.PhoneForFilm"/>
+    <style name="Theme.PhoneForFilm.BlueStage" parent="Theme.PhoneForFilm"/>
+    <style name="Theme.PhoneForFilm.GreyCard" parent="Theme.PhoneForFilm"/>
+    <style name="Theme.PhoneForFilm.NeutralLight" parent="Theme.PhoneForFilm"/>
+    <style name="Theme.PhoneForFilm.Darkroom" parent="Theme.PhoneForFilm"/>
+</resources>

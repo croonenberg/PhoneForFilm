@@ -8,14 +8,14 @@
         <item name="toolbarStyle">@style/Widget.PhoneForFilm.Toolbar</item>
         <!-- Default MaterialAlertDialog theme (overlay) -->
         <item name="materialAlertDialogTheme">@style/ThemeOverlay.Material3.DayNight.Dialog.Alert</item>
-    </style>
 
-    <style name="Widget.PhoneForFilm.Toolbar" parent="Widget.Material3.Toolbar">
-        <item name="titleTextAppearance">@style/TextAppearance.PhoneForFilm.Toolbar.Title</item>
-    </style>
+        <!-- Bubble background drawables -->
+        <item name="bubbleSentBackground">@drawable/chat_bubble_sent</item>
+        <item name="bubbleReceivedBackground">@drawable/chat_bubble_received</item>
 
-    <style name="TextAppearance.PhoneForFilm.Toolbar.Title" parent="TextAppearance.Material3.TitleLarge">
-        <item name="android:textColor">@android:color/white</item>
+        <!-- Bubble text colors -->
+        <item name="colorBubbleSentText">@android:color/black</item>
+        <item name="colorBubbleReceivedText">@android:color/black</item>
     </style>
 
 </resources>

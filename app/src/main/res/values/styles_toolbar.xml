@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Toolbar widget style for PhoneForFilm -->
+    <style name="Widget.PhoneForFilm.Toolbar" parent="Widget.Material3.Toolbar">
+        <item name="titleTextAppearance">@style/TextAppearance.PhoneForFilm.Toolbar.Title</item>
+    </style>
+    <!-- Text appearance for toolbar title -->
+    <style name="TextAppearance.PhoneForFilm.Toolbar.Title" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+</resources>
