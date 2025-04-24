@@ -23,7 +23,7 @@ import com.example.phoneforfilm.databinding.ItemConversationBinding
 class ConversationAdapter(
     private var conversations: List<Conversation>,
     private var contactNames: Map<Int, String>,
-    private val onClick: (Conversation) -> Unit
+    private var onClick: (Conversation) -> Unit
 ) : RecyclerView.Adapter<ConversationAdapter.ConversationViewHolder>() {
 
     inner class ConversationViewHolder(val binding: ItemConversationBinding) :
@@ -77,5 +77,14 @@ class ConversationAdapter(
         holder.bind(conversations[position])
     }
 
+
+    fun updateData(
+        newConversations: List<Conversation>,
+        newContactNames: Map<Int, String>
+    ) {
+        conversations = newConversations
+        contactNames = newContactNames
+        notifyDataSetChanged()
+    }
     override fun getItemCount(): Int = conversations.size
 }

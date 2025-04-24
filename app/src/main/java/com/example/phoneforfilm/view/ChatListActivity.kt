@@ -7,6 +7,8 @@ import android.os.Bundle
 import android.provider.ContactsContract
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -60,7 +62,8 @@ class ChatListActivity : AppCompatActivity() {
 
         conversationDao.getAll().observe(this, Observer { convs ->
             val namesMap = contactDao.getAllNow()
-                .associate { it.id to it.displayName }
+            val namesMap = contactDao.getAllNow()
+                .associate { it.id to it.name }
             adapter.updateData(convs, namesMap)
         })
     }
