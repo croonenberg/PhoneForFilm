@@ -1,10 +1,12 @@
 <resources>
     <color name="white">#FFFFFF</color>
 
-    <color name="primary_light">#1E88E5</color>
+    <!-- Dark palette -->
+    <color name="primary_light">#1E88E5</color> <!-- kept the same for contrast -->
     <color name="primary_dark">#0D47A1</color>
     <color name="secondary_dark">#FFA000</color>
 
+    <!-- Chat themes -->
     <color name="greenroom_primary">#25D366</color>
     <color name="greenroom_background">#0B141A</color>
 
