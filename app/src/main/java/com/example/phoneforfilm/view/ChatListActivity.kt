@@ -115,7 +115,7 @@ class ChatListActivity : BaseActivity() {
 
                     withContext(Dispatchers.Main) {
                         val intent = Intent(this@ChatListActivity, ChatActivity::class.java)
-                        intent.putExtra("CONVERSATION_ID", convId!!.toLong())
+                        intent.putExtra("CONVERSATION_ID", convId.toLong())
                         startActivity(intent)
                     }
                 }

@@ -1,3 +1,4 @@
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
     <string name="app_name">Phone For Film</string>
     <string name="start_chat">Gespräch starten</string>
@@ -66,4 +67,4 @@
     <string name="toggle_direction">Richtung wechseln</string>
     <string name="contact_photo">Kontaktfoto</string>
     <string name="unknown_contact">Unbekannt</string>
-</resources>
+<string name="pin">Pin</string><string name="unpin">Unpin</string><string name="favorite">Favorite</string><string name="unfavorite">Unfavorite</string><string name="pin_unpin">Pin Unpin</string><string name="pinned_icon">Pinned Icon</string><string name="toggle_pin">Toggle Pin</string><string name="toggle_favorite">Toggle Favorite</string><string name="favorite_icon">Favorite Icon</string></resources>
