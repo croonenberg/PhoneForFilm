@@ -3,7 +3,6 @@ package com.example.phoneforfilm.utils
 import android.app.Activity
 import android.content.Context
 import com.example.phoneforfilm.R
-import com.example.phoneforfilm.utils.ThemeManager.save
 
 object ThemeManager {
     private const val PREFS = "theme_prefs"
