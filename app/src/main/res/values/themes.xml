@@ -49,4 +49,7 @@
         <item name="colorBubbleReceived">@color/darkroom_received_background</item>
         <item name="colorBubbleReceivedText">@android:color/white</item>
     </style>
+
+    <!-- Default alias pointing to Greenroom -->
+    <style name="Theme.PhoneForFilm" parent="Theme.PhoneForFilm.Greenroom" />
 </resources>
