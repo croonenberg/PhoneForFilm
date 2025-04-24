@@ -39,7 +39,7 @@ class ChatListActivity : AppCompatActivity() {
         pickContactLauncher = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()
         ) { result ->
-            if (result.resultCode == Activity.RESULT_OK) {
+            if (result.resultCode == RESULT_OK) {
                 result.data?.data?.let { uri ->
                     handlePickedContact(uri)
                 }
