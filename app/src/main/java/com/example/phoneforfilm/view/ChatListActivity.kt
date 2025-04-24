@@ -24,7 +24,7 @@ import kotlinx.coroutines.withContext
 class ChatListActivity : BaseActivity() {
 
     private lateinit var binding: ActivityChatListBinding
-    private val db by lazy { AppDatabase.getInstance(this) }
+    private val db by lazy { AppDatabase.getDatabase(this) }
 
     private val pickContact =
         registerForActivityResult(ActivityResultContracts.PickContact()) { uri: Uri? ->
@@ -37,7 +37,7 @@ class ChatListActivity : BaseActivity() {
         setContentView(binding.root)
 
         binding.rvConversations.layoutManager = LinearLayoutManager(this)
-        binding.fab.setOnClickListener { pickContact.launch(null) }
+        binding.fabNewConversation.setOnClickListener { pickContact.launch(null) }
     }
 
     override fun onResume() {
