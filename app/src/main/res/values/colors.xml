@@ -1,3 +1,24 @@
 <resources>
+    <!-- Generic -->
+    <color name="white">#FFFFFF</color>
+
+    <!-- Default -->
+    <color name="primary_light">#1E88E5</color>
+    <color name="primary_dark">#1565C0</color>
+    <color name="secondary_dark">#FF9800</color>
+
+    <!-- Greenroom (WhatsApp‑style) -->
+    <color name="greenroom_primary">#128C7E</color>
+    <color name="greenroom_background">#DCF8C6</color>
+
+    <!-- Blue Stage (iMessage‑style) -->
+    <color name="blue_stage_primary">#0A84FF</color>
+    <color name="blue_stage_background">#E5F1FF</color>
+
+    <!-- Darkroom -->
+    <color name="darkroom_primary">#121212</color>
+    <color name="darkroom_background">#000000</color>
+
+    <!-- Sample -->
     <color name="teal_700">#018786</color>
 </resources>
