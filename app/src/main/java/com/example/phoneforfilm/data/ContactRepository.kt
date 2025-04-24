@@ -9,5 +9,6 @@ class ContactRepository(private val dao: ContactDao) {
 
     suspend fun delete(contact: Contact) = dao.delete(contact)
 
-    fun getContactById(id: Int): Contact? = dao.getContactById(id)
+    fun getContactById(id: Int): Contact? = dao.
+    getContactById(id)
 }
