@@ -7,7 +7,6 @@ import androidx.appcompat.app.AlertDialog
 import com.example.phoneforfilm.R
 import com.example.phoneforfilm.databinding.ActivityMainBinding
 import com.example.phoneforfilm.utils.ThemeManager
-import com.example.phoneforfilm.view.ChatListActivity
 
 /**
  * Home screen with quick‑action buttons.
