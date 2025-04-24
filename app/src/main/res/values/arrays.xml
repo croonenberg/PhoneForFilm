@@ -1,0 +1,16 @@
+<resources>
+    <string-array name="theme_entries">
+        <item>Greenroom</item>
+        <item>Blue Stage</item>
+        <item>Grey Card</item>
+        <item>Neutral Light</item>
+        <item>Darkroom</item>
+    </string-array>
+    <string-array name="theme_values">
+        <item>Greenroom</item>
+        <item>Blue Stage</item>
+        <item>Grey Card</item>
+        <item>Neutral Light</item>
+        <item>Darkroom</item>
+    </string-array>
+</resources>

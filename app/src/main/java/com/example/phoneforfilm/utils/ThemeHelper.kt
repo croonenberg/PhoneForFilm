@@ -2,15 +2,13 @@ package com.example.phoneforfilm.utils
 
 import com.example.phoneforfilm.R
 
-/**
- * Resolves a simple theme‑key (chosen per conversation) to a style resource id.
- * The styles themselves are defined in res/values/theme_overlays_chat.xml
- */
 object ThemeHelper {
-    fun getThemeResId(key: String): Int = when (key) {
-        "WhatsApp", "Greenroom" -> R.style.ThemeOverlay_Chat_WhatsApp
-        "iMessage", "Blue Stage" -> R.style.ThemeOverlay_Chat_iMessage
-        "Telegram" -> R.style.ThemeOverlay_Chat_Telegram
-        else -> R.style.ThemeOverlay_Chat_WhatsApp
+    fun overlayForTheme(themeName: String): Int = when (themeName) {
+        "Greenroom"      -> R.style.ThemeOverlay_Chat_WhatsApp
+        "Blue Stage"     -> R.style.ThemeOverlay_Chat_iMessage
+        "Grey Card"      -> R.style.ThemeOverlay_Chat_GreyCard
+        "Neutral Light"  -> R.style.ThemeOverlay_Chat_Telegram
+        "Darkroom"       -> R.style.ThemeOverlay_Chat_Darkroom
+        else             -> R.style.ThemeOverlay_Chat_WhatsApp
     }
 }
