@@ -63,4 +63,7 @@
     <string name="isPinned">Ist angeheftet</string>
     <string name="reject">Ablehnen</string>
     <string name="contact_name">Kontakt</string>
+    <string name="toggle_direction">Richtung wechseln</string>
+    <string name="contact_photo">Kontaktfoto</string>
+    <string name="unknown_contact">Unbekannt</string>
 </resources>

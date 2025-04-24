@@ -64,4 +64,7 @@
     <string name="isPinned">Está fijado</string>
     <string name="contact_name">Contacto</string>
     <string name="reject">Rechazar</string>
+    <string name="toggle_direction">Cambiar dirección</string>
+    <string name="contact_photo">Foto de contacto</string>
+    <string name="unknown_contact">Desconocido</string>
 </resources>
