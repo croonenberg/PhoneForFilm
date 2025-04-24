@@ -47,5 +47,12 @@
 
     <!-- Default stijl, verwijst naar Greenroom -->
     <style name="Theme.PhoneForFilm" parent="Theme.PhoneForFilm.Greenroom" />
+    <style name="Widget.PhoneForFilm.Toolbar" parent="Widget.Material3.Toolbar">
+    <item name="titleTextAppearance">@style/TextAppearance.PhoneForFilm.Toolbar.Title</item>
+   
+
+    <style name="TextAppearance.PhoneForFilm.Toolbar.Title" parent="TextAppearance.Material3.TitleLarge">
+    <item name="android:textColor">@android:color/white</item>
+    </style>
 
 </resources>

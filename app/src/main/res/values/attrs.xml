@@ -3,4 +3,6 @@
     <attr name="colorBubbleSentText" format="color"/>
     <attr name="colorBubbleReceived" format="color"/>
     <attr name="colorBubbleReceivedText" format="color"/>
+  <!-- Define text color attribute for bubbles -->
+    <attr name="bubbleTextColor" format="reference|color"/>
 </resources>
