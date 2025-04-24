@@ -1,3 +1,4 @@
+
 package com.example.phoneforfilm.data
 
 import androidx.lifecycle.LiveData
@@ -11,6 +12,9 @@ interface ConversationDao {
 
     @Query("SELECT * FROM conversations ORDER BY timestamp DESC")
     fun getAllNow(): List<Conversation>
+
+    @Query("SELECT id FROM conversations WHERE contactId = :contactId LIMIT 1")
+    fun getIdByContact(contactId: Int): Int?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(conversation: Conversation): Long
