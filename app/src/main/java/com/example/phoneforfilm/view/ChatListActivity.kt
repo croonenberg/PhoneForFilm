@@ -61,7 +61,7 @@ class ChatListActivity : AppCompatActivity() {
         val contactDao = db.contactDao()
 
         conversationDao.getAll().observe(this, Observer { convs ->
-            .associate { it.id to it.name }
+            val namesMap = contactDao.getAllNow().associate { it.id to it.name }
             adapter.updateData(convs, namesMap)
         })
     }
@@ -71,7 +71,8 @@ class ChatListActivity : AppCompatActivity() {
             uri,
             arrayOf(
                 ContactsContract.CommonDataKinds.Phone.CONTACT_ID,
-                ContactsContract.CommonDataKinds.Phone.NUMBER
+                ContactsContract.CommonDataKinds.Phone.NUMBER,
+                ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME
             ), null, null, null
         )?.use { cursor ->
             if (cursor.moveToFirst()) {
@@ -85,23 +86,29 @@ class ChatListActivity : AppCompatActivity() {
                         ContactsContract.CommonDataKinds.Phone.NUMBER
                     )
                 )
+                val displayName = cursor.getString(
+                    cursor.getColumnIndexOrThrow(
+                        ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME
+                    )
+                )
                 val db = AppDatabase.getDatabase(applicationContext)
                 val contactDao = db.contactDao()
-                val contactId = contactDao.getIdByAndroidId(androidContactId)
-                    ?: contactDao.insert(
-                        Contact(
-                            androidContactId = androidContactId,
-                            displayName = "",
-                            phoneNumber = phoneNumber
-                        )
-                    ).toInt()
-                val conv = Conversation(
-                    contactId = contactId,
-                    lastMessage = "",
-                    timestamp = System.currentTimeMillis()
-                )
-                db.conversationDao().insert(conv)
+                lifecycleScope.launch {
+                    val contactId = contactDao.getIdByAndroidId(androidContactId)
+                        ?: contactDao.insert(
+                            Contact(
+                                androidContactId = androidContactId,
+                                name = displayName,
+                                phoneNumber = phoneNumber
+                            )
+                        ).toInt()
+                    val conv = Conversation(
+                        contactId = contactId,
+                        lastMessage = "",
+                        timestamp = System.currentTimeMillis()
+                    )
+                    db.conversationDao().insert(conv)
+                }
             }
         }
     }
-}
