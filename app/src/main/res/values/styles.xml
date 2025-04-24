@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <!-- Generic chat overlay used as fallback -->
     <style name="ThemeOverlay.Chat" parent="ThemeOverlay.Material3.DayNight.Dialog.Alert">
         <!-- Sent bubble / primary accent -->
         <item name="colorPrimary">@color/chat_sent_background</item>
         <item name="colorOnPrimary">@android:color/black</item>
-
         <!-- Received bubble / secondary accent -->
         <item name="colorSecondary">@color/chat_received_background</item>
         <item name="colorOnSecondary">@android:color/black</item>
-
         <!-- Default text colour -->
         <item name="android:textColorPrimary">@android:color/black</item>
     </style>
 
+    <!-- Style for sent messages -->
+    <style name="MessageSentText" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+    </style>
 </resources>

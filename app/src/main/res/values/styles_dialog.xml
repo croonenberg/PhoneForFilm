@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Alias to satisfy missing resource error -->
-    <style name="ThemeOverlay.Material3.DayNight.Dialog.Alert" parent="Theme.Material3.DayNight.Dialog.Alert"></style>
+    <style name="ThemeOverlay.Material3.DayNight.Dialog.Alert"
+           parent="Theme.Material3.DayNight.Dialog.Alert" />
 </resources>
