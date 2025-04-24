@@ -61,9 +61,7 @@ class ChatListActivity : AppCompatActivity() {
         val contactDao = db.contactDao()
 
         conversationDao.getAll().observe(this, Observer { convs ->
-            val namesMap = contactDao.getAllNow()
-            val namesMap = contactDao.getAllNow()
-                .associate { it.id to it.name }
+            .associate { it.id to it.name }
             adapter.updateData(convs, namesMap)
         })
     }
