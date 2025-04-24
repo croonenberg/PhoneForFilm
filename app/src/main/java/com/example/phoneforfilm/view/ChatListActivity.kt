@@ -1,4 +1,3 @@
-
 package com.example.phoneforfilm.view
 
 import android.app.Activity
