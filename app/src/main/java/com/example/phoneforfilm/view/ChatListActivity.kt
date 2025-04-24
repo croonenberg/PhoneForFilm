@@ -1,22 +1,21 @@
 package com.example.phoneforfilm.view
 
-import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.ContactsContract
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.launch
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.phoneforfilm.adapter.ConversationAdapter
 import com.example.phoneforfilm.data.AppDatabase
 import com.example.phoneforfilm.data.Contact
 import com.example.phoneforfilm.data.Conversation
 import com.example.phoneforfilm.databinding.ActivityChatListBinding
-import com.example.phoneforfilm.adapter.ConversationAdapter
+import kotlinx.coroutines.launch
 
 class ChatListActivity : AppCompatActivity() {
     private lateinit var binding: ActivityChatListBinding
@@ -112,3 +111,4 @@ class ChatListActivity : AppCompatActivity() {
             }
         }
     }
+}
