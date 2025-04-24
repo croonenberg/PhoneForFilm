@@ -3,6 +3,7 @@ package com.example.phoneforfilm.utils
 import android.app.Activity
 import android.content.Context
 import com.example.phoneforfilm.R
+import com.example.phoneforfilm.utils.ThemeManager.save
 
 object ThemeManager {
     private const val PREFS = "theme_prefs"
@@ -27,4 +28,7 @@ object ThemeManager {
     fun get(context: Context): String =
         context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
             .getString(KEY, "Greenroom") ?: "Greenroom"
+}
+fun setTheme(context: Context, themeName: String) {
+    save(context, themeName)   // ← alias voor achterwaartse compatibiliteit
 }

@@ -49,6 +49,7 @@ class MainActivity : BaseActivity() {
                     ThemeManager.setTheme(this, themes[which])
                     recreate()
                 }
+
                 .show()
         }
 
