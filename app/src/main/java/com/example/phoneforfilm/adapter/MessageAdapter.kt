@@ -1,4 +1,3 @@
-
 package com.example.phoneforfilm.adapter
 
 import android.text.format.DateFormat
@@ -20,7 +19,12 @@ class MessageAdapter(
         private const val VIEW_TYPE_RECEIVED = 2
     }
 
-    var messages: List<Message> = emptyList()
+    private var messages: List<Message> = emptyList()
+
+    fun submitList(newMessages: List<Message>) {
+        messages = newMessages
+        notifyDataSetChanged()
+    }
 
     var onMessageEdit: ((Message) -> Unit)? = null
     var onMessageTimeChange: ((Message) -> Unit)? = null
@@ -58,11 +62,12 @@ class MessageAdapter(
                     R.id.menu_change_time       -> onMessageTimeChange?.invoke(msg)
                     R.id.menu_change_status     -> onMessageStatusChange?.invoke(msg)
                     R.id.menu_toggle_direction  -> onToggleDirection?.invoke(msg)
-                    R.id.menu_delete            -> onMessageDelete?.invoke(msg)
+                    R.id.menu_delete_message    -> onMessageDelete?.invoke(msg)
                 }
                 true
             }
-        }.show()
+            show()
+        }
     }
 
     inner class SentViewHolder(private val b: ItemMessageSentBinding) :
