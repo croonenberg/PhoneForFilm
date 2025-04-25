@@ -62,7 +62,7 @@ class MessageAdapter(
                     R.id.menu_change_time       -> onMessageTimeChange?.invoke(msg)
                     R.id.menu_change_status     -> onMessageStatusChange?.invoke(msg)
                     R.id.menu_toggle_direction  -> onToggleDirection?.invoke(msg)
-                    R.id.menu_delete_message    -> onMessageDelete?.invoke(msg)
+                    R.id.menu_delete    -> onMessageDelete?.invoke(msg)
                 }
                 true
             }
