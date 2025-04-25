@@ -11,8 +11,8 @@ class ChatActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
 
-        // TODO: initialize RecyclerView, adapter, viewModel, and load messages
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewChat)
-        // recyclerView.adapter = ...
+        // Initialize RecyclerView for messages
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewMessages)
+        // TODO: set adapter and layoutManager, and load messages
     }
 }

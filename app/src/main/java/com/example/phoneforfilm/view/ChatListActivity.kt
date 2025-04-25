@@ -3,7 +3,9 @@ package com.example.phoneforfilm.view
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.RecyclerView
 import com.example.phoneforfilm.R
+import com.example.phoneforfilm.data.AppDatabase
 import com.example.phoneforfilm.data.ContactDao
 import com.example.phoneforfilm.adapter.ContactAdapter
 import kotlinx.coroutines.Dispatchers
@@ -19,12 +21,13 @@ class ChatListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat_list)
 
-        // Initialiseer DAO en Adapter
-        contactDao = /* verkrijg ContactDao instance, bv. via Room.databaseBuilder... */
+        // Initialize DAO and Adapter
+        val db = AppDatabase.getDatabase(applicationContext)
+        contactDao = db.contactDao()
         adapter = ContactAdapter()
-        findViewById<RecyclerView>(R.id.recyclerViewContacts).adapter = adapter
+        findViewById<RecyclerView>(R.id.rvConversations).adapter = adapter
 
-        // Laden van contacten in achtergrondthread om main thread niet te blokkeren
+        // Load contacts in background
         lifecycleScope.launch(Dispatchers.IO) {
             val contacts = contactDao.getAllNow()
             withContext(Dispatchers.Main) {
