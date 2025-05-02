@@ -6,6 +6,9 @@ local.properties
 .DS_Store
 *.log
 
+# Build output
+/build/
+/*/build/
 
 # Sign-in info
 *.jks
