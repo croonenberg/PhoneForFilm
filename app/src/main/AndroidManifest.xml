@@ -35,5 +35,11 @@
     android:name=".view.ThemeSettingsActivity"
     android:exported="false"
     android:label="@string/title_theme_settings"/>
+    
+        <activity
+            android:name=".view.ChatListActivity"
+            android:exported="false"
+            android:label="@string/title_chat_list" />
+
     </application>
 </manifest>

@@ -51,4 +51,6 @@
     <string name="chat_image_desc" translatable="false">Chat icon</string>
     <string name="desc_add_chat">New chat</string>
     <string name="decline">Decline</string>
+
+    <string name="title_chat_list">Chats</string>
 </resources>
