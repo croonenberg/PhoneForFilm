@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/menu_edit_message" android:title="@string/edit_message"/>
+    <item android:id="@+id/menu_change_time" android:title="@string/change_time"/>
+    <item android:id="@+id/menu_change_status" android:title="@string/change_status"/>
+    <item android:id="@+id/menu_change_sender" android:title="@string/change_sender"/><item android:id="@+id/menu_delete" android:title="@string/delete"/>
+</menu>

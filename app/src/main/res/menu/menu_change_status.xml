@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/action_status_sent"
+        android:title="@string/menu_status_sent" />
+
+    <item
+        android:id="@+id/action_status_delivered"
+        android:title="@string/menu_status_delivered" />
+
+    <item
+        android:id="@+id/action_status_read"
+        android:title="@string/menu_status_read" />
+
+</menu>

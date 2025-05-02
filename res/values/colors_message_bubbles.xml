@@ -1,0 +1,5 @@
+<resources>
+    <!-- Chat bubble background colors -->
+    <color name="message_received_background">#FFFFFF</color>
+    <color name="message_sent_background">#DCF8C6</color>
+</resources>

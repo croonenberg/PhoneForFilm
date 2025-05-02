@@ -1,0 +1,23 @@
+<resources>
+    <!-- Greenroom -->
+    <color name="greenroom_primary">#075E54</color>
+    <color name="greenroom_background">#ECE5DD</color>
+
+    <!-- Blue Stage -->
+    <color name="blue_stage_primary">#007AFF</color>
+    <color name="blue_stage_background">#E5F1FF</color>
+
+    <!-- Grey Card -->
+    <color name="grey_card_primary">#A0A0A0</color>
+    <color name="grey_card_background">#F0F0F0</color>
+
+    <!-- Neutral Light -->
+    <color name="neutral_light_primary">#607D8B</color>
+    <color name="neutral_light_background">#FFFFFF</color>
+
+    <!-- Darkroom -->
+    <color name="darkroom_primary">#121212</color>
+    <color name="darkroom_background">#000000</color>
+
+    <color name="gray_hint_color">#757575</color>
+</resources>
