@@ -26,7 +26,7 @@ class ChatActivity : AppCompatActivity() {
         chatId = intent.getIntExtra("chatId", 0)
         val currentUserId = intent.getLongExtra("currentUserId", 0L)
         adapter = MessageAdapter(currentUserId)
-        
+
         binding.recyclerViewMessages.apply {
             layoutManager = LinearLayoutManager(context).apply { stackFromEnd = true }
             adapter = this@ChatActivity.adapter
