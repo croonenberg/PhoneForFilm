@@ -1,13 +1,13 @@
 package com.example.phoneforfilm.view
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.phoneforfilm.databinding.ActivityChatBinding
 import com.example.phoneforfilm.adapter.MessageAdapter
-import com.example.phoneforfilm.viewmodel.ChatViewModel
 import com.example.phoneforfilm.data.Message
+import com.example.phoneforfilm.databinding.ActivityChatBinding
+import com.example.phoneforfilm.viewmodel.ChatViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -24,9 +24,9 @@ class ChatActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         chatId = intent.getIntExtra("chatId", 0)
-        val currentUserId = intent.getIntExtra("currentUserId", 0)
-
+        val currentUserId = intent.getLongExtra("currentUserId", 0L)
         adapter = MessageAdapter(currentUserId)
+        
         binding.recyclerViewMessages.apply {
             layoutManager = LinearLayoutManager(context).apply { stackFromEnd = true }
             adapter = this@ChatActivity.adapter
