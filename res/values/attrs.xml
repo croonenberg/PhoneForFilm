@@ -1,6 +1,0 @@
-<resources>
-    <attr name="colorBubbleSent" format="color"/>
-    <attr name="colorBubbleSentText" format="color"/>
-    <attr name="colorBubbleReceived" format="color"/>
-    <attr name="colorBubbleReceivedText" format="color"/>
-</resources>

@@ -46,4 +46,9 @@
     <string name="language_german">Deutsch</string>
     <string name="language_french">Français</string>
     <string name="language_spanish">Español</string>
-<string name="title_language_selection">Language selection</string><string name="title_theme_settings">Theme settings</string></resources>
+    <string name="title_language_selection">Language selection</string>
+    <string name="title_theme_settings">Theme settings</string>
+    <string name="chat_image_desc" translatable="false">Chat icon</string>
+    <string name="desc_add_chat">Neuer Chat</string>
+    <string name="decline">Ablehnen</string>
+</resources>

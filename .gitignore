@@ -1,6 +1,31 @@
 # Android Studio
-.gradle/
 .idea/
-build/
-local.properties
 *.iml
+.gradle/
+local.properties
+.DS_Store
+*.log
+
+
+# Sign-in info
+*.jks
+*.keystore
+
+# OS-specific
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# Crashlytics / Firebase
+crashlytics-build.properties
+
+# Android Studio Captures
+captures/
+
+# Generated files
+output.json
+navigation.json
+
+# Others
+.cxx/
+.externalNativeBuild/
