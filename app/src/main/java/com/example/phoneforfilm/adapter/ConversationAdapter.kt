@@ -20,7 +20,7 @@ class ConversationAdapter(
     inner class VH(private val binding: ItemConversationBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(conv: Conversation) = with(binding) {
-            tvName.text = conv.contactName
+            tvContactName.text = conv.contactName
             tvLastMessage.text = conv.lastMessage
             root.setOnClickListener { onClick(conv) }
         }

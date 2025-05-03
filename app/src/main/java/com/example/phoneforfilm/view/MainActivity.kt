@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.phoneforfilm.databinding.ActivityMainBinding
-import com.example.phoneforfilm.ui.view.ChatListActivity
+import com.example.phoneforfilm.view.ChatListActivity
 
 class MainActivity : AppCompatActivity() {
 
