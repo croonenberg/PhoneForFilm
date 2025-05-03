@@ -19,4 +19,17 @@ class ConversationRepository @Inject constructor(private val dao: ConversationDa
     suspend fun update(conversation: Conversation) = dao.update(conversation)
 
     suspend fun delete(conversation: Conversation) = dao.delete(conversation)
+
+suspend fun createForContact(contactId: Int) {
+    val exists = dao.getIdByContact(contactId)
+    if (exists == null) {
+        val convo = com.example.phoneforfilm.data.Conversation(
+            contactId = contactId,
+            lastMessage = "",
+            timestamp = System.currentTimeMillis()
+        )
+        dao.insert(convo)
+    }
+}
+
 }

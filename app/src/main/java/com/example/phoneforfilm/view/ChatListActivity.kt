@@ -1,9 +1,10 @@
-package com.example.phoneforfilm.ui.view
+package com.example.phoneforfilm.view
 
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
+import com.example.phoneforfilm.view.ChatActivity
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.phoneforfilm.adapter.ConversationAdapter

@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnStartChat.setOnClickListener {
+        binding.buttonStartChat.setOnClickListener {
             startActivity(Intent(this, ChatListActivity::class.java))
         }
     }

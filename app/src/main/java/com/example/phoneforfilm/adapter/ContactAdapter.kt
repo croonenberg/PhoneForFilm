@@ -8,7 +8,7 @@ import com.example.phoneforfilm.databinding.ItemContactBinding
 
 class ContactAdapter(
     private var items: List<Contact> = emptyList(),
-    private val onClick: (Contact) -> Unit
+    private val onClick: (Contact) -> Unit = {}
 ) : RecyclerView.Adapter<ContactAdapter.VH>() {
 
     inner class VH(private val binding: ItemContactBinding) :
