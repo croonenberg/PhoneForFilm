@@ -1,9 +1,14 @@
 package com.example.phoneforfilm.utils
 
+import javax.inject.Inject
+
+package com.example.phoneforfilm.utils
+
 import android.content.Context
 import android.content.SharedPreferences
 
-class PreferencesHelper(context: Context) {
+@javax.inject.Singleton
+class PreferencesHelper @Inject constructor(context: Context) {
 
     private val prefs: SharedPreferences =
         context.getSharedPreferences("PhoneForFilmPrefs", Context.MODE_PRIVATE)
