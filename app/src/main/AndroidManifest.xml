@@ -9,7 +9,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PhoneForFilm">
 
-
         <!-- Hoofdscherm -->
         <activity
             android:name=".view.MainActivity"
