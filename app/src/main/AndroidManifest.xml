@@ -1,12 +1,18 @@
-<?xml version='1.0' encoding='utf-8'?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.example.phoneforfilm">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.phoneforfilm">
 
-    <application android:allowBackup="true" android:label="@string/app_name" android:theme="@style/Theme.PhoneForFilm" android:supportsRtl="true" android:icon="@mipmap/ic_launcher">
+    <application
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.PhoneForFilm">
 
-        
+        <!-- bestaande activiteiten ... -->
 
-        
-        <activity android:name=".ui.contact.ContactPickerActivity" android:exported="false" android:screenOrientation="portrait" />
+        <!-- Contact‑picker -->
+        <activity
+            android:name=".ui.contact.ContactPickerActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
 
     </application>
 
