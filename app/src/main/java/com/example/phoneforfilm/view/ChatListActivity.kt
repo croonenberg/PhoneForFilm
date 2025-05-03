@@ -35,10 +35,12 @@ class ChatListActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        binding.recyclerConversations.layoutManager = LinearLayoutManager(this)
-        binding.recyclerConversations.adapter = adapter
+        // Use the existing RecyclerView ID 'rvConversations'
+        binding.rvConversations.layoutManager = LinearLayoutManager(this)
+        binding.rvConversations.adapter = adapter
 
-        viewModel.allConversations.observe(this) { list ->
+        // Observe the 'conversations' LiveData from the ViewModel
+        viewModel.conversations.observe(this) { list ->
             adapter.submitList(list)
         }
 
