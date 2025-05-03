@@ -10,8 +10,8 @@ data class Conversation(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     @ColumnInfo(name = "contactId") val contactId: Int,
     val lastMessage: String,
-    @ColumnInfo(name = "timestamp") val timestamp: Long,
-
-    /** Niet in DB opgeslagen velden voor UI-weergave */
+    @ColumnInfo(name = "timestamp") val timestamp: Long
+) {
+    /** UI‑only: naam voor overzicht, niet opgeslagen in DB */
     @Ignore var contactName: String = ""
-)
+}
