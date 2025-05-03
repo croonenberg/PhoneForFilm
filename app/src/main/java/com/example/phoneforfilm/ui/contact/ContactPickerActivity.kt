@@ -12,6 +12,9 @@ import com.example.phoneforfilm.viewmodel.ContactViewModel
 import com.example.phoneforfilm.view.EditContactActivity
 import dagger.hilt.android.AndroidEntryPoint
 
+/**
+ *
+ */
 @AndroidEntryPoint
 class ContactPickerActivity : AppCompatActivity() {
 
