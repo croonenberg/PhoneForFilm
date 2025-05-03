@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.phoneforfilm.adapter.ConversationAdapter
 import com.example.phoneforfilm.databinding.ActivityChatListBinding
+import com.example.phoneforfilm.ui.chat.ChatActivity
 import com.example.phoneforfilm.ui.contact.ContactPickerActivity
 import com.example.phoneforfilm.viewmodel.ChatListViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -16,8 +17,8 @@ import dagger.hilt.android.AndroidEntryPoint
 class ChatListActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityChatListBinding
-    private lateinit var adapter: ConversationAdapter
     private val viewModel by viewModels<ChatListViewModel>()
+    private lateinit var adapter: ConversationAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,23 +26,15 @@ class ChatListActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         adapter = ConversationAdapter(emptyList()) { convo ->
-            startActivity(
-                Intent(this, ChatActivity::class.java)
-                    .putExtra("chatId", convo.id)
-            )
+            startActivity(Intent(this, ChatActivity::class.java).putExtra("chatId", convo.id))
         }
-
         binding.rvConversations.layoutManager = LinearLayoutManager(this)
         binding.rvConversations.adapter = adapter
 
         viewModel.conversations.observe(this) { adapter.submitList(it) }
 
-        // Plus‑knop → contact‑picker
         binding.fabNewConversation.setOnClickListener {
-            startActivityForResult(
-                Intent(this, ContactPickerActivity::class.java),
-                REQUEST_PICK_CONTACT
-            )
+            startActivityForResult(Intent(this, ContactPickerActivity::class.java), REQUEST_PICK_CONTACT)
         }
     }
 
@@ -53,7 +46,5 @@ class ChatListActivity : AppCompatActivity() {
         }
     }
 
-    companion object {
-        private const val REQUEST_PICK_CONTACT = 1001
-    }
+    companion object { private const val REQUEST_PICK_CONTACT = 1001 }
 }
