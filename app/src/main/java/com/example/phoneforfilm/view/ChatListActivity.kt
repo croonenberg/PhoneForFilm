@@ -35,10 +35,10 @@ class ChatListActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        binding.rvConversations.layoutManager = LinearLayoutManager(this)
-        binding.rvConversations.adapter = adapter
+        binding.recyclerConversations.layoutManager = LinearLayoutManager(this)
+        binding.recyclerConversations.adapter = adapter
 
-        viewModel.conversations.observe(this) { list ->
+        viewModel.allConversations.observe(this) { list ->
             adapter.submitList(list)
         }
 
