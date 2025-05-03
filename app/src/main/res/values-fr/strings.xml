@@ -51,4 +51,6 @@
     <string name="chat_image_desc" translatable="false">Chat icon</string>
     <string name="desc_add_chat">Nouvelle discussion</string>
     <string name="decline">Refuser</string>
+    <string name="title_chat_list">Liste des discussions</string>
+    <string name="placeholder_empty">Rien ici pour l\'instant</string>
 </resources>
