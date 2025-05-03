@@ -6,6 +6,8 @@ import androidx.lifecycle.viewModelScope
 import com.example.phoneforfilm.data.repository.ConversationRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import kotlinx.coroutines.Dispatchers
 import javax.inject.Inject
 
 @HiltViewModel
@@ -16,9 +18,15 @@ class ChatListViewModel @Inject constructor(
     val conversations: LiveData<List<com.example.phoneforfilm.data.Conversation>> =
         repository.getAll()
 
-    fun createChatFor(contactId: Int) {
+    
+fun createChatFor(contactId: Int, onComplete: (Int) -> Unit) {
         viewModelScope.launch {
-            repository.createForContact(contactId)
+            val chatId = repository.createForContact(contactId).toInt()
+            withContext(Dispatchers.Main) {
+                onComplete(chatId)
+            }
         }
+    }
+
     }
 }

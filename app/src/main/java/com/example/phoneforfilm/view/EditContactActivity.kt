@@ -10,6 +10,9 @@ import com.example.phoneforfilm.databinding.ActivityEditContactBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import android.app.Activity
+import android.content.Intent
 
 @AndroidEntryPoint
 class EditContactActivity : BaseActivity() {
@@ -27,10 +30,14 @@ class EditContactActivity : BaseActivity() {
             if (name.isNotBlank() && phoneNumber.isNotBlank()) {
                 val newContact = Contact(name = name, phoneNumber = phoneNumber)
                 CoroutineScope(Dispatchers.IO).launch {
-                    AppDatabase.getDatabase(this@EditContactActivity)
+                    val newId = AppDatabase.getDatabase(this@EditContactActivity)
                         .contactDao()
-                        .insert(newContact)
-                    finish()
+                        .insert(newContact).toInt()
+                    withContext(Dispatchers.Main) {
+                        val data = Intent().putExtra("contactId", newId)
+                        setResult(Activity.RESULT_OK, data)
+                        finish()
+                    }
                 }
             }
         }

@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.phoneforfilm.adapter.ConversationAdapter
 import com.example.phoneforfilm.databinding.ActivityChatListBinding
 import com.example.phoneforfilm.ui.contact.ContactPickerActivity
+import android.content.Intent
+import com.example.phoneforfilm.view.ChatActivity
 import com.example.phoneforfilm.viewmodel.ChatListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -48,10 +50,17 @@ class ChatListActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQUEST_PICK_CONTACT && resultCode == Activity.RESULT_OK) {
+        
+if (requestCode == REQUEST_PICK_CONTACT && resultCode == Activity.RESULT_OK) {
             val contactId = data?.getIntExtra("contactId", -1) ?: -1
-            if (contactId != -1) viewModel.createChatFor(contactId)
+            if (contactId != -1) {
+                viewModel.createChatFor(contactId) { chatId ->
+                    startActivity(Intent(this, ChatActivity::class.java)
+                        .putExtra("chatId", chatId))
+                }
+            }
         }
+
     }
 
     companion object {
