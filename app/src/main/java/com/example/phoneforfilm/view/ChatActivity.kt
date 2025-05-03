@@ -5,7 +5,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.phoneforfilm.adapter.MessageAdapter
-import com.example.phoneforfilm.data.Message
+import com.example.phoneforfilm.data.model.Message
 import com.example.phoneforfilm.databinding.ActivityChatBinding
 import com.example.phoneforfilm.viewmodel.ChatViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -15,42 +15,27 @@ class ChatActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityChatBinding
     private val viewModel by viewModels<ChatViewModel>()
-    private lateinit var adapter: MessageAdapter
-    private var chatId: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityChatBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        chatId = intent.getIntExtra("chatId", 0)
-        val currentUserId = intent.getLongExtra("currentUserId", 0L)
-        adapter = MessageAdapter(currentUserId)
-
-        binding.recyclerViewMessages.apply {
-            layoutManager = LinearLayoutManager(context).apply { stackFromEnd = true }
-            adapter = this@ChatActivity.adapter
-        }
-
-        viewModel.messages.observe(this) { msgs ->
-            adapter.submitList(msgs)
-            binding.recyclerViewMessages.scrollToPosition(msgs.size - 1)
-        }
-
+        val chatId = intent.getIntExtra("chatId", -1)
         viewModel.loadMessages(chatId)
 
-        binding.buttonSend.setOnClickListener {
-            val text = binding.editTextMessage.text.toString().trim()
-            if (text.isNotEmpty()) {
-                val message = Message(
-                    chatId = chatId,
-                    senderId = 0, // 0 = me
-                    text = text,
-                    timestamp = System.currentTimeMillis(),
-                    status = 0
-                )
-                viewModel.sendMessage(message)
-                binding.editTextMessage.text.clear()
+        val adapter = MessageAdapter(emptyList())
+        binding.rvMessages.layoutManager = LinearLayoutManager(this)
+        binding.rvMessages.adapter = adapter
+
+        viewModel.messages.observe(this) { list ->
+            adapter.apply {
+                // Assuming you updated adapter to accept mutable list or use submitList
+                (messages as? ArrayList)?.apply {
+                    clear()
+                    addAll(list)
+                }
+                notifyDataSetChanged()
             }
         }
     }
