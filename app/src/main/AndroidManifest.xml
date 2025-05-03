@@ -3,10 +3,27 @@
 
     <application
         android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/Theme.PhoneForFilm">
+        android:theme="@style/Theme.PhoneForFilm"
+        android:supportsRtl="true">
 
-        <!-- bestaande activiteiten ... -->
+        <!-- Hoofdscherm -->
+        <activity
+            android:name=".view.MainActivity"
+            android:exported="true"
+            android:screenOrientation="unspecified">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Chatlijst -->
+        <activity
+            android:name=".view.ChatListActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
 
         <!-- Contact‑picker -->
         <activity
