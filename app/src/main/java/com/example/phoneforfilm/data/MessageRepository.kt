@@ -3,8 +3,6 @@ package com.example.phoneforfilm.data
 import javax.inject.Inject
 
 
-package com.example.phoneforfilm.data
-
 class MessageRepository @Inject constructor(private val messageDao: MessageDao) {
 
     suspend fun insert(message: Message) {
