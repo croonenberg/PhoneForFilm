@@ -1,11 +1,16 @@
 package com.example.phoneforfilm.data.repository
 
-import com.example.phoneforfilm.data.ConversationDao
+import androidx.lifecycle.LiveData
 import com.example.phoneforfilm.data.Conversation
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+import com.example.phoneforfilm.data.ConversationDao
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class ConversationRepository(private val dao: ConversationDao) {
+@Singleton
+class ConversationRepository @Inject constructor(private val dao: ConversationDao) {
+
+    /** Stream of conversations in DB. */
+    fun getAll(): LiveData<List<Conversation>> = dao.getAll()
 
     suspend fun createForContact(contactId: Int): Long {
         val exists = dao.getIdByContact(contactId)

@@ -29,17 +29,15 @@ class ChatListActivity : AppCompatActivity() {
         binding = ActivityChatListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        adapter = ConversationAdapter(emptyList()) { conversation ->
+        adapter = ConversationAdapter { conversation ->
             val intent = Intent(this, ChatActivity::class.java)
                 .putExtra("chatId", conversation.id)
             startActivity(intent)
         }
 
-        // Use the existing RecyclerView ID 'rvConversations'
         binding.rvConversations.layoutManager = LinearLayoutManager(this)
         binding.rvConversations.adapter = adapter
 
-        // Observe the 'conversations' LiveData from the ViewModel
         viewModel.conversations.observe(this) { list ->
             adapter.submitList(list)
         }
