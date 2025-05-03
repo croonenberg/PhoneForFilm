@@ -17,7 +17,7 @@ class ConversationAdapter(
         fun bind(convo: Conversation) = with(binding) {
             tvContactName.text  = convo.contactName
             tvLastMessage.text  = convo.lastMessage
-            tvTimestamp.text    = DateFormat.format("HH:mm", convo.lastMessageTime)
+            tvTimestamp.text    = DateFormat.format("HH:mm", convo.timestamp)
             root.setOnClickListener { onClick(convo) }
         }
     }
