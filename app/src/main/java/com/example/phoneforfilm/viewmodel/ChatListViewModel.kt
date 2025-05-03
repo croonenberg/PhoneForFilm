@@ -11,22 +11,29 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
+/**
+ * ViewModel voor de lijst met conversaties.
+ * Verzorgt ophalen van conversations en aanmaken van nieuwe chats.
+ */
 @HiltViewModel
 class ChatListViewModel @Inject constructor(
     private val repository: ConversationRepository
 ) : ViewModel() {
 
-    /** Stream of conversations from the repository */
+    /** LiveData-stream van alle Conversation-objecten uit de database. */
     val conversations: LiveData<List<Conversation>> = repository.getAll()
 
+    /**
+     * Maakt (indien nodig) een Conversation aan voor [contactId] en
+     * retourneert het nieuwe chatId via de [onComplete]-callback.
+     */
     fun createChatFor(contactId: Int, onComplete: (Int) -> Unit) {
-        // Run repository call on IO dispatcher to avoid main thread DB access
         viewModelScope.launch(Dispatchers.IO) {
             val chatId = repository.createForContact(contactId).toInt()
-            // Switch back to Main for callback
             withContext(Dispatchers.Main) {
                 onComplete(chatId)
             }
         }
     }
 }
+
