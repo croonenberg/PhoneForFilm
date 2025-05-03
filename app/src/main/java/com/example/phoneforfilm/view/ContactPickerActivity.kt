@@ -10,11 +10,13 @@ import com.example.phoneforfilm.adapter.ContactAdapter
 import com.example.phoneforfilm.databinding.ActivityContactPickerBinding
 import com.example.phoneforfilm.viewmodel.ContactViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import android.app.Activity
-import android.content.Intent
 
 @AndroidEntryPoint
 class ContactPickerActivity : AppCompatActivity() {
+
+    companion object {
+        const val REQUEST_CREATE_CONTACT = 1002
+    }
 
     private lateinit var binding: ActivityContactPickerBinding
     private val viewModel by viewModels<ContactViewModel>()
@@ -29,7 +31,21 @@ class ContactPickerActivity : AppCompatActivity() {
             val data = Intent().putExtra("contactId", contact.id)
             setResult(Activity.RESULT_OK, data)
             finish()
-        
+        }
+
+        binding.recyclerContacts.layoutManager = LinearLayoutManager(this)
+        binding.recyclerContacts.adapter = adapter
+
+        viewModel.allContacts.observe(this) { list ->
+            adapter.submitList(list)
+        }
+
+        binding.fabAddContact.setOnClickListener {
+            val intent = Intent(this, EditContactActivity::class.java)
+            startActivityForResult(intent, REQUEST_CREATE_CONTACT)
+        }
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_CREATE_CONTACT && resultCode == Activity.RESULT_OK) {
@@ -39,25 +55,6 @@ class ContactPickerActivity : AppCompatActivity() {
                 setResult(Activity.RESULT_OK, resultData)
                 finish()
             }
-        }
-    }
-
-    companion object {
-        private const val REQUEST_CREATE_CONTACT = 1002
-    }
-
-}
-
-        binding.recyclerContacts.layoutManager = LinearLayoutManager(this)
-        binding.recyclerContacts.adapter = adapter
-
-        viewModel.allContacts.observe(this) { adapter.submitList(it) }
-
-        binding.fabAddContact.setOnClickListener {
-            startActivityForResult(
-                Intent(this, EditContactActivity::class.java),
-                REQUEST_CREATE_CONTACT
-            )
         }
     }
 }
