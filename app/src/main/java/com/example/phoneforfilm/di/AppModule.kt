@@ -2,7 +2,10 @@ package com.example.phoneforfilm.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.phoneforfilm.data.*
+import com.example.phoneforfilm.data.AppDatabase
+import com.example.phoneforfilm.data.ContactDao
+import com.example.phoneforfilm.data.ConversationDao
+import com.example.phoneforfilm.data.MessageDao
 import com.example.phoneforfilm.data.repository.ContactRepository
 import com.example.phoneforfilm.data.repository.ConversationRepository
 import com.example.phoneforfilm.utils.PreferencesHelper
@@ -17,7 +20,9 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
-    /* ---------- Room database ---------- */
+    /**
+     *
+     *//* ---------- Room database ---------- */
     @Provides
     @Singleton
     fun provideDatabase(@ApplicationContext ctx: Context): AppDatabase =
@@ -25,16 +30,31 @@ object AppModule {
             .fallbackToDestructiveMigration(true)
             .build()
 
-    /* ---------- DAOs ---------- */
+    /**
+     *
+     *//* ---------- DAOs ---------- */
     @Provides @Singleton fun provideContactDao(db: AppDatabase): ContactDao = db.contactDao()
+    /**
+     *
+     */
     @Provides @Singleton fun provideConversationDao(db: AppDatabase): ConversationDao = db.conversationDao()
+    /**
+     *
+     */
     @Provides @Singleton fun provideMessageDao(db: AppDatabase): MessageDao = db.messageDao()
 
-    /* ---------- Repositories ---------- */
+    /**
+     *
+     *//* ---------- Repositories ---------- */
     @Provides @Singleton fun provideContactRepository(dao: ContactDao): ContactRepository = ContactRepository(dao)
+    /**
+     *
+     */
     @Provides @Singleton fun provideConversationRepository(dao: ConversationDao): ConversationRepository = ConversationRepository(dao)
 
-    /* ---------- Other singletons ---------- */
+    /**
+     *
+     *//* ---------- Other singletons ---------- */
     @Provides
     @Singleton
     fun providePreferencesHelper(@ApplicationContext ctx: Context): PreferencesHelper =
