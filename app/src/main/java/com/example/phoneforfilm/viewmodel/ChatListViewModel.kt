@@ -20,8 +20,10 @@ class ChatListViewModel @Inject constructor(
     val conversations: LiveData<List<Conversation>> = repository.getAll()
 
     fun createChatFor(contactId: Int, onComplete: (Int) -> Unit) {
-        viewModelScope.launch {
+        // Run repository call on IO dispatcher to avoid main thread DB access
+        viewModelScope.launch(Dispatchers.IO) {
             val chatId = repository.createForContact(contactId).toInt()
+            // Switch back to Main for callback
             withContext(Dispatchers.Main) {
                 onComplete(chatId)
             }
