@@ -5,7 +5,7 @@ import androidx.room.Room
 import com.example.phoneforfilm.data.AppDatabase
 import com.example.phoneforfilm.data.ContactDao
 import com.example.phoneforfilm.data.ConversationDao
-import com.example.phoneforfilm.data.MessageDao
+import com.example.phoneforfilm.data.dao.MessageDao
 import com.example.phoneforfilm.data.repository.ContactRepository
 import com.example.phoneforfilm.data.repository.ConversationRepository
 import com.example.phoneforfilm.utils.PreferencesHelper
@@ -16,13 +16,16 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
+/**
+ * Provides application-wide dependencies including Room database and repositories.
+ */
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
     /**
-     *
-     *//* ---------- Room database ---------- */
+     * Creates and provides the Room database for the application.
+     */
     @Provides
     @Singleton
     fun provideDatabase(@ApplicationContext ctx: Context): AppDatabase =
@@ -31,30 +34,48 @@ object AppModule {
             .build()
 
     /**
-     *
-     *//* ---------- DAOs ---------- */
-    @Provides @Singleton fun provideContactDao(db: AppDatabase): ContactDao = db.contactDao()
-    /**
-     *
+     * Provides the DAO for contacts.
      */
-    @Provides @Singleton fun provideConversationDao(db: AppDatabase): ConversationDao = db.conversationDao()
-    /**
-     *
-     */
-    @Provides @Singleton fun provideMessageDao(db: AppDatabase): MessageDao = db.messageDao()
+    @Provides
+    @Singleton
+    fun provideContactDao(db: AppDatabase): ContactDao =
+        db.contactDao()
 
     /**
-     *
-     *//* ---------- Repositories ---------- */
-    @Provides @Singleton fun provideContactRepository(dao: ContactDao): ContactRepository = ContactRepository(dao)
-    /**
-     *
+     * Provides the DAO for conversations.
      */
-    @Provides @Singleton fun provideConversationRepository(dao: ConversationDao): ConversationRepository = ConversationRepository(dao)
+    @Provides
+    @Singleton
+    fun provideConversationDao(db: AppDatabase): ConversationDao =
+        db.conversationDao()
 
     /**
-     *
-     *//* ---------- Other singletons ---------- */
+     * Provides the DAO for messages.
+     */
+    @Provides
+    @Singleton
+    fun provideMessageDao(db: AppDatabase): MessageDao =
+        db.messageDao()
+
+    /**
+     * Provides the repository for contacts.
+     */
+    @Provides
+    @Singleton
+    fun provideContactRepository(dao: ContactDao): ContactRepository =
+        ContactRepository(dao)
+
+    /**
+     * Provides the repository for conversations.
+     */
+    @Provides
+    @Singleton
+    fun provideConversationRepository(dao: ConversationDao): ConversationRepository =
+        ConversationRepository(dao)
+
+    /**
+     * Provides a helper for shared preferences.
+     */
     @Provides
     @Singleton
     fun providePreferencesHelper(@ApplicationContext ctx: Context): PreferencesHelper =
