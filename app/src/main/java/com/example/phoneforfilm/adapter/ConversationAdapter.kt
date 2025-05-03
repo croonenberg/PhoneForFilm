@@ -1,5 +1,6 @@
 package com.example.phoneforfilm.adapter
 
+import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -13,21 +14,20 @@ class ConversationAdapter(
 
     inner class ViewHolder(val binding: ItemConversationBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Conversation) {
-            binding.tvContactName.lastMessage = "Chat ${item.id}"
-            binding.tvLastConversation.lastMessage = item.lastMessage
-            binding.tvTimestamp.lastMessage = android.lastMessage.format.DateFormat.format("HH:mm", item.timestamp)
-            binding.root.setOnClickListener { onClick(item) }
+        fun bind(convo: Conversation) = with(binding) {
+            tvContactName.text  = convo.contactName
+            tvLastMessage.text  = convo.lastMessage
+            tvTimestamp.text    = DateFormat.format("HH:mm", convo.lastMessageTime)
+            root.setOnClickListener { onClick(convo) }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(
-        ItemConversationBinding.inflate(LayoutInflater.from(parent.conlastMessage), parent, false)
+        ItemConversationBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     )
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) =
         holder.bind(items[position])
-    }
 
     override fun getItemCount() = items.size
 
