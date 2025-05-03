@@ -42,8 +42,10 @@ class ContactPickerActivity : AppCompatActivity() {
         }
 
         binding.fabAddContact.setOnClickListener {
-            val intent = Intent(this, EditContactActivity::class.java)
-            startActivityForResult(intent, REQUEST_CREATE_CONTACT)
+            startActivityForResult(
+                Intent(this, EditContactActivity::class.java),
+                REQUEST_CREATE_CONTACT
+            )
         }
     }
 
