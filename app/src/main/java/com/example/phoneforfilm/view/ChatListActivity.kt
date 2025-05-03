@@ -29,16 +29,16 @@ class ChatListActivity : AppCompatActivity() {
         binding = ActivityChatListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        adapter = ConversationAdapter { conversation ->
+        adapter = ConversationAdapter(emptyList()) { conversation ->
             val intent = Intent(this, ChatActivity::class.java)
                 .putExtra("chatId", conversation.id)
             startActivity(intent)
         }
 
-        binding.recyclerConversations.layoutManager = LinearLayoutManager(this)
-        binding.recyclerConversations.adapter = adapter
+        binding.rvConversations.layoutManager = LinearLayoutManager(this)
+        binding.rvConversations.adapter = adapter
 
-        viewModel.allConversations.observe(this) { list ->
+        viewModel.conversations.observe(this) { list ->
             adapter.submitList(list)
         }
 

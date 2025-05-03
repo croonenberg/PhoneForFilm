@@ -9,13 +9,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.phoneforfilm.adapter.ContactAdapter
 import com.example.phoneforfilm.databinding.ActivityContactPickerBinding
 import com.example.phoneforfilm.viewmodel.ContactViewModel
+import com.example.phoneforfilm.view.EditContactActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ContactPickerActivity : AppCompatActivity() {
 
     companion object {
-        const val REQUEST_CREATE_CONTACT = 1002
+        private const val REQUEST_CREATE_CONTACT = 1002
     }
 
     private lateinit var binding: ActivityContactPickerBinding
