@@ -1,9 +1,6 @@
 package com.example.phoneforfilm.utils
 
 import javax.inject.Inject
-
-package com.example.phoneforfilm.utils
-
 import android.content.Context
 import android.content.SharedPreferences
 
