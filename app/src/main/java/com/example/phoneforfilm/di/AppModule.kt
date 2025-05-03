@@ -5,7 +5,6 @@ import androidx.room.Room
 import com.example.phoneforfilm.data.AppDatabase
 import com.example.phoneforfilm.data.ContactDao
 import com.example.phoneforfilm.data.ConversationDao
-import com.example.phoneforfilm.data.dao.MessageDao
 import com.example.phoneforfilm.data.repository.ContactRepository
 import com.example.phoneforfilm.data.repository.ConversationRepository
 import com.example.phoneforfilm.utils.PreferencesHelper
@@ -49,13 +48,7 @@ object AppModule {
     fun provideConversationDao(db: AppDatabase): ConversationDao =
         db.conversationDao()
 
-    /**
-     * Provides the DAO for messages.
-     */
-    @Provides
-    @Singleton
-    fun provideMessageDao(db: AppDatabase): MessageDao =
-        db.messageDao()
+
 
     /**
      * Provides the repository for contacts.
