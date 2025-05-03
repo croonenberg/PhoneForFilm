@@ -5,6 +5,7 @@ import androidx.room.Room
 import com.example.phoneforfilm.data.*
 import com.example.phoneforfilm.data.repository.ContactRepository
 import com.example.phoneforfilm.data.repository.ConversationRepository
+import com.example.phoneforfilm.utils.PreferencesHelper
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -25,31 +26,17 @@ object AppModule {
             .build()
 
     /* ---------- DAOs ---------- */
-
-    @Provides
-    @Singleton
-    fun provideContactDao(db: AppDatabase): ContactDao = db.contactDao()
-
-    @Provides
-    @Singleton
-    fun provideConversationDao(db: AppDatabase): ConversationDao = db.conversationDao()
-
-    @Provides
-    @Singleton
-    fun provideMessageDao(db: AppDatabase): MessageDao = db.messageDao()
+    @Provides @Singleton fun provideContactDao(db: AppDatabase): ContactDao = db.contactDao()
+    @Provides @Singleton fun provideConversationDao(db: AppDatabase): ConversationDao = db.conversationDao()
+    @Provides @Singleton fun provideMessageDao(db: AppDatabase): MessageDao = db.messageDao()
 
     /* ---------- Repositories ---------- */
-
-    @Provides
-    @Singleton
-    fun provideContactRepository(dao: ContactDao): ContactRepository = ContactRepository(dao)
-
-    @Provides
-    @Singleton
-    fun provideConversationRepository(dao: ConversationDao): ConversationRepository =
-        ConversationRepository(dao)
-
-    /* MessageRepository has @Inject constructor, so Hilt can provide it automatically */
+    @Provides @Singleton fun provideContactRepository(dao: ContactDao): ContactRepository = ContactRepository(dao)
+    @Provides @Singleton fun provideConversationRepository(dao: ConversationDao): ConversationRepository = ConversationRepository(dao)
 
     /* ---------- Other singletons ---------- */
+    @Provides
+    @Singleton
+    fun providePreferencesHelper(@ApplicationContext ctx: Context): PreferencesHelper =
+        PreferencesHelper(ctx)
 }
