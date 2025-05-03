@@ -6,6 +6,9 @@ import com.example.phoneforfilm.data.ContactDao
 import com.example.phoneforfilm.data.ContactRepository
 import com.example.phoneforfilm.data.MessageDao
 import com.example.phoneforfilm.data.MessageRepository
+import com.example.phoneforfilm.data.ConversationDao
+import com.example.phoneforfilm.data.ConversationRepository
+
 import com.example.phoneforfilm.utils.LocaleManager
 import com.example.phoneforfilm.utils.PreferencesHelper
 import dagger.Module
@@ -48,6 +51,14 @@ object AppModule {
     @Provides
     fun provideMessageRepository(dao: MessageDao): MessageRepository =
         MessageRepository(dao)
+
+    @Provides
+    fun provideConversationDao(db: AppDatabase): ConversationDao = db.conversationDao()
+
+    @Provides
+    fun provideConversationRepository(dao: ConversationDao): ConversationRepository =
+        ConversationRepository(dao)
+
 
     @Singleton
     @Provides

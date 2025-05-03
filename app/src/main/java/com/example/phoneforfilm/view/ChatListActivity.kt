@@ -24,7 +24,7 @@ class ChatListActivity : AppCompatActivity() {
 
         adapter = ConversationAdapter(emptyList()) {
             val intent = Intent(this, ChatActivity::class.java)
-            intent.putExtra("chatId", it.chatId)
+            intent.putExtra("chatId", it.id)
             startActivity(intent)
         }
 
@@ -35,6 +35,6 @@ class ChatListActivity : AppCompatActivity() {
             adapter.submitList(it)
         }
 
-        viewModel.loadConversations()
+        
     }
 }
