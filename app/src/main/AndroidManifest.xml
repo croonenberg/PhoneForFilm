@@ -15,8 +15,8 @@
             android:exported="true"
             android:screenOrientation="unspecified">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
@@ -24,13 +24,25 @@
         <activity
             android:name=".view.ChatListActivity"
             android:exported="false"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="unspecified" />
 
-        <!-- Contact‑picker -->
+        <!-- Contact-picker -->
         <activity
             android:name=".ui.contact.ContactPickerActivity"
             android:exported="false"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="unspecified" />
+
+        <!-- Chat-scherm -->
+        <activity
+            android:name=".view.ChatActivity"
+            android:exported="false"
+            android:screenOrientation="unspecified" />
+
+        <!-- Contact bewerken / nieuw contact -->
+        <activity
+            android:name=".view.EditContactActivity"
+            android:exported="false"
+            android:screenOrientation="unspecified" />
 
     </application>
 
