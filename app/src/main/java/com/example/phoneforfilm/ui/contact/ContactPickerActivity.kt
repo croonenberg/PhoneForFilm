@@ -3,29 +3,31 @@ package com.example.phoneforfilm.ui.contact
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.phoneforfilm.adapter.ContactAdapter
 import com.example.phoneforfilm.databinding.ActivityContactPickerBinding
-import com.example.phoneforfilm.viewmodel.ContactViewModel
 import com.example.phoneforfilm.view.EditContactActivity
+import com.example.phoneforfilm.viewmodel.ContactViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
+/**
+ * Activity for selecting an existing contact or creating a new one.
+ */
 @AndroidEntryPoint
 class ContactPickerActivity : AppCompatActivity() {
-
-    companion object {
-        private const val REQUEST_CREATE_CONTACT = 1002
-    }
 
     private lateinit var binding: ActivityContactPickerBinding
     private val viewModel by viewModels<ContactViewModel>()
     private lateinit var adapter: ContactAdapter
     private lateinit var createContactLauncher: ActivityResultLauncher<Intent>
 
+    /**
+     * Initializes UI and registers the result launcher for the EditContact activity.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityContactPickerBinding.inflate(layoutInflater)
@@ -35,13 +37,10 @@ class ContactPickerActivity : AppCompatActivity() {
             ActivityResultContracts.StartActivityForResult()
         ) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
-                val newContactId = result.data?.getIntExtra("contactId", -1) ?: -1
-                if (newContactId != -1) {
-                    setResult(Activity.RESULT_OK,
-                        Intent().putExtra("contactId", newContactId)
-                    )
-                    finish()
-                }
+                val newContactId = result.data
+                    ?.getIntExtra("contactId", -1) ?: return@registerForActivityResult
+                setResult(Activity.RESULT_OK, Intent().putExtra("contactId", newContactId))
+                finish()
             }
         }
 

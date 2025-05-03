@@ -1,5 +1,6 @@
 package com.example.phoneforfilm.view
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -14,18 +15,20 @@ import com.example.phoneforfilm.view.ChatActivity
 import com.example.phoneforfilm.viewmodel.ChatListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
+/**
+ * Activity that displays a list of conversations and allows starting a new chat or selecting one.
+ */
 @AndroidEntryPoint
 class ChatListActivity : AppCompatActivity() {
-
-    companion object {
-        private const val REQUEST_PICK_CONTACT = 1001
-    }
 
     private lateinit var binding: ActivityChatListBinding
     private val viewModel by viewModels<ChatListViewModel>()
     private lateinit var adapter: ConversationAdapter
     private lateinit var pickContactLauncher: ActivityResultLauncher<Intent>
 
+    /**
+     * Sets up the conversation list and registers the result launcher for picking contacts.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityChatListBinding.inflate(layoutInflater)
@@ -35,22 +38,22 @@ class ChatListActivity : AppCompatActivity() {
             ActivityResultContracts.StartActivityForResult()
         ) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
-                val contactId = result.data?.getIntExtra("contactId", -1) ?: -1
-                if (contactId != -1) {
-                    viewModel.createChatFor(contactId) { chatId ->
-                        startActivity(
-                            Intent(this, ChatActivity::class.java)
-                                .putExtra("chatId", chatId)
-                        )
-                    }
+                val contactId = result.data
+                    ?.getIntExtra("contactId", -1) ?: return@registerForActivityResult
+                viewModel.createChatFor(contactId) { chatId ->
+                    startActivity(
+                        Intent(this, ChatActivity::class.java)
+                            .putExtra("chatId", chatId)
+                    )
                 }
             }
         }
 
         adapter = ConversationAdapter { conversation ->
-            val intent = Intent(this, ChatActivity::class.java)
-                .putExtra("chatId", conversation.id)
-            startActivity(intent)
+            startActivity(
+                Intent(this, ChatActivity::class.java)
+                    .putExtra("chatId", conversation.id)
+            )
         }
 
         binding.rvConversations.layoutManager = LinearLayoutManager(this)
