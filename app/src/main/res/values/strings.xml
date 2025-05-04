@@ -51,7 +51,7 @@
     <string name="chat_image_desc" translatable="false">Chat icon</string>
     <string name="desc_add_chat">New chat</string>
     <string name="decline">Decline</string>
-    <string name="title_chat_list">Chats</string>
+    <string name="title_chat_list">Chat list</string>
     <string name="placeholder_empty">Nothing here yet</string>
 
     <string name="copied_to_clipboard">Copied to clipboard</string>
@@ -63,4 +63,8 @@
     <string name="theme_grey_card">Grey Card</string>
     <string name="theme_neutral_light">Neutral Light</string>
     <string name="theme_darkroom">Darkroom</string>
+
+    <!-- Added strings -->
+    <string name="message_options">Message options</string>
+
 </resources>

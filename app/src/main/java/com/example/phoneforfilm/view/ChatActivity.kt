@@ -103,12 +103,13 @@ class ChatActivity : AppCompatActivity() {
     }
 
     private fun showLanguageChooser() {
+        // Use existing language_* resources instead of new language_nl/en keys
         val languages = arrayOf(
-            getString(R.string.language_nl),
-            getString(R.string.language_en),
-            getString(R.string.language_de),
-            getString(R.string.language_fr),
-            getString(R.string.language_es)
+            getString(R.string.language_dutch),
+            getString(R.string.language_english),
+            getString(R.string.language_german),
+            getString(R.string.language_french),
+            getString(R.string.language_spanish)
         )
         AlertDialog.Builder(this)
             .setTitle(R.string.choose_language)

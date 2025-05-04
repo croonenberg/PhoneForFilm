@@ -53,6 +53,7 @@
     <string name="decline">Decline</string>
     <string name="title_chat_list">Chat list</string>
     <string name="placeholder_empty">Nothing here yet</string>
+
     <string name="copied_to_clipboard">Copied to clipboard</string>
     <string name="toggle_sender">Toggle sender</string>
     <string name="copy_message">Copy message</string>
@@ -62,4 +63,8 @@
     <string name="theme_grey_card">Grey Card</string>
     <string name="theme_neutral_light">Neutral Light</string>
     <string name="theme_darkroom">Darkroom</string>
+
+    <!-- Added strings -->
+    <string name="message_options">Message options</string>
+
 </resources>
