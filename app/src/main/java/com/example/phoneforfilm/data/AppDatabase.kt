@@ -16,7 +16,7 @@ import com.example.phoneforfilm.data.dao.MessageDao
  */
 @Database(
     entities = [Contact::class, Message::class, Conversation::class],
-    version = 5,  // incremented from 4 to 5 to match schema changes
+    version = 6,  // bumped for isSender column
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
