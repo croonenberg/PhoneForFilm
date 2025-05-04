@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import com.example.phoneforfilm.R
 import com.example.phoneforfilm.adapter.MessageAdapter
 import com.example.phoneforfilm.data.model.Message
@@ -18,6 +19,7 @@ class ChatActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityChatBinding
     private val viewModel: ChatViewModel by viewModels()
+    private lateinit var adapter: MessageAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,16 +29,14 @@ class ChatActivity : AppCompatActivity() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
-        val adapter = MessageAdapter(emptyList(), this)
+        adapter = MessageAdapter(emptyList(), this)
         binding.recyclerViewMessages.adapter = adapter
 
-        viewModel.messages.observe(this) { messages ->
+        viewModel.messages.observe(this, Observer { messages ->
             adapter.updateMessages(messages)
             binding.recyclerViewMessages.scrollToPosition(messages.size - 1)
-        }
+        })
 
-
-        // Verzendknop logica
         binding.buttonSend.setOnClickListener {
             val text = binding.editTextMessage.text.toString().trim()
             if (text.isNotEmpty()) {
