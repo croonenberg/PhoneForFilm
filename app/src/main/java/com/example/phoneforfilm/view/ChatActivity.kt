@@ -1,10 +1,12 @@
 package com.example.phoneforfilm.view
 
+import android.content.DialogInterface
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.phoneforfilm.R
 import com.example.phoneforfilm.adapter.MessageAdapter
 import com.example.phoneforfilm.data.model.Message
 import com.example.phoneforfilm.databinding.ActivityChatBinding
@@ -52,17 +54,14 @@ class ChatActivity : AppCompatActivity() {
         )
         AlertDialog.Builder(this)
             .setTitle(R.string.message_options)
-            .setItems(options) { dialog, which ->
+            .setItems(options, DialogInterface.OnClickListener { _, which ->
                 when (which) {
                     0 -> showEditDialog(msg)
-                    1 -> {
-                        viewModel.deleteMessage(msg)
-                        viewModel.getMessages(conversationId)
-                    }
+                    1 -> viewModel.deleteMessage(msg)
                     2 -> showThemeChooser()
                     3 -> showLanguageChooser()
                 }
-            }
+            })
             .show()
     }
 
@@ -74,14 +73,15 @@ class ChatActivity : AppCompatActivity() {
         AlertDialog.Builder(this)
             .setTitle(R.string.edit_message)
             .setView(input)
-            .setPositiveButton(R.string.save) { _, _ ->
+            .setPositiveButton(R.string.save, DialogInterface.OnClickListener { _, _ ->
                 val newText = input.text.toString()
                 if (newText.isNotBlank()) {
                     msg.text = newText
                     viewModel.updateMessage(msg)
+                    // refresh
                     viewModel.getMessages(conversationId)
                 }
-            }
+            })
             .setNegativeButton(android.R.string.cancel, null)
             .show()
     }
@@ -96,9 +96,9 @@ class ChatActivity : AppCompatActivity() {
         )
         AlertDialog.Builder(this)
             .setTitle(R.string.choose_theme)
-            .setItems(themeNames) { _, which ->
-                // TODO: apply theme choice to this chat
-            }
+            .setItems(themeNames, DialogInterface.OnClickListener { _, which ->
+                // TODO: apply theme
+            })
             .show()
     }
 
@@ -112,9 +112,9 @@ class ChatActivity : AppCompatActivity() {
         )
         AlertDialog.Builder(this)
             .setTitle(R.string.choose_language)
-            .setItems(languages) { _, which ->
-                // TODO: apply language choice to this chat
-            }
+            .setItems(languages, DialogInterface.OnClickListener { _, which ->
+                // TODO: apply language
+            })
             .show()
     }
 }
