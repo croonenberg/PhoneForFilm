@@ -2,12 +2,13 @@ package com.example.phoneforfilm.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.example.phoneforfilm.R
 import com.example.phoneforfilm.data.model.Message
 import com.example.phoneforfilm.databinding.ItemMessageBinding
 import com.example.phoneforfilm.view.ChatActivity
 import android.widget.PopupMenu
-import com.example.phoneforfilm.R
 
 class MessageAdapter(var messages: MutableList<Message>) :
     RecyclerView.Adapter<MessageAdapter.MessageViewHolder>() {
@@ -39,10 +40,18 @@ class MessageAdapter(var messages: MutableList<Message>) :
         }
 
         fun bind(message: Message) {
-            binding.tvMessage.text = message.text
+            // dynamic background and text color
+            val context = binding.root.context
+            if (message.isSender) {
+                binding.tvMessage.setBackgroundResource(R.drawable.chat_bubble_sent)
+                binding.tvMessage.setTextColor(ContextCompat.getColor(context, android.R.color.white))
+            } else {
+                binding.tvMessage.setBackgroundResource(R.drawable.chat_bubble_received)
+                binding.tvMessage.setTextColor(ContextCompat.getColor(context, android.R.color.black))
+            }
             binding.tvTimestamp.text = java.text.SimpleDateFormat("HH:mm", java.util.Locale.getDefault())
                 .format(message.timestamp)
-            // align bubble based on sender
+            // adjust margins
             val params = binding.messageContainer.layoutParams as ViewGroup.MarginLayoutParams
             if (message.isSender) {
                 params.marginStart = 50
@@ -52,7 +61,6 @@ class MessageAdapter(var messages: MutableList<Message>) :
                 params.marginEnd = 50
             }
             binding.messageContainer.layoutParams = params
-            binding.root.requestLayout()
         }
     }
 

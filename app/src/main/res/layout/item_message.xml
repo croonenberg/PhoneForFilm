@@ -1,38 +1,32 @@
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <variable
             name="message"
             type="com.example.phoneforfilm.data.model.Message"/>
     </data>
+
     <LinearLayout
         android:id="@+id/messageContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="8dp"
-        android:layoutDirection="ltr">
+        android:padding="8dp">
 
         <TextView
             android:id="@+id/tvMessage"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/chat_bubble_sent"
-            android:text="@{message.text}"
-            android:textColor="?attr/colorOnSurface"
-            android:textSize="16sp"
             android:padding="12dp"
-            tools:text="Hello World!" />
+            android:text="@{message.text}"
+            android:textSize="16sp"/>
 
         <TextView
             android:id="@+id/tvTimestamp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="12:34"
-            android:textColor="?attr/colorOnSurface"
-            android:textSize="12sp"
-            tools:text="12:34" />
+            android:text="@{new java.text.SimpleDateFormat("HH:mm", java.util.Locale.getDefault()).format(message.timestamp)}"
+            android:textSize="12sp"/>
     </LinearLayout>
 </layout>
