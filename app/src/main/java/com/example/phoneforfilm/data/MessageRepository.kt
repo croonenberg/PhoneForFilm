@@ -1,4 +1,4 @@
-package com.example.phoneforfilm.data
+package com.example.phoneforfilm.data.repository
 
 import com.example.phoneforfilm.data.dao.MessageDao
 import com.example.phoneforfilm.data.model.Message
