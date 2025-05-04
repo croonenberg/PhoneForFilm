@@ -33,12 +33,13 @@ class ChatActivity : AppCompatActivity() {
 
         viewModel.getMessages(conversationId).observe(this) { list ->
             adapter.update(list)
+            binding.recyclerViewMessages.scrollToPosition(list.size - 1)
         }
 
         binding.buttonSend.setOnClickListener {
             val text = binding.editTextMessage.text.toString()
             if (text.isNotBlank()) {
-                viewModel.sendMessage(Message(conversationId = conversationId, text = text, timestamp = System.currentTimeMillis(), isSender = true))
+                viewModel.sendMessage(text)
                 binding.editTextMessage.text.clear()
             }
         }

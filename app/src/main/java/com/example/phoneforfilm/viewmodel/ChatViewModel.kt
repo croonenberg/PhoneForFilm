@@ -1,6 +1,8 @@
 package com.example.phoneforfilm.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.phoneforfilm.data.model.Message
 import com.example.phoneforfilm.data.repository.MessageRepository
@@ -24,36 +26,34 @@ class ChatViewModel @Inject constructor(
 
     private var conversationId: Int = -1
 
-    val messages: StateFlow<List<Message>> = repo
-        .getForConversationFlow(conversationId)
-        .map { list -> list.sortedBy { it.timestamp } }
+    val messagesFlow: StateFlow<List<Message>> = repo
+        .getMessagesByChatId(conversationId)
+        .map { it.sortedBy { msg -> msg.timestamp } }
         .stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
+
+    fun getMessages(chatId: Int): LiveData<List<Message>> =
+        repo.getMessagesByChatId(chatId).asLiveData()
 
     fun startConversation(id: Int) {
         conversationId = id
     }
 
     fun sendMessage(text: String) {
-        val msg = Message(
-            conversationId = conversationId,
-            text = text,
-            timestamp = System.currentTimeMillis(),
-            isSender = true
-        )
+        val msg = Message(conversationId = conversationId, text = text, timestamp = System.currentTimeMillis(), isSender = true)
         viewModelScope.launch(ioDispatcher) {
-            repo.insertMessage(msg)
+            repo.insert(msg)
         }
     }
 
     fun updateMessage(msg: Message) {
         viewModelScope.launch(ioDispatcher) {
-            repo.updateMessage(msg)
+            repo.update(msg)
         }
     }
 
     fun deleteMessage(msg: Message) {
         viewModelScope.launch(ioDispatcher) {
-            repo.deleteMessage(msg)
+            repo.delete(msg)
         }
     }
 }
