@@ -57,4 +57,10 @@
     <string name="toggle_sender">Absender wechseln</string>
     <string name="copy_message">Nachricht kopieren</string>
     <string name="delete_message">Nachricht löschen</string>
+    <string name="theme_greenroom">Greenroom</string>
+    <string name="theme_blue_stage">Blue Stage</string>
+    <string name="theme_grey_card">Grey Card</string>
+    <string name="theme_neutral_light">Neutral Light</string>
+    <string name="theme_darkroom">Darkroom</string>
+    <string name="choose_theme">Choose theme</string>
 </resources>
