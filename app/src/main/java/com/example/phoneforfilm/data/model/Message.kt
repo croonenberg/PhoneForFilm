@@ -12,7 +12,7 @@ import java.util.Locale
  */
 @Entity(tableName = "messages")
 data class Message(
-    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") val id: Int = 0,
+    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "chatId") val id: Int = 0,
     @ColumnInfo(name = "conversationId") val conversationId: Int,
     @ColumnInfo(name = "text") val text: String,
     @ColumnInfo(name = "timestamp") val timestamp: Long,
