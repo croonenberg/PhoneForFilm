@@ -24,32 +24,40 @@ class ChatViewModel @Inject constructor(
     @MainDispatcher private val mainDispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
-    private var conversationId: Int = -1
+    private val conversationIdFlow = MutableStateFlow(-1)
 
-    // Gesorteerde stroom berichten
-    val messagesFlow: StateFlow<List<Message>> = repo
-        .getMessagesByChatId(conversationId)
-        .map { list -> list.sortedBy { msg -> msg.timestamp } }
-        .stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
+    /** LiveData van gesorteerde berichten voor huidige chat */
+    val messages: LiveData<List<Message>> = conversationIdFlow
+        .flatMapLatest { chatId -> repo.getMessagesByChatId(chatId) }
+        .map { messageList ->
+            messageList.sortedBy { msg -> msg.timestamp }
+        }
+        .asLiveData(context = viewModelScope.coroutineContext + mainDispatcher)
 
-    fun getMessages(chatId: Int): LiveData<List<Message>> =
-        repo.getMessagesByChatId(chatId).asLiveData()
-
+    /** Stel in welke chat we nu tonen */
     fun startConversation(id: Int) {
-        conversationId = id
+        conversationIdFlow.value = id
     }
 
+    /** Verstuur nieuw bericht met tekst */
     fun sendMessage(text: String) {
-        val msg = Message(conversationId = conversationId, text = text, timestamp = System.currentTimeMillis(), isSender = true)
+        val msg = Message(
+            conversationId = conversationIdFlow.value,
+            text = text,
+            timestamp = System.currentTimeMillis(),
+            isSender = true
+        )
         viewModelScope.launch(ioDispatcher) {
             repo.insert(msg)
         }
     }
 
+    /** Update bestaand bericht */
     fun updateMessage(msg: Message) {
         viewModelScope.launch(ioDispatcher) { repo.update(msg) }
     }
 
+    /** Verwijder bericht */
     fun deleteMessage(msg: Message) {
         viewModelScope.launch(ioDispatcher) { repo.delete(msg) }
     }
