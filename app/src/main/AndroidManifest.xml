@@ -6,44 +6,16 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PhoneForFilm">
-
-        <!-- Hoofdscherm -->
-        <activity
-            android:name=".view.MainActivity"
-            android:exported="true"
-            android:screenOrientation="unspecified">
+        <activity android:name=".presentation.view.ChatActivity" />
+        <activity android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <!-- Chatlijst -->
-        <activity
-            android:name=".view.ChatListActivity"
-            android:exported="false"
-            android:screenOrientation="unspecified" />
-
-        <!-- Contact-picker -->
-        <activity
-            android:name=".ui.contact.ContactPickerActivity"
-            android:exported="false"
-            android:screenOrientation="unspecified" />
-
-        <!-- Chat-scherm -->
-        <activity
-            android:name=".view.ChatActivity"
-            android:exported="false"
-            android:screenOrientation="unspecified" />
-
-        <!-- Contact bewerken / nieuw contact -->
-        <activity
-            android:name=".view.EditContactActivity"
-            android:exported="false"
-            android:screenOrientation="unspecified" />
-
     </application>
 
 </manifest>
