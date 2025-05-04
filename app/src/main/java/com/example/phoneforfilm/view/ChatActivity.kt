@@ -1,6 +1,7 @@
 package com.example.phoneforfilm.view
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -28,21 +29,43 @@ class ChatActivity : AppCompatActivity() {
         binding.recyclerViewMessages.layoutManager = LinearLayoutManager(this)
         binding.recyclerViewMessages.adapter = adapter
 
-        // Observe messages and update UI
-        viewModel.messages.observe(this) { list ->
-            adapter.updateData(list)
-            // Scroll to bottom
-            binding.recyclerViewMessages.scrollToPosition(list.size - 1)
+        viewModel.messages.observe(this) {
+            adapter.updateData(it)
+            binding.recyclerViewMessages.scrollToPosition(it.size - 1)
         }
 
-        // Send button click
         binding.buttonSend.setOnClickListener {
             val text = binding.editTextMessage.text.toString().trim()
             if (text.isNotEmpty()) {
-                val message = Message(conversationId = chatId, text = text, timestamp = System.currentTimeMillis())
-                viewModel.sendMessage(message)
+                val msg = Message(conversationId = chatId, text = text, timestamp = System.currentTimeMillis())
+                viewModel.sendMessage(msg)
                 binding.editTextMessage.text?.clear()
             }
         }
+    }
+
+    // Stub methods for context menu actions
+    fun onEditMessage(message: Message) {
+        Toast.makeText(this, "Edit: ${message.text}", Toast.LENGTH_SHORT).show()
+    }
+
+    fun onDeleteMessage(message: Message) {
+        Toast.makeText(this, "Delete: ${message.text}", Toast.LENGTH_SHORT).show()
+    }
+
+    fun onCopyMessage(message: Message) {
+        Toast.makeText(this, "Copied: ${message.text}", Toast.LENGTH_SHORT).show()
+    }
+
+    fun onChangeTheme() {
+        Toast.makeText(this, "Theme change invoked", Toast.LENGTH_SHORT).show()
+    }
+
+    fun onChangeLanguage() {
+        Toast.makeText(this, "Language change invoked", Toast.LENGTH_SHORT).show()
+    }
+
+    fun onToggleSender() {
+        Toast.makeText(this, "Toggle sender/receiver", Toast.LENGTH_SHORT).show()
     }
 }

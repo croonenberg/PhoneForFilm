@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/action_edit" android:title="Edit Message"/>
+    <item android:id="@+id/action_delete" android:title="Delete Message"/>
+    <item android:id="@+id/action_copy" android:title="Copy Message"/>
+    <item android:id="@+id/action_change_theme" android:title="Change Chat Theme"/>
+    <item android:id="@+id/action_change_language" android:title="Change Language"/>
+    <item android:id="@+id/action_toggle_sender" android:title="Toggle Sender/Receiver"/>
+</menu>
