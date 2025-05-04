@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.phoneforfilm.databinding.ItemMessageReceivedBinding
 import com.example.phoneforfilm.databinding.ItemMessageSentBinding
 import com.example.phoneforfilm.view.ChatActivity
-import com.example.phoneforfilm.data.model.Message// <-- Controleer of dit pad correct is!
+import com.example.phoneforfilm.data.model.Message
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -52,11 +52,11 @@ class MessageAdapter(
             when (binding) {
                 is ItemMessageSentBinding -> {
                     binding.tvSentMessage.text = message.text
-                    binding.tvSentTime.text = message.timestamp
+                    binding.tvSentTime.text = formattedTime
                 }
                 is ItemMessageReceivedBinding -> {
                     binding.tvReceivedMessage.text = message.text
-                    binding.tvReceivedTime.text = message.timestamp
+                    binding.tvReceivedTime.text = formattedTime
                 }
             }
         }
