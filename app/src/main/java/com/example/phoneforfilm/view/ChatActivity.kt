@@ -34,7 +34,7 @@ class ChatActivity : AppCompatActivity() {
 
     /** Open the edit UI for this message. */
     fun onEditMessage(msg: Message) {
-        // TODO: show edit dialog or start EditConversationActivity
+        // Implementation pending
     }
 
     /** Delete this message from DB and refresh list. */
@@ -64,6 +64,7 @@ class ChatActivity : AppCompatActivity() {
             .setTitle(getString(R.string.choose_theme))
             .setItems(themeNames) { _, which ->
                 viewModel.setThemeForConversation(conversationId, themeValues[which])
+                viewModel.loadMessages(conversationId)
             }
             .show()
     }
