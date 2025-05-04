@@ -43,10 +43,7 @@ android {
         viewBinding = true
         dataBinding = true
     }
-    repositories {
-        google()
-        mavenCentral()
-    }
+
 
     dependencies {
         // AndroidX core & UI
