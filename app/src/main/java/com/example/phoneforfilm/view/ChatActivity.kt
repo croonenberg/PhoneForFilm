@@ -28,13 +28,20 @@ class ChatActivity : AppCompatActivity() {
         binding.recyclerViewMessages.layoutManager = LinearLayoutManager(this)
         binding.recyclerViewMessages.adapter = adapter
 
+        // Observe messages and update UI
         viewModel.messages.observe(this) { list ->
-            adapter.apply {
-                (messages as? MutableList)?.apply {
-                    clear()
-                    addAll(list)
-                }
-                notifyDataSetChanged()
+            adapter.updateData(list)
+            // Scroll to bottom
+            binding.recyclerViewMessages.scrollToPosition(list.size - 1)
+        }
+
+        // Send button click
+        binding.buttonSend.setOnClickListener {
+            val text = binding.editTextMessage.text.toString().trim()
+            if (text.isNotEmpty()) {
+                val message = Message(conversationId = chatId, text = text, timestamp = System.currentTimeMillis())
+                viewModel.sendMessage(message)
+                binding.editTextMessage.text?.clear()
             }
         }
     }
