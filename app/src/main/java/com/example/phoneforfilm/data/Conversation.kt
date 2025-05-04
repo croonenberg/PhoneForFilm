@@ -20,5 +20,8 @@ data class Conversation(
     val timestamp: Long,
 
     @ColumnInfo(name = "contactName")
-    val contactName: String = ""  // mapped from JOIN query
+    val contactName: String = "",
+
+    @ColumnInfo(name = "theme")
+    val theme: String = "Greenroom"
 )
