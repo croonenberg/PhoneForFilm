@@ -2,22 +2,34 @@ package com.example.phoneforfilm.data
 
 import javax.inject.Inject
 
-
+/**
+ * Repository for message-related data operations.
+ */
 class MessageRepository @Inject constructor(private val messageDao: MessageDao) {
 
+    /**
+     * Inserts a new message.
+     */
     suspend fun insert(message: Message) {
-        messageDao.insertMessage(message)
+        messageDao.insert(message)
     }
 
+    /**
+     * Updates an existing message.
+     */
     suspend fun update(message: Message) {
-        messageDao.updateMessage(message)
+        messageDao.update(message)
     }
 
+    /**
+     * Deletes a message.
+     */
     suspend fun delete(message: Message) {
-        messageDao.deleteMessage(message)
+        messageDao.delete(message)
     }
 
-    suspend fun getMessagesByChatId(chatId: Int): List<Message> {
-        return messageDao.getMessagesByChatId(chatId)
-    }
+    /**
+     * Retrieves messages for a specific conversation.
+     */
+    fun getMessagesByChatId(chatId: Int) = messageDao.getMessagesForConversation(chatId)
 }

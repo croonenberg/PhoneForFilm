@@ -15,5 +15,14 @@
             android:textColor="?attr/colorOnSurface"
             android:textSize="16sp"
             android:padding="12dp" />
+
+        <TextView
+            android:id="@+id/tvTimestamp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@{new java.text.SimpleDateFormat("HH:mm").format(message.timestamp)}"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="12sp" />
     </LinearLayout>
 </layout>

@@ -24,14 +24,13 @@ class ChatActivity : AppCompatActivity() {
         val chatId = intent.getIntExtra("chatId", -1)
         viewModel.loadMessages(chatId)
 
-        val adapter = MessageAdapter(emptyList())
-        binding.rvMessages.layoutManager = LinearLayoutManager(this)
-        binding.rvMessages.adapter = adapter
+        val adapter = MessageAdapter(mutableListOf())
+        binding.recyclerViewMessages.layoutManager = LinearLayoutManager(this)
+        binding.recyclerViewMessages.adapter = adapter
 
         viewModel.messages.observe(this) { list ->
             adapter.apply {
-                // Assuming you updated adapter to accept mutable list or use submitList
-                (messages as? ArrayList)?.apply {
+                (messages as? MutableList)?.apply {
                     clear()
                     addAll(list)
                 }
