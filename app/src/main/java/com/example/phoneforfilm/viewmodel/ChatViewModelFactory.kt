@@ -2,19 +2,20 @@ package com.example.phoneforfilm.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.phoneforfilm.data.dao.MessageDao
-import com.example.phoneforfilm.viewmodel.ChatViewModel
+import com.example.phoneforfilm.data.repository.MessageRepository
+import com.example.phoneforfilm.data.repository.ConversationRepository
 
 /**
- * Factory for creating ChatViewModel with a MessageDao dependency.
+ * Factory for creating ChatViewModel with its repository dependencies.
  */
 class ChatViewModelFactory(
-    private val messageDao: MessageDao
+    private val messageRepository: MessageRepository,
+    private val conversationRepository: ConversationRepository
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(ChatViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return ChatViewModel(messageDao) as T
+            return ChatViewModel(messageRepository, conversationRepository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
