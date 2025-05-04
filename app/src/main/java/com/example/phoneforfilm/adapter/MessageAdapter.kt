@@ -6,10 +6,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.phoneforfilm.data.model.Message
 import com.example.phoneforfilm.databinding.ItemMessageBinding
+import com.example.phoneforfilm.view.ChatActivity
 
 class MessageAdapter(
     private val context: Context,
-    private val messages: List<Message>
+    private var messages: List<Message>
 ) : RecyclerView.Adapter<MessageAdapter.MessageViewHolder>() {
 
     inner class MessageViewHolder(val binding: ItemMessageBinding) :
@@ -26,16 +27,20 @@ class MessageAdapter(
         val message = messages[position]
         with(holder.binding) {
             tvMessage.text = message.text
-            tvTimestamp.text = message.formattedTime
-            // show options on long-press (e.g. toggle sender/theme/language via ChatActivity)
+            tvTimestamp.text = java.text.SimpleDateFormat("HH:mm", java.util.Locale.getDefault())
+                .format(message.timestamp)
             root.setOnLongClickListener {
-                // delegate to activity if needed
-                (context as? com.example.phoneforfilm.view.ChatActivity)
-                    ?.onMessageLongPressed(message)
+                (context as? ChatActivity)?.onMessageLongPressed(message)
                 true
             }
         }
     }
 
-    override fun getItemCount() = messages.size
+    override fun getItemCount(): Int = messages.size
+
+    /** Update the list of messages and refresh the view */
+    fun update(newMessages: List<Message>) {
+        this.messages = newMessages
+        notifyDataSetChanged()
+    }
 }
