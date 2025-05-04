@@ -6,33 +6,33 @@ import androidx.lifecycle.viewModelScope
 import com.example.phoneforfilm.data.model.Message
 import com.example.phoneforfilm.data.repository.MessageRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class ChatViewModel @Inject constructor(
-    private val messageRepository: MessageRepository
+    private val repository: MessageRepository
 ) : ViewModel() {
 
-    // expose LiveData directly
     fun getMessages(conversationId: Int): LiveData<List<Message>> =
-        messageRepository.getMessagesByChatId(conversationId)
+        repository.getMessagesForConversation(conversationId)
 
     fun sendMessage(message: Message) {
-        viewModelScope.launch {
-            messageRepository.insert(message)
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.insert(message)
         }
     }
 
     fun updateMessage(message: Message) {
-        viewModelScope.launch {
-            messageRepository.update(message)
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.update(message)
         }
     }
 
     fun deleteMessage(message: Message) {
-        viewModelScope.launch {
-            messageRepository.delete(message)
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.delete(message)
         }
     }
 }
