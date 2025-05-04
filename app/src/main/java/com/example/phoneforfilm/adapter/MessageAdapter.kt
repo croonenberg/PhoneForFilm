@@ -12,9 +12,14 @@ import java.util.Date
 import java.util.Locale
 
 class MessageAdapter(
-    private val messages: List<Message>,
+    private var messages: List<Message>,
     private val context: ChatActivity
 ) : RecyclerView.Adapter<MessageAdapter.MessageViewHolder>() {
+
+    fun updateMessages(newMessages: List<Message>) {
+        messages = newMessages
+        notifyDataSetChanged()
+    }
 
     override fun getItemViewType(position: Int): Int =
         if (messages[position].isSender) VIEW_TYPE_SENT else VIEW_TYPE_RECEIVED
