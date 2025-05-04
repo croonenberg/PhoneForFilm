@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.example.phoneforfilm.data.local.dao.MessageDao
 import com.example.phoneforfilm.data.local.db.AppDatabase
+import com.example.phoneforfilm.data.repository.MessageRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
