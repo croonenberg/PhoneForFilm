@@ -8,14 +8,11 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
 import com.example.phoneforfilm.R
+import com.example.phoneforfilm.adapter.MessageAdapter
 import com.example.phoneforfilm.data.model.Message
 import com.example.phoneforfilm.databinding.ActivityChatBinding
 import com.example.phoneforfilm.viewmodel.ChatViewModel
-import com.example.phoneforfilm.adapter.MessageAdapter
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 
 class ChatActivity : AppCompatActivity() {
 
@@ -33,13 +30,11 @@ class ChatActivity : AppCompatActivity() {
         val adapter = MessageAdapter(emptyList(), this)
         binding.recyclerViewMessages.adapter = adapter
 
-        // Observeer de berichten
-        lifecycleScope.launch {
-            viewModel.messages.collectLatest { messages ->
-                adapter.updateMessages(messages)
-                binding.recyclerViewMessages.scrollToPosition(messages.size - 1)
-            }
+        viewModel.messages.observe(this) { messages ->
+            adapter.updateMessages(messages)
+            binding.recyclerViewMessages.scrollToPosition(messages.size - 1)
         }
+
 
         // Verzendknop logica
         binding.buttonSend.setOnClickListener {
