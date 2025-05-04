@@ -1,24 +1,20 @@
 package com.example.phoneforfilm.data.local.dao
 
-import androidx.room.*
+import androidx.lifecycle.LiveData
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
 import com.example.phoneforfilm.data.model.Chat
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ChatDao {
+    @Query("SELECT * FROM chats WHERE id = :id")
+    fun getChatById(id: Int): LiveData<Chat>
+
+    @Query("SELECT * FROM chats")
+    fun getAllChats(): LiveData<List<Chat>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(chat: Chat): Long
-
-    @Update
-    suspend fun update(chat: Chat)
-
-    @Delete
-    suspend fun delete(chat: Chat)
-
-    @Query("SELECT * FROM chats ORDER BY id ASC")
-    fun getAllChats(): Flow<List<Chat>>
-
-    @Query("SELECT * FROM chats WHERE id = :chatId LIMIT 1")
-    suspend fun getChatById(chatId: Int): Chat?
+    suspend fun insert(chat: Chat)
 }

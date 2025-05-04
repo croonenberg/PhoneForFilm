@@ -1,15 +1,17 @@
 package com.example.phoneforfilm.data.repository
 
+import androidx.lifecycle.LiveData
 import com.example.phoneforfilm.data.local.dao.MessageDao
 import com.example.phoneforfilm.data.model.Message
-import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class MessageRepository @Inject constructor(
     private val messageDao: MessageDao
 ) {
-    fun getMessagesByChatId(chatId: Int): Flow<List<Message>> {
-        return messageDao.getAllMessagesForChat(chatId) as Flow<List<Message>>
+    fun getMessagesForChat(chatId: Int): LiveData<List<Message>> {
+        return messageDao.getAllMessagesForChat(chatId)
     }
 
     suspend fun insert(message: Message) {
@@ -18,5 +20,9 @@ class MessageRepository @Inject constructor(
 
     suspend fun delete(message: Message) {
         messageDao.delete(message)
+    }
+
+    suspend fun update(message: Message) {
+        messageDao.update(message)
     }
 }

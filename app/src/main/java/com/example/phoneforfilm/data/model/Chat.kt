@@ -6,5 +6,6 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "chats")
 data class Chat(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
-    val name: String
+    val title: String,
+    val contactId: Int
 )

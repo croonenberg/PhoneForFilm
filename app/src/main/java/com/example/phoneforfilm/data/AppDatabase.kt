@@ -1,46 +1,14 @@
 package com.example.phoneforfilm.data
 
-import android.content.Context
 import androidx.room.Database
-import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.phoneforfilm.data.local.dao.ChatDao
 import com.example.phoneforfilm.data.local.dao.MessageDao
+import com.example.phoneforfilm.data.model.Chat
 import com.example.phoneforfilm.data.model.Message
 
-/**
- * Room database definition for PhoneForFilm.
- */
-@Database(
-    entities = [Contact::class, Message::class, Conversation::class],
-    version = 9,  // bumped to include theme column definitively
-    exportSchema = false
-)
+@Database(entities = [Message::class, Chat::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
-
-    /** DAO for messages. */
     abstract fun messageDao(): MessageDao
-
-    /** DAO for contacts. */
-    abstract fun contactDao(): ContactDao
-
-    /** DAO for conversations. */
-    abstract fun conversationDao(): ConversationDao
-
-    companion object {
-        @Volatile private var INSTANCE: AppDatabase? = null
-
-        /**
-         * Returns the singleton database instance.
-         */
-        fun getDatabase(context: Context): AppDatabase =
-            INSTANCE ?: synchronized(this) {
-                INSTANCE ?: Room.databaseBuilder(
-                    context.applicationContext,
-                    AppDatabase::class.java,
-                    "phone_for_film_database"
-                )
-                .fallbackToDestructiveMigration()  // drop & recreate on version change
-                .build().also { INSTANCE = it }
-            }
-    }
+    abstract fun chatDao(): ChatDao
 }
