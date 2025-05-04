@@ -1,6 +1,6 @@
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
     <data>
-        <import type="java.text.SimpleDateFormat"/>
         <variable
             name="message"
             type="com.example.phoneforfilm.data.model.Message"/>
@@ -21,15 +21,17 @@
             android:text="@{message.text}"
             android:textColor="?attr/colorOnSurface"
             android:textSize="16sp"
-            android:padding="12dp" />
+            android:padding="12dp"
+            tools:text="Example message" />
 
         <TextView
             android:id="@+id/tvTimestamp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="@{SimpleDateFormat('HH:mm').format(message.timestamp)}"
+            android:text=""
             android:textColor="?attr/colorOnSurface"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            tools:text="12:34" />
     </LinearLayout>
 </layout>

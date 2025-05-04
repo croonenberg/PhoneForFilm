@@ -5,15 +5,19 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.phoneforfilm.data.model.Message
 import com.example.phoneforfilm.databinding.ItemMessageBinding
+import java.text.SimpleDateFormat
+import java.util.Locale
 
-class MessageAdapter(private val messages: List<Message>) :
+class MessageAdapter(private val messages: MutableList<Message>) :
     RecyclerView.Adapter<MessageAdapter.MessageViewHolder>() {
 
     inner class MessageViewHolder(private val binding: ItemMessageBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(message: Message) {
             binding.tvMessage.text = message.text
-            binding.tvTimestamp.text = message.timestamp.toString()
+            // Set formatted timestamp
+            val formatter = SimpleDateFormat("HH:mm", Locale.getDefault())
+            binding.tvTimestamp.text = formatter.format(message.timestamp)
         }
     }
 
