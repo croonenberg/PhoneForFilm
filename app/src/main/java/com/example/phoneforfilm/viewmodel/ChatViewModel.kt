@@ -13,7 +13,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
@@ -23,20 +22,20 @@ class ChatViewModel @Inject constructor(
     @MainDispatcher private val mainDispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
-    private var _conversationId: Int = -1
+    private var conversationId: Int = -1
 
     val messages: StateFlow<List<Message>> = repo
-        .getForConversationFlow(_conversationId)
-        .map { it.sortedBy { m -> m.timestamp } }
+        .getForConversationFlow(conversationId)
+        .map { list -> list.sortedBy { it.timestamp } }
         .stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
 
-    fun startConversation(conversationId: Int) {
-        _conversationId = conversationId
+    fun startConversation(id: Int) {
+        conversationId = id
     }
 
     fun sendMessage(text: String) {
         val msg = Message(
-            conversationId = _conversationId,
+            conversationId = conversationId,
             text = text,
             timestamp = System.currentTimeMillis(),
             isSender = true

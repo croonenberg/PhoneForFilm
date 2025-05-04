@@ -2,8 +2,8 @@ package com.example.phoneforfilm.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.asLiveData
+import androidx.lifecycle.viewModelScope
 import com.example.phoneforfilm.data.Conversation
 import com.example.phoneforfilm.data.repository.ConversationRepository
 import com.example.phoneforfilm.di.IoDispatcher
