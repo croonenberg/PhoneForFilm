@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.phoneforfilm.data.model.Message
 import com.example.phoneforfilm.databinding.ItemMessageReceivedBinding
 import com.example.phoneforfilm.databinding.ItemMessageSentBinding
-import com.example.phoneforfilm.view.ChatActivity
+import com.example.phoneforfilm.presentation.view.ChatActivity
 import java.text.SimpleDateFormat
 import java.util.*
 
