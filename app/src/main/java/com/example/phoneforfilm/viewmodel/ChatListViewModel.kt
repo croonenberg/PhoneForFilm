@@ -6,28 +6,30 @@ import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.asLiveData
 import com.example.phoneforfilm.data.Conversation
 import com.example.phoneforfilm.data.repository.ConversationRepository
+import com.example.phoneforfilm.di.IoDispatcher
+import com.example.phoneforfilm.di.MainDispatcher
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
 class ChatListViewModel @Inject constructor(
-    private val repository: ConversationRepository
+    private val repository: ConversationRepository,
+    @IoDispatcher private val ioDispatcher: CoroutineDispatcher,
+    @MainDispatcher private val mainDispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
     val conversations: LiveData<List<Conversation>> =
         repository.getAll().asLiveData()
 
-    /**
-     * Maakt (indien nodig) een Conversation aan voor [contactId] en
-     * retourneert het nieuwe chatId via de [onComplete]-callback.
-     */
     fun createChatFor(contactId: Int, onComplete: (Int) -> Unit) {
-        viewModelScope.launch(Dispatchers.IO) {
-            val chatId = repository.create(com.example.phoneforfilm.data.Conversation(contactId = contactId, lastMessage = "", timestamp = System.currentTimeMillis())).toInt()
-            withContext(Dispatchers.Main) {
+        viewModelScope.launch(ioDispatcher) {
+            val chatId = repository.create(
+                Conversation(contactId = contactId, lastMessage = "", timestamp = System.currentTimeMillis())
+            ).toInt()
+            withContext(mainDispatcher) {
                 onComplete(chatId)
             }
         }
