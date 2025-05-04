@@ -8,14 +8,14 @@ import com.example.phoneforfilm.databinding.ItemMessageBinding
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-class MessageAdapter(private val messages: MutableList<Message>) :
+class MessageAdapter(var messages: MutableList<Message>) :
     RecyclerView.Adapter<MessageAdapter.MessageViewHolder>() {
 
     inner class MessageViewHolder(private val binding: ItemMessageBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(message: Message) {
             binding.tvMessage.text = message.text
-            // Set formatted timestamp
+            // format timestamp as HH:mm
             val formatter = SimpleDateFormat("HH:mm", Locale.getDefault())
             binding.tvTimestamp.text = formatter.format(message.timestamp)
         }
@@ -32,4 +32,13 @@ class MessageAdapter(private val messages: MutableList<Message>) :
     }
 
     override fun getItemCount() = messages.size
+
+    /**
+     * Update adapter's data and refresh.
+     */
+    fun updateData(newMessages: List<Message>) {
+        messages.clear()
+        messages.addAll(newMessages)
+        notifyDataSetChanged()
+    }
 }

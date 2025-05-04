@@ -4,11 +4,9 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.phoneforfilm.data.Contact
-import com.example.phoneforfilm.data.Conversation
+
 import com.example.phoneforfilm.data.model.Message
-import com.example.phoneforfilm.data.dao.ContactDao
-import com.example.phoneforfilm.data.dao.ConversationDao
+
 import com.example.phoneforfilm.data.dao.MessageDao
 
 /**
