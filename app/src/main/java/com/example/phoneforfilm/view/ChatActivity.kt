@@ -8,17 +8,47 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.example.phoneforfilm.R
 import com.example.phoneforfilm.data.model.Message
+import com.example.phoneforfilm.databinding.ActivityChatBinding
 import com.example.phoneforfilm.viewmodel.ChatViewModel
+import com.example.phoneforfilm.adapter.MessageAdapter
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 class ChatActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityChatBinding
     private val viewModel: ChatViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // bestaande setup voor ChatActivity
+        binding = ActivityChatBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
+
+        val adapter = MessageAdapter(emptyList(), this)
+        binding.recyclerViewMessages.adapter = adapter
+
+        // Observeer de berichten
+        lifecycleScope.launch {
+            viewModel.messages.collectLatest { messages ->
+                adapter.updateMessages(messages)
+                binding.recyclerViewMessages.scrollToPosition(messages.size - 1)
+            }
+        }
+
+        // Verzendknop logica
+        binding.buttonSend.setOnClickListener {
+            val text = binding.editTextMessage.text.toString().trim()
+            if (text.isNotEmpty()) {
+                viewModel.sendMessage(text)
+                binding.editTextMessage.text.clear()
+            }
+        }
     }
 
     fun onMessageLongPressed(msg: Message) {
