@@ -4,9 +4,11 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-
+import com.example.phoneforfilm.data.Contact
+import com.example.phoneforfilm.data.Conversation
 import com.example.phoneforfilm.data.model.Message
-
+import com.example.phoneforfilm.data.ContactDao
+import com.example.phoneforfilm.data.ConversationDao
 import com.example.phoneforfilm.data.dao.MessageDao
 
 /**
@@ -14,7 +16,7 @@ import com.example.phoneforfilm.data.dao.MessageDao
  */
 @Database(
     entities = [Contact::class, Message::class, Conversation::class],
-    version = 4,
+    version = 5,  // incremented from 4 to 5 to match schema changes
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
