@@ -4,7 +4,6 @@ plugins {
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
 }
-
 android {
     namespace = "com.example.phoneforfilm"
     compileSdk = 36
