@@ -1,46 +1,64 @@
 package com.example.phoneforfilm.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.phoneforfilm.data.model.Message
-import com.example.phoneforfilm.databinding.ItemMessageBinding
+import com.example.phoneforfilm.data.Message
+import com.example.phoneforfilm.databinding.ItemMessageReceivedBinding
+import com.example.phoneforfilm.databinding.ItemMessageSentBinding
 import com.example.phoneforfilm.view.ChatActivity
 
 class MessageAdapter(
-    private val context: Context,
-    private var messages: List<Message>
+    private val messages: List<Message>,
+    private val context: ChatActivity
 ) : RecyclerView.Adapter<MessageAdapter.MessageViewHolder>() {
 
-    inner class MessageViewHolder(val binding: ItemMessageBinding) :
-        RecyclerView.ViewHolder(binding.root)
+    override fun getItemViewType(position: Int): Int =
+        if (messages[position].isSender) VIEW_TYPE_SENT else VIEW_TYPE_RECEIVED
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MessageViewHolder {
-        val binding = ItemMessageBinding.inflate(
-            LayoutInflater.from(parent.context), parent, false
-        )
-        return MessageViewHolder(binding)
+        return if (viewType == VIEW_TYPE_SENT) {
+            val binding = ItemMessageSentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            MessageViewHolder(binding)
+        } else {
+            val binding = ItemMessageReceivedBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            MessageViewHolder(binding)
+        }
     }
 
     override fun onBindViewHolder(holder: MessageViewHolder, position: Int) {
         val message = messages[position]
-        with(holder.binding) {
-            tvMessage.text = message.text
-            tvTimestamp.text = java.text.SimpleDateFormat("HH:mm", java.util.Locale.getDefault())
-                .format(message.timestamp)
-            root.setOnLongClickListener {
-                (context as? ChatActivity)?.onMessageLongPressed(message)
-                true
-            }
+        holder.bind(message)
+        holder.itemView.setOnLongClickListener {
+            context.onMessageLongPressed(message)
+            true
         }
     }
 
     override fun getItemCount(): Int = messages.size
 
-    /** Update the list of messages and refresh the view */
-    fun update(newMessages: List<Message>) {
-        this.messages = newMessages
-        notifyDataSetChanged()
+    inner class MessageViewHolder(private val binding: Any) :
+        RecyclerView.ViewHolder(
+            (binding as? ItemMessageSentBinding)?.root
+                ?: (binding as ItemMessageReceivedBinding).root
+        ) {
+
+        fun bind(message: Message) {
+            when (binding) {
+                is ItemMessageSentBinding -> {
+                    binding.tvSentMessage.text = message.text
+                    binding.tvSentTime.text = message.timestamp
+                }
+                is ItemMessageReceivedBinding -> {
+                    binding.tvReceivedMessage.text = message.text
+                    binding.tvReceivedTime.text = message.timestamp
+                }
+            }
+        }
+    }
+
+    companion object {
+        private const val VIEW_TYPE_SENT = 1
+        private const val VIEW_TYPE_RECEIVED = 0
     }
 }
