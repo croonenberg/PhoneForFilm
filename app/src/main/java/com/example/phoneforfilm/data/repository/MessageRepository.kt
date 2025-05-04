@@ -9,7 +9,7 @@ class MessageRepository @Inject constructor(
     private val messageDao: MessageDao
 ) {
     fun getMessagesByChatId(chatId: Int): Flow<List<Message>> {
-        return messageDao.getAllMessagesForChat(chatId)
+        return messageDao.getAllMessagesForChat(chatId) as Flow<List<Message>>
     }
 
     suspend fun insert(message: Message) {
