@@ -3,10 +3,13 @@ package com.example.phoneforfilm.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.phoneforfilm.data.Message
 import com.example.phoneforfilm.databinding.ItemMessageReceivedBinding
 import com.example.phoneforfilm.databinding.ItemMessageSentBinding
 import com.example.phoneforfilm.view.ChatActivity
+import com.example.phoneforfilm.data.model.Message// <-- Controleer of dit pad correct is!
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class MessageAdapter(
     private val messages: List<Message>,
@@ -44,6 +47,8 @@ class MessageAdapter(
         ) {
 
         fun bind(message: Message) {
+            val formattedTime = SimpleDateFormat("HH:mm", Locale.getDefault()).format(Date(message.timestamp))
+
             when (binding) {
                 is ItemMessageSentBinding -> {
                     binding.tvSentMessage.text = message.text
