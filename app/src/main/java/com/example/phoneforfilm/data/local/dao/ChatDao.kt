@@ -1,8 +1,8 @@
 package com.example.phoneforfilm.data.local.dao
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.phoneforfilm.data.model.Chat
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ChatDao {
@@ -17,7 +17,7 @@ interface ChatDao {
     suspend fun delete(chat: Chat)
 
     @Query("SELECT * FROM chats ORDER BY id ASC")
-    fun getAllChats(): LiveData<List<Chat>>
+    fun getAllChats(): Flow<List<Chat>>
 
     @Query("SELECT * FROM chats WHERE id = :chatId LIMIT 1")
     suspend fun getChatById(chatId: Int): Chat?
