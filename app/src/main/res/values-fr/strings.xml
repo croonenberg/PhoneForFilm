@@ -53,4 +53,8 @@
     <string name="decline">Refuser</string>
     <string name="title_chat_list">Liste des discussions</string>
     <string name="placeholder_empty">Rien ici pour l\'instant</string>
+    <string name="copied_to_clipboard">Copié dans le presse-papiers</string>
+    <string name="toggle_sender">Basculer l'expéditeur</string>
+    <string name="copy_message">Copier le message</string>
+    <string name="delete_message">Supprimer le message</string>
 </resources>

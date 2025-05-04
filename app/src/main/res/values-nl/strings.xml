@@ -54,4 +54,8 @@
     <string name="title_chat_list">Chatlijst</string>
     <string name="placeholder_empty">Nothing here yet</string>
 
+    <string name="copied_to_clipboard">Gekopieerd naar klembord</string>
+    <string name="toggle_sender">Afzender wisselen</string>
+    <string name="copy_message">Kopieer bericht</string>
+    <string name="delete_message">Bericht verwijderen</string>
 </resources>

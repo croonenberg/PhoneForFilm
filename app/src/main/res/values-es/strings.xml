@@ -53,4 +53,8 @@
     <string name="decline">Rechazar</string>
     <string name="title_chat_list">Lista de chats</string>
     <string name="placeholder_empty">Aún no hay nada</string>
+    <string name="copied_to_clipboard">Copiado al portapapeles</string>
+    <string name="toggle_sender">Alternar remitente</string>
+    <string name="copy_message">Copiar mensaje</string>
+    <string name="delete_message">Eliminar mensaje</string>
 </resources>

@@ -4,15 +4,19 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.phoneforfilm.data.dao.MessageDao
+import com.example.phoneforfilm.data.Contact
+import com.example.phoneforfilm.data.Conversation
 import com.example.phoneforfilm.data.model.Message
+import com.example.phoneforfilm.data.ContactDao
+import com.example.phoneforfilm.data.ConversationDao
+import com.example.phoneforfilm.data.dao.MessageDao
 
 /**
  * Room database definition for PhoneForFilm.
  */
 @Database(
     entities = [Contact::class, Message::class, Conversation::class],
-    version = 7,  // bump for theme column
+    version = 8,  // bumped from 7 to 8 to add 'theme' field
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
@@ -39,9 +43,8 @@ abstract class AppDatabase : RoomDatabase() {
                     AppDatabase::class.java,
                     "phone_for_film_database"
                 )
-                    .fallbackToDestructiveMigration(true)
-                    .build()
-                    .also { INSTANCE = it }
+                .fallbackToDestructiveMigration()  // will drop & recreate on version change
+                .build().also { INSTANCE = it }
             }
     }
 }

@@ -53,4 +53,8 @@
     <string name="decline">Ablehnen</string>
     <string name="title_chat_list">Chat‑Liste</string>
     <string name="placeholder_empty">Noch nichts vorhanden</string>
+    <string name="copied_to_clipboard">In die Zwischenablage kopiert</string>
+    <string name="toggle_sender">Absender wechseln</string>
+    <string name="copy_message">Nachricht kopieren</string>
+    <string name="delete_message">Nachricht löschen</string>
 </resources>
