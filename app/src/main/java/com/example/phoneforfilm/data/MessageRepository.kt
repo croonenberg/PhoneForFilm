@@ -1,6 +1,6 @@
 package com.example.phoneforfilm.data.repository
 
-import com.example.phoneforfilm.data.dao.MessageDao
+import com.example.phoneforfilm.data.local.dao.MessageDao
 import com.example.phoneforfilm.data.model.Message
 import javax.inject.Inject
 
