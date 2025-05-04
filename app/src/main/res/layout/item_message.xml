@@ -10,26 +10,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="8dp">
+        android:padding="8dp"
+        android:layoutDirection="ltr">
 
         <TextView
             android:id="@+id/tvMessage"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/chat_bubble_received"
+            android:background="@drawable/chat_bubble_sent"
             android:text="@{message.text}"
             android:textColor="?attr/colorOnSurface"
             android:textSize="16sp"
             android:padding="12dp"
-            tools:text="Example message" />
+            tools:text="Hello World!" />
 
         <TextView
             android:id="@+id/tvTimestamp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text=""
+            android:text="12:34"
             android:textColor="?attr/colorOnSurface"
             android:textSize="12sp"
             tools:text="12:34" />

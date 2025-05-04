@@ -1,6 +1,7 @@
 package com.example.phoneforfilm.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.phoneforfilm.data.model.Message
@@ -12,10 +13,18 @@ class MessageAdapter(var messages: MutableList<Message>) :
     RecyclerView.Adapter<MessageAdapter.MessageViewHolder>() {
 
     inner class MessageViewHolder(private val binding: ItemMessageBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+        RecyclerView.ViewHolder(binding.root){
+        
+        init {
+            // Enable context menu on long press
+            binding.root.setOnLongClickListener { view ->
+                view.showContextMenu()
+                true
+            }
+        }
+
         fun bind(message: Message) {
             binding.tvMessage.text = message.text
-            // format timestamp as HH:mm
             val formatter = SimpleDateFormat("HH:mm", Locale.getDefault())
             binding.tvTimestamp.text = formatter.format(message.timestamp)
         }
