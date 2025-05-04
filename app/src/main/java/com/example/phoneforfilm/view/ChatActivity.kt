@@ -3,14 +3,16 @@ package com.example.phoneforfilm.view
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.phoneforfilm.adapter.MessageAdapter
-import com.example.phoneforfilm.data.model.Message
 import com.example.phoneforfilm.databinding.ActivityChatBinding
 import com.example.phoneforfilm.viewmodel.ChatViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import com.example.phoneforfilm.data.model.Message
 
+/**
+ * Chat‑scherm: toont berichten, verstuurt nieuwe en reageert op lange‑druk
+ */
 @AndroidEntryPoint
 class ChatActivity : AppCompatActivity() {
 
@@ -23,26 +25,25 @@ class ChatActivity : AppCompatActivity() {
         binding = ActivityChatBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setupRecyclerView()
+        initRecyclerView()
         observeMessages()
 
+        // Start conversatie die door Intent is meegegeven
+        val conversationId = intent.getIntExtra("conversationId", -1)
+        viewModel.startConversation(conversationId)
+
         binding.buttonSend.setOnClickListener {
-            val text = binding.editTextMessage.text.toString().trim()
-            if (text.isNotEmpty()) {
+            val text = binding.editTextMessage.text.toString()
+            if (text.isNotBlank()) {
                 viewModel.sendMessage(text)
                 binding.editTextMessage.text?.clear()
             }
         }
-
-        // Start from intent
-        viewModel.startConversation(intent.getIntExtra("conversationId", -1))
     }
 
-    private fun setupRecyclerView() {
+    private fun initRecyclerView() {
         adapter = MessageAdapter(this, emptyList())
-        binding.recyclerViewMessages.layoutManager = LinearLayoutManager(this).apply {
-            stackFromEnd = true
-        }
+        binding.recyclerViewMessages.layoutManager = LinearLayoutManager(this)
         binding.recyclerViewMessages.adapter = adapter
     }
 
@@ -53,16 +54,8 @@ class ChatActivity : AppCompatActivity() {
         }
     }
 
-    /** Callback vanuit adapter */
-    fun onMessageLongPressed(message: Message) {
-        // TODO: open context menu (edit/copy/delete)
-    }
-
-    fun onChangeTheme() {
-        // TODO: implement theme switch
-    }
-
-    fun onChangeLanguage() {
-        // TODO: implement language switch
+    /** Callback uit adapter bij lang indrukken op bericht */
+    fun onMessageLongPressed(msg: Message) {
+        // TODO: context‑menu tonen / bericht bewerken
     }
 }
