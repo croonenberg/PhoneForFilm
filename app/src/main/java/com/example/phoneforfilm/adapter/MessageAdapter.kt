@@ -2,13 +2,13 @@ package com.example.phoneforfilm.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.phoneforfilm.R
 import com.example.phoneforfilm.data.model.Message
 import com.example.phoneforfilm.databinding.ItemMessageBinding
 import com.example.phoneforfilm.view.ChatActivity
-import android.widget.PopupMenu
 
 class MessageAdapter(var messages: MutableList<Message>) :
     RecyclerView.Adapter<MessageAdapter.MessageViewHolder>() {
@@ -21,7 +21,7 @@ class MessageAdapter(var messages: MutableList<Message>) :
                 PopupMenu(view.context, view).apply {
                     inflate(R.menu.menu_message_full)
                     setOnMenuItemClickListener { item ->
-                        val msg = messages[adapterPosition]
+                        val msg = messages[bindingAdapterPosition]
                         val activity = view.context as? ChatActivity
                         when (item.itemId) {
                             R.id.action_edit -> activity?.onEditMessage(msg)
@@ -40,7 +40,6 @@ class MessageAdapter(var messages: MutableList<Message>) :
         }
 
         fun bind(message: Message) {
-            // dynamic background and text color
             val context = binding.root.context
             if (message.isSender) {
                 binding.tvMessage.setBackgroundResource(R.drawable.chat_bubble_sent)
@@ -49,25 +48,21 @@ class MessageAdapter(var messages: MutableList<Message>) :
                 binding.tvMessage.setBackgroundResource(R.drawable.chat_bubble_received)
                 binding.tvMessage.setTextColor(ContextCompat.getColor(context, android.R.color.black))
             }
-            binding.tvTimestamp.text = java.text.SimpleDateFormat("HH:mm", java.util.Locale.getDefault())
-                .format(message.timestamp)
-            // adjust margins
+            binding.tvMessage.text = message.text
+            binding.tvTimestamp.text = message.formattedTime
             val params = binding.messageContainer.layoutParams as ViewGroup.MarginLayoutParams
             if (message.isSender) {
-                params.marginStart = 50
-                params.marginEnd = 0
+                params.marginStart = 50; params.marginEnd = 0
             } else {
-                params.marginStart = 0
-                params.marginEnd = 50
+                params.marginStart = 0; params.marginEnd = 50
             }
             binding.messageContainer.layoutParams = params
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MessageViewHolder {
-        val binding = ItemMessageBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return MessageViewHolder(binding)
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = MessageViewHolder(
+        ItemMessageBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+    )
 
     override fun onBindViewHolder(holder: MessageViewHolder, position: Int) {
         holder.bind(messages[position])

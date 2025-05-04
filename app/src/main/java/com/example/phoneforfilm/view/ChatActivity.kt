@@ -1,68 +1,58 @@
 package com.example.phoneforfilm.view
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context.CLIPBOARD_SERVICE
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.activity.viewModels
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.phoneforfilm.R
-import com.example.phoneforfilm.adapter.MessageAdapter
 import com.example.phoneforfilm.data.model.Message
 import com.example.phoneforfilm.databinding.ActivityChatBinding
-import com.example.phoneforfilm.viewmodel.ChatViewModel
-import com.example.phoneforfilm.data.Conversation
-import com.example.phoneforfilm.data.repository.ConversationRepository
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class ChatActivity : AppCompatActivity() {
 
-    @Inject lateinit var convRepo: ConversationRepository
     private lateinit var binding: ActivityChatBinding
-    private val viewModel by viewModels<ChatViewModel>()
-    private var chatId: Int = -1
-    private lateinit var adapter: MessageAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityChatBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        chatId = intent.getIntExtra("chatId", -1)
-
-        // Load theme and apply
-        MainScope().launch {
-            val conv = convRepo.getById(chatId)
-            applyTheme(conv.theme)
-        }
-
-        // ... existing code ...
+        // existing setup...
     }
 
-    private fun applyTheme(theme: String) {
-        when(theme) {
-            "Greenroom" -> binding.root.setBackgroundColor(getColor(R.color.greenroomBackground))
-            "Blue Stage" -> binding.root.setBackgroundColor(getColor(R.color.bluestageBackground))
-            "Grey Card" -> binding.root.setBackgroundColor(getColor(R.color.greycardBackground))
-            "Neutral Light" -> binding.root.setBackgroundColor(getColor(R.color.neutralBackground))
-            "Darkroom" -> binding.root.setBackgroundColor(getColor(R.color.darkroomBackground))
-        }
+    /** Open the edit UI for this message. */
+    fun onEditMessage(msg: Message) {
+        // TODO: show edit dialog or start EditConversationActivity
     }
 
+    /** Delete this message from DB and refresh list. */
+    fun onDeleteMessage(msg: Message) {
+        // TODO: viewModel.deleteMessage(msg); viewModel.refreshMessages()
+    }
+
+    /** Copy message text to clipboard. */
+    fun onCopyMessage(msg: Message) {
+        val cb = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
+        cb.setPrimaryClip(ClipData.newPlainText("message", msg.text))
+        Toast.makeText(this, getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT).show()
+    }
+
+    /** Live theme chooser for this chat. */
     fun onChangeTheme() {
-        val themes = arrayOf("Greenroom","Blue Stage","Grey Card","Neutral Light","Darkroom")
-        AlertDialog.Builder(this)
-            .setTitle("Select Theme")
-            .setItems(themes) { _, which ->
-                val newTheme = themes[which]
-                // save to DB
-                MainScope().launch {
-                    val conv = convRepo.getById(chatId)
-                    convRepo.update(conv.copy(theme = newTheme))
-                    applyTheme(newTheme)
-                }
-            }.show()
+        // TODO: show theme chooser
+    }
+
+    /** Live language chooser for this chat. */
+    fun onChangeLanguage() {
+        // TODO: show language chooser
+    }
+
+    /** Toggle sender/receiver role of this message. */
+    fun onToggleSender(msg: Message) {
+        msg.isSender = !msg.isSender
+        // TODO: viewModel.updateMessage(msg)
     }
 }
