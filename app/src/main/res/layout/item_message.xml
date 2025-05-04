@@ -4,7 +4,6 @@
             name="message"
             type="com.example.phoneforfilm.data.model.Message"/>
     </data>
-
     <LinearLayout
         android:id="@+id/messageContainer"
         android:layout_width="match_parent"
@@ -26,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="@{new java.text.SimpleDateFormat("HH:mm", java.util.Locale.getDefault()).format(message.timestamp)}"
+            android:text="@{message.formattedTime}"
             android:textSize="12sp"/>
     </LinearLayout>
 </layout>
