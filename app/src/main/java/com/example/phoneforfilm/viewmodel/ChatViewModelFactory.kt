@@ -2,20 +2,16 @@ package com.example.phoneforfilm.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.phoneforfilm.viewmodel.ChatViewModel
 import com.example.phoneforfilm.data.repository.MessageRepository
-import com.example.phoneforfilm.data.repository.ConversationRepository
 
-/**
- * Factory for creating ChatViewModel with its repository dependencies.
- */
 class ChatViewModelFactory(
-    private val messageRepository: MessageRepository,
-    private val conversationRepository: ConversationRepository
+    private val messageRepository: MessageRepository
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(ChatViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return ChatViewModel(messageRepository, conversationRepository) as T
+            return ChatViewModel(messageRepository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

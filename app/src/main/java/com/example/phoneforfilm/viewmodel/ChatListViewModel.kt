@@ -2,38 +2,29 @@ package com.example.phoneforfilm.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.phoneforfilm.data.Conversation
-import com.example.phoneforfilm.data.repository.ConversationRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
+import com.example.phoneforfilm.data.repository.ConversationRepository
+import com.example.phoneforfilm.data.Conversation
 
-/**
- * ViewModel voor de lijst met conversaties.
- * Verzorgt ophalen van conversations en aanmaken van nieuwe chats.
- */
 @HiltViewModel
 class ChatListViewModel @Inject constructor(
-    private val repository: ConversationRepository
+    private val conversationRepository: ConversationRepository
 ) : ViewModel() {
 
-    /** LiveData-stream van alle Conversation-objecten uit de database. */
-    val conversations: LiveData<List<Conversation>> = repository.getAll()
+    val conversations: LiveData<List<Conversation>> =
+        conversationRepository.getAll().asLiveData()
 
-    /**
-     * Maakt (indien nodig) een Conversation aan voor [contactId] en
-     * retourneert het nieuwe chatId via de [onComplete]-callback.
-     */
-    fun createChatFor(contactId: Int, onComplete: (Int) -> Unit) {
-        viewModelScope.launch(Dispatchers.IO) {
-            val chatId = repository.createForContact(contactId).toInt()
-            withContext(Dispatchers.Main) {
-                onComplete(chatId)
-            }
+    fun createFor(contactId: Int) {
+        viewModelScope.launch {
+            // assume default lastMessage "", timestamp now
+            val now = System.currentTimeMillis()
+            conversationRepository.create(
+                Conversation(contactId = contactId, lastMessage = "", timestamp = now, contactName = "", theme = "Greenroom")
+            )
         }
     }
 }
-

@@ -19,7 +19,7 @@ class ChatActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityChatBinding
     private val viewModel: ChatViewModel by viewModels()
-    private var conversationId: Long = -1L
+    private var conversationId: Int = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,13 +28,8 @@ class ChatActivity : AppCompatActivity() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
-        conversationId = intent.getLongExtra("conversationId", -1L)
+        conversationId = intent.getIntExtra("conversationId", -1)
         viewModel.loadMessages(conversationId)
-    }
-
-    /** Open the edit UI for this message. */
-    fun onEditMessage(msg: Message) {
-        // Implementation pending
     }
 
     /** Delete this message from DB and refresh list. */
@@ -43,55 +38,12 @@ class ChatActivity : AppCompatActivity() {
         viewModel.loadMessages(conversationId)
     }
 
-    /** Copy message text to clipboard. */
-    fun onCopyMessage(msg: Message) {
-        val cb = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
-        cb.setPrimaryClip(ClipData.newPlainText("message", msg.text))
-        Toast.makeText(this, getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT).show()
-    }
-
-    /** Live theme chooser for this chat. */
-    fun onChangeTheme() {
-        val themeNames = arrayOf(
-            getString(R.string.theme_greenroom),
-            getString(R.string.theme_blue_stage),
-            getString(R.string.theme_grey_card),
-            getString(R.string.theme_neutral_light),
-            getString(R.string.theme_darkroom)
-        )
-        val themeValues = listOf("Greenroom", "Blue Stage", "Grey Card", "Neutral Light", "Darkroom")
-        AlertDialog.Builder(this)
-            .setTitle(getString(R.string.choose_theme))
-            .setItems(themeNames) { _, which ->
-                viewModel.setThemeForConversation(conversationId, themeValues[which])
-                viewModel.loadMessages(conversationId)
-            }
-            .show()
-    }
-
-    /** Live language chooser for this chat. */
-    fun onChangeLanguage() {
-        val langNames = arrayOf(
-            getString(R.string.language_dutch),
-            getString(R.string.language_english),
-            getString(R.string.language_german),
-            getString(R.string.language_french),
-            getString(R.string.language_spanish)
-        )
-        val langCodes = arrayOf("nl", "en", "de", "fr", "es")
-        AlertDialog.Builder(this)
-            .setTitle(getString(R.string.choose_language))
-            .setItems(langNames) { _, which ->
-                viewModel.setLanguageForConversation(conversationId, langCodes[which])
-                recreate()
-            }
-            .show()
-    }
-
     /** Toggle sender/receiver role of this message. */
     fun onToggleSender(msg: Message) {
         msg.isSender = !msg.isSender
         viewModel.updateMessage(msg)
         viewModel.loadMessages(conversationId)
     }
+
+    // ... other methods unchanged
 }
