@@ -26,9 +26,10 @@ class ChatViewModel @Inject constructor(
 
     private var conversationId: Int = -1
 
+    // Gesorteerde stroom berichten
     val messagesFlow: StateFlow<List<Message>> = repo
         .getMessagesByChatId(conversationId)
-        .map { it.sortedBy { msg -> msg.timestamp } }
+        .map { list -> list.sortedBy { msg -> msg.timestamp } }
         .stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
 
     fun getMessages(chatId: Int): LiveData<List<Message>> =
@@ -46,14 +47,9 @@ class ChatViewModel @Inject constructor(
     }
 
     fun updateMessage(msg: Message) {
-        viewModelScope.launch(ioDispatcher) {
-            repo.update(msg)
-        }
+        viewModelScope.launch(ioDispatcher) { repo.update(msg) }
     }
 
     fun deleteMessage(msg: Message) {
-        viewModelScope.launch(ioDispatcher) {
-            repo.delete(msg)
-        }
+        viewModelScope.launch(ioDispatcher) { repo.delete(msg) }
     }
-}

@@ -26,19 +26,20 @@ class ChatActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         conversationId = intent.getIntExtra("chatId", -1)
-        adapter = MessageAdapter(this, emptyList())
+        viewModel.startConversation(conversationId)
 
+        adapter = MessageAdapter(this, emptyList())
         binding.recyclerViewMessages.layoutManager = LinearLayoutManager(this)
         binding.recyclerViewMessages.adapter = adapter
 
-        viewModel.getMessages(conversationId).observe(this) { list ->
-            adapter.update(list)
-            binding.recyclerViewMessages.scrollToPosition(list.size - 1)
+        viewModel.getMessages(conversationId).observe(this) { messages ->
+            adapter.update(messages)
+            binding.recyclerViewMessages.scrollToPosition(messages.size - 1)
         }
 
         binding.buttonSend.setOnClickListener {
-            val text = binding.editTextMessage.text.toString()
-            if (text.isNotBlank()) {
+            val text = binding.editTextMessage.text.toString().trim()
+            if (text.isNotEmpty()) {
                 viewModel.sendMessage(text)
                 binding.editTextMessage.text.clear()
             }
@@ -58,8 +59,8 @@ class ChatActivity : AppCompatActivity() {
         )
         AlertDialog.Builder(this)
             .setTitle(R.string.message_options)
-            .setItems(options) { _, which ->
-                when (which) {
+            .setItems(options) { _, index ->
+                when (index) {
                     0 -> showEditDialog(msg)
                     1 -> viewModel.deleteMessage(msg)
                     2 -> showThemeChooser()
@@ -68,6 +69,8 @@ class ChatActivity : AppCompatActivity() {
             }
             .show()
     }
+
+// ... overige methods ongewijzigd
 
     private fun showEditDialog(msg: Message) {
         val input = android.widget.EditText(this).apply {
