@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.phoneforfilm.viewmodel.ChatViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/chatRoot"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!-- RecyclerView for chat messages -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewMessages"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/inputBar"
+            app:layout_constraintBottom_toTopOf="@+id/chatInputLayout"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
-        <!-- Input bar layout -->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/inputBar"
+        <LinearLayout
+            android:id="@+id/chatInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:padding="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,23 +35,20 @@
                 android:id="@+id/editTextMessage"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:autofillHints="text"
                 android:hint="@string/type_message"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/buttonSend"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                android:inputType="textMultiLine|textCapSentences"
+                android:maxLines="5"
+                android:textColor="@android:color/black"
+                android:textColorHint="@color/gray_hint_color" />
 
             <ImageButton
                 android:id="@+id/buttonSend"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:src="@drawable/ic_send"
-                android:contentDescription="@string/send"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:tint="?attr/colorOnPrimary" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
+                android:contentDescription="@string/send"/>
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
