@@ -6,16 +6,17 @@ import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.phoneforfilm.data.model.Message
 import com.example.phoneforfilm.data.repository.MessageRepository
-import com.example.phoneforfilm.di.IoDispatcher
-import com.example.phoneforfilm.di.MainDispatcher
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import com.example.phoneforfilm.di.IoDispatcher
+import com.example.phoneforfilm.di.MainDispatcher
 
 @HiltViewModel
 class ChatViewModel @Inject constructor(
@@ -29,9 +30,7 @@ class ChatViewModel @Inject constructor(
     /** LiveData van gesorteerde berichten voor huidige chat */
     val messages: LiveData<List<Message>> = conversationIdFlow
         .flatMapLatest { chatId -> repo.getMessagesByChatId(chatId) }
-        .map { messageList ->
-            messageList.sortedBy { msg -> msg.timestamp }
-        }
+        .map { messageList -> messageList.sortedBy { it.timestamp } }
         .asLiveData(context = viewModelScope.coroutineContext + mainDispatcher)
 
     /** Stel in welke chat we nu tonen */
@@ -61,3 +60,4 @@ class ChatViewModel @Inject constructor(
     fun deleteMessage(msg: Message) {
         viewModelScope.launch(ioDispatcher) { repo.delete(msg) }
     }
+}
