@@ -10,10 +10,10 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.example.phoneforfilm.R
-import com.example.phoneforfilm.adapter.MessageAdapter
 import com.example.phoneforfilm.data.model.Message
 import com.example.phoneforfilm.databinding.ActivityChatBinding
 import com.example.phoneforfilm.viewmodel.ChatViewModel
+import com.example.phoneforfilm.adapter.MessageAdapter
 
 class ChatActivity : AppCompatActivity() {
 
@@ -57,7 +57,6 @@ class ChatActivity : AppCompatActivity() {
                         clipboard.setPrimaryClip(clip)
                         Toast.makeText(this, getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT).show()
                     }
-
                     1 -> {
                         viewModel.deleteMessage(msg)
                         Toast.makeText(this, getString(R.string.message_deleted), Toast.LENGTH_SHORT).show()
