@@ -2,7 +2,6 @@ package com.example.phoneforfilm.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.phoneforfilm.viewmodel.ChatViewModel
 import com.example.phoneforfilm.data.repository.MessageRepository
 
 class ChatViewModelFactory(

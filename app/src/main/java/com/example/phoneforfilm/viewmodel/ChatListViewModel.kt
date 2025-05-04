@@ -4,11 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.phoneforfilm.data.Conversation
+import com.example.phoneforfilm.data.repository.ConversationRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import com.example.phoneforfilm.data.repository.ConversationRepository
-import com.example.phoneforfilm.data.Conversation
 
 @HiltViewModel
 class ChatListViewModel @Inject constructor(
@@ -18,13 +18,10 @@ class ChatListViewModel @Inject constructor(
     val conversations: LiveData<List<Conversation>> =
         conversationRepository.getAll().asLiveData()
 
-    fun createFor(contactId: Int) {
+    fun createFor(binding: ActivityChatListBinding) {
         viewModelScope.launch {
-            // assume default lastMessage "", timestamp now
-            val now = System.currentTimeMillis()
-            conversationRepository.create(
-                Conversation(contactId = contactId, lastMessage = "", timestamp = now, contactName = "", theme = "Greenroom")
-            )
+            val convId = conversationRepository.createForContact(selectedContactId)
+            start ChatActivity with Intent...
         }
     }
 }

@@ -22,20 +22,20 @@ class ChatViewModel @Inject constructor(
 
     fun loadMessages(conversationId: Int) {
         viewModelScope.launch(Dispatchers.IO) {
-            messageRepository.getForConversation(conversationId)
+            messageRepository.getMessagesByChatId(conversationId)
                 .collect { msgs -> _messages.postValue(msgs) }
         }
     }
 
     fun updateMessage(message: Message) {
         viewModelScope.launch(Dispatchers.IO) {
-            messageRepository.update(message)
+            messageRepository.updateMessage(message)
         }
     }
 
     fun deleteMessage(message: Message) {
         viewModelScope.launch(Dispatchers.IO) {
-            messageRepository.delete(message)
+            messageRepository.deleteMessage(message)
         }
     }
 }
