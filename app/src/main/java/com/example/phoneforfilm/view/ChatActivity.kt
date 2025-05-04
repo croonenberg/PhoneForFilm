@@ -62,6 +62,7 @@ class ChatActivity : AppCompatActivity() {
                         clipboard.setPrimaryClip(clip)
                         Toast.makeText(this, getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT).show()
                     }
+
                     1 -> {
                         viewModel.deleteMessage(msg)
                         Toast.makeText(this, getString(R.string.message_deleted), Toast.LENGTH_SHORT).show()
