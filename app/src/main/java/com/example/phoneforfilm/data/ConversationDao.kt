@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
+import androidx.room.RoomWarnings
 import com.example.phoneforfilm.data.Conversation
 import kotlinx.coroutines.flow.Flow
 
@@ -15,10 +16,8 @@ interface ConversationDao {
     @Update
     suspend fun update(conversation: Conversation)
 
-    @Query("SELECT conv.id, conv.contactId, conv.lastMessage, conv.timestamp, " +
-           "c.name AS contactName FROM conversations conv " +
-           "JOIN contacts c ON conv.contactId = c.id " +
-           "ORDER BY conv.timestamp DESC")
+    @SuppressWarnings(RoomWarnings.QUERY_MISMATCH)
+    @Query("SELECT conv.id, conv.contactId, conv.lastMessage, conv.timestamp, c.name AS contactName, conv.theme FROM conversations conv JOIN contacts c ON conv.contactId = c.id ORDER BY conv.timestamp DESC")
     fun getAll(): Flow<List<Conversation>>
 
     @Query("SELECT * FROM conversations WHERE id = :id")
