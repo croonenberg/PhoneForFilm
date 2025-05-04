@@ -30,7 +30,7 @@
                 android:id="@+id/editTextMessage"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint="@string/type_your_message"
+                android:hint="@string/type_message"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/buttonSend"
                 app:layout_constraintTop_toTopOf="parent"
