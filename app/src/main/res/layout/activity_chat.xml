@@ -1,12 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
             name="viewModel"
-            type="com.example.phoneforfilm.viewmodel.ChatViewModel" />
+            type="com.example.phoneforfilm.presentation.viewmodel.ChatViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,11 +16,11 @@
             android:id="@+id/recyclerViewMessages"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toTopOf="@+id/chatInputLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/chatInputLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_message_sent" />
 
         <LinearLayout
@@ -31,8 +30,8 @@
             android:orientation="horizontal"
             android:padding="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
 
             <EditText
                 android:id="@+id/editTextMessage"
@@ -51,12 +50,10 @@
             <ImageButton
                 android:id="@+id/buttonSend"
                 android:layout_width="wrap_content"
-                android:minWidth="48dp"
                 android:layout_height="wrap_content"
-                android:minHeight="48dp"
-                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_send"
                 android:contentDescription="@string/send"
-                android:src="@drawable/ic_send" />
+                android:background="?attr/selectableItemBackgroundBorderless" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
