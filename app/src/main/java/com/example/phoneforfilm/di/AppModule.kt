@@ -5,6 +5,7 @@ import androidx.room.Room
 import com.example.phoneforfilm.data.AppDatabase
 import com.example.phoneforfilm.data.ContactDao
 import com.example.phoneforfilm.data.ConversationDao
+import com.example.phoneforfilm.data.dao.MessageDao
 import com.example.phoneforfilm.data.repository.ContactRepository
 import com.example.phoneforfilm.data.repository.ConversationRepository
 import com.example.phoneforfilm.utils.PreferencesHelper
@@ -16,14 +17,14 @@ import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 /**
- * Provides application-wide dependencies including Room database and repositories.
+ * Provides application-wide dependencies including Room database, DAOs and repositories.
  */
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
     /**
-     * Creates and provides the Room database for the application.
+     * Provides the Room database instance.
      */
     @Provides
     @Singleton
@@ -37,18 +38,21 @@ object AppModule {
      */
     @Provides
     @Singleton
-    fun provideContactDao(db: AppDatabase): ContactDao =
-        db.contactDao()
+    fun provideContactDao(db: AppDatabase): ContactDao = db.contactDao()
 
     /**
      * Provides the DAO for conversations.
      */
     @Provides
     @Singleton
-    fun provideConversationDao(db: AppDatabase): ConversationDao =
-        db.conversationDao()
+    fun provideConversationDao(db: AppDatabase): ConversationDao = db.conversationDao()
 
-
+    /**
+     * Provides the DAO for messages.
+     */
+    @Provides
+    @Singleton
+    fun provideMessageDao(db: AppDatabase): MessageDao = db.messageDao()
 
     /**
      * Provides the repository for contacts.
