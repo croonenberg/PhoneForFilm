@@ -1,6 +1,5 @@
 package com.example.phoneforfilm.view
 
-import android.content.DialogInterface
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
@@ -50,18 +49,22 @@ class ChatActivity : AppCompatActivity() {
             getString(R.string.edit_message),
             getString(R.string.delete_message),
             getString(R.string.choose_theme),
-            getString(R.string.choose_language)
+            getString(R.string.language_dutch),
+            getString(R.string.language_english),
+            getString(R.string.language_german),
+            getString(R.string.language_french),
+            getString(R.string.language_spanish)
         )
         AlertDialog.Builder(this)
             .setTitle(R.string.message_options)
-            .setItems(options, DialogInterface.OnClickListener { _, which ->
+            .setItems(options) { _, which ->
                 when (which) {
                     0 -> showEditDialog(msg)
                     1 -> viewModel.deleteMessage(msg)
                     2 -> showThemeChooser()
-                    3 -> showLanguageChooser()
+                    in 3..7 -> showLanguageChooser()
                 }
-            })
+            }
             .show()
     }
 
@@ -73,15 +76,13 @@ class ChatActivity : AppCompatActivity() {
         AlertDialog.Builder(this)
             .setTitle(R.string.edit_message)
             .setView(input)
-            .setPositiveButton(R.string.save, DialogInterface.OnClickListener { _, _ ->
+            .setPositiveButton(R.string.save) { _, _ ->
                 val newText = input.text.toString()
                 if (newText.isNotBlank()) {
-                    msg.text = newText
-                    viewModel.updateMessage(msg)
-                    // refresh
-                    viewModel.getMessages(conversationId)
+                    val updatedMsg = msg.copy(text = newText)
+                    viewModel.updateMessage(updatedMsg)
                 }
-            })
+            }
             .setNegativeButton(android.R.string.cancel, null)
             .show()
     }
@@ -96,14 +97,13 @@ class ChatActivity : AppCompatActivity() {
         )
         AlertDialog.Builder(this)
             .setTitle(R.string.choose_theme)
-            .setItems(themeNames, DialogInterface.OnClickListener { _, which ->
+            .setItems(themeNames) { _, which ->
                 // TODO: apply theme
-            })
+            }
             .show()
     }
 
     private fun showLanguageChooser() {
-        // Use existing language_* resources instead of new language_nl/en keys
         val languages = arrayOf(
             getString(R.string.language_dutch),
             getString(R.string.language_english),
@@ -113,9 +113,9 @@ class ChatActivity : AppCompatActivity() {
         )
         AlertDialog.Builder(this)
             .setTitle(R.string.choose_language)
-            .setItems(languages, DialogInterface.OnClickListener { _, which ->
+            .setItems(languages) { _, which ->
                 // TODO: apply language
-            })
+            }
             .show()
     }
 }
