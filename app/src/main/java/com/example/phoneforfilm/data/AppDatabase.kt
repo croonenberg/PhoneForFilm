@@ -16,7 +16,7 @@ import com.example.phoneforfilm.data.dao.MessageDao
  */
 @Database(
     entities = [Contact::class, Message::class, Conversation::class],
-    version = 8,  // bumped from 7 to 8 to add 'theme' field
+    version = 9,  // bumped to include theme column definitively
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
@@ -43,7 +43,7 @@ abstract class AppDatabase : RoomDatabase() {
                     AppDatabase::class.java,
                     "phone_for_film_database"
                 )
-                .fallbackToDestructiveMigration()  // will drop & recreate on version change
+                .fallbackToDestructiveMigration()  // drop & recreate on version change
                 .build().also { INSTANCE = it }
             }
     }
