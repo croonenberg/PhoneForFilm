@@ -11,7 +11,6 @@ import androidx.activity.viewModels
 import com.example.phoneforfilm.R
 import com.example.phoneforfilm.data.model.Message
 import com.example.phoneforfilm.viewmodel.ChatViewModel
-import com.example.phoneforfilm.adapter.MessageAdapter
 
 class ChatActivity : AppCompatActivity() {
 
