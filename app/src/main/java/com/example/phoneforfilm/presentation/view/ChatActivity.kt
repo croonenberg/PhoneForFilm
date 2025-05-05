@@ -64,12 +64,9 @@ class ChatActivity : AppCompatActivity(), MessageActionListener {
     /**
      * Callback voor lange druk op een bericht
      */
-    fun onMessageLongPressed(message: Message) {
+    override fun onMessageLongPressed(message: Message) {
         // Verwijder bericht via ViewModel
         viewModel.deleteMessage(message)
-    }
-    override fun onMessageLongPressed(message: Message) {
-        // Handle long-press action
     }
 
 }
