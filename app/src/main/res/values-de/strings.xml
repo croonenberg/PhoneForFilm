@@ -1,17 +1,27 @@
 <?xml version='1.0' encoding='utf-8'?>
-<resources>
-    <string name="app_name">PhoneForFilm</string>
+<resources><string name="add_contact">Kontakt hinzufügen</string>
     <string name="answer">Annehmen</string>
+    <string name="app_name">PhoneForFilm</string>
     <string name="change_language">Sprache ändern</string>
     <string name="change_sender">Absender ändern</string>
     <string name="change_status">Status ändern</string>
     <string name="change_theme">Thema ändern</string>
     <string name="change_time">Zeit ändern</string>
+    <string name="chat_image_desc">Chat-Symbol</string>
+
+    
     <string name="choose_language">Sprache</string>
     <string name="choose_theme">Thema wählen</string>
     <string name="contact_name">Kontakt</string>
     <string name="contact_photo">Kontaktfoto</string>
-    <string name="delete">Löschen</string>
+    <string name="conversation_label">Kontakt</string>
+    <string name="copied_to_clipboard">In die Zwischenablage kopiert</string>
+    <string name="copy_message">Nachricht kopieren</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="decline">Ablehnen</string>
+    <string name="decline_button">Ablehnen</string><string name="delete">Löschen</string>
+    <string name="delete_message">Nachricht löschen</string>
+    <string name="desc_add_chat">Neuer Chat</string>
     <string name="dutch">Niederländisch</string>
     <string name="edit">Nachricht bearbeiten</string>
     <string name="edit_message">Nachricht bearbeiten</string>
@@ -19,8 +29,14 @@
     <string name="english">Englisch</string>
     <string name="hello">HALLO</string>
     <string name="hint_message">Nachricht eingeben</string>
-    <string name="incoming_call">Eingehender Anruf</string>
+    <string name="icon_delete">🗑</string><string name="icon_edit">✎</string><string name="incoming_call">Eingehender Anruf</string>
     <string name="language">Sprache</string>
+    <string name="language_dutch">Nederlands</string>
+    <string name="language_english">English</string>
+    <string name="language_french">Français</string>
+    <string name="language_german">Deutsch</string>
+    <string name="language_spanish">Español</string>
+    <string name="last_message_label">Letzte Nachricht</string>
     <string name="menu_status_delivered">Zugestellt</string>
     <string name="menu_status_read">Gelesen</string>
     <string name="menu_status_sent">Gesendet</string>
@@ -28,49 +44,32 @@
     <string name="menu_time_custom">Benutzerdefiniert…</string>
     <string name="menu_time_now">Jetzt</string>
     <string name="message_deleted">Nachricht gelöscht</string>
+    <string name="message_options">Nachrichtenoptionen</string>
     <string name="more">Mehr</string>
+    <string name="name">Name</string>
     <string name="new_contact">Neuer Kontakt</string>
+    <string name="phone">Telefon</string>
     <string name="phone_number">Telefonnummer</string>
+    <string name="placeholder_empty">Noch nichts vorhanden</string>
     <string name="profile_picture">Profilbild</string>
     <string name="reject">Ablehnen</string>
+    <string name="sample_time">15:00</string>
     <string name="save">Speichern</string>
-    <string name="search">Suchen</string>
+    <string name="save_contact">Kontakt speichern</string>
+
+<string name="search">Suchen</string>
     <string name="send">Nachricht senden</string>
     <string name="start_call">Anruf starten</string>
     <string name="start_chat">Chat starten</string>
-    <string name="toggle_direction">Richtung umschalten</string>
-    <string name="type_message">Gib deine Nachricht ein</string>
-    <string name="dark_mode">Dark Mode</string>
-    <string name="language_english">English</string>
-    <string name="language_dutch">Nederlands</string>
-    <string name="language_german">Deutsch</string>
-    <string name="language_french">Français</string>
-    <string name="language_spanish">Español</string>
-    <string name="title_language_selection">Language selection</string>
-    <string name="title_theme_settings">Theme settings</string>
-    <string name="desc_add_chat">Neuer Chat</string>
-    <string name="decline">Ablehnen</string>
-    <string name="title_chat_list">Chat‑Liste</string>
-    <string name="placeholder_empty">Noch nichts vorhanden</string>
-    <string name="copied_to_clipboard">In die Zwischenablage kopiert</string>
-    <string name="toggle_sender">Absender wechseln</string>
-    <string name="copy_message">Nachricht kopieren</string>
-    <string name="delete_message">Nachricht löschen</string>
-    <string name="theme_greenroom">Greenroom</string>
     <string name="theme_blue_stage">Blue Stage</string>
+    <string name="theme_darkroom">Darkroom</string>
+    <string name="theme_greenroom">Greenroom</string>
     <string name="theme_grey_card">Grey Card</string>
     <string name="theme_neutral_light">Neutral Light</string>
-    <string name="theme_darkroom">Darkroom</string>
-    <string name="message_options">Nachrichtenoptionen</string>
-    <string name="chat_image_desc">Chat-Symbol</string>
-
-    <!-- Neu -->
-    <string name="add_contact">Kontakt hinzufügen</string>
-    <string name="conversation_label">Kontakt</string>
-    <string name="last_message_label">Letzte Nachricht</string>
-    <string name="sample_time">15:00</string>
-    <string name="name">Name</string>
-    <string name="phone">Telefon</string>
-    <string name="save_contact">Kontakt speichern</string>
-
-</resources>
+    <string name="title_chat_list">Chat‑Liste</string>
+    <string name="title_language_selection">Language selection</string>
+    <string name="title_theme_settings">Theme settings</string>
+    <string name="toggle_direction">Richtung umschalten</string>
+    <string name="toggle_sender">Absender wechseln</string>
+    <string name="type_message">Gib deine Nachricht ein</string>
+    </resources>
