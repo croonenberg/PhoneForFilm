@@ -1,6 +1,6 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
+    id("com.android.application") version "8.9.2" apply false
+    id("org.jetbrains.kotlin.android") version "2.1.20" apply false
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
 }
@@ -75,6 +75,7 @@ android {
             implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.7")
             implementation("androidx.activity:activity-ktx:1.10.1")
             implementation("org.jetbrains.kotlin:kotlin-stdlib:2.1.20")
+            implementation("com.google.android.material:material:1.12.0")
 
 
             // Room
