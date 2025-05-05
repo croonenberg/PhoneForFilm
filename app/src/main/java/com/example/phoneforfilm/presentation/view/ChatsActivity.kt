@@ -3,18 +3,17 @@ package com.example.phoneforfilm.presentation.view
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.phoneforfilm.R
-import com.example.phoneforfilm.databinding.ActivityChatBinding
+import com.example.phoneforfilm.databinding.ActivityChatsBinding
 import com.example.phoneforfilm.settings.SettingsViewModel
 import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ChatActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityChatBinding
+class ChatsActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityChatsBinding
     private val settingsViewModel: SettingsViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        // Apply theme before super.onCreate
         settingsViewModel.currentTheme.observe(this) { key ->
             val themeRes = when (key) {
                 "Greenroom"    -> R.style.Theme_Greenroom
@@ -27,8 +26,8 @@ class ChatActivity : AppCompatActivity() {
             setTheme(themeRes)
         }
         super.onCreate(savedInstanceState)
-        binding = ActivityChatBinding.inflate(layoutInflater)
+        binding = ActivityChatsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        // rest unchanged...
+        // existing setup...
     }
 }
