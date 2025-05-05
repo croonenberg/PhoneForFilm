@@ -13,18 +13,23 @@ import java.util.Locale
 
 class MessageAdapter(
     private var messages: List<Message>,
-    private val context: ChatActivity
+    private val context: ChatActivity,
+    private val senderId: Int
 ) : RecyclerView.Adapter<MessageAdapter.MessageViewHolder>() {
 
     override fun getItemViewType(position: Int): Int =
-        if (messages[position].isSender) VIEW_TYPE_SENT else VIEW_TYPE_RECEIVED
+        if (messages[position].senderId == senderId) VIEW_TYPE_SENT else VIEW_TYPE_RECEIVED
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MessageViewHolder {
         return if (viewType == VIEW_TYPE_SENT) {
-            val binding = ItemMessageSentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            val binding = ItemMessageSentBinding.inflate(
+                LayoutInflater.from(parent.context), parent, false
+            )
             MessageViewHolder(binding)
         } else {
-            val binding = ItemMessageReceivedBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            val binding = ItemMessageReceivedBinding.inflate(
+                LayoutInflater.from(parent.context), parent, false
+            )
             MessageViewHolder(binding)
         }
     }
@@ -45,14 +50,16 @@ class MessageAdapter(
         notifyDataSetChanged()
     }
 
-    inner class MessageViewHolder(private val binding: Any) :
-        RecyclerView.ViewHolder(
-            (binding as? ItemMessageSentBinding)?.root
-                ?: (binding as ItemMessageReceivedBinding).root
-        ) {
+    inner class MessageViewHolder(
+        private val binding: Any
+    ) : RecyclerView.ViewHolder(
+        (binding as? ItemMessageSentBinding)?.root
+            ?: (binding as ItemMessageReceivedBinding).root
+    ) {
 
         fun bind(message: Message) {
-            val time = SimpleDateFormat("HH:mm", Locale.getDefault()).format(Date(message.timestamp))
+            val time = SimpleDateFormat("HH:mm", Locale.getDefault())
+                .format(Date(message.timestamp))
             when (binding) {
                 is ItemMessageSentBinding -> {
                     binding.tvSentMessage.text = message.text
@@ -71,4 +78,3 @@ class MessageAdapter(
         private const val VIEW_TYPE_RECEIVED = 0
     }
 }
-
