@@ -10,27 +10,21 @@
     <string name="chat_image_desc">Chat-Symbol</string>
 
     
-    <string name="choose_language">Sprache</string>
     <string name="choose_theme">Thema wählen</string>
     <string name="contact_name">Kontakt</string>
     <string name="contact_photo">Kontaktfoto</string>
-    <string name="conversation_label">Kontakt</string>
     <string name="copied_to_clipboard">In die Zwischenablage kopiert</string>
     <string name="copy_message">Nachricht kopieren</string>
     <string name="dark_mode">Dark Mode</string>
-    <string name="decline">Ablehnen</string>
     <string name="decline_button">Ablehnen</string><string name="delete">Löschen</string>
     <string name="delete_message">Nachricht löschen</string>
     <string name="desc_add_chat">Neuer Chat</string>
     <string name="dutch">Niederländisch</string>
-    <string name="edit">Nachricht bearbeiten</string>
     <string name="edit_message">Nachricht bearbeiten</string>
     <string name="end_call">Anruf beenden</string>
-    <string name="english">Englisch</string>
     <string name="hello">HALLO</string>
     <string name="hint_message">Nachricht eingeben</string>
-    <string name="icon_delete">🗑</string><string name="icon_edit">✎</string>
-    <string name="incoming_call">Eingehender Anruf</string>
+    <string name="icon_delete">🗑</string><string name="icon_edit">✎</string><string name="incoming_call">Eingehender Anruf</string>
     <string name="language">Sprache</string>
     <string name="language_dutch">Nederlands</string>
     <string name="language_english">English</string>

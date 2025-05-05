@@ -10,27 +10,21 @@
     <string name="chat_image_desc">Chatpictogram</string>
 
     
-    <string name="choose_language">Taal</string>
     <string name="choose_theme">Thema kiezen</string>
     <string name="contact_name">Contact</string>
     <string name="contact_photo">Contactfoto</string>
-    <string name="conversation_label">Contact</string>
     <string name="copied_to_clipboard">Gekopieerd naar klembord</string>
     <string name="copy_message">Kopieer bericht</string>
     <string name="dark_mode">Dark Mode</string>
-    <string name="decline">Weigeren</string>
     <string name="decline_button">Weigeren</string><string name="delete">Verwijderen</string>
     <string name="delete_message">Bericht verwijderen</string>
     <string name="desc_add_chat">Nieuw gesprek</string>
     <string name="dutch">Nederlands</string>
-    <string name="edit">Bericht bewerken</string>
     <string name="edit_message">Bericht bewerken</string>
     <string name="end_call">Oproep beëindigen</string>
-    <string name="english">Engels</string>
     <string name="hello">HALLO</string>
     <string name="hint_message">Typ een bericht</string>
-    <string name="icon_delete">🗑</string><string name="icon_edit">✎</string>
-    <string name="incoming_call">Inkomend gesprek</string>
+    <string name="icon_delete">🗑</string><string name="icon_edit">✎</string><string name="incoming_call">Inkomend gesprek</string>
     <string name="language">Taal</string>
     <string name="language_dutch">Nederlands</string>
     <string name="language_english">English</string>
