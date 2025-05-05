@@ -1,11 +1,10 @@
-plugins {
-    id("com.android.application") version "8.9.2" apply false
-    id("org.jetbrains.kotlin.android") version "2.1.20" apply false
-    id("kotlin-kapt")
-    id("dagger.hilt.android.plugin")
-}
-
 android {
+    plugins {
+        id("com.android.application") version "8.9.2" apply true
+        id("org.jetbrains.kotlin.android") version "2.1.20" apply true
+        id("kotlin-kapt")
+        id("dagger.hilt.android.plugin")
+    }
     namespace = "com.example.phoneforfilm"
     compileSdk = 36
 
@@ -20,22 +19,17 @@ android {
                 arguments += mapOf("room.schemaLocation" to "$projectDir/schemas")
             }
         }
-
-
         buildFeatures {
             viewBinding = true
             dataBinding = true
         }
-
         compileOptions {
             sourceCompatibility = JavaVersion.VERSION_17
             targetCompatibility = JavaVersion.VERSION_17
         }
-
         kotlinOptions {
             jvmTarget = "17"
         }
-
         buildTypes {
             getByName("release") {
                 isMinifyEnabled = false
