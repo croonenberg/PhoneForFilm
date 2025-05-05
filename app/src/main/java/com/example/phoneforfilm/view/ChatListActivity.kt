@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.phoneforfilm.databinding.ActivityChatListBinding
-import com.example.phoneforfilm.view.ChatListAdapter
+import com.example.phoneforfilm.view.adapter.ChatListAdapter
 import com.example.phoneforfilm.presentation.view.ChatActivity
 
 class ChatListActivity : AppCompatActivity() {
@@ -20,7 +20,8 @@ class ChatListActivity : AppCompatActivity() {
         binding = ActivityChatListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.rvChatList.adapter = ChatListAdapter { chat ->
+        // Use rvChats (layout id) instead of rvChatList
+        binding.rvChats.adapter = ChatListAdapter { chat ->
             val intent = Intent(this, ChatActivity::class.java).apply {
                 putExtra(EXTRA_CONVERSATION_ID, chat.id)
                 putExtra(EXTRA_SENDER_ID, chat.senderId)
