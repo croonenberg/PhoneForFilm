@@ -4,7 +4,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 import android.os.Bundle
 import com.example.phoneforfilm.view.BaseActivity
-import com.example.phoneforfilm.data.AppDatabase
+import com.example.phoneforfilm.data.local.db.AppDatabase
 import com.example.phoneforfilm.data.Contact
 import com.example.phoneforfilm.databinding.ActivityEditContactBinding
 import kotlinx.coroutines.CoroutineScope
