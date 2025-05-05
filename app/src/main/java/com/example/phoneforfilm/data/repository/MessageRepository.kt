@@ -10,8 +10,8 @@ import javax.inject.Singleton
 class MessageRepository @Inject constructor(
     private val messageDao: MessageDao
 ) {
-    fun getMessagesForChat(chatId: Int): LiveData<List<Message>> {
-        return messageDao.getAllMessagesForChat(chatId)
+    fun getMessagesByChatId(chatId: Int): LiveData<List<Message>> {
+        return messageDao.getMessagesByChat(chatId)
     }
 
     suspend fun insert(message: Message) {
@@ -20,9 +20,5 @@ class MessageRepository @Inject constructor(
 
     suspend fun delete(message: Message) {
         messageDao.delete(message)
-    }
-
-    suspend fun update(message: Message) {
-        messageDao.update(message)
     }
 }
