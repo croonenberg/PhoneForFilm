@@ -1,55 +1,28 @@
 package com.example.phoneforfilm.ui.contact
 
-import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.phoneforfilm.adapter.ContactAdapter
 import com.example.phoneforfilm.databinding.ActivityContactPickerBinding
 import com.example.phoneforfilm.presentation.viewmodel.ContactViewModel
-import com.example.phoneforfilm.view.EditContactActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import androidx.lifecycle.lifecycleScope
 
-/**
- * Activity for selecting an existing contact or creating a new one.
- */
 @AndroidEntryPoint
 class ContactPickerActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityContactPickerBinding
-    private val viewModel by viewModels<ContactViewModel>()
-    private lateinit var adapter: ContactAdapter
-    private lateinit var createContactLauncher: ActivityResultLauncher<Intent>
+    private val viewModel: ContactViewModel by viewModels()
 
-    /**
-     * Initializes UI and registers the result launcher for the EditContact activity.
-     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityContactPickerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        createContactLauncher = registerForActivityResult(
-            ActivityResultContracts.StartActivityForResult()
-        ) { result ->
-            if (result.resultCode == Activity.RESULT_OK) {
-                val newContactId = result.data
-                    ?.getIntExtra("contactId", -1) ?: return@registerForActivityResult
-                setResult(Activity.RESULT_OK, Intent().putExtra("contactId", newContactId))
-                finish()
-            }
-        }
-
-        adapter = ContactAdapter { contact ->
-            val data = Intent().putExtra("contactId", contact.id)
-            setResult(Activity.RESULT_OK, data)
-            finish()
+        val adapter = ContactPickerAdapter { selectedContact ->
+            // TODO: Handle selected contact
         }
 
         binding.recyclerContacts.layoutManager = LinearLayoutManager(this)
@@ -61,11 +34,8 @@ class ContactPickerActivity : AppCompatActivity() {
             }
         }
 
-
         binding.fabAddContact.setOnClickListener {
-            createContactLauncher.launch(
-                Intent(this, EditContactActivity::class.java)
-            )
+            // TODO: Open AddContactActivity
         }
     }
 }
