@@ -8,35 +8,41 @@ import com.example.phoneforfilm.databinding.ItemMessageReceivedBinding
 import com.example.phoneforfilm.databinding.ItemMessageSentBinding
 import com.example.phoneforfilm.presentation.view.ChatActivity
 import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
+import java.util.*
 
 class MessageAdapter(
     private var messages: List<Message>,
     private val context: ChatActivity,
     private val senderId: Int
-) : RecyclerView.Adapter<MessageAdapter.MessageViewHolder>() {
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    override fun getItemViewType(position: Int): Int =
-        if (messages[position].senderId == senderId) VIEW_TYPE_SENT else VIEW_TYPE_RECEIVED
+    companion object {
+        private const val VIEW_TYPE_SENT = 1
+        private const val VIEW_TYPE_RECEIVED = 0
+    }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MessageViewHolder {
+    override fun getItemViewType(position: Int): Int {
+        return if (messages[position].senderId == senderId) VIEW_TYPE_SENT else VIEW_TYPE_RECEIVED
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == VIEW_TYPE_SENT) {
-            val binding = ItemMessageSentBinding.inflate(
-                LayoutInflater.from(parent.context), parent, false
-            )
-            MessageViewHolder(binding)
+            val binding = ItemMessageSentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            SentMessageViewHolder(binding)
         } else {
-            val binding = ItemMessageReceivedBinding.inflate(
-                LayoutInflater.from(parent.context), parent, false
-            )
-            MessageViewHolder(binding)
+            val binding = ItemMessageReceivedBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ReceivedMessageViewHolder(binding)
         }
     }
 
-    override fun onBindViewHolder(holder: MessageViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val message = messages[position]
-        holder.bind(message)
+        if (holder is SentMessageViewHolder) {
+            holder.bind(message)
+        } else if (holder is ReceivedMessageViewHolder) {
+            holder.bind(message)
+        }
+
         holder.itemView.setOnLongClickListener {
             context.onMessageLongPressed(message)
             true
@@ -50,31 +56,19 @@ class MessageAdapter(
         notifyDataSetChanged()
     }
 
-    inner class MessageViewHolder(
-        private val binding: Any
-    ) : RecyclerView.ViewHolder(
-        (binding as? ItemMessageSentBinding)?.root
-            ?: (binding as ItemMessageReceivedBinding).root
-    ) {
-
+    inner class SentMessageViewHolder(private val binding: ItemMessageSentBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(message: Message) {
-            val time = SimpleDateFormat("HH:mm", Locale.getDefault())
-                .format(Date(message.timestamp))
-            when (binding) {
-                is ItemMessageSentBinding -> {
-                    binding.tvSentMessage.text = message.text
-                    binding.tvSentTime.text = time
-                }
-                is ItemMessageReceivedBinding -> {
-                    binding.tvReceivedMessage.text = message.text
-                    binding.tvReceivedTime.text = time
-                }
-            }
+            binding.tvSentMessage.text = message.text
+            binding.tvSentTime.text = message.formattedTime
         }
     }
 
-    companion object {
-        private const val VIEW_TYPE_SENT = 1
-        private const val VIEW_TYPE_RECEIVED = 0
+    inner class ReceivedMessageViewHolder(private val binding: ItemMessageReceivedBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(message: Message) {
+            binding.tvReceivedMessage.text = message.text
+            binding.tvReceivedTime.text = message.formattedTime
+        }
     }
 }
