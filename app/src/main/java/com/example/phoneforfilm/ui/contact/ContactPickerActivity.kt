@@ -7,12 +7,14 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.phoneforfilm.adapter.ContactAdapter
 import com.example.phoneforfilm.databinding.ActivityContactPickerBinding
-import com.example.phoneforfilm.view.EditContactActivity
 import com.example.phoneforfilm.presentation.viewmodel.ContactViewModel
+import com.example.phoneforfilm.view.EditContactActivity
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 /**
  * Activity for selecting an existing contact or creating a new one.
@@ -53,9 +55,12 @@ class ContactPickerActivity : AppCompatActivity() {
         binding.recyclerContacts.layoutManager = LinearLayoutManager(this)
         binding.recyclerContacts.adapter = adapter
 
-        viewModel.allContacts.observe(this) { list ->
-            adapter.submitList(list)
+        lifecycleScope.launch {
+            viewModel.contacts.collect { list ->
+                adapter.submitList(list)
+            }
         }
+
 
         binding.fabAddContact.setOnClickListener {
             createContactLauncher.launch(
