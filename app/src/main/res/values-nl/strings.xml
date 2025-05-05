@@ -48,7 +48,6 @@
     <string name="language_spanish">Español</string>
     <string name="title_language_selection">Taalkeuze</string>
     <string name="title_theme_settings">Thema‑instellingen</string>
-    <string name="chat_image_desc" translatable="false">Chat icon</string>
     <string name="desc_add_chat">Nieuw gesprek</string>
     <string name="decline">Weigeren</string>
     <string name="title_chat_list">Chatlijst</string>
@@ -64,4 +63,15 @@
     <string name="theme_neutral_light">Neutral Light</string>
     <string name="theme_darkroom">Darkroom</string>
     <string name="message_options">Berichtopties</string>
+    <string name="chat_image_desc">Chatpictogram</string>
+
+    <!-- Nieuw -->
+    <string name="add_contact">Contact toevoegen</string>
+    <string name="conversation_label">Contact</string>
+    <string name="last_message_label">Laatste bericht</string>
+    <string name="sample_time">15:00</string>
+    <string name="name">Naam</string>
+    <string name="phone">Telefoon</string>
+    <string name="save_contact">Contact opslaan</string>
+
 </resources>

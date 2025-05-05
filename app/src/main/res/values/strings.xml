@@ -72,6 +72,10 @@
     <string name="conversation_label">Contact</string>
     <string name="last_message_label">Ladt messaget</string>
     <string name="sample_time">15:00</string>
+    <string name="name">Name</string>
+    <string name="phone">Phone</string>
+    <string name="save_contact">Save contact</string>
+
 
 
 
