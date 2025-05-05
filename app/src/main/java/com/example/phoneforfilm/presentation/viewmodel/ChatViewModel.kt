@@ -1,11 +1,12 @@
 package com.example.phoneforfilm.presentation.viewmodel
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.phoneforfilm.data.model.Message
 import com.example.phoneforfilm.data.repository.MessageRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -14,31 +15,32 @@ class ChatViewModel @Inject constructor(
     private val messageRepository: MessageRepository
 ) : ViewModel() {
 
-    private val _chatId = MutableStateFlow<Int?>(null)
+    private val _messages = MutableLiveData<List<Message>>()
+    val messages: LiveData<List<Message>> = _messages
 
-    val messages: StateFlow<List<Message>> = _chatId
-        .filterNotNull()
-        .flatMapLatest { chatId -> messageRepository.getMessagesByChatId(chatId) }
-        .stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
-
-    fun loadMessagesForChat(chatId: Int) {
-        _chatId.value = chatId
+    fun loadMessagesForChat(conversationId: Int) {
+        viewModelScope.launch {
+            messageRepository.getMessagesByChatId(conversationId).collect {
+                _messages.value = it
+            }
+        }
     }
 
-    fun sendMessage(text: String, chatId: Int) {
-        viewModelScope.launch(Dispatchers.IO) {
-            val message = Message(
-                id = 0,
-                chatId = chatId,
-                text = text,
-                timestamp = System.currentTimeMillis()
-            )
+    fun sendMessage(text: String, conversationId: Int, senderId: Int) {
+        val message = Message(
+            id = 0,
+            conversationId = conversationId,
+            senderId = senderId,
+            text = text,
+            timestamp = System.currentTimeMillis()
+        )
+        viewModelScope.launch {
             messageRepository.insert(message)
         }
     }
 
     fun deleteMessage(message: Message) {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             messageRepository.delete(message)
         }
     }

@@ -15,9 +15,6 @@ interface MessageDao {
     fun getMessagesByChatId(chatId: Int): Flow<List<Message>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertMessage(message: Message)
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(message: Message)
 
     @Delete
