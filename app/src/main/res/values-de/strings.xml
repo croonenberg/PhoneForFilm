@@ -29,7 +29,8 @@
     <string name="english">Englisch</string>
     <string name="hello">HALLO</string>
     <string name="hint_message">Nachricht eingeben</string>
-    <string name="icon_delete">🗑</string><string name="icon_edit">✎</string><string name="incoming_call">Eingehender Anruf</string>
+    <string name="icon_delete">🗑</string><string name="icon_edit">✎</string>
+    <string name="incoming_call">Eingehender Anruf</string>
     <string name="language">Sprache</string>
     <string name="language_dutch">Nederlands</string>
     <string name="language_english">English</string>
