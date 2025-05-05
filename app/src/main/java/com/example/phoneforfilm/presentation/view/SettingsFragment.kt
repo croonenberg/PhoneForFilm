@@ -27,7 +27,7 @@ class SettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Theme spinner
+        // Theme spinner adapter already uses consolidated theme_entries
         val themes = resources.getStringArray(R.array.theme_entries)
         binding.spinnerTheme.adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, themes)
 
@@ -44,7 +44,7 @@ class SettingsFragment : Fragment() {
             AppCompatDelegate.setDefaultNightMode(position)
         }
 
-        // Locale spinner
+        // Locale spinner uses locale_entries
         val locales = resources.getStringArray(R.array.locale_entries)
         binding.spinnerLocale.adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, locales)
 
