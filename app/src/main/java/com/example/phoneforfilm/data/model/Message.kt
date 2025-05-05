@@ -17,7 +17,7 @@ data class Message(
     @ColumnInfo(name = "text") val text: String,
     @ColumnInfo(name = "timestamp") val timestamp: Long,
     @ColumnInfo(name = "isSender") val isSender: Boolean = false,
-    val chatId: Int
+ val chatId: Int
 ) {
     /**
      * Formatted time string for display (HH:mm).
