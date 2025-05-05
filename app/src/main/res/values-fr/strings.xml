@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
     <string name="accept">Accept</string>
     <string name="add_contact">Ajouter un contact</string>
@@ -72,4 +72,4 @@
     <string name="toggle_direction">Basculer la direction</string>
     <string name="toggle_sender">Basculer l\’expéditeur</string>
     <string name="type_message">Tapez votre message</string>
-</resources>
+<string name="hint_type_message">Tapez un message...</string><string name="title_chat_with">Discussion avec %1$s</string><string name="title_chats">Discussions</string><string name="add_chat">Ajouter une discussion</string><string name="avatar_desc">Avatar du contact</string></resources>

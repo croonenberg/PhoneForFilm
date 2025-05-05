@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
     <string name="accept">Accept</string>
     <string name="add_contact">Agregar contacto</string>
@@ -72,4 +72,4 @@
     <string name="toggle_direction">Alternar dirección</string>
     <string name="toggle_sender">Alternar remitente</string>
     <string name="type_message">Escribe tu mensaje</string>
-</resources>
+<string name="hint_type_message">Escribe un mensaje...</string><string name="title_chat_with">Chat con %1$s</string><string name="title_chats">Chats</string><string name="add_chat">Agregar chat</string><string name="avatar_desc">Avatar de contacto</string></resources>
