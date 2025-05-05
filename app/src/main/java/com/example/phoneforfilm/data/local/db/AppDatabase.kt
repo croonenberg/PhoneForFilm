@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.phoneforfilm.data.ConversationDao
 import com.example.phoneforfilm.data.local.dao.ContactDao
 import com.example.phoneforfilm.data.local.dao.MessageDao
 import com.example.phoneforfilm.data.model.Contact
@@ -14,6 +15,7 @@ abstract class AppDatabase : RoomDatabase() {
 
     abstract fun messageDao(): MessageDao
     abstract fun contactDao(): ContactDao
+    abstract fun conversationDao(): ConversationDao
 
     companion object {
         @Volatile
