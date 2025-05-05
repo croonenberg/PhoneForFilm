@@ -1,6 +1,7 @@
 package com.example.phoneforfilm.di
 
 import android.content.Context
+import com.example.phoneforfilm.data.ConversationDao
 import com.example.phoneforfilm.data.local.dao.ContactDao
 import com.example.phoneforfilm.data.local.dao.MessageDao
 import com.example.phoneforfilm.data.local.db.AppDatabase
@@ -47,4 +48,12 @@ object AppModule {
     fun provideContactRepository(contactDao: ContactDao): ContactRepository {
         return ContactRepository(contactDao)
     }
+
+    @Provides
+    @Singleton
+    fun provideConversationDao(database: AppDatabase): ConversationDao {
+        return database.conversationDao()
+    }
 }
+
+
