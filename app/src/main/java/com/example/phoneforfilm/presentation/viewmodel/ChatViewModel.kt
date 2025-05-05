@@ -20,8 +20,8 @@ class ChatViewModel @Inject constructor(
 
     fun loadMessagesForChat(conversationId: Int) {
         viewModelScope.launch {
-            messageRepository.getMessagesByChatId(conversationId).collect {
-                _messages.value = it
+            messageRepository.getMessagesByChatId(conversationId).collect { msgs ->
+                _messages.value = msgs
             }
         }
     }
