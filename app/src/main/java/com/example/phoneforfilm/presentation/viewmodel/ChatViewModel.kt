@@ -5,6 +5,7 @@ import com.example.phoneforfilm.data.model.Message
 import com.example.phoneforfilm.data.repository.MessageRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -14,25 +15,32 @@ class ChatViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _chatId = MutableLiveData<Int>()
+    private val _messages = MutableLiveData<List<Message>>()
+    val messages: LiveData<List<Message>> = _messages
 
-    val messages: LiveData<List<Message>> = _chatId.switchMap { chatId ->
-        messageRepository.getMessagesByChatId(chatId).asLiveData()
+    init {
+        _chatId.observeForever { chatId ->
+            viewModelScope.launch {
+                messageRepository.getMessagesByChatId(chatId).collectLatest { result ->
+                    _messages.postValue(result)
+                }
+            }
+        }
     }
 
     fun loadMessagesForChat(chatId: Int) {
         _chatId.value = chatId
     }
 
-    fun sendMessage(text: String, chatId: Int) {
+    fun sendMessage(text: String, conversationId: Int) {
         viewModelScope.launch(Dispatchers.IO) {
-            messageRepository.insert(
-                Message(
-                    id = 0,
-                    chatId = chatId,
-                    text = text,
-                    timestamp = System.currentTimeMillis()
-                )
+            val message = Message(
+                id = 0,
+                conversationId = conversationId,
+                text = text,
+                timestamp = System.currentTimeMillis()
             )
+            messageRepository.insert(message)
         }
     }
 
