@@ -1,39 +1,40 @@
-package com.example.phoneforfilm.presentation.view
+package com.example.phoneforfilm.presentation.viewmodel
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.phoneforfilm.databinding.ActivityChatBinding
-import com.example.phoneforfilm.presentation.adapter.MessageAdapter
-import com.example.phoneforfilm.presentation.viewmodel.ChatViewModel
-import kotlinx.coroutines.flow.collectLatest
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.asLiveData
+import com.example.phoneforfilm.data.model.Message
+import com.example.phoneforfilm.data.repository.MessageRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class ChatActivity : AppCompatActivity() {
+@HiltViewModel
+class ChatViewModel @Inject constructor(
+    private val messageRepository: MessageRepository
+) : ViewModel() {
 
-    private lateinit var binding: ActivityChatBinding
-    private lateinit var viewModel: ChatViewModel
-    private lateinit var messageAdapter: MessageAdapter
+    fun getMessages(chatId: Int): LiveData<List<Message>> {
+        return messageRepository.getMessagesByChatId(chatId).asLiveData()
+    }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityChatBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        viewModel = ChatViewModel(...) // Zorg voor juiste ViewModel-instantiering (bijv. via Hilt)
-        messageAdapter = MessageAdapter()
-
-        binding.recyclerViewMessages.apply {
-            layoutManager = LinearLayoutManager(this@ChatActivity)
-            adapter = messageAdapter
+    fun sendMessage(text: String, chatId: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val message = Message(
+                id = 0,
+                chatId = chatId,
+                text = text,
+                timestamp = System.currentTimeMillis()
+            )
+            messageRepository.insert(message)
         }
+    }
 
-        lifecycleScope.launch {
-            viewModel.messages.collectLatest { messages ->
-                messageAdapter.submitList(messages)
-                binding.recyclerViewMessages.scrollToPosition(messages.size - 1)
-            }
+    fun deleteMessage(message: Message) {
+        viewModelScope.launch(Dispatchers.IO) {
+            messageRepository.delete(message)
         }
     }
 }
