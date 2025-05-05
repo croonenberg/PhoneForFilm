@@ -23,7 +23,10 @@
             <activity android:name=".view.LanguageSelectionActivity"/>
             <activity android:name=".view.ThemeSettingsActivity"/>
         </activity>
-
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
 
     </application>
 
