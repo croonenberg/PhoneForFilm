@@ -1,11 +1,11 @@
-package com.example.phoneforfilm.data.local.db
+package com.example.phoneforfilm.data.local
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.phoneforfilm.data.model.Message
 import com.example.phoneforfilm.data.local.dao.MessageDao
+import com.example.phoneforfilm.data.model.Message
 
 @Database(entities = [Message::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
@@ -13,15 +13,19 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun messageDao(): MessageDao
 
     companion object {
-        @Volatile private var instance: AppDatabase? = null
+        @Volatile
+        private var INSTANCE: AppDatabase? = null
 
-        fun getDatabase(context: Context): AppDatabase =
-            instance ?: synchronized(this) {
-                instance ?: Room.databaseBuilder(
+        fun getDatabase(context: Context): AppDatabase {
+            return INSTANCE ?: synchronized(this) {
+                val instance = Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,
-                    "phone_for_film_database"
-                ).build().also { instance = it }
+                    "phoneforfilm_database"
+                ).build()
+                INSTANCE = instance
+                instance
             }
+        }
     }
 }

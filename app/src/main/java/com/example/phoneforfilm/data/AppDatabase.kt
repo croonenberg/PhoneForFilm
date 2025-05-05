@@ -1,14 +1,34 @@
-package com.example.phoneforfilm.data
+package com.example.phoneforfilm.data.local
 
+import android.content.Context
 import androidx.room.Database
+import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.phoneforfilm.data.local.dao.ChatDao
+import com.example.phoneforfilm.data.local.dao.ContactDao
 import com.example.phoneforfilm.data.local.dao.MessageDao
-import com.example.phoneforfilm.data.model.Chat
+import com.example.phoneforfilm.data.model.Contact
 import com.example.phoneforfilm.data.model.Message
 
-@Database(entities = [Message::class, Chat::class], version = 1)
+@Database(entities = [Message::class, Contact::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
+
     abstract fun messageDao(): MessageDao
-    abstract fun chatDao(): ChatDao
+    abstract fun contactDao(): ContactDao
+
+    companion object {
+        @Volatile
+        private var INSTANCE: AppDatabase? = null
+
+        fun getDatabase(context: Context): AppDatabase {
+            return INSTANCE ?: synchronized(this) {
+                val instance = Room.databaseBuilder(
+                    context.applicationContext,
+                    AppDatabase::class.java,
+                    "phoneforfilm_database"
+                ).build()
+                INSTANCE = instance
+                instance
+            }
+        }
+    }
 }
