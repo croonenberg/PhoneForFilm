@@ -1,9 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="theme_values">
-        <item>Greenroom</item>
-        <item>Blue Stage</item>
-        <item>Grey Card</item>
-        <item>Neutral Light</item>
-        <item>Darkroom</item>
-    </string-array>
+  <!-- Only entries defined, values moved to arrays.xml -->
+  <string-array name="theme_entries">
+    <item>Greenroom</item>
+    <item>Blue Stage</item>
+    <item>Grey Card</item>
+    <item>Neutral Light</item>
+    <item>Darkroom</item>
+  </string-array>
 </resources>
