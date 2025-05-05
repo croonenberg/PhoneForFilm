@@ -8,8 +8,6 @@
     <string name="change_theme">Change Theme</string>
     <string name="change_time">Change time</string>
     <string name="chat_image_desc">Chat icon</string>
-
-    
     <string name="choose_language">Language</string>
     <string name="choose_theme">Choose theme</string>
     <string name="contact_name">Contact</string>
@@ -29,7 +27,8 @@
     <string name="english">English</string>
     <string name="hello">HELLO</string>
     <string name="hint_message">Type a message</string>
-    <string name="icon_delete">🗑</string><string name="icon_edit">✎</string><string name="incoming_call">Incoming call</string>
+    <string name="icon_delete">🗑</string><string name="icon_edit">✎</string>
+    <string name="incoming_call">Incoming call</string>
     <string name="language">Language</string>
     <string name="language_dutch">Nederlands</string>
     <string name="language_english">English</string>
