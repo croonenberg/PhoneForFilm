@@ -31,12 +31,12 @@ class EditContactActivity : BaseActivity() {
             if (name.isNotBlank() && phoneNumber.isNotBlank()) {
                 val newContact = Contact(id = androidContactId, name = name, phoneNumber = phoneNumber)
                 CoroutineScope(Dispatchers.IO).launch {
-                    val newId = AppDatabase.getDatabase(this@EditContactActivity)
+                    val insertedId: Long = AppDatabase.getDatabase(this@EditContactActivity)
                         .contactDao()
                         .insert(newContact)
-                        .toInt()
+
                     withContext(Dispatchers.Main) {
-                        val data = Intent().putExtra("contactId", newId)
+                        val data = Intent().putExtra("contactId", insertedId.toInt())
                         setResult(Activity.RESULT_OK, data)
                         finish()
                     }
