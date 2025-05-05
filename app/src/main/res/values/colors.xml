@@ -14,4 +14,9 @@
     <color name="neutral_light_secondary">#E0E0E0</color>
     <color name="darkroom_primary">#212121</color>
     <color name="darkroom_secondary">#424242</color>
+    <color name="primary">#6200EE</color>
+    <color name="primaryVariant">#3700B3</color>
+    <color name="secondary">#03DAC6</color>
+    <color name="secondaryVariant">#018786</color>
+
 </resources>
