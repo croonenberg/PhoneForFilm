@@ -16,17 +16,20 @@ import android.content.Intent
 class EditContactActivity : BaseActivity() {
 
     private lateinit var binding: ActivityEditContactBinding
+    private var androidContactId: Int = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityEditContactBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        androidContactId = intent.getIntExtra("contactId", -1)
+
         binding.buttonSaveContact.setOnClickListener {
             val name = binding.editTextName.text.toString()
             val phoneNumber = binding.editTextPhone.text.toString()
             if (name.isNotBlank() && phoneNumber.isNotBlank()) {
-                val newContact = Contact(name = name, phoneNumber = phoneNumber)
+                val newContact = Contact(id = androidContactId, name = name, phoneNumber = phoneNumber)
                 CoroutineScope(Dispatchers.IO).launch {
                     val newId = AppDatabase.getDatabase(this@EditContactActivity)
                         .contactDao()
