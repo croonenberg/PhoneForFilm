@@ -5,6 +5,7 @@ import com.example.phoneforfilm.data.model.Message
 import com.example.phoneforfilm.data.repository.MessageRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -13,11 +14,12 @@ class ChatViewModel @Inject constructor(
     private val messageRepository: MessageRepository
 ) : ViewModel() {
 
-    private val _chatId = MutableLiveData<Int>()
+    private val _chatId = MutableStateFlow<Int?>(null)
 
-    val messages: LiveData<List<Message>> = _chatId.switchMap { chatId ->
-        messageRepository.getMessagesByChatId(chatId).asLiveData()
-    }
+    val messages: StateFlow<List<Message>> = _chatId
+        .filterNotNull()
+        .flatMapLatest { chatId -> messageRepository.getMessagesByChatId(chatId) }
+        .stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
 
     fun loadMessagesForChat(chatId: Int) {
         _chatId.value = chatId
