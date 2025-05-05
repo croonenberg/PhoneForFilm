@@ -10,9 +10,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.example.phoneforfilm.R
-import com.example.phoneforfilm.presentation.adapter.MessageAdapter
 import com.example.phoneforfilm.data.model.Message
 import com.example.phoneforfilm.databinding.ActivityChatBinding
+import com.example.phoneforfilm.presentation.adapter.MessageAdapter
 import com.example.phoneforfilm.presentation.viewmodel.ChatViewModel
 
 class ChatActivity : AppCompatActivity() {
@@ -25,6 +25,15 @@ class ChatActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityChatBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val chatId = intent.getIntExtra("chatId", -1)
+        if (chatId == -1) {
+            Toast.makeText(this, "Chat ID is missing", Toast.LENGTH_SHORT).show()
+            finish()
+            return
+        }
+
+        viewModel.loadMessagesForChat(chatId)
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
@@ -40,7 +49,7 @@ class ChatActivity : AppCompatActivity() {
         binding.buttonSend.setOnClickListener {
             val text = binding.editTextMessage.text.toString().trim()
             if (text.isNotEmpty()) {
-                viewModel.sendMessage(text)
+                viewModel.sendMessage(text, chatId)
                 binding.editTextMessage.text.clear()
             }
         }
