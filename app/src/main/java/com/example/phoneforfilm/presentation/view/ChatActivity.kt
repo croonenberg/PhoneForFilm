@@ -5,8 +5,8 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.phoneforfilm.databinding.ActivityChatBinding
 import com.example.phoneforfilm.data.model.Message
+import com.example.phoneforfilm.databinding.ActivityChatBinding
 import com.example.phoneforfilm.presentation.adapter.MessageAdapter
 import com.example.phoneforfilm.presentation.viewmodel.ChatViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -54,7 +54,7 @@ class ChatActivity : AppCompatActivity() {
         binding.btnSend.setOnClickListener {
             val text = binding.etMessage.text.toString().trim()
             if (text.isNotEmpty()) {
-                viewModel.sendMessage(text, conversationId)
+                viewModel.sendMessage(text, conversationId, senderId)
                 binding.etMessage.text?.clear()
             }
         }
