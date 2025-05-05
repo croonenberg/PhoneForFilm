@@ -1,11 +1,9 @@
 package com.example.phoneforfilm.view
 
 import dagger.hilt.android.AndroidEntryPoint
-
 import android.os.Bundle
-import com.example.phoneforfilm.view.BaseActivity
 import com.example.phoneforfilm.data.local.db.AppDatabase
-import com.example.phoneforfilm.data.Contact
+import com.example.phoneforfilm.data.model.Contact
 import com.example.phoneforfilm.databinding.ActivityEditContactBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -32,7 +30,8 @@ class EditContactActivity : BaseActivity() {
                 CoroutineScope(Dispatchers.IO).launch {
                     val newId = AppDatabase.getDatabase(this@EditContactActivity)
                         .contactDao()
-                        .insert(newContact).toInt()
+                        .insert(newContact)
+                        .toInt()
                     withContext(Dispatchers.Main) {
                         val data = Intent().putExtra("contactId", newId)
                         setResult(Activity.RESULT_OK, data)
