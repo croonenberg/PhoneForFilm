@@ -1,4 +1,4 @@
-package com.example.phoneforfilm.adapter
+package com.example.phoneforfilm.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
