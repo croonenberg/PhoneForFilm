@@ -10,7 +10,7 @@ import com.example.phoneforfilm.data.local.dao.MessageDao
 import com.example.phoneforfilm.data.model.Contact
 import com.example.phoneforfilm.data.model.Message
 
-@Database(entities = [Message::class, Contact::class], version = 1, exportSchema = false)
+@Database(entities = [Message::class, Contact::class, Conversation::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun messageDao(): MessageDao
