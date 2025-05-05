@@ -9,8 +9,7 @@ data class Contact(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
     val name: String,
-    val phoneNumber: String
-    val androidContactId: Long? = null // <-- voeg deze toe
+    val phoneNumber: String,
+    @ColumnInfo(name = "androidContactId")
+    val androidContactId: Long? = null
 )
-@ColumnInfo(name = "androidContactId")
-val androidContactId: Long?
