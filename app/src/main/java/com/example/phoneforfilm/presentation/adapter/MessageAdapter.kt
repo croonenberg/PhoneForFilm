@@ -8,7 +8,8 @@ import com.example.phoneforfilm.databinding.ItemMessageReceivedBinding
 import com.example.phoneforfilm.databinding.ItemMessageSentBinding
 import com.example.phoneforfilm.presentation.view.ChatActivity
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Date
+import java.util.Locale
 
 class MessageAdapter(
     private var messages: List<Message>,
@@ -70,3 +71,4 @@ class MessageAdapter(
         private const val VIEW_TYPE_RECEIVED = 0
     }
 }
+
