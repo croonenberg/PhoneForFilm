@@ -1,10 +1,14 @@
 package com.example.phoneforfilm.presentation.viewmodel
 
-import androidx.lifecycle.*
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.phoneforfilm.data.model.Message
 import com.example.phoneforfilm.data.repository.MessageRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -14,29 +18,22 @@ class ChatViewModel @Inject constructor(
     private val messageRepository: MessageRepository
 ) : ViewModel() {
 
-    private val _chatId = MutableLiveData<Int>()
-    private val _messages = MutableLiveData<List<Message>>()
-    val messages: LiveData<List<Message>> = _messages
+    private val _messages = MutableStateFlow<List<Message>>(emptyList())
+    val messages: StateFlow<List<Message>> = _messages.asStateFlow()
 
-    init {
-        _chatId.observeForever { chatId ->
-            viewModelScope.launch {
-                messageRepository.getMessagesByChatId(chatId).collectLatest { result ->
-                    _messages.postValue(result)
-                }
+    fun loadMessagesForChat(chatId: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            messageRepository.getMessagesByChatId(chatId).collectLatest { msgs ->
+                _messages.value = msgs
             }
         }
     }
 
-    fun loadMessagesForChat(chatId: Int) {
-        _chatId.value = chatId
-    }
-
-    fun sendMessage(text: String, conversationId: Int) {
+    fun sendMessage(text: String, chatId: Int) {
         viewModelScope.launch(Dispatchers.IO) {
             val message = Message(
                 id = 0,
-                conversationId = conversationId,
+                chatId = chatId,
                 text = text,
                 timestamp = System.currentTimeMillis()
             )
