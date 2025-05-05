@@ -26,7 +26,9 @@ class ChatViewModel @Inject constructor(
                 id = 0,
                 chatId = chatId,
                 text = text,
-                timestamp = System.currentTimeMillis()
+                timestamp = System.currentTimeMillis(),
+                conversationId = TODO(),
+                isSender = TODO()
             )
             messageRepository.insert(message)
         }
@@ -38,3 +40,5 @@ class ChatViewModel @Inject constructor(
         }
     }
 }
+
+annotation class ChatActivity
