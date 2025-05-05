@@ -79,4 +79,11 @@
 
 
 
+    <string name="chat_met_acteur_a">Chat met acteur A</string>
+    <string name="decline_1">Decline</string>
+    <string name="accept">Accept</string>
+    <string name="naam">Naam</string>
+    <string name="telefoonnummer">Telefoonnummer</string>
+    <string name="">✎</string>
+    <string name="_1">🗑</string>
 </resources>
