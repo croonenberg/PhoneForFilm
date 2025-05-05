@@ -7,8 +7,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.phoneforfilm.databinding.ActivityContactListBinding
 import com.example.phoneforfilm.presentation.viewmodel.ContactViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import androidx.lifecycle.lifecycleScope
+
 
 @AndroidEntryPoint
 class ContactListActivity : AppCompatActivity() {
