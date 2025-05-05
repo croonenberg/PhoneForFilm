@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.phoneforfilm.databinding.ActivityChatListBinding
+import com.example.phoneforfilm.view.ChatListAdapter
+import com.example.phoneforfilm.presentation.view.ChatActivity
 
 class ChatListActivity : AppCompatActivity() {
     companion object {
