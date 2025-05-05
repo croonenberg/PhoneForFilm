@@ -1,21 +1,25 @@
 package com.example.phoneforfilm.settings
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
-import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
-import kotlinx.coroutines.launch
 
 @HiltViewModel
 class SettingsViewModel @Inject constructor(
-    private val repo: SettingsRepository
+    private val repository: SettingsRepository
 ) : ViewModel() {
-    val currentTheme = repo.themeFlow.asLiveData()
+
+    private val _currentTheme = MutableLiveData<String>()
+    val currentTheme: LiveData<String> = _currentTheme
+
+    init {
+        _currentTheme.value = repository.getTheme()
+    }
 
     fun setTheme(theme: String) {
-        viewModelScope.launch {
-            repo.saveTheme(theme)
-        }
+        _currentTheme.value = theme
+        repository.saveTheme(theme)
     }
 }
