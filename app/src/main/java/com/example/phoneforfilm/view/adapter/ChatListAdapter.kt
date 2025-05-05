@@ -21,7 +21,6 @@ class ChatListAdapter(
     inner class VH(private val binding: ItemConversationBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
             binding.root.setOnClickListener {
-                // Gebruik adapterPosition om de juiste positie te bepalen
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
                     onClick(items[position])
@@ -37,7 +36,11 @@ class ChatListAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
-        val binding = ItemConversationBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemConversationBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
         return VH(binding)
     }
 
