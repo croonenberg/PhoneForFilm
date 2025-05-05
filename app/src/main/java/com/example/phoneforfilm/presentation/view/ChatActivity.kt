@@ -23,8 +23,7 @@ class ChatViewModel @Inject constructor(
     fun sendMessage(text: String, chatId: Int) {
         viewModelScope.launch(Dispatchers.IO) {
             val message = Message(
-                id = 0,
-                chatId = chatId,
+                id = chatId,
                 text = text,
                 timestamp = System.currentTimeMillis(),
                 conversationId = TODO(),
