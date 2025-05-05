@@ -3,13 +3,12 @@ package com.example.phoneforfilm.presentation.view
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.observe
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.phoneforfilm.databinding.ActivityChatBinding
 import com.example.phoneforfilm.presentation.viewmodel.ChatViewModel
-import com.example.phoneforfilm.presentation.adapter.MessageAdapter
-import dagger.hilt.android.AndroidEntryPoint
+import com.example.phoneforfilm.view.adapter.MessageAdapter
 
-@AndroidEntryPoint
 class ChatActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityChatBinding
@@ -22,6 +21,7 @@ class ChatActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         adapter = MessageAdapter()
+        binding.recyclerViewMessages.layoutManager = LinearLayoutManager(this)
         binding.recyclerViewMessages.adapter = adapter
 
         val chatId = intent.getIntExtra("chatId", -1)
