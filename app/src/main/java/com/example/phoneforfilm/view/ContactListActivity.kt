@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.phoneforfilm.databinding.ActivityContactListBinding
 import com.example.phoneforfilm.presentation.viewmodel.ContactViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class ContactListActivity : AppCompatActivity() {
@@ -27,8 +29,10 @@ class ContactListActivity : AppCompatActivity() {
         )
         binding.recyclerViewContacts.adapter = adapter
 
-        viewModel.contacts.collect(this) { contacts ->
-            adapter.submitList(contacts)
+        lifecycleScope.launch {
+            viewModel.contacts.collect { contacts ->
+                adapter.submitList(contacts)
+            }
         }
 
         binding.fabAddContact.setOnClickListener {
