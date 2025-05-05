@@ -6,28 +6,40 @@
     <item name="colorSecondary">@color/greenroom_secondary</item>
     <item name="colorOnSecondary">@color/white</item>
   </style>
+
   <style name="Theme.BlueStage" parent="Theme.MaterialComponents.DayNight.NoActionBar">
     <item name="colorPrimary">@color/bluestage_primary</item>
     <item name="colorOnPrimary">@color/white</item>
     <item name="colorSecondary">@color/bluestage_secondary</item>
     <item name="colorOnSecondary">@color/white</item>
   </style>
+
   <style name="Theme.GreyCard" parent="Theme.MaterialComponents.DayNight.NoActionBar">
     <item name="colorPrimary">@color/greycard_primary</item>
     <item name="colorOnPrimary">@color/black</item>
     <item name="colorSecondary">@color/greycard_secondary</item>
     <item name="colorOnSecondary">@color/black</item>
   </style>
-  <style name="Theme.NeutralLight" parent="Theme.MaterialComponents.Light.NoActionBar">
+
+  <style name="Theme.NeutralLight" parent="Theme.MaterialComponents.DayNight.NoActionBar">
     <item name="colorPrimary">@color/neutral_light_primary</item>
     <item name="colorOnPrimary">@color/black</item>
     <item name="colorSecondary">@color/neutral_light_secondary</item>
     <item name="colorOnSecondary">@color/black</item>
   </style>
-  <style name="Theme.Darkroom" parent="Theme.MaterialComponents.Dark.NoActionBar">
+
+  <style name="Theme.Darkroom" parent="Theme.MaterialComponents.DayNight.NoActionBar">
     <item name="colorPrimary">@color/darkroom_primary</item>
     <item name="colorOnPrimary">@color/white</item>
     <item name="colorSecondary">@color/darkroom_secondary</item>
     <item name="colorOnSecondary">@color/white</item>
+  </style>
+
+  <style name="Theme.PhoneForFilm" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <item name="colorPrimary">@color/primary</item>
+    <item name="colorOnPrimary">@color/white</item>
+    <item name="colorSecondary">@color/secondary</item>
+    <item name="colorOnSecondary">@color/white</item>
+    <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
   </style>
 </resources>
