@@ -1,4 +1,5 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
         android:name=".PhoneForFilmApp"
@@ -8,9 +9,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PhoneForFilm">
-        <activity android:name=".presentation.view.ChatActivity" />
+
         <activity android:name=".view.MainActivity"
             android:exported="true">
+            <!-- Toegevoegd -->
+            <activity android:name=".ui.contact.ContactPickerActivity"
+                tools:ignore="WrongManifestParent" />
+            <activity android:name=".view.BaseActivity"
+                tools:ignore="WrongManifestParent" />
+            <activity android:name=".view.CallActivity"
+                tools:ignore="WrongManifestParent" />
+            <activity android:name=".view.ChatListActivity"
+                tools:ignore="WrongManifestParent" />
+            <activity android:name=".view.ContactListActivity"
+                tools:ignore="WrongManifestParent" />
+            <activity android:name=".view.EditContactActivity"
+                tools:ignore="WrongManifestParent" />
+            <activity android:name=".view.IncomingCallActivity"
+                tools:ignore="WrongManifestParent" />
+            <activity android:name=".view.LanguageSelectionActivity"
+                tools:ignore="WrongManifestParent" />
+            <activity android:name=".view.ThemeSettingsActivity"
+                tools:ignore="WrongManifestParent" />
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

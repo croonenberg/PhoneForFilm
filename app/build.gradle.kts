@@ -29,6 +29,24 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+        }
+
+    buildTypes {
+        getByName("release") {
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+    }
+
+    bundle {
+        language {
+            enableSplit = false
+        }
+    }
+}
 }
 
 dependencies {
@@ -39,6 +57,8 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.7")
     implementation("androidx.activity:activity-ktx:1.10.1")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.8.20")
+    implementation("com.google.android.play:core:1.10.3")
 
     // Room
     implementation("androidx.room:room-runtime:2.7.1")
