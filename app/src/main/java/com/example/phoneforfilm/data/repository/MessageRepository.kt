@@ -1,14 +1,14 @@
 package com.example.phoneforfilm.data.repository
 
-import androidx.lifecycle.LiveData
 import com.example.phoneforfilm.data.local.dao.MessageDao
 import com.example.phoneforfilm.data.model.Message
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class MessageRepository @Inject constructor(
     private val messageDao: MessageDao
 ) {
-    fun getMessagesByChatId(chatId: Int): LiveData<List<Message>> {
+    fun getMessagesByChatId(chatId: Int): Flow<List<Message>> {
         return messageDao.getMessagesByChatId(chatId)
     }
 
