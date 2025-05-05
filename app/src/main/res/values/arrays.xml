@@ -1,9 +1,12 @@
 <resources>
-    <string-array name="theme_values">
-        <item>Greenroom</item>
-        <item>BlueStage</item>
-        <item>GreyCard</item>
-        <item>NeutralLight</item>
-        <item>Darkroom</item>
+    <string-array name="theme_entries">
+        <item>Light</item>
+        <item>Dark</item>
+        <item>System</item>
+    </string-array>
+    <string-array name="locale_entries">
+        <item>en</item>
+        <item>nl</item>
+        <item>fr</item>
     </string-array>
 </resources>

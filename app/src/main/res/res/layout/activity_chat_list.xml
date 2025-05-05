@@ -6,7 +6,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://schemas.android.com/apk/res/android ">
 
-    <LinearLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android">
         android:id="@+id/exampleChatItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
