@@ -1,16 +1,10 @@
-
 package com.example.phoneforfilm.presentation.viewmodel
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.phoneforfilm.data.model.Message
 import com.example.phoneforfilm.data.repository.MessageRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -19,15 +13,14 @@ class ChatViewModel @Inject constructor(
     private val messageRepository: MessageRepository
 ) : ViewModel() {
 
-    private val _messages = MutableStateFlow<List<Message>>(emptyList())
-    val messages: StateFlow<List<Message>> = _messages.asStateFlow()
+    private val _chatId = MutableLiveData<Int>()
+
+    val messages: LiveData<List<Message>> = _chatId.switchMap { chatId ->
+        messageRepository.getMessagesByChatId(chatId).asLiveData()
+    }
 
     fun loadMessagesForChat(chatId: Int) {
-        viewModelScope.launch(Dispatchers.IO) {
-            messageRepository.getMessagesByChatId(chatId).collectLatest { msgs: List<Message> ->
-                _messages.value = msgs
-            }
-        }
+        _chatId.value = chatId
     }
 
     fun sendMessage(text: String, chatId: Int) {
