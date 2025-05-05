@@ -21,8 +21,8 @@ class ChatListAdapter(
     inner class VH(private val binding: ItemConversationBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
             binding.root.setOnClickListener {
-                // Gebruik absoluteAdapterPosition om de juiste positie te bepalen
-                val position = absoluteAdapterPosition
+                // Gebruik adapterPosition om de juiste positie te bepalen
+                val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
                     onClick(items[position])
                 }
