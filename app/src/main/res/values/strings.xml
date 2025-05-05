@@ -47,7 +47,6 @@
     <string name="language_spanish">Español</string>
     <string name="title_language_selection">Language selection</string>
     <string name="title_theme_settings">Theme settings</string>
-    <string name="chat_image_desc" translatable="false">Chat icon</string>
     <string name="desc_add_chat">New chat</string>
     <string name="decline">Decline</string>
     <string name="title_chat_list">Chat list</string>
@@ -65,6 +64,14 @@
 
     <!-- Added strings -->
     <string name="message_options">Message options</string>
+    <!-- Aangepast -->
+    <string name="chat_image_desc">Chat icon</string>
+
+    <!-- Nieuw -->
+    <string name="add_contact">Add contact</string>
+    <string name="conversation_label">Contact</string>
+    <string name="last_message_label">Ladt messaget</string>
+    <string name="sample_time">15:00</string>
 
 
 
