@@ -66,10 +66,16 @@
     <string name="theme_greenroom">Greenroom</string>
     <string name="theme_grey_card">Grey Card</string>
     <string name="theme_neutral_light">Neutral Light</string>
-    <string name="title_chat_list">Chatlijst</string>
-    <string name="title_language_selection">Taalkeuze</string>
-    <string name="title_theme_settings">Thema‑instellingen</string>
-    <string name="toggle_direction">Richting wisselen</string>
-    <string name="toggle_sender">Afzender wisselen</string>
+    <string name="title_chat_list">Chatlist</string>
+    <string name="title_language_selection">Language selection</string>
+    <string name="title_theme_settings">Theme settings</string>
+    <string name="toggle_direction">Toggle direction</string>
+    <string name="toggle_sender">Toggle sender</string>
     <string name="type_message">Typ je bericht</string>
-<string name="hint_type_message">Type a message...</string><string name="title_chat_with">Chat with %1$s</string><string name="title_chats">Chats</string><string name="add_chat">Add chat</string><string name="avatar_desc">Contact avatar</string></resources>
+    <string name="hint_type_message">Type a message...</string>
+    <string name="title_chat_with">Chat with %1$s</string>
+    <string name="title_chats">Chats</string>
+    <string name="add_chat">Add chat</string>
+    <string name="avatar_desc">Contact avatar</string>
+    <string name="decline">Decline</string>
+</resources>
