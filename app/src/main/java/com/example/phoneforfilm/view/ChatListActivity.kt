@@ -3,9 +3,9 @@ package com.example.phoneforfilm.view
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.phoneforfilm.databinding.ActivityChatListBinding
-import com.example.phoneforfilm.view.adapter.ChatListAdapter
+import com.example.phoneforfilm.databinding.ActivityChatsBinding
 import com.example.phoneforfilm.presentation.view.ChatActivity
+import com.example.phoneforfilm.view.adapter.ChatListAdapter
 
 class ChatListActivity : AppCompatActivity() {
     companion object {
@@ -13,18 +13,17 @@ class ChatListActivity : AppCompatActivity() {
         const val EXTRA_SENDER_ID = "sender_id"
     }
 
-    private lateinit var binding: ActivityChatListBinding
+    private lateinit var binding: ActivityChatsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityChatListBinding.inflate(layoutInflater)
+        binding = ActivityChatsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Use rvChats (layout id) instead of rvChatList
         binding.rvChats.adapter = ChatListAdapter { chat ->
             val intent = Intent(this, ChatActivity::class.java).apply {
                 putExtra(EXTRA_CONVERSATION_ID, chat.id)
-                putExtra(EXTRA_SENDER_ID, chat.senderId)
+                putExtra(EXTRA_SENDER_ID, chat.contactId)
             }
             startActivity(intent)
         }
