@@ -1,58 +1,43 @@
 package com.example.phoneforfilm.presentation.viewmodel
 
-<layout
-xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto" />
+import androidx.lifecycle.*
+import com.example.phoneforfilm.data.model.Message
+import com.example.phoneforfilm.data.repository.MessageRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-<data>
-<variable
-name="viewModel"
-type="com.example.phoneforfilm.viewmodel.ChatViewModel" />
-</data>
+@HiltViewModel
+class ChatViewModel @Inject constructor(
+    private val messageRepository: MessageRepository
+) : ViewModel() {
 
-<androidx.constraintlayout.widget.ConstraintLayout
-android:layout_width="match_parent"
-android:layout_height="match_parent">
+    private val _chatId = MutableLiveData<Int>()
 
-<androidx.recyclerview.widget.RecyclerView
-android:id="@+id/recyclerViewMessages"
-android:layout_width="0dp"
-android:layout_height="0dp"
-app:layout_constraintTop_toTopOf="parent"
-app:layout_constraintBottom_toTopOf="@+id/chatInputLayout"
-app:layout_constraintStart_toStartOf="parent"
-app:layout_constraintEnd_toEndOf="parent"
-app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-tools:listitem="@layout/item_message_sent" />
+    val messages: LiveData<List<Message>> = _chatId.switchMap { chatId ->
+        messageRepository.getMessagesByChatId(chatId).asLiveData()
+    }
 
-<LinearLayout
-android:id="@+id/chatInputLayout"
-android:layout_width="0dp"
-android:layout_height="wrap_content"
-android:orientation="horizontal"
-android:padding="8dp"
-app:layout_constraintBottom_toBottomOf="parent"
-app:layout_constraintStart_toStartOf="parent"
-app:layout_constraintEnd_toEndOf="parent">
+    fun loadMessagesForChat(chatId: Int) {
+        _chatId.value = chatId
+    }
 
-<EditText
-$1android:layout_height="wrap_content"
-android:minHeight="48dp"
-android:layout_weight="1"
-android:autofillHints="text"
-android:hint="@string/type_message"
-android:inputType="textMultiLine|textCapSentences"
-android:maxLines="5"
-android:textColor="@android:color/black"
-android:textColorHint="@color/gray_hint_color" />
+    fun sendMessage(text: String, chatId: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val message = Message(
+                id = 0,
+                chatId = chatId,
+                text = text,
+                timestamp = System.currentTimeMillis()
+            )
+            messageRepository.insert(message)
+        }
+    }
 
-<ImageButton
-android:id="@+id/buttonSend"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:src="@drawable/ic_send"
-android:contentDescription="@string/send"
-android:background="?attr/selectableItemBackgroundBorderless" />
-</LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+    fun deleteMessage(message: Message) {
+        viewModelScope.launch(Dispatchers.IO) {
+            messageRepository.delete(message)
+        }
+    }
+}
