@@ -1,5 +1,7 @@
-<?xml version='1.0' encoding='utf-8'?>
-<resources><string name="add_contact">Add contact</string>
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accept">Accept</string>
+    <string name="add_contact">Add contact</string>
     <string name="answer">Answer</string>
     <string name="app_name">PhoneForFilm</string>
     <string name="change_language">Change language</string>
@@ -8,21 +10,26 @@
     <string name="change_theme">Change Theme</string>
     <string name="change_time">Change time</string>
     <string name="chat_image_desc">Chat icon</string>
+    <string name="chat_met_acteur_a">Chat met acteur A</string>
     <string name="choose_theme">Choose theme</string>
     <string name="contact_name">Contact</string>
     <string name="contact_photo">Contact photo</string>
+    <string name="conversation_label">Contact</string>
     <string name="copied_to_clipboard">Copied to clipboard</string>
     <string name="copy_message">Copy message</string>
     <string name="dark_mode">Dark Mode</string>
-    <string name="decline_button">Decline</string><string name="delete">Delete</string>
+    <string name="decline_button">Decline</string>
+    <string name="delete">Delete</string>
     <string name="delete_message">Delete message</string>
     <string name="desc_add_chat">New chat</string>
     <string name="dutch">Dutch</string>
+    <string name="edit">Edit</string>
     <string name="edit_message">Edit message</string>
     <string name="end_call">End call</string>
     <string name="hello">HELLO</string>
     <string name="hint_message">Type a message</string>
-    <string name="icon_delete">🗑</string><string name="icon_edit">✎</string>
+    <string name="icon_delete">🗑</string>
+    <string name="icon_edit">✎</string>
     <string name="incoming_call">Incoming call</string>
     <string name="language">Language</string>
     <string name="language_dutch">Nederlands</string>
@@ -40,6 +47,7 @@
     <string name="message_deleted">Message deleted</string>
     <string name="message_options">Message options</string>
     <string name="more">More</string>
+    <string name="naam">Naam</string>
     <string name="name">Name</string>
     <string name="new_contact">New contact</string>
     <string name="phone">Phone</string>

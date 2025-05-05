@@ -1,5 +1,6 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="accept">Accept</string>
     <string name="add_contact">Kontakt hinzufügen</string>
     <string name="answer">Annehmen</string>
     <string name="app_name">PhoneForFilm</string>
@@ -9,21 +10,27 @@
     <string name="change_theme">Thema ändern</string>
     <string name="change_time">Zeit ändern</string>
     <string name="chat_image_desc">Chat-Symbol</string>
+    <string name="chat_met_acteur_a">Chat met acteur A</string>
     <string name="choose_theme">Thema wählen</string>
     <string name="contact_name">Kontakt</string>
     <string name="contact_photo">Kontaktfoto</string>
+    <string name="conversation_label">Contact</string>
     <string name="copied_to_clipboard">In die Zwischenablage kopiert</string>
     <string name="copy_message">Nachricht kopieren</string>
     <string name="dark_mode">Dark Mode</string>
-    <string name="decline_button">Ablehnen</string><string name="delete">Löschen</string>
+    <string name="decline_button">Ablehnen</string>
+    <string name="delete">Löschen</string>
     <string name="delete_message">Nachricht löschen</string>
     <string name="desc_add_chat">Neuer Chat</string>
     <string name="dutch">Niederländisch</string>
+    <string name="edit">Bearbeiten</string>
     <string name="edit_message">Nachricht bearbeiten</string>
     <string name="end_call">Anruf beenden</string>
     <string name="hello">HALLO</string>
     <string name="hint_message">Nachricht eingeben</string>
-    <string name="icon_delete">🗑</string><string name="icon_edit">✎</string><string name="incoming_call">Eingehender Anruf</string>
+    <string name="icon_delete">🗑</string>
+    <string name="icon_edit">✎</string>
+    <string name="incoming_call">Eingehender Anruf</string>
     <string name="language">Sprache</string>
     <string name="language_dutch">Nederlands</string>
     <string name="language_english">English</string>
@@ -40,9 +47,11 @@
     <string name="message_deleted">Nachricht gelöscht</string>
     <string name="message_options">Nachrichtenoptionen</string>
     <string name="more">Mehr</string>
+    <string name="naam">Naam</string>
     <string name="name">Name</string>
     <string name="new_contact">Neuer Kontakt</string>
     <string name="phone">Telefon</string>
+    <string name="phone_number">Phone number</string>
     <string name="placeholder_empty">Noch nichts vorhanden</string>
     <string name="profile_picture">Profilbild</string>
     <string name="reject">Ablehnen</string>
@@ -64,5 +73,4 @@
     <string name="toggle_direction">Richtung umschalten</string>
     <string name="toggle_sender">Absender wechseln</string>
     <string name="type_message">Gib deine Nachricht ein</string>
-    <string name="conversation_label">Contact</string>
-    </resources>
+</resources>

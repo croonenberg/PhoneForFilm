@@ -1,5 +1,7 @@
-<?xml version='1.0' encoding='utf-8'?>
-<resources><string name="add_contact">Contact toevoegen</string>
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accept">Accept</string>
+    <string name="add_contact">Contact toevoegen</string>
     <string name="answer">Opnemen</string>
     <string name="app_name">PhoneForFilm</string>
     <string name="change_language">Taal wijzigen</string>
@@ -8,22 +10,27 @@
     <string name="change_theme">Thema wijzigen</string>
     <string name="change_time">Tijd wijzigen</string>
     <string name="chat_image_desc">Chatpictogram</string>
-
+    <string name="chat_met_acteur_a">Chat met acteur A</string>
     <string name="choose_theme">Thema kiezen</string>
     <string name="contact_name">Contact</string>
     <string name="contact_photo">Contactfoto</string>
+    <string name="conversation_label">Contact</string>
     <string name="copied_to_clipboard">Gekopieerd naar klembord</string>
     <string name="copy_message">Kopieer bericht</string>
     <string name="dark_mode">Dark Mode</string>
-    <string name="decline_button">Weigeren</string><string name="delete">Verwijderen</string>
+    <string name="decline_button">Weigeren</string>
+    <string name="delete">Verwijderen</string>
     <string name="delete_message">Bericht verwijderen</string>
     <string name="desc_add_chat">Nieuw gesprek</string>
     <string name="dutch">Nederlands</string>
+    <string name="edit">Bewerken</string>
     <string name="edit_message">Bericht bewerken</string>
     <string name="end_call">Oproep beëindigen</string>
     <string name="hello">HALLO</string>
     <string name="hint_message">Typ een bericht</string>
-    <string name="icon_delete">🗑</string><string name="icon_edit">✎</string><string name="incoming_call">Inkomend gesprek</string>
+    <string name="icon_delete">🗑</string>
+    <string name="icon_edit">✎</string>
+    <string name="incoming_call">Inkomend gesprek</string>
     <string name="language">Taal</string>
     <string name="language_dutch">Nederlands</string>
     <string name="language_english">English</string>
@@ -40,6 +47,7 @@
     <string name="message_deleted">Bericht verwijderd</string>
     <string name="message_options">Berichtopties</string>
     <string name="more">Meer</string>
+    <string name="naam">Naam</string>
     <string name="name">Naam</string>
     <string name="new_contact">Nieuw contact</string>
     <string name="phone">Telefoon</string>

@@ -1,5 +1,6 @@
-<?xml version='1.0' encoding='utf-8'?>
-<resources><string name="accept">Accept</string>
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accept">Accept</string>
     <string name="add_contact">Add contact</string>
     <string name="answer">Answer</string>
     <string name="app_name">PhoneForFilm</string>
@@ -9,11 +10,11 @@
     <string name="change_theme">Change Theme</string>
     <string name="change_time">Change time</string>
     <string name="chat_image_desc">Chat icon</string>
-    <string name="conversation_label">Contact</string>
     <string name="chat_met_acteur_a">Chat met acteur A</string>
     <string name="choose_theme">Choose theme</string>
     <string name="contact_name">Contact</string>
     <string name="contact_photo">Contact photo</string>
+    <string name="conversation_label">Contact</string>
     <string name="copied_to_clipboard">Copied to clipboard</string>
     <string name="copy_message">Copy message</string>
     <string name="dark_mode">Dark Mode</string>
@@ -22,11 +23,14 @@
     <string name="delete_message">Delete message</string>
     <string name="desc_add_chat">New chat</string>
     <string name="dutch">Dutch</string>
+    <string name="edit">Edit</string>
     <string name="edit_message">Edit message</string>
     <string name="end_call">End call</string>
     <string name="hello">HELLO</string>
     <string name="hint_message">Type a message</string>
-    <string name="icon_delete">🗑</string><string name="icon_edit">✎</string><string name="incoming_call">Incoming call</string>
+    <string name="icon_delete">🗑</string>
+    <string name="icon_edit">✎</string>
+    <string name="incoming_call">Incoming call</string>
     <string name="language">Language</string>
     <string name="language_dutch">Nederlands</string>
     <string name="language_english">English</string>
@@ -60,8 +64,6 @@
     <string name="start_chat">Start chat</string>
     <string name="theme_blue_stage">Blue Stage</string>
     <string name="theme_darkroom">Darkroom</string>
-
-    
     <string name="theme_greenroom">Greenroom</string>
     <string name="theme_grey_card">Grey Card</string>
     <string name="theme_neutral_light">Neutral Light</string>
@@ -71,4 +73,4 @@
     <string name="toggle_direction">Toggle direction</string>
     <string name="toggle_sender">Toggle sender</string>
     <string name="type_message">Type your message</string>
-    </resources>
+</resources>
