@@ -16,24 +16,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:text="Naam" />
+            android:text="@string/naam" />
 
         <TextView
             android:id="@+id/tvPhone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Telefoonnummer" />
+            android:text="@string/telefoonnummer" />
     </LinearLayout>
 
     <Button
         android:id="@+id/btnEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="✎" />
+        android:text="@string/" />
 
     <Button
         android:id="@+id/btnDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="🗑" />
+        android:text="@string/_1" />
 </LinearLayout>
