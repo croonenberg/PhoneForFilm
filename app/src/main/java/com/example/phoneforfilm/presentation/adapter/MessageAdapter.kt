@@ -1,12 +1,17 @@
 package com.example.phoneforfilm.presentation.adapter
 
+interface MessageActionListener {
+    fun onMessageLongPressed(message: com.example.phoneforfilm.data.model.Message)
+}
+
+
+
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.phoneforfilm.data.model.Message
 import com.example.phoneforfilm.databinding.ItemMessageReceivedBinding
 import com.example.phoneforfilm.databinding.ItemMessageSentBinding
-import com.example.phoneforfilm.presentation.view.ChatActivity
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -44,7 +49,7 @@ class MessageAdapter(
         }
 
         holder.itemView.setOnLongClickListener {
-            context.onMessageLongPressed(message)
+            listener.onMessageLongPressed(message)
             true
         }
     }

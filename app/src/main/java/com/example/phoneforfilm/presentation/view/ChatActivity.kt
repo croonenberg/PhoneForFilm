@@ -8,11 +8,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.phoneforfilm.data.model.Message
 import com.example.phoneforfilm.databinding.ActivityChatBinding
 import com.example.phoneforfilm.presentation.adapter.MessageAdapter
+import com.example.phoneforfilm.presentation.adapter.MessageActionListener
 import com.example.phoneforfilm.presentation.viewmodel.ChatViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ChatActivity : AppCompatActivity() {
+class ChatActivity : AppCompatActivity(), MessageActionListener() {
 
     companion object {
         const val EXTRA_CONVERSATION_ID = "conversationId"
@@ -39,7 +40,7 @@ class ChatActivity : AppCompatActivity() {
         }
 
         // RecyclerView en adapter instellen
-        adapter = MessageAdapter(emptyList(), this, senderId)
+        adapter = MessageAdapter(emptyList(), this as MessageActionListener, senderId)
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = adapter
 
