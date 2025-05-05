@@ -4,9 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.phoneforfilm.databinding.ActivityChatListBinding
-import com.example.phoneforfilm.presentation.view.ChatActivity
 
 class ChatListActivity : AppCompatActivity() {
+    companion object {
+        const val EXTRA_CONVERSATION_ID = "conversation_id"
+        const val EXTRA_SENDER_ID = "sender_id"
+    }
 
     private lateinit var binding: ActivityChatListBinding
 
@@ -15,11 +18,10 @@ class ChatListActivity : AppCompatActivity() {
         binding = ActivityChatListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Voorbeeld: click handler
-        binding.exampleChatItem.setOnClickListener {
+        binding.rvChatList.adapter = ChatListAdapter { chat ->
             val intent = Intent(this, ChatActivity::class.java).apply {
-                putExtra(ChatActivity.EXTRA_CONVERSATION_ID, 1)
-                putExtra(ChatActivity.EXTRA_SENDER_ID, 2)
+                putExtra(EXTRA_CONVERSATION_ID, chat.id)
+                putExtra(EXTRA_SENDER_ID, chat.senderId)
             }
             startActivity(intent)
         }
