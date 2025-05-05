@@ -74,7 +74,7 @@ android {
             implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7")
             implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.7")
             implementation("androidx.activity:activity-ktx:1.10.1")
-            implementation("org.jetbrains.kotlin:kotlin-stdlib:1.8.20")
+            implementation("org.jetbrains.kotlin:kotlin-stdlib:2.1.20")
 
 
             // Room
