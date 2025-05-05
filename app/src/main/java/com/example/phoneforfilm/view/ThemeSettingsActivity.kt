@@ -33,5 +33,8 @@ class ThemeSettingsActivity : AppCompatActivity() {
         // Initialize controls
         viewModel.getDarkMode()?.let { binding.switchDarkMode.isChecked = it }
         viewModel.getBrightness()?.let { binding.sliderBrightness.value = it }
+        binding.switchDarkMode.setOnCheckedChangeListener { _, isChecked ->
+            viewModel.setDarkMode(isChecked)
+        }
     }
 }
