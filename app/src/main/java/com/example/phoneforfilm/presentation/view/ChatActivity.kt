@@ -41,10 +41,11 @@ class ChatActivity : AppCompatActivity() {
         adapter = MessageAdapter(emptyList(), this)
         binding.recyclerViewMessages.adapter = adapter
 
-        viewModel.messages.observe(this, Observer { messages ->
+        viewModel.getMessages(chatId).observe(this) { messages ->
             adapter.updateMessages(messages)
             binding.recyclerViewMessages.scrollToPosition(messages.size - 1)
-        })
+        }
+
 
         binding.buttonSend.setOnClickListener {
             val text = binding.editTextMessage.text.toString().trim()
