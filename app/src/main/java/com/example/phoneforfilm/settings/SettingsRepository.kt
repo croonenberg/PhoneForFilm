@@ -1,20 +1,22 @@
 package com.example.phoneforfilm.settings
 
 import android.content.Context
+import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
-import javax.inject.Singleton
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
+import android.content.SharedPreferences
+import androidx.preference.PreferenceManager
 
-@Singleton
-class SettingsRepository @Inject constructor(context: Context) {
-    private val prefs = context.getSharedPreferences("settings", Context.MODE_PRIVATE)
-    private val key = "pref_theme"
-    private val _themeFlow = MutableStateFlow(prefs.getString(key, "NeutralLight")!!)
-    val themeFlow: Flow<String> = _themeFlow
+class SettingsRepository @Inject constructor(
+    @ApplicationContext private val context: Context
+) {
+    private val prefs: SharedPreferences =
+        PreferenceManager.getDefaultSharedPreferences(context)
 
     fun saveTheme(theme: String) {
-        prefs.edit().putString(key, theme).apply()
-        _themeFlow.value = theme
+        prefs.edit().putString("theme", theme).apply()
+    }
+
+    fun getTheme(): String? {
+        return prefs.getString("theme", "Greenroom")
     }
 }
