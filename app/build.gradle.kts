@@ -41,33 +41,33 @@ android {
         }
 
 
-    bundle {
-        language {
-            enableSplit = false
+        bundle {
+            language {
+                enableSplit = false
+            }
+        }
+
+        dependencies {
+            implementation("androidx.core:core-ktx:1.16.0")
+            implementation("androidx.appcompat:appcompat:1.7.0")
+            implementation("com.google.android.material:material:1.12.0")
+            implementation("androidx.constraintlayout:constraintlayout:2.2.1")
+            implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7")
+            implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.7")
+            implementation("androidx.activity:activity-ktx:1.10.1")
+            implementation("org.jetbrains.kotlin:kotlin-stdlib:1.8.20")
+            //noinspection RiskyLibrary,PlaySdkIndexDeprecated
+            implementation("com.google.android.play:core:1.10.3")
+
+            // Room
+            implementation("androidx.room:room-runtime:2.7.1")
+            kapt("androidx.room:room-compiler:2.7.1")
+            implementation("androidx.room:room-ktx:2.7.1")
+
+            // Hilt
+            implementation("com.google.dagger:hilt-android:2.56.2")
+            kapt("com.google.dagger:hilt-compiler:2.56.2")
+            implementation("androidx.hilt:hilt-navigation-fragment:1.2.0")
         }
     }
-
-
-
-dependencies {
-    implementation("androidx.core:core-ktx:1.16.0")
-    implementation("androidx.appcompat:appcompat:1.7.0")
-    implementation("com.google.android.material:material:1.12.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.2.1")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.7")
-    implementation("androidx.activity:activity-ktx:1.10.1")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.8.20")
-    //noinspection RiskyLibrary,PlaySdkIndexDeprecated
-    implementation("com.google.android.play:core:1.10.3")
-
-    // Room
-    implementation("androidx.room:room-runtime:2.7.1")
-    kapt("androidx.room:room-compiler:2.7.1")
-    implementation("androidx.room:room-ktx:2.7.1")
-
-    // Hilt
-    implementation("com.google.dagger:hilt-android:2.56.2")
-    kapt("com.google.dagger:hilt-compiler:2.56.2")
-    implementation("androidx.hilt:hilt-navigation-fragment:1.2.0")
 }
