@@ -14,6 +14,7 @@ class ChatsActivity : AppCompatActivity() {
     private val settingsViewModel: SettingsViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        // Thema toepassen op basis van opgeslagen key
         settingsViewModel.currentTheme.observe(this) { key ->
             val themeRes = when (key) {
                 "Greenroom"    -> R.style.Theme_Greenroom
@@ -28,6 +29,10 @@ class ChatsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityChatsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        // existing setup...
+
+        // Bestaande setup...
+        binding.fabAddChat.setOnClickListener {
+            // navigate to add contact
+        }
     }
 }

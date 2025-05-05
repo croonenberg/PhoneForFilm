@@ -14,7 +14,7 @@ class ChatActivity : AppCompatActivity() {
     private val settingsViewModel: SettingsViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        // Apply theme before super.onCreate
+        // Thema toepassen op basis van opgeslagen key
         settingsViewModel.currentTheme.observe(this) { key ->
             val themeRes = when (key) {
                 "Greenroom"    -> R.style.Theme_Greenroom
@@ -29,6 +29,14 @@ class ChatActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityChatBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        // rest unchanged...
+
+        // Bestaande functionaliteit...
+        binding.btnSend.setOnClickListener {
+            // send message logic
+        }
+        // Long-press context menu logic
+        binding.rvMessages.adapter?.let { adapter ->
+            // adapter long-press setup
+        }
     }
 }
