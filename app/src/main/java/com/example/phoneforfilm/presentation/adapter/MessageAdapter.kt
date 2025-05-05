@@ -17,7 +17,7 @@ import java.util.*
 
 class MessageAdapter(
     private var messages: List<Message>,
-    private val context: ChatActivity,
+    private val listener: MessageActionListener,
     private val senderId: Int
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 

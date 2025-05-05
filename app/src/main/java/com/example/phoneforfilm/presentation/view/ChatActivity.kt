@@ -13,7 +13,7 @@ import com.example.phoneforfilm.presentation.viewmodel.ChatViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ChatActivity : AppCompatActivity(), MessageActionListener() {
+class ChatActivity : AppCompatActivity(), MessageActionListener {
 
     companion object {
         const val EXTRA_CONVERSATION_ID = "conversationId"
@@ -68,4 +68,8 @@ class ChatActivity : AppCompatActivity(), MessageActionListener() {
         // Verwijder bericht via ViewModel
         viewModel.deleteMessage(message)
     }
+    override fun onMessageLongPressed(message: Message) {
+        // Handle long-press action
+    }
+
 }
