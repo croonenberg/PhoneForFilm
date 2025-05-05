@@ -3,12 +3,12 @@ package com.example.phoneforfilm.ui.contact
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.phoneforfilm.databinding.ActivityContactPickerBinding
 import com.example.phoneforfilm.presentation.viewmodel.ContactViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import androidx.lifecycle.lifecycleScope
 
 @AndroidEntryPoint
 class ContactPickerActivity : AppCompatActivity() {
