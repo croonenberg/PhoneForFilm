@@ -15,7 +15,9 @@ interface ConversationDao {
     @Update
     suspend fun update(conversation: Conversation)
 
-    @Query("SELECT conv.id, conv.contactId, conv.lastMessage, conv.timestamp, c.name AS contactName, conv.theme FROM conversations conv JOIN contacts c ON conv.contactId = c.id ORDER BY conv.timestamp DESC")
+    @Query("SELECT conv.id, conv.contactId, conv.lastMessage, conv.timestamp, " +
+            "c.name AS contactName, conv.theme FROM conversations conv JOIN" +
+            " contacts c ON conv.contactId = c.id ORDER BY conv.timestamp DESC")
     fun getAll(): Flow<List<Conversation>>
 
     @Query("SELECT * FROM conversations WHERE id = :id")
