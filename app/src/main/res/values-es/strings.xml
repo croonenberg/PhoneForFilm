@@ -9,7 +9,6 @@
     <string name="change_time">Cambiar hora</string>
     <string name="chat_image_desc">Icono de chat</string>
 
-    
     <string name="choose_theme">Elegir tema</string>
     <string name="contact_name">Contacto</string>
     <string name="contact_photo">Foto de contacto</string>
@@ -51,7 +50,7 @@
     <string name="sample_time">15:00</string>
     <string name="save">Guardar</string>
     <string name="save_contact">Guardar contacto</string>
-<string name="search">Buscar</string>
+    <string name="search">Buscar</string>
     <string name="send">Enviar mensaje</string>
     <string name="start_call">Iniciar llamada</string>
     <string name="start_chat">Iniciar chat</string>
@@ -66,4 +65,4 @@
     <string name="toggle_direction">Alternar dirección</string>
     <string name="toggle_sender">Alternar remitente</string>
     <string name="type_message">Escribe tu mensaje</string>
-    </resources>
+</resources>

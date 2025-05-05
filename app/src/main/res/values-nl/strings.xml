@@ -9,7 +9,6 @@
     <string name="change_time">Tijd wijzigen</string>
     <string name="chat_image_desc">Chatpictogram</string>
 
-    
     <string name="choose_theme">Thema kiezen</string>
     <string name="contact_name">Contact</string>
     <string name="contact_photo">Contactfoto</string>
@@ -46,14 +45,12 @@
     <string name="phone">Telefoon</string>
     <string name="phone_number">Telefoonnummer</string>
     <string name="placeholder_empty">Nothing here yet</string>
-
     <string name="profile_picture">Profielfoto</string>
     <string name="reject">Weigeren</string>
     <string name="sample_time">15:00</string>
     <string name="save">Opslaan</string>
     <string name="save_contact">Contact opslaan</string>
-
-<string name="search">Zoeken</string>
+    <string name="search">Zoeken</string>
     <string name="send">Verstuur bericht</string>
     <string name="start_call">Oproep starten</string>
     <string name="start_chat">Chat starten</string>
@@ -68,4 +65,4 @@
     <string name="toggle_direction">Richting wisselen</string>
     <string name="toggle_sender">Afzender wisselen</string>
     <string name="type_message">Typ je bericht</string>
-    </resources>
+</resources>

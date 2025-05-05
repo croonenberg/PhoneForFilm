@@ -8,8 +8,6 @@
     <string name="change_theme">Change Theme</string>
     <string name="change_time">Change time</string>
     <string name="chat_image_desc">Chat icon</string>
-
-    
     <string name="choose_theme">Choose theme</string>
     <string name="contact_name">Contact</string>
     <string name="contact_photo">Contact photo</string>
@@ -24,7 +22,8 @@
     <string name="end_call">End call</string>
     <string name="hello">HELLO</string>
     <string name="hint_message">Type a message</string>
-    <string name="icon_delete">🗑</string><string name="icon_edit">✎</string><string name="incoming_call">Incoming call</string>
+    <string name="icon_delete">🗑</string><string name="icon_edit">✎</string>
+    <string name="incoming_call">Incoming call</string>
     <string name="language">Language</string>
     <string name="language_dutch">Nederlands</string>
     <string name="language_english">English</string>
@@ -40,36 +39,30 @@
     <string name="menu_time_now">Now</string>
     <string name="message_deleted">Message deleted</string>
     <string name="message_options">Message options</string>
-
     <string name="more">More</string>
     <string name="name">Name</string>
     <string name="new_contact">New contact</string>
     <string name="phone">Phone</string>
     <string name="phone_number">Phone number</string>
     <string name="placeholder_empty">Nothing here yet</string>
-
     <string name="profile_picture">Profile Picture</string>
     <string name="reject">Reject</string>
     <string name="sample_time">15:00</string>
     <string name="save">Save</string>
     <string name="save_contact">Save contact</string>
-
-<string name="search">Search</string>
+    <string name="search">Search</string>
     <string name="send">Send message</string>
     <string name="start_call">Start Call</string>
     <string name="start_chat">Start chat</string>
     <string name="theme_blue_stage">Blue Stage</string>
     <string name="theme_darkroom">Darkroom</string>
-
-    
     <string name="theme_greenroom">Greenroom</string>
     <string name="theme_grey_card">Grey Card</string>
     <string name="theme_neutral_light">Neutral Light</string>
     <string name="title_chat_list">Chat list</string>
     <string name="title_language_selection">Language selection</string>
     <string name="title_theme_settings">Theme settings</string>
-
     <string name="toggle_direction">Toggle direction</string>
     <string name="toggle_sender">Toggle sender</string>
     <string name="type_message">Type your message</string>
-    </resources>
+</resources>
