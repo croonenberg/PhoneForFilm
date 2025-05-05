@@ -1,24 +1,19 @@
 package com.example.phoneforfilm.data.repository
 
-import androidx.lifecycle.LiveData
-import com.example.phoneforfilm.data.Contact
-import com.example.phoneforfilm.data.ContactDao
+import com.example.phoneforfilm.data.local.dao.ContactDao
+import com.example.phoneforfilm.data.model.Contact
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
-class ContactRepository @Inject constructor(private val dao: ContactDao) {
+class ContactRepository @Inject constructor(
+    private val contactDao: ContactDao
+) {
 
-    private val allContactsInternal: LiveData<List<Contact>> = dao.getAll()
+    fun getAllContacts(): Flow<List<Contact>> = contactDao.getAllContacts()
 
-    /** Return a stream of all contacts ordered by name. */
-    fun getAll(): LiveData<List<Contact>> = allContactsInternal
+    suspend fun insert(contact: Contact) = contactDao.insert(contact)
 
-    suspend fun insert(contact: Contact) = dao.insert(contact)
+    suspend fun update(contact: Contact) = contactDao.update(contact)
 
-    suspend fun update(contact: Contact) = dao.update(contact)
-
-    suspend fun delete(contact: Contact) = dao.delete(contact)
-
-    fun getContactById(id: Int): Contact? = dao.getContactById(id)
+    suspend fun delete(contact: Contact) = contactDao.delete(contact)
 }

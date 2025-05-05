@@ -1,43 +1,38 @@
 package com.example.phoneforfilm.view
 
+import android.os.Bundle
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.phoneforfilm.databinding.ActivityContactListBinding
+import com.example.phoneforfilm.presentation.viewmodel.ContactViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
-import android.content.Intent
-import android.os.Bundle
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.phoneforfilm.adapter.ContactAdapter
-import com.example.phoneforfilm.data.AppDatabase
-import com.example.phoneforfilm.databinding.ActivityContactListBinding
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-
 @AndroidEntryPoint
-class ContactListActivity : BaseActivity() {
+class ContactListActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityContactListBinding
+    private val viewModel: ContactViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityContactListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val db = AppDatabase.getDatabase(this)
+        binding.recyclerViewContacts.layoutManager = LinearLayoutManager(this)
 
-        CoroutineScope(Dispatchers.IO).launch {
-            val contacts = db.contactDao().getAllNow()
+        val adapter = ContactListAdapter(
+            onDelete = { contact -> viewModel.delete(contact) },
+            onEdit = { contact -> /* TODO: open EditContactActivity */ }
+        )
+        binding.recyclerViewContacts.adapter = adapter
 
-            withContext(Dispatchers.Main) {
-                val adapter = ContactAdapter()
-                binding.recyclerViewContacts.layoutManager = LinearLayoutManager(this@ContactListActivity)
-                adapter.submitList(contacts)
-                binding.recyclerViewContacts.adapter = adapter
-            }
+        viewModel.contacts.collect(this) { contacts ->
+            adapter.submitList(contacts)
         }
 
-        binding.buttonAddContact.setOnClickListener {
-            startActivity(Intent(this, EditContactActivity::class.java))
+        binding.fabAddContact.setOnClickListener {
+            // TODO: open AddContactActivity
         }
     }
 }
