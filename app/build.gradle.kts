@@ -15,7 +15,12 @@ android {
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += mapOf("room.schemaLocation" to "$projectDir/schemas")
+        }
     }
+
 
     buildFeatures {
         viewBinding = true
@@ -58,7 +63,6 @@ android {
             arg("room.schemaLocation", "$projectDir/schemas")
             arg("room.incremental", "true")
             arg("room.expandProjection", "true")
-            arg("room.exportSchema", "false")
         }
     }
 
