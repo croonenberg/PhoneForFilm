@@ -1,9 +1,9 @@
 package com.example.phoneforfilm.di
 
 import android.content.Context
-import com.example.phoneforfilm.data.local.AppDatabase
 import com.example.phoneforfilm.data.local.dao.ContactDao
 import com.example.phoneforfilm.data.local.dao.MessageDao
+import com.example.phoneforfilm.data.local.db.AppDatabase
 import com.example.phoneforfilm.data.repository.ContactRepository
 import com.example.phoneforfilm.data.repository.MessageRepository
 import dagger.Module
