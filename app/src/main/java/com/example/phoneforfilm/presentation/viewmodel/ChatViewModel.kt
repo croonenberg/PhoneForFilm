@@ -23,7 +23,7 @@ class ChatViewModel @Inject constructor(
 
     fun loadMessagesForChat(chatId: Int) {
         viewModelScope.launch(Dispatchers.IO) {
-            messageRepository.getMessagesByChatId(chatId).collectLatest { msgs ->
+            messageRepository.getMessagesByChatId(chatId).collectLatest { msgs: List<Message> ->
                 _messages.value = msgs
             }
         }
