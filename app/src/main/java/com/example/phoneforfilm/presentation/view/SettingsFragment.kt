@@ -12,6 +12,7 @@ import com.example.phoneforfilm.databinding.FragmentSettingsBinding
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import androidx.appcompat.app.AppCompatDelegate
+import com.example.phoneforfilm.R
 import java.util.Locale
 
 class SettingsFragment : Fragment() {
