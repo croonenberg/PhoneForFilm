@@ -94,8 +94,8 @@ dependencies {
     kapt("com.google.dagger:hilt-compiler:2.56.2")
     implementation("androidx.hilt:hilt-navigation-fragment:1.2.0")
 // Core DataStore
-    implementation("androidx.datastore:datastore-core:1.1.5")
-    implementation("androidx.datastore:datastore-preferences:1.1.5")
+    implementation("androidx.datastore:datastore-core:1.0.0")
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
     // (optioneel) Lifecycle + coroutines
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.7")
 
