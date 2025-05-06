@@ -79,4 +79,5 @@
     <string name="avatar_desc">Contact avatar</string>
     <string name="decline">Decline</string>
     <string name="select_theme">Select theme</string>
+    <string name="select_locale">Select Locale</string>
 </resources>
