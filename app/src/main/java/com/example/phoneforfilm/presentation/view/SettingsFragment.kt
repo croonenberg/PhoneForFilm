@@ -39,7 +39,7 @@ class SettingsFragment : Fragment() {
         }
 
         binding.spinnerTheme.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+            override fun onItemSelected(parent: AdapterView<*>,view: View?, position: Int, id: Long) {
                 lifecycleScope.launch {
                     PreferencesHelper.setTheme(requireContext(), position)
                 }
@@ -50,7 +50,8 @@ class SettingsFragment : Fragment() {
         }
 
         val locales = resources.getStringArray(R.array.locale_entries)
-        binding.spinnerLocale.adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, locales)
+        binding.spinnerLocale.adapter = ArrayAdapter(requireContext(),
+            android.R.layout.simple_spinner_item, locales)
 
         lifecycleScope.launch {
             PreferencesHelper.getLocale(requireContext()).collectLatest { loc ->
@@ -58,7 +59,6 @@ class SettingsFragment : Fragment() {
                 binding.spinnerLocale.setSelection(idx)
             }
         }
-
         binding.spinnerLocale.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                 val locale = locales[position]
