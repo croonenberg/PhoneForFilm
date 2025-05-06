@@ -34,9 +34,11 @@
             android:exported="false" />
 
         <!-- Bestaande schermen, ongewijzigd -->
-        <activity android:name=".presentation.view.ChatActivity"
+        <activity
+            android:name=".presentation.view.ChatActivity"
             android:exported="false" />
-        <activity android:name=".view.IncomingCallActivity"
+        <activity
+            android:name=".view.IncomingCallActivity"
             android:exported="false" />
 
         <!-- Eventuele Hilt / WorkManager / Room initialisers -->
@@ -46,13 +48,28 @@
             android:exported="false"
             tools:node="merge" />
     </application>
-        <activity android:name=".ui.contact.ContactPickerActivity" android:exported="false" />
-        <activity android:name=".view.BaseActivity" android:exported="false" />
-        <activity android:name=".view.CallActivity" android:exported="false" />
-        <activity android:name=".view.ChatListActivity" android:exported="false" />
-        <activity android:name=".view.ContactListActivity" android:exported="false" />
-        <activity android:name=".view.EditContactActivity" android:exported="false" />
-        <activity android:name=".view.LanguageSelectionActivity" android:exported="false" />
+
+    <activity
+        android:name=".ui.contact.ContactPickerActivity"
+        android:exported="false" />
+    <activity
+        android:name=".view.BaseActivity"
+        android:exported="false" />
+    <activity
+        android:name=".view.CallActivity"
+        android:exported="false" />
+    <activity
+        android:name=".view.ChatListActivity"
+        android:exported="false" />
+    <activity
+        android:name=".view.ContactListActivity"
+        android:exported="false" />
+    <activity
+        android:name=".view.EditContactActivity"
+        android:exported="false" />
+    <activity
+        android:name=".view.LanguageSelectionActivity"
+        android:exported="false" />
 
     <!-- Compile‑SDK, min‑/target‑versies worden in build.gradle(kts) beheerd -->
 </manifest>
