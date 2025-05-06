@@ -4,16 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import com.example.phoneforfilm.R
 import com.example.phoneforfilm.data.preferences.PreferencesHelper
 import com.example.phoneforfilm.databinding.FragmentSettingsBinding
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import androidx.appcompat.app.AppCompatDelegate
-import com.example.phoneforfilm.R
-import java.util.Locale
 
 class SettingsFragment : Fragment() {
 
@@ -28,7 +29,6 @@ class SettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Theme spinner adapter already uses consolidated theme_entries
         val themes = resources.getStringArray(R.array.theme_entries)
         binding.spinnerTheme.adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, themes)
 
@@ -38,14 +38,17 @@ class SettingsFragment : Fragment() {
             }
         }
 
-        binding.spinnerTheme.setOnItemSelectedListener { _, _, position, _ ->
-            lifecycleScope.launch {
-                PreferencesHelper.setTheme(requireContext(), position)
+        binding.spinnerTheme.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                lifecycleScope.launch {
+                    PreferencesHelper.setTheme(requireContext(), position)
+                }
+                AppCompatDelegate.setDefaultNightMode(position)
             }
-            AppCompatDelegate.setDefaultNightMode(position)
+
+            override fun onNothingSelected(parent: AdapterView<*>) {}
         }
 
-        // Locale spinner uses locale_entries
         val locales = resources.getStringArray(R.array.locale_entries)
         binding.spinnerLocale.adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, locales)
 
@@ -56,13 +59,17 @@ class SettingsFragment : Fragment() {
             }
         }
 
-        binding.spinnerLocale.setOnItemSelectedListener { _, _, position, _ ->
-            val locale = locales[position]
-            lifecycleScope.launch {
-                PreferencesHelper.setLocale(requireContext(), locale)
+        binding.spinnerLocale.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                val locale = locales[position]
+                lifecycleScope.launch {
+                    PreferencesHelper.setLocale(requireContext(), locale)
+                }
+                val appLocale = LocaleListCompat.forLanguageTags(locale)
+                AppCompatDelegate.setApplicationLocales(appLocale)
             }
-            val appLocale = Locale(locale)
-            AppCompatDelegate.setApplicationLocales(androidx.collection.ArraySet(listOf(appLocale)))
+
+            override fun onNothingSelected(parent: AdapterView<*>) {}
         }
     }
 
