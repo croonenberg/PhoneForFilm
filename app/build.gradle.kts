@@ -93,4 +93,12 @@ dependencies {
     implementation("com.google.dagger:hilt-android:2.56.2")
     kapt("com.google.dagger:hilt-compiler:2.56.2")
     implementation("androidx.hilt:hilt-navigation-fragment:1.2.0")
+// Core DataStore
+    implementation("androidx.datastore:datastore-core:1.1.5")
+
+    // Preferences DataStore (KTX extensions, waaronder .edit { … })
+    implementation("androidx.datastore:datastore-preferences:1.1.5")
+
+    // (optioneel) Lifecycle + coroutines
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.7")
 }
