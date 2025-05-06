@@ -4,10 +4,12 @@
 
     <!-- 1. App‑brede permissies en features -->
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-    <!-- Optioneel: camera/sensor‑rights voor inkomende videobel‑mockups -->
+    <!-- Als je toegang tot media-afbeeldingen/video nodig hebt (Android 13+) -->
+    <!-- <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" /> -->
+    <!-- <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" /> -->
+
+    <!-- Optioneel: camera/sensor-rechten voor mockup videobel -->
     <!-- <uses-permission android:name="android.permission.CAMERA" /> -->
 
     <application
@@ -34,12 +36,15 @@
             android:exported="false" />
 
         <!-- Bestaande schermen, ongewijzigd -->
-        <activity
-            android:name=".presentation.view.ChatActivity"
-            android:exported="false" />
-        <activity
-            android:name=".view.IncomingCallActivity"
-            android:exported="false" />
+        <activity android:name=".presentation.view.ChatActivity" android:exported="false" />
+        <activity android:name=".view.IncomingCallActivity" android:exported="false" />
+        <activity android:name=".view.CallActivity" android:exported="false" />
+        <activity android:name=".view.ChatListActivity" android:exported="false" />
+        <activity android:name=".view.ContactListActivity" android:exported="false" />
+        <activity android:name=".view.EditContactActivity" android:exported="false" />
+        <activity android:name=".view.LanguageSelectionActivity" android:exported="false" />
+        <activity android:name=".view.BaseActivity" android:exported="false" />
+        <activity android:name=".ui.contact.ContactPickerActivity" android:exported="false" />
 
         <!-- Eventuele Hilt / WorkManager / Room initialisers -->
         <provider
@@ -47,28 +52,7 @@
             android:authorities="${applicationId}.androidx-startup"
             android:exported="false"
             tools:node="merge" />
-
-        <activity
-            android:name=".ui.contact.ContactPickerActivity"
-            android:exported="false" />
-        <activity
-            android:name=".view.BaseActivity"
-            android:exported="false" />
-        <activity
-            android:name=".view.CallActivity"
-            android:exported="false" />
-        <activity
-            android:name=".view.ChatListActivity"
-            android:exported="false" />
-        <activity
-            android:name=".view.ContactListActivity"
-            android:exported="false" />
-        <activity
-            android:name=".view.EditContactActivity"
-            android:exported="false" />
-        <activity
-            android:name=".view.LanguageSelectionActivity"
-            android:exported="false" />
     </application>
-    <!-- Compile‑SDK, min‑/target‑versies worden in build.gradle(kts) beheerd -->
+
+    <!-- SDK-versies worden beheerd in build.gradle(.kts) -->
 </manifest>
