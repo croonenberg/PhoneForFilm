@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.phoneforfilm.databinding.ActivityChatBinding
 import com.example.phoneforfilm.presentation.adapter.MessageAdapter
+import com.example.phoneforfilm.presentation.adapter.MessageActionListener  // New import
+import com.example.phoneforfilm.data.model.Message  // New import
 import com.example.phoneforfilm.presentation.viewmodel.ChatViewModel
 import com.example.phoneforfilm.settings.SettingsViewModel
 import com.example.phoneforfilm.utils.ThemeManager
@@ -40,12 +42,22 @@ class ChatActivity : AppCompatActivity() {
 
         binding.toolbarChat.title = contactName
 
-        val msgAdapter = MessageAdapter()
+        // Old: 
+        // val msgAdapter = MessageAdapter()
+        // New:
+        val msgAdapter = MessageAdapter(emptyList(), object : MessageActionListener {
+            override fun onMessageLongPressed(message: Message) {
+                // No-op or implement long-press behavior
+            }
+        }, senderId)
         binding.rvMessages.layoutManager = LinearLayoutManager(this)
         binding.rvMessages.adapter = msgAdapter
 
         chatViewModel.messages.observe(this) { msgs ->
-            msgAdapter.submitList(msgs)
+            // Old:
+            // msgAdapter.submitList(msgs)
+            // New:
+            msgAdapter.updateMessages(msgs)
             if (msgs.isNotEmpty()) {
                 binding.rvMessages.scrollToPosition(msgs.size - 1)
             }

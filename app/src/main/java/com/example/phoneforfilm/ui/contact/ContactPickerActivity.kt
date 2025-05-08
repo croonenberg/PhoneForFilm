@@ -8,6 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.phoneforfilm.databinding.ActivityContactPickerBinding
 import com.example.phoneforfilm.presentation.viewmodel.ContactViewModel
+import com.example.phoneforfilm.presentation.viewmodel.ChatListViewModel // New import
 import com.example.phoneforfilm.presentation.view.ChatActivity
 import com.example.phoneforfilm.ui.contact.ContactPickerAdapter
 import com.example.phoneforfilm.view.EditContactActivity
@@ -18,7 +19,8 @@ import kotlinx.coroutines.launch
 class ContactPickerActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityContactPickerBinding
-    private val viewModel: ContactViewModel by viewModels()
+    private val contactViewModel: ContactViewModel by viewModels()
+    private val chatListViewModel: ChatListViewModel by viewModels() // New ViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +28,7 @@ class ContactPickerActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val adapter = ContactPickerAdapter { selectedContact ->
-            viewModel.createConversationFor(selectedContact.id) { newChatId ->
+            chatListViewModel.createChatFor(selectedContact.id) { newChatId -> // Using ChatListViewModel
                 val intent = Intent(this, ChatActivity::class.java).apply {
                     putExtra(ChatActivity.EXTRA_CONVERSATION_ID, newChatId)
                     putExtra(ChatActivity.EXTRA_SENDER_ID, selectedContact.id)
@@ -41,7 +43,7 @@ class ContactPickerActivity : AppCompatActivity() {
         binding.recyclerContacts.adapter = adapter
 
         lifecycleScope.launch {
-            viewModel.contacts.collect { list ->
+            contactViewModel.contacts.collect { list ->
                 adapter.submitList(list)
             }
         }
