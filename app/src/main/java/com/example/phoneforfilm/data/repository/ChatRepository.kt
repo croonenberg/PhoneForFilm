@@ -1,7 +1,7 @@
 package com.example.phoneforfilm.data.repository
 
-import com.example.phoneforfilm.data.local.dao.ConversationDao
-import com.example.phoneforfilm.data.local.entity.Conversation
+import com.example.phoneforfilm.data.Conversation
+import com.example.phoneforfilm.data.ConversationDao
 import javax.inject.Inject
 
 class ChatRepository @Inject constructor(
