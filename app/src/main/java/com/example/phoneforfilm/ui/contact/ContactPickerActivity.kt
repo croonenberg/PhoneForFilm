@@ -1,5 +1,6 @@
 package com.example.phoneforfilm.ui.contact
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +8,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.phoneforfilm.databinding.ActivityContactPickerBinding
 import com.example.phoneforfilm.presentation.viewmodel.ContactViewModel
+import com.example.phoneforfilm.presentation.view.ChatActivity
+import com.example.phoneforfilm.ui.contact.ContactPickerAdapter
+import com.example.phoneforfilm.view.EditContactActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -22,7 +26,15 @@ class ContactPickerActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val adapter = ContactPickerAdapter { selectedContact ->
-            // TODO: Handle selected contact
+            viewModel.createConversationFor(selectedContact.id) { newChatId ->
+                val intent = Intent(this, ChatActivity::class.java).apply {
+                    putExtra(ChatActivity.EXTRA_CONVERSATION_ID, newChatId)
+                    putExtra(ChatActivity.EXTRA_SENDER_ID, selectedContact.id)
+                    putExtra(ChatActivity.EXTRA_CONTACT_NAME, selectedContact.name)
+                }
+                startActivity(intent)
+                finish()
+            }
         }
 
         binding.recyclerContacts.layoutManager = LinearLayoutManager(this)
@@ -35,7 +47,7 @@ class ContactPickerActivity : AppCompatActivity() {
         }
 
         binding.fabAddContact.setOnClickListener {
-            // TODO: Open AddContactActivity
+            startActivity(Intent(this, EditContactActivity::class.java))
         }
     }
 }
