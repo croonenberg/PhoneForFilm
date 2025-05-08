@@ -1,66 +1,47 @@
 package com.example.phoneforfilm.di
 
-import android.content.Context
-import com.example.phoneforfilm.data.ConversationDao
+import android.app.Application
+import androidx.room.Room
+import com.example.phoneforfilm.data.AppDatabase
 import com.example.phoneforfilm.data.local.dao.ContactDao
+import com.example.phoneforfilm.data.local.dao.ConversationDao
 import com.example.phoneforfilm.data.local.dao.MessageDao
-import com.example.phoneforfilm.data.local.db.AppDatabase
 import com.example.phoneforfilm.data.repository.ContactRepository
+import com.example.phoneforfilm.data.repository.ChatRepository
 import com.example.phoneforfilm.data.repository.MessageRepository
-import com.example.phoneforfilm.utils.PreferencesHelper
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
+    @Provides
+    @Singleton
+    fun provideDatabase(app: Application): AppDatabase =
+        Room.databaseBuilder(app, AppDatabase::class.java, "phoneforfilm.db")
+            .build()
+
+    @Provides
+    fun provideContactDao(db: AppDatabase): ContactDao = db.contactDao()
+
+    @Provides
+    fun provideConversationDao(db: AppDatabase): ConversationDao = db.conversationDao()
+
+    @Provides
+    fun provideMessageDao(db: AppDatabase): MessageDao = db.messageDao()
 
     @Provides
     @Singleton
-    fun provideDatabase(@ApplicationContext context: Context): AppDatabase {
-        return AppDatabase.getDatabase(context)
-    }
+    fun provideContactRepo(dao: ContactDao): ContactRepository = ContactRepository(dao)
 
     @Provides
     @Singleton
-    fun provideMessageDao(database: AppDatabase): MessageDao {
-        return database.messageDao()
-    }
+    fun provideChatRepo(dao: ConversationDao): ChatRepository = ChatRepository(dao)
 
     @Provides
     @Singleton
-    fun provideContactDao(database: AppDatabase): ContactDao {
-        return database.contactDao()
-    }
-
-    @Provides
-    @Singleton
-    fun provideMessageRepository(messageDao: MessageDao): MessageRepository {
-        return MessageRepository(messageDao)
-    }
-
-    @Provides
-    @Singleton
-    fun provideContactRepository(contactDao: ContactDao): ContactRepository {
-        return ContactRepository(contactDao)
-    }
-
-    @Provides
-    @Singleton
-    fun provideConversationDao(database: AppDatabase): ConversationDao {
-        return database.conversationDao()
-    }
-
-    @Provides
-    @Singleton
-    fun providePreferencesHelper(@ApplicationContext context: Context): PreferencesHelper {
-        return PreferencesHelper(context)
-    }
+    fun provideMessageRepo(dao: MessageDao): MessageRepository = MessageRepository(dao)
 }
-
-
-

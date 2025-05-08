@@ -1,20 +1,19 @@
 package com.example.phoneforfilm.data.local.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.example.phoneforfilm.data.local.entity.Conversation
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ConversationDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    /**
+     * Maak nieuw gesprek aan.
+     */
+    @Insert
     suspend fun insert(conversation: Conversation)
 
-    @Query("SELECT * FROM conversations WHERE id = :id")
-    fun getConversation(id: Int): Flow<Conversation?>
-
-    @Query("SELECT * FROM conversations")
-    fun getAllConversations(): Flow<List<Conversation>>
+    /**
+     * Vind gesprek-id op basis van contactId.
+     */
+    @Query("SELECT id FROM conversations WHERE contactId = :contactId LIMIT 1")
+    suspend fun findByContact(contactId: Int): Int?
 }

@@ -4,19 +4,24 @@ import com.example.phoneforfilm.data.local.dao.ContactDao
 import com.example.phoneforfilm.data.local.entity.Contact
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class ContactRepository @Inject constructor(
-    private val contactDao: ContactDao
+    private val dao: ContactDao
 ) {
-    suspend fun addContact(contact: Contact) {
-        contactDao.insert(contact)
-    }
+    /**
+     * Returns all contacts as a Flow, sorted by name.
+     */
+    fun getAllContacts(): Flow<List<Contact>> = dao.getAll()
 
-    suspend fun removeContact(contact: Contact) {
-        contactDao.delete(contact)
-    }
+    /**
+     * Inserts or replaces a contact and returns the new row ID.
+     */
+    suspend fun addOrUpdate(contact: Contact): Long = dao.insert(contact)
 
-    fun getAllContacts(): Flow<List<Contact>> {
-        return contactDao.getAllContacts()
-    }
+    /**
+     * Deletes the given contact.
+     */
+    suspend fun delete(contact: Contact) = dao.delete(contact)
 }
