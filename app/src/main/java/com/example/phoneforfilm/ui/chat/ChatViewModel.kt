@@ -3,7 +3,7 @@ package com.example.phoneforfilm.ui.chat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.phoneforfilm.domain.usecase.GetConversationThemeUseCase
-import com.example.phoneforfilm.domain/usecase/SetConversationThemeUseCase
+import com.example.phoneforfilm.domain.usecase.SetConversationThemeUseCase
 import com.example.phoneforfilm.ui.common.UIState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
