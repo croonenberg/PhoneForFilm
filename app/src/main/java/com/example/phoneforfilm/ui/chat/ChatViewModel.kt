@@ -2,26 +2,37 @@ package com.example.phoneforfilm.ui.chat
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.phoneforfilm.data.ChatTheme
-import com.example.phoneforfilm.data.ChatThemeDao
+import com.example.phoneforfilm.domain.usecase.GetConversationThemeUseCase
+import com.example.phoneforfilm.domain/usecase/SetConversationThemeUseCase
+import com.example.phoneforfilm.ui.common.UIState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class ChatViewModel(private val chatThemeDao: ChatThemeDao) : ViewModel() {
-    private val _themeFlow = MutableStateFlow<String?>(null)
-    val themeFlow: StateFlow<String?> = _themeFlow
+class ChatViewModel(
+    private val getTheme: GetConversationThemeUseCase,
+    private val setTheme: SetConversationThemeUseCase
+) : ViewModel() {
+
+    private val _themeState = MutableStateFlow<UIState<String?>>(UIState.Loading)
+    val themeState: StateFlow<UIState<String?>> = _themeState
 
     fun loadTheme(conversationId: Long) {
         viewModelScope.launch {
-            _themeFlow.value = chatThemeDao.getTheme(conversationId)
+            getTheme(conversationId).collect { key ->
+                _themeState.value = UIState.Success(key)
+            }
         }
     }
 
-    fun setTheme(conversationId: Long, themeKey: String) {
+    fun applyTheme(conversationId: Long, themeKey: String) {
         viewModelScope.launch {
-            chatThemeDao.saveTheme(ChatTheme(conversationId, themeKey))
-            _themeFlow.value = themeKey
+            try {
+                setTheme(conversationId, themeKey)
+                _themeState.value = UIState.Success(themeKey)
+            } catch (t: Throwable) {
+                _themeState.value = UIState.Error("Kon thema niet instellen")
+            }
         }
     }
 }

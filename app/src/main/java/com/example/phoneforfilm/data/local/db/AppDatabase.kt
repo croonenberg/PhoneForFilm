@@ -1,37 +1,20 @@
 package com.example.phoneforfilm.data.local.db
 
-import android.content.Context
 import androidx.room.Database
-import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.phoneforfilm.data.Conversation
-import com.example.phoneforfilm.data.ConversationDao
-import com.example.phoneforfilm.data.local.dao.ContactDao
-import com.example.phoneforfilm.data.local.dao.MessageDao
-import com.example.phoneforfilm.data.model.Contact
-import com.example.phoneforfilm.data.model.Message
+import com.example.phoneforfilm.data.local.dao.ChatThemeDao
+import com.example.phoneforfilm.data.local.entity.ChatTheme
+// ... other imports
 
-@Database(entities = [Message::class, Contact::class, Conversation::class], version = 1, exportSchema = false)
+@Database(
+    entities = [
+        ChatTheme::class,
+        // ... other entities
+    ],
+    version = 4, // bumped from 3 to 4
+    exportSchema = true
+)
 abstract class AppDatabase : RoomDatabase() {
-
-    abstract fun messageDao(): MessageDao
-    abstract fun contactDao(): ContactDao
-    abstract fun conversationDao(): ConversationDao
-
-    companion object {
-        @Volatile
-        private var INSTANCE: AppDatabase? = null
-
-        fun getDatabase(context: Context): AppDatabase {
-            return INSTANCE ?: synchronized(this) {
-                val instance = Room.databaseBuilder(
-                    context.applicationContext,
-                    AppDatabase::class.java,
-                    "phoneforfilm_database"
-                ).build()
-                INSTANCE = instance
-                instance
-            }
-        }
-    }
+    abstract fun chatThemeDao(): ChatThemeDao()
+    // ... other DAOs
 }
