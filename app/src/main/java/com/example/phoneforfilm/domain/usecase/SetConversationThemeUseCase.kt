@@ -1,4 +1,4 @@
-package com.example.phoneforfilm.domain/usecase
+package com.example.phoneforfilm.domain.usecase
 
 import com.example.phoneforfilm.data.local.repository.ChatThemeRepository
 
