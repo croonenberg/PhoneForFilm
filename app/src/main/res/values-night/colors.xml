@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Night mode WhatsApp theme colors -->
+    <color name="whatsapp_green_dark">#075E54</color>
+    <color name="whatsapp_blue_dark">#075E54</color>
+</resources>
