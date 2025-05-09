@@ -4,25 +4,32 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
+import androidx.activity.viewModels
 import com.example.phoneforfilm.R
-import com.example.phoneforfilm.utils.ThemeMapper
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.launch
+import com.example.phoneforfilm.ui.common.UIState
+import com.example.phoneforfilm.utils.ThemeUtils
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.flow.firstOrNull
 
+@AndroidEntryPoint
 class ChatActivity : AppCompatActivity() {
-    private lateinit var viewModel: ChatViewModel
+
+    private val viewModel: ChatViewModel by viewModels()
     private val conversationId: Long by lazy { intent.getLongExtra("conversationId", 0L) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        lifecycleScope.launch {
-            viewModel.loadTheme(conversationId)
-            val themeKey = viewModel.themeFlow.first()
-            setTheme(ThemeMapper.getStyleRes(themeKey))
-            super.onCreate(savedInstanceState)
-            setContentView(R.layout.activity_chat)
-            initUi()
+        // Observe theme synchronously before setting content
+        val themeKey: String? = runBlocking {
+            viewModel.themeState.firstOrNull()?.let { state ->
+                (state as? UIState.Success)?.data
+            }
         }
+        setTheme(ThemeUtils.getStyleRes(themeKey))
+
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_chat)
+        initUi()
     }
 
     private fun initUi() {
@@ -34,13 +41,13 @@ class ChatActivity : AppCompatActivity() {
     }
 
     private fun showThemeSelectionDialog() {
-        val themeKeys = arrayOf("greenroom", "bluestage")
-        val themeNames = arrayOf("Greenroom", "Bluestage")
+        val themeKeys = arrayOf("greenroom", "bluestage", "default")
+        val themeNames = arrayOf("Greenroom", "Bluestage", "Reset naar standaard")
         AlertDialog.Builder(this)
             .setTitle("Kies thema")
             .setItems(themeNames) { _, which ->
                 val key = themeKeys[which]
-                viewModel.setTheme(conversationId, key)
+                viewModel.applyTheme(conversationId, key)
                 recreate()
             }
             .show()
