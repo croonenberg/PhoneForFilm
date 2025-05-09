@@ -1,7 +1,0 @@
-package com.example.phoneforfilm.presentation.viewmodel
-
-import androidx.lifecycle.ViewModel
-
-class ContactViewModel : ViewModel() {
-    // TODO: implement contact list, add, edit, delete
-}
