@@ -5,4 +5,22 @@
     <!-- WhatsApp theme colors -->
     <color name="whatsapp_green">#25D366</color>
     <color name="whatsapp_blue">#128C7E</color>
+
+    <!-- New theme color resources -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+    <!-- Theme-specific color aliases -->
+    <color name="greenroom_primary">@color/whatsapp_green</color>
+    <color name="greenroom_secondary">@color/whatsapp_green</color>
+    <color name="bluestage_primary">@color/whatsapp_blue</color>
+    <color name="bluestage_secondary">@color/whatsapp_blue</color>
+    <color name="greycard_primary">@color/white</color>
+    <color name="greycard_secondary">@color/black</color>
+    <color name="neutral_light_primary">@color/white</color>
+    <color name="neutral_light_secondary">@color/white</color>
+    <color name="darkroom_primary">@color/black</color>
+    <color name="darkroom_secondary">@color/black</color>
+    <color name="primary">@color/white</color>
+    <color name="secondary">@color/white</color>
 </resources>

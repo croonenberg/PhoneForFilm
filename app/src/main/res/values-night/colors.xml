@@ -3,4 +3,22 @@
     <!-- Night mode WhatsApp theme colors -->
     <color name="whatsapp_green_dark">#075E54</color>
     <color name="whatsapp_blue_dark">#075E54</color>
+
+    <!-- New theme color resources for night -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+    <!-- Theme-specific color aliases for night -->
+    <color name="greenroom_primary">@color/whatsapp_green_dark</color>
+    <color name="greenroom_secondary">@color/whatsapp_green_dark</color>
+    <color name="bluestage_primary">@color/whatsapp_blue_dark</color>
+    <color name="bluestage_secondary">@color/whatsapp_blue_dark</color>
+    <color name="greycard_primary">@color/black</color>
+    <color name="greycard_secondary">@color/white</color>
+    <color name="neutral_light_primary">@color/black</color>
+    <color name="neutral_light_secondary">@color/black</color>
+    <color name="darkroom_primary">@color/black</color>
+    <color name="darkroom_secondary">@color/black</color>
+    <color name="primary">@color/black</color>
+    <color name="secondary">@color/black</color>
 </resources>
