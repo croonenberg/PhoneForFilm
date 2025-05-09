@@ -22,7 +22,7 @@ object DatabaseModule {
             AppDatabase::class.java,
             "phoneforfilm_db"
         )
-        .addMigrations(MIGRATION_3_4_CHAT_THEME /*, other migrations */)
+        .addMigrations(MIGRATION_3_4_CHAT_THEME)
         .build()
     }
 

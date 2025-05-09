@@ -7,9 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.phoneforfilm.databinding.ActivityContactPickerBinding
-import com.example.phoneforfilm.presentation.viewmodel.ContactViewModel
-import com.example.phoneforfilm.presentation.viewmodel.ChatViewModel
-import com.example.phoneforfilm.presentation.view.ChatActivity
+import com.example.phoneforfilm.ui.viewmodel.ContactViewModel
+import com.example.phoneforfilm.ui.viewmodel.ChatViewModel
+import com.example.phoneforfilm.ui.view.ChatActivity
 import com.example.phoneforfilm.ui.contact.ContactPickerAdapter
 import com.example.phoneforfilm.view.EditContactActivity
 import dagger.hilt.android.AndroidEntryPoint
