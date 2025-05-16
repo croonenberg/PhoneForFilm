@@ -1,26 +1,9 @@
-# Patch Update v19A.0.9 v2
+# README
 
-## Modified files
+## Aangepaste bestanden
+- app/src/main/java/com/example/phoneforfilm/view/MainActivity.kt
 
-- app/src/main/java/com/example/phoneforfilm/di/AppModule.kt
+## Te verwijderen bestanden
+- app/src/main/java/com/phoneforfilm/ui/MainActivity.kt
 
-- CHANGELOG.md
-
-
-
-## Removal
-
-- Geen bestanden verwijderd
-
-
-
-**Instructies:**
-
-1. Clone de originele codebase.
-
-2. Unzip dit archief in de projectroot.
-
-3. Overschrijf bestaande bestanden wanneer gevraagd.
-
-4. Rebuild en verifieer dat Hilt-fouten zijn opgelost.
-
+Deze patch verwijdert de duplicaat-klasse uit het verkeerde package en werkt de bestaande MainActivity bij.
