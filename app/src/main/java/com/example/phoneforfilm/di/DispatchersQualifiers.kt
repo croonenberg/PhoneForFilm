@@ -1,4 +1,5 @@
 package com.example.phoneforfilm.di
+@file:Suppress("unused", "UnusedImport")
 
 import javax.inject.Qualifier
 import kotlin.coroutines.CoroutineContext

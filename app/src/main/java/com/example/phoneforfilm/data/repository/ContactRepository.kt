@@ -1,4 +1,5 @@
 package com.example.phoneforfilm.data.repository
+@file:Suppress("unused", "UnusedImport")
 
 import com.example.phoneforfilm.data.local.dao.ContactDao
 import com.example.phoneforfilm.data.local.entity.Contact

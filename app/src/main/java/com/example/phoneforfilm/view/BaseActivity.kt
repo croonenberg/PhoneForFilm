@@ -1,4 +1,5 @@
 package com.example.phoneforfilm.view
+@file:Suppress("unused", "UnusedImport")
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

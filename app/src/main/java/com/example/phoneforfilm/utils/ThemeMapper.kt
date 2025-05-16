@@ -1,4 +1,5 @@
 package com.example.phoneforfilm.utils
+@file:Suppress("unused", "UnusedImport")
 
 import com.example.phoneforfilm.R
 

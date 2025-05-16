@@ -1,4 +1,5 @@
 package com.example.phoneforfilm.ui.contact
+@file:Suppress("unused", "UnusedImport")
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

@@ -1,4 +1,5 @@
 package com.example.phoneforfilm.data.local.entity
+@file:Suppress("unused", "UnusedImport")
 
 import androidx.room.Embedded
 import androidx.room.Relation
