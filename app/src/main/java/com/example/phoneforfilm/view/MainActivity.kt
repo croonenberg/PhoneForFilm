@@ -24,13 +24,13 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, ChatListActivity::class.java))
         }
 
-        // Toon contactlijst
-        binding.buttonViewSubtitles.setOnClickListener {
-            startActivity(Intent(this, ContactListActivity::class.java))
+        // Wijzig taal
+        binding.buttonChangeLanguage.setOnClickListener {
+            startActivity(Intent(this, LanguageSelectionActivity::class.java))
         }
 
-        // Open thema-instellingen
-        binding.buttonSubmitSubtitle.setOnClickListener {
+        // Wijzig thema
+        binding.buttonChangeTheme.setOnClickListener {
             startActivity(Intent(this, ThemeSettingsActivity::class.java))
         }
     }
