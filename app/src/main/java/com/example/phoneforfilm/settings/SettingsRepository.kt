@@ -1,5 +1,4 @@
 package com.example.phoneforfilm.settings
-@file:Suppress("unused", "UnusedImport")
 
 import android.content.Context
 import dagger.hilt.android.qualifiers.ApplicationContext

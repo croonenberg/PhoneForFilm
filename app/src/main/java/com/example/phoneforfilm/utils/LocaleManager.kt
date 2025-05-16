@@ -1,6 +1,5 @@
 
 package com.example.phoneforfilm.utils
-@file:Suppress("unused", "UnusedImport")
 
 import android.content.Context
 import android.content.res.Configuration

@@ -1,5 +1,4 @@
 package com.example.phoneforfilm.utils
-@file:Suppress("unused", "UnusedImport")
 
 import android.app.Activity
 import com.example.phoneforfilm.R

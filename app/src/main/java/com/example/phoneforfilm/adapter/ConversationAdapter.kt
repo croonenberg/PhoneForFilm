@@ -1,5 +1,4 @@
 package com.example.phoneforfilm.adapter
-@file:Suppress("unused", "UnusedImport")
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

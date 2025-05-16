@@ -1,5 +1,4 @@
 package com.example.phoneforfilm.data.local.dao
-@file:Suppress("unused", "UnusedImport")
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao

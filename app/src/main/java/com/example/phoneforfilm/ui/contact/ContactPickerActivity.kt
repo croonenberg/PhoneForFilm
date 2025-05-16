@@ -1,5 +1,4 @@
 package com.example.phoneforfilm.ui.contact
-@file:Suppress("unused", "UnusedImport")
 
 import android.os.Bundle
 import androidx.activity.viewModels
