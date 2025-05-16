@@ -1,0 +1,14 @@
+<resources>
+    <!-- Theme presets voor filmset-UX (geconsolideerd) -->
+    <string-array name="theme_entries">
+        <item>Greenroom</item>
+        <item>Blue Stage</item>
+        <item>Grey Card</item>
+        <item>Neutral Light</item>
+    </string-array>
+    <string-array name="locale_entries">
+        <item>en</item>
+        <item>nl</item>
+        <item>fr</item>
+    </string-array>
+</resources>

@@ -1,0 +1,23 @@
+--- app/src/main/AndroidManifest.xml
++++ app/src/main/AndroidManifest.xml
+@@ -19,16 +20,7 @@
+         android:theme="@style/Theme.PhoneForFilm">
+ 
+-        <!-- Bestaande schermen, ongewijzigd -->
+-        <activity android:name=".presentation.view.ChatActivity" android:exported="false" />
+-        <activity android:name=".view.IncomingCallActivity" android:exported="false" />
+-        <activity android:name=".view.CallActivity" android:exported="false" />
+-        <activity android:name=".view.ChatListActivity" android:exported="false" />
+-        <activity android:name=".view.ContactListActivity" android:exported="false" />
+-        <activity android:name=".view.EditContactActivity" android:exported="false" />
+-        <activity android:name=".view.LanguageSelectionActivity" android:exported="false" />
+-        <activity android:name=".view.BaseActivity" android:exported="false" />
+-
+-        <!-- Huidige screens -->
+-        <activity android:name=".ui.chat.ChatActivity" android:exported="false" />
+-        <activity android:name=".ui.contact.ContactPickerActivity" android:exported="false" />
++        <!-- Corrected Activities -->
++        <activity android:name=".ui.chat.ChatActivity" android:exported="false" />
++        <activity android:name=".ui.contact.ContactPickerActivity" android:exported="false" />
++
+         <!-- Hilt / WorkManager / Room initialisers -->

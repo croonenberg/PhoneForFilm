@@ -1,0 +1,13 @@
+<resources>
+    <style name="Theme.PhoneForFilm.Greenroom" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="colorPrimary">@color/whatsapp_green_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- ... -->
+    </style>
+
+    <style name="Theme.PhoneForFilm.Bluestage" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="colorPrimary">@color/whatsapp_blue_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- ... -->
+    </style>
+</resources>

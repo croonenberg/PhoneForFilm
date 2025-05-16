@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <!-- Binding classes -->
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/select_theme" />
+
+        <Spinner
+            android:id="@+id/spinnerTheme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/theme_entries" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/select_locale"
+            android:layout_marginTop="16dp" />
+
+        <Spinner
+            android:id="@+id/spinnerLocale"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/locale_entries" />
+
+    </LinearLayout>
+</layout>
