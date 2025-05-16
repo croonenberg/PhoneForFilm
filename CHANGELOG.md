@@ -1,9 +1,3 @@
-# Changelog
-
-## 2025-05-15T23:29:13+02:00
-- Added LAUNCHER intent-filter to ChatListActivity in AndroidManifest.xml to ensure main entrypoint.
-  - File: app/src/main/AndroidManifest.xml
-
-### 2025-05-16T20:48:21+02:00
-- Gemerged bestaande MainActivity.kt met toolbar en RecyclerView setup
-- Gecontroleerd op correcte imports en initialisatie van RecyclerView
+### 2025-05-16T21:09:31+02:00
+- gecorrigeerd ic_launcher adaptive icons om bestaande drawable te gebruiken
+- verwijst nu naar @mipmap/ic_launcher_round i.p.v. missing resource
