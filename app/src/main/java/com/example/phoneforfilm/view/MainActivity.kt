@@ -1,5 +1,6 @@
 package com.example.phoneforfilm.view
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.phoneforfilm.databinding.ActivityMainBinding
