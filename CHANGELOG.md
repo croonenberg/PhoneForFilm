@@ -1,3 +1,2 @@
-### 2025-05-17T21:58:57+02:00
-- MainActivity.kt cleaned: removed unresolved button listeners and Intent imports.
-- Added toolbar setup only to match existing layout.
+### 2025-05-17T22:18:51+02:00
+- activity_main.xml vervangen: vier knoppen toegevoegd onder toolbar.

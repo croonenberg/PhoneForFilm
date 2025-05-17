@@ -1,32 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/coordinatorLayout"
+    android:id="@+id/rootLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="16dp">
 
-    <!-- App bar with toolbar -->
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="?attr/colorPrimary"
+        app:title="@string/app_name"
+        app:titleTextColor="@android:color/white"/>
+
+    <Button
+        android:id="@+id/buttonStartCall"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:theme="@style/Theme.MaterialComponents.Light.DarkActionBar">
+        android:text="@string/start_call"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:title="@string/app_name"
-            app:titleTextColor="@android:color/white"/>
-    </com.google.android.material.appbar.AppBarLayout>
+    <Button
+        android:id="@+id/buttonStartChat"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/start_chat"
+        app:layout_constraintTop_toBottomOf="@id/buttonStartCall"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
 
-    <!-- Content: RecyclerView of films -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewFilms"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:padding="16dp"/>
+    <Button
+        android:id="@+id/buttonViewSubtitles"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/view_subtitles"
+        app:layout_constraintTop_toBottomOf="@id/buttonStartChat"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <Button
+        android:id="@+id/buttonSubmitSubtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/submit_subtitle"
+        app:layout_constraintTop_toBottomOf="@id/buttonViewSubtitles"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
