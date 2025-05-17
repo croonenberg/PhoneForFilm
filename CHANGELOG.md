@@ -1,2 +1,3 @@
-### 2025-05-16T21:43:29+02:00
-- MainActivity.kt gecorrigeerd: vier bestaande knoppen gekoppeld aan CallActivity, ChatListActivity, LanguageSelectionActivity en ThemeSettingsActivity.
+### 2025-05-17T21:58:57+02:00
+- MainActivity.kt cleaned: removed unresolved button listeners and Intent imports.
+- Added toolbar setup only to match existing layout.
