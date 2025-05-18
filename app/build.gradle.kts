@@ -1,8 +1,9 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
+    id("com.android.application") version "8.3.2"
+    id("org.jetbrains.kotlin.android") version "2.1.20"
     id("io.gitlab.arturbosch.detekt")
 }
+
 
 android {
     namespace = "com.example.dummyphone"
