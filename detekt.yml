@@ -1,1 +1,6 @@
-# detekt configuration
+build:
+  maxIssues: 0
+
+style:
+  MagicNumber:
+    active: false

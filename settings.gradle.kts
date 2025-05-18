@@ -1,17 +1,11 @@
-// File: settings.gradle.kts
-
 pluginManagement {
     repositories {
         gradlePluginPortal()
         google()
         mavenCentral()
     }
-    resolutionStrategy {
-        eachPlugin {
-            if (requested.id.id == "dagger.hilt.android.plugin") {
-                useModule("com.google.dagger:hilt-android-gradle-plugin:2.56.2")
-            }
-        }
+    plugins {
+        id("io.gitlab.arturbosch.detekt") version "1.23.3"
     }
 }
 
@@ -23,5 +17,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "PhoneForFilm"
+rootProject.name = "DummyPhoneApp"
 include(":app")
