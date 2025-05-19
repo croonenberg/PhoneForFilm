@@ -6,6 +6,10 @@ plugins {
     id("io.gitlab.arturbosch.detekt")
 
 }
+repositories {
+    google()            //  ←  Google Maven repo
+    mavenCentral()
+}
 
 
 android {
