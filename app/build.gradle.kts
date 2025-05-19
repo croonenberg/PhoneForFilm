@@ -4,7 +4,9 @@ plugins {
     id("com.google.dagger.hilt.android")
     kotlin("kapt")
     id("io.gitlab.arturbosch.detekt")
+
 }
+
 
 android {
     namespace = "com.example.phoneforfilm"
