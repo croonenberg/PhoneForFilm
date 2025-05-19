@@ -7,11 +7,11 @@ plugins {
 
 
 android {
-    namespace = "com.example.dummyphone"
+    namespace = "com.example.phoneforfilm"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.dummyphone"
+        applicationId = "com.example.phoneforfilm"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
