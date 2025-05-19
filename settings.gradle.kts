@@ -6,10 +6,10 @@ pluginManagement {
         gradlePluginPortal()
     }
     plugins {
-        id("com.android.application") version "8.9.1"       // ← vul jouw AGP-versie in
+        id("com.android.application") version "8.9.3"       // ← vul jouw AGP-versie in
         id("org.jetbrains.kotlin.android") version "2.1.21"
         id("org.jetbrains.kotlin.kapt")   version "2.1.21"
-        id("com.google.dagger.hilt.android") version "2.52"
+        id("com.google.dagger.hilt.android") version "2.56.2"
         id("io.gitlab.arturbosch.detekt")  version "1.23.3"
     }
 }
