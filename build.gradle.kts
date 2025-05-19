@@ -1,9 +1,9 @@
 plugins {
-    id("com.android.application") apply false
-    id("org.jetbrains.kotlin.android") apply false
-    id("org.jetbrains.kotlin.kapt")
-    id("com.google.dagger.hilt.android") apply false
-    id("io.gitlab.arturbosch.detekt") version "1.23.3"
+    id("com.android.application") version "9.4.2" apply false
+    id("org.jetbrains.kotlin.android") version "2.1.21" apply false
+    id("org.jetbrains.kotlin.kapt") version "2.1.21" apply false
+    id("com.google.dagger.hilt.android") version "2.56.2" apply false
+    id("io.gitlab.arturbosch.detekt") version "1.23.3" apply false
 }
 
 detekt {
