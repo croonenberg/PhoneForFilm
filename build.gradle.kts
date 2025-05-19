@@ -4,6 +4,7 @@ plugins {
     id("org.jetbrains.kotlin.kapt") version "2.1.21" apply false
     id("com.google.dagger.hilt.android") version "2.56.2" apply false
     id("io.gitlab.arturbosch.detekt") version "1.23.3"
+
 }
 
 detekt {
