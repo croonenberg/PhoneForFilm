@@ -1,7 +1,7 @@
 plugins {
     id("com.android.application") apply false
     id("org.jetbrains.kotlin.android") apply false
-    id("org.jetbrains.kotlin.kapt") apply false
+    id("org.jetbrains.kotlin.kapt")
     id("com.google.dagger.hilt.android") apply false
     id("io.gitlab.arturbosch.detekt") version "1.23.3"
 }
