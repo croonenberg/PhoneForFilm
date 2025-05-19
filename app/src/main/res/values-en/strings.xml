@@ -76,4 +76,8 @@
     <string name="decline">Decline</string>
     <string name="select_theme">Select theme</string>
     <string name="select_locale">Select Locale</string>
-<string name="hint_type_message">Type a message...</string><string name="title_chat_with">Chat with %1$s</string><string name="title_chats">Chats</string><string name="add_chat">Add chat</string><string name="avatar_desc">Contact avatar</string></resources>
+    <string name="hint_type_message">Type a message...</string>
+    <string name="title_chat_with">Chat with %1$s</string>
+    <string name="title_chats">Chats</string><string name="add_chat">Add chat</string>
+    <string name="avatar_desc">Contact avatar</string>
+</resources>
