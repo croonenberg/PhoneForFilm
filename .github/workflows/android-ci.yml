@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - uses: gradle/actions/setup-gradle@v3
-    - name: Run lint, Detekt and unit tests
-      run: ./gradlew lint detekt testDebugUnitTest
+      - uses: actions/checkout@v4
+      - uses: gradle/actions/setup-gradle@v3
+      - name: Run lint, Detekt and unit tests
+        run: ./gradlew lint detekt testDebugUnitTest
