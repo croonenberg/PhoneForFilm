@@ -1,4 +1,3 @@
-
 package com.example.phoneforfilm.adapter
 
 import android.view.LayoutInflater
@@ -10,20 +9,22 @@ import com.example.phoneforfilm.data.local.entity.Contact
 import com.example.phoneforfilm.databinding.ItemContactBinding
 
 class ContactAdapter(
-    private var items: List<Contact> = emptyList(),
-    private val onClick: (Contact) -> Unit = {}
+    private val onClick: (Contact) -> Unit
 ) : RecyclerView.Adapter<ContactAdapter.VH>() {
+
+    private var items: List<Contact> = emptyList()
 
     inner class VH(private val binding: ItemContactBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(contact: Contact) = with(binding) {
-            textViewName.text = contact.name
-            imageViewAvatar.load(contact.avatarUri) {
-                placeholder(R.drawable.avatar_placeholder)
-                error(R.drawable.avatar_placeholder)
+
+        fun bind(item: Contact) = with(binding) {
+            textViewName.text = item.name
+            imageViewAvatar.load(item.avatarUrl) {
+                placeholder(R.drawable.ic_avatar_placeholder)
+                error(R.drawable.ic_avatar_placeholder)
                 crossfade(true)
             }
-            root.setOnClickListener { onClick(contact) }
+            root.setOnClickListener { onClick(item) }
         }
     }
 

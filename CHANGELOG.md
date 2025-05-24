@@ -1,11 +1,12 @@
-# CHANGELOG – v20A.0.19-min (Resolve missing Hilt bindings)
+# CHANGELOG – v20A.0.21-min (Startscherm fix)
 
 ## Updated
-* **di/AppModule.kt**
-  * Added `provideMessageDao`, `provideConversationDao`, `provideContactDao`.
-  * Added `providePreferencesHelper`.
-  * Imports updated accordingly.
+* **adapter/ContactAdapter.kt**
+  * Verwijderde ellips (`...`) en implementeerde volledige ViewHolder‑binding.
+  * Laadt avatar via Coil met placeholder, triggert `onClick` callback.
 
-No other files changed.
+* **view/MainActivity.kt**
+  * Volledig ingevuld: adapter‑initialisatie, RecyclerView‑setup, contact‑flow observer.
+  * Op `onClick` wordt `ChatActivity` gestart met `EXTRA_CONTACT_ID`.
 
-Generated 2025-05-24.
+Resultaat: startscherm toont nu dynamische contactenlijst i.p.v. lege UI.
