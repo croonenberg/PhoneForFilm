@@ -1,8 +1,10 @@
-# CHANGELOG – v20A.0.17-min (Correct DB import path)
+# CHANGELOG – v20A.0.18-min (Align AppModule with actual DB class)
 
 ## Fixed
 * **di/AppModule.kt**
-  * Import path updated to `com.example.phoneforfilm.db.PhoneForFilmDatabase` (matches actual package).
-  * No other changes; ChatThemeDao provider unchanged.
+  * Import path now `com.example.phoneforfilm.data.AppDatabase`.
+  * Generic type updated; provides correct DAO.
+
+No other code added.
 
 Generated 2025-05-24.

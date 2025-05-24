@@ -2,7 +2,7 @@ package com.example.phoneforfilm.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.phoneforfilm.db.PhoneForFilmDatabase
+import com.example.phoneforfilm.data.AppDatabase
 import com.example.phoneforfilm.data.local.dao.ChatThemeDao
 import dagger.Module
 import dagger.Provides
@@ -17,14 +17,14 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideDatabase(@ApplicationContext context: Context): PhoneForFilmDatabase =
+    fun provideDatabase(@ApplicationContext context: Context): AppDatabase =
         Room.databaseBuilder(
             context,
-            PhoneForFilmDatabase::class.java,
+            AppDatabase::class.java,
             "phoneforfilm.db"
         ).fallbackToDestructiveMigration().build()
 
     @Provides
     @Singleton
-    fun provideChatThemeDao(db: PhoneForFilmDatabase): ChatThemeDao = db.chatThemeDao()
+    fun provideChatThemeDao(db: AppDatabase): ChatThemeDao = db.chatThemeDao()
 }
