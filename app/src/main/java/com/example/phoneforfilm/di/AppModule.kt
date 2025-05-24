@@ -2,7 +2,7 @@ package com.example.phoneforfilm.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.phoneforfilm.data.local.PhoneForFilmDatabase
+import com.example.phoneforfilm.data.local.db.PhoneForFilmDatabase
 import com.example.phoneforfilm.data.local.dao.ChatThemeDao
 import dagger.Module
 import dagger.Provides
@@ -27,6 +27,4 @@ object AppModule {
     @Provides
     @Singleton
     fun provideChatThemeDao(db: PhoneForFilmDatabase): ChatThemeDao = db.chatThemeDao()
-
-    // ✳️ ChatThemeRepository provider removed here to avoid duplicate binding.
 }

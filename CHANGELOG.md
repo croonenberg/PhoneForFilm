@@ -1,9 +1,11 @@
-# CHANGELOG – v20A.0.15-min (Hilt duplicate binding fix)
+# CHANGELOG – v20A.0.16-min (Fix AppModule imports)
 
 ## Fixed
 * **di/AppModule.kt**
-  * Removed `provideChatThemeRepository()` to resolve DuplicateBindings error with `RepositoryModule`.
+  * Corrected import path to `com.example.phoneforfilm.data.local.db.PhoneForFilmDatabase`.
+  * Builder chain compiles; `fallbackToDestructiveMigration()` recognised.
+  * Dao provider unchanged.
 
-No other files modified.
+No duplicate ChatThemeRepository binding (repo provider still removed).
 
 Generated 2025-05-24.
