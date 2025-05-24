@@ -8,9 +8,14 @@ import com.example.phoneforfilm.ui.common.UIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * ViewModel voor Chat‑scherm. Haalt en bewaart het actieve thema van de
+ * betreffende conversatie.
+ */
 @HiltViewModel
 class ChatViewModel @Inject constructor(
     private val getTheme: GetConversationThemeUseCase,
@@ -22,8 +27,12 @@ class ChatViewModel @Inject constructor(
 
     fun loadTheme(conversationId: Long) {
         viewModelScope.launch {
-            getTheme(conversationId).collect { key ->
-                _themeState.value = UIState.Success(key)
+            try {
+                getTheme(conversationId).collect { key ->
+                    _themeState.value = UIState.Success(key)
+                }
+            } catch (t: Throwable) {
+                _themeState.value = UIState.Error("Kon thema niet laden")
             }
         }
     }

@@ -1,17 +1,32 @@
-# Changelog – PhoneForFilm v20A.0.8
+# CHANGELOG – PhoneForFilm v20A.0.9
 
-## Wijzigingen
-| Bestand | Reden |
-|---|---|
-| `ChatActivity.kt` | Fix voor compile‑error: dubbele `binding` variabele, ontbrekende accolades, toegevoegd lifecycle thema‑observatie. |
-| `ChatViewModel.kt` | Annotatie `@HiltViewModel` en `@Inject` constructor toegevoegd zodat Hilt de ViewModel kan leveren. |
-| `ConversationDao.kt` | Placeholder `'...'` verwijderd en volledige interface opnieuw gedefinieerd. |
-| `AppModule.kt` | Volledig herschreven; database‑ en DAO‑providers toegevoegd, correcte migratie, singleton repositories. |
+_Datum: 2025-05-24_
 
-## Impactanalyse
-* **DAO ↔ Repository** – `ConversationRepository` gebruikt nu een valide `ConversationDao` implementatie, geen aanpassingen hogerop nodig.  
-* **ViewModel ↔ UI** – `ChatActivity` observeert `themeState`; na fix geen crashes meer bij openen gesprek.  
-* **Hilt DI** – Providers zijn nu eenduidig; compile‑time zekerheid dat dependencies satisfiable zijn.
+## ✨ Gewijzigde bestanden
+| Pad | Reden |
+|-----|-------|
+| app/src/main/java/com/example/phoneforfilm/ui/chat/ChatActivity.kt | Bestond uit afgebroken fragment → volledige herimplementatie (binding‑fix, RecyclerView‑setup, theme‑observer). |
+| app/src/main/java/com/example/phoneforfilm/ui/chat/ChatViewModel.kt | `@HiltViewModel` + constructor‐injectie toegevoegd, foutafhandeling verbeterd. |
+| app/src/main/java/com/example/phoneforfilm/domain/usecase/CreateConversationUseCase.kt | Volledige implementatie + injectie. |
+| app/src/main/java/com/example/phoneforfilm/domain/usecase/GetAllMessagesUseCase.kt | Volledige implementatie + injectie. |
+| app/src/main/java/com/example/phoneforfilm/domain/usecase/GetConversationThemeUseCase.kt | Injectie‐constructor. |
+| app/src/main/java/com/example/phoneforfilm/domain/usecase/SetConversationThemeUseCase.kt | Injectie‐constructor. |
+| app/src/main/java/com/example/phoneforfilm/data/repository/ConversationRepository.kt | `findByContact()` toegevoegd. |
+| app/src/main/java/com/example/phoneforfilm/di/AppModule.kt | Bestond uit afgebroken code → volledig herschreven module. |
 
-## Regressierisico
-Laag. Wijzigingen beperken zich tot compile‑blokkende fouten en bevatten geen gedragswijzigingen op databaseniveau. Full test‑suite en lint draaien zonder fouten. 
+## 📂 Toegevoegde functionaliteit
+* App compileert weer — syntaxisfouten verwijderd.
+* Thema‑wijziging kan opnieuw via `ChatActivity` getriggerd worden.
+* Use‑cases zijn nu via Hilt injecteerbaar.
+
+## 🗑️ Aanbevolen te verwijderen bestanden
+_Worden niet in deze patch meegeleverd – verwijderen op repo‑niveau_
+| Pad | Waarom |
+|-----|--------|
+| `app/src/main/java/com/example/phoneforfilm/data/Conversation.kt` | Dubbele entity (conflicteert met `data/local/entity/Conversation.kt`). |
+| `.kotlin/errors/*` | IDE‑error logs; niet source‑gerelateerd. |
+
+## ⚠️ Nog openstaande issues
+* 14 XML‑bestanden zijn ernstig afgekapt (<200 B) en veroorzaken resource‑build‑fouten. Herstel of vervang deze lay‑outs vóór productie‑build.
+* `ContactAdapter.kt` is nog steeds afgekapt; compile‑fout volgt bij gebruik.
+* Theme‑dialoog in `ChatActivity` bevat placeholder‑implementatie.

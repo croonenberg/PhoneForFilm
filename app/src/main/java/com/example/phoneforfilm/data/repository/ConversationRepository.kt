@@ -27,4 +27,9 @@ class ConversationRepository @Inject constructor(
      * Haal één gesprek op op basis van ID.
      */
     suspend fun getById(id: Int): Conversation? = dao.getById(id)
+
+/**
+ * Vind (indien aanwezig) het gesprek bij een contactId.
+ */
+suspend fun findByContact(contactId: Int): Int? = dao.findByContact(contactId)
 }
