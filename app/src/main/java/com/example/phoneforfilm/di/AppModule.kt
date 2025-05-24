@@ -31,10 +31,6 @@ object AppModule {
     @Provides fun provideMessageDao(db: AppDatabase): MessageDao = db.messageDao()
     @Provides fun provideChatThemeDao(db: AppDatabase): ChatThemeDao = db.chatThemeDao()
 
-    @Provides
-    @Singleton
-    fun provideChatThemeRepo(dao: ChatThemeDao): ChatThemeRepository =
-        ChatThemeRepository(dao)
 
     @Provides
     @Singleton
