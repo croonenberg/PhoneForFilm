@@ -1,12 +1,20 @@
-# CHANGELOG – v20A.0.27-min (Deprecation warnings opgelost)
+# CHANGELOG – v20A.0.28-min (Begin­scherm volledig)
 
 ## Updated
-* **di/AppModule.kt**
-  * `fallbackToDestructiveMigration(true)` i.p.v. gedepr. no-arg variant.
-* **settings/SettingsRepository.kt**
-  * Verwijderd import `android.preference.PreferenceManager` (deprecated).
-  * Nu gebruik van `androidx.preference.PreferenceManager` via reguliere import.
+* **res/layout/activity_chat_list.xml**
+  * Placeholder‑layout vervangen door vier `MaterialButton`s:
+    * `start_chat`
+    * `start_call`
+    * `change_language`
+    * `title_theme_settings`
 
-Geen functionele wijzigingen, alleen warning-cleanup.
+* **view/ChatListActivity.kt**
+  * Omgezet naar ViewBinding; click‑listeners starten respectievelijk:
+    * `ChatActivity`
+    * `ContactPickerActivity`
+    * `LanguageSelectionActivity`
+    * `ThemeSettingsActivity`
+
+Geen andere files gewijzigd; bestaande strings worden gebruikt.
 
 Generated 2025-05-24.
