@@ -1,4 +1,3 @@
-
 package com.example.phoneforfilm.adapter
 
 import android.view.LayoutInflater
@@ -30,13 +29,7 @@ class ContactAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH =
-        VH(
-            ItemContactBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
-        )
+        VH(ItemContactBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
     override fun onBindViewHolder(holder: VH, position: Int) = holder.bind(items[position])
 

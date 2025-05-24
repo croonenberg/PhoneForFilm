@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
 
         adapter = ContactAdapter { contact ->
             val intent = Intent(this, ChatActivity::class.java).apply {
-                putExtra("conversationId", contact.id)
+                putExtra(ChatActivity.EXTRA_CONTACT_ID, contact.id)
             }
             startActivity(intent)
         }

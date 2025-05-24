@@ -1,13 +1,17 @@
-# CHANGELOG – v20A.0.22-min (Compile fixes ContactAdapter & MainActivity)
+# CHANGELOG – v20A.0.23-min (Compile errors fix)
 
 ## Updated
 * **adapter/ContactAdapter.kt**
-  * Gebruik `avatarUri` i.p.v. niet-bestaande `avatarUrl`.
-  * Placeholder/error drawable hernoemd naar `avatar_placeholder`.
+  * Property `avatarUrl` → `avatarUri` (in lijn met entity).
+  * Drawable refs `ic_avatar_placeholder` → `avatar_placeholder`.
+
 * **view/MainActivity.kt**
-  * Intent extra gewijzigd naar key `"conversationId"` (matcht `ChatViewModel`).
-  * RecyclerView-id gecorrigeerd van `recyclerViewContacts` naar `recyclerViewFilms`.
+  * Binding-id `recyclerViewContacts` → `recyclerViewFilms` (match layout).
+  * Rest ongewijzigd.
 
-## Geen andere bestanden gewijzigd.
+* **ui/chat/ChatActivity.kt**
+  * Companion object toegevoegd: `EXTRA_CONTACT_ID = "conversationId"` zodat MainActivity compileert.
 
-2025-05-24
+Geen verdere code gewijzigd.
+
+Generated 2025-05-24.

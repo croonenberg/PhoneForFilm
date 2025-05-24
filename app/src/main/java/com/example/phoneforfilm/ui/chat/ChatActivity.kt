@@ -103,4 +103,8 @@ class ChatActivity : AppCompatActivity() {
             .setNegativeButton(android.R.string.cancel, null)
             .show()
     }
+
+    companion object {
+        const val EXTRA_CONTACT_ID = "conversationId"
+    }
 }
