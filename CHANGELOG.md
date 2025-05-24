@@ -1,11 +1,12 @@
-# CHANGELOG – v20A.0.26-min (Toolbar voor MainActivity)
+# CHANGELOG – v20A.0.27-min (Deprecation warnings opgelost)
 
 ## Updated
-* **res/layout/activity_main.xml**
-  * `MaterialToolbar` (`@id/toolbar`) toegevoegd bovenaan het scherm.
-  * RecyclerView nu onder de toolbar geconstraint.
-  * Hiermee compileert `binding.toolbar` in `MainActivity.kt`.
+* **di/AppModule.kt**
+  * `fallbackToDestructiveMigration(true)` i.p.v. gedepr. no-arg variant.
+* **settings/SettingsRepository.kt**
+  * Verwijderd import `android.preference.PreferenceManager` (deprecated).
+  * Nu gebruik van `androidx.preference.PreferenceManager` via reguliere import.
 
-Geen code gewijzigd; enkel layout.
+Geen functionele wijzigingen, alleen warning-cleanup.
 
 Generated 2025-05-24.

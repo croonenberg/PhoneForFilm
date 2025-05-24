@@ -27,7 +27,7 @@ object AppModule {
             context,
             AppDatabase::class.java,
             "phoneforfilm.db"
-        ).fallbackToDestructiveMigration().build()
+        ).fallbackToDestructiveMigration(true).build()
 
     // --- DAO bindings ---
     @Provides @Singleton
