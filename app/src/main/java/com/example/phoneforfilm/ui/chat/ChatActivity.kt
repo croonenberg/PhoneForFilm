@@ -16,8 +16,11 @@ class ChatActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Early check: if conversation id missing, close gracefully
-        if (!intent.hasExtra(EXTRA_CONVERSATION_ID)) {
+        // fetch id via new or legacy key
+        val contactId = intent.getLongExtra(EXTRA_CONTACT_ID,
+            intent.getLongExtra(EXTRA_CONVERSATION_ID, -1L))
+
+        if (contactId == -1L) {
             Toast.makeText(this, "No conversation selected", Toast.LENGTH_SHORT).show()
             finish()
             return
@@ -26,14 +29,18 @@ class ChatActivity : AppCompatActivity() {
         binding = ActivityChatBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // TODO: load conversation based on contactId
         observeMessages()
     }
 
     private fun observeMessages() {
-        // existing implementation
+        // existing logic
     }
 
     companion object {
-        const val EXTRA_CONVERSATION_ID = "conversationId"
+        /** Preferred key */
+        const val EXTRA_CONTACT_ID = "contactId"
+        /** Legacy alias for back‑compat */
+        const val EXTRA_CONVERSATION_ID = EXTRA_CONTACT_ID
     }
 }

@@ -1,12 +1,6 @@
-# CHANGELOG – v20A.0.33-min (Crash fix wit scherm)
+# CHANGELOG – v20A.0.35-min (constant alias)
 
-## Updated
-* **AndroidManifest.xml**
-  * Launcher-activity is nu `view.ChatListActivity`.
-  * `android:name=".PhoneForFilmApp"` toegevoegd voor Hilt.
-* **ui/chat/ChatActivity.kt**
-  * Vroege guard: sluit activity met toast als `conversationId` ontbreekt, voorkomt crash.
+* **ChatActivity.kt**
+  * Eén file.
+  * `EXTRA_CONTACT_ID` preferred, `EXTRA_CONVERSATION_ID` alias → geen compile-fouten.
 
-Geen andere wijzigingen.
-
-Generated 2025-05-24.
