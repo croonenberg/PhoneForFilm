@@ -1,10 +1,11 @@
-# CHANGELOG – v20A.0.18-min (Align AppModule with actual DB class)
+# CHANGELOG – v20A.0.19-min (Resolve missing Hilt bindings)
 
-## Fixed
+## Updated
 * **di/AppModule.kt**
-  * Import path now `com.example.phoneforfilm.data.AppDatabase`.
-  * Generic type updated; provides correct DAO.
+  * Added `provideMessageDao`, `provideConversationDao`, `provideContactDao`.
+  * Added `providePreferencesHelper`.
+  * Imports updated accordingly.
 
-No other code added.
+No other files changed.
 
 Generated 2025-05-24.
