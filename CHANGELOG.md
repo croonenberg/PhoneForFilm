@@ -1,11 +1,9 @@
-# CHANGELOG – v20A.0.14 (ChatActivity syntax fix)
+# CHANGELOG – v20A.0.15-min (Hilt duplicate binding fix)
 
 ## Fixed
-* **ui/chat/ChatActivity.kt**
-  * Removed stray "private" token and duplicate `.show()` call that caused Kotlin syntax errors.
-  * Ensured correct braces and member declarations.
-  * Added explicit imports and safer preselect logic.
+* **di/AppModule.kt**
+  * Removed `provideChatThemeRepository()` to resolve DuplicateBindings error with `RepositoryModule`.
 
-No other files changed.
+No other files modified.
 
 Generated 2025-05-24.
