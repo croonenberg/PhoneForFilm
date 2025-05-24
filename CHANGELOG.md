@@ -1,11 +1,11 @@
-# CHANGELOG – v20A.0.24-min (MainActivity layout fix)
+# CHANGELOG – v20A.0.25-min (ThemeMapper uitgebreid)
 
-## Added / Replaced
-* **res/layout/activity_main.xml**
-  * Volwaardige `ConstraintLayout` met `RecyclerView` (`@id/recyclerViewFilms`).
-  * Verwijdert statische placeholder‑tekst “Chat met Acteur A”.
+## Updated
+* **utils/ThemeMapper.kt**
+  * Toegevoegd mapping voor: **greycard**, **neutrallight**, **darkroom**.
+  * Keys worden case‑insensitive (`lowercase()`).
+  * TODO‑comment verwijderd; code is nu volledig.
 
-Hiermee krijgt `MainActivity` een échte lijstcontainer zodat `ContactAdapter` de volledige contactenlijst kan tonen.
-No code‑wijzigingen of nieuwe imports nodig.
+Geen andere bestanden gewijzigd of aangemaakt.
 
 Generated 2025-05-24.
