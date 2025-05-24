@@ -5,11 +5,14 @@ import androidx.lifecycle.viewModelScope
 import com.example.phoneforfilm.domain.usecase.GetConversationThemeUseCase
 import com.example.phoneforfilm.domain.usecase.SetConversationThemeUseCase
 import com.example.phoneforfilm.ui.common.UIState
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class ChatViewModel(
+@HiltViewModel
+class ChatViewModel @Inject constructor(
     private val getTheme: GetConversationThemeUseCase,
     private val setTheme: SetConversationThemeUseCase
 ) : ViewModel() {
