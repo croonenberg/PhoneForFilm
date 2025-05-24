@@ -1,12 +1,13 @@
-# CHANGELOG – v20A.0.21-min (Startscherm fix)
+# CHANGELOG – v20A.0.22-min (Compile fixes ContactAdapter & MainActivity)
 
 ## Updated
 * **adapter/ContactAdapter.kt**
-  * Verwijderde ellips (`...`) en implementeerde volledige ViewHolder‑binding.
-  * Laadt avatar via Coil met placeholder, triggert `onClick` callback.
-
+  * Gebruik `avatarUri` i.p.v. niet-bestaande `avatarUrl`.
+  * Placeholder/error drawable hernoemd naar `avatar_placeholder`.
 * **view/MainActivity.kt**
-  * Volledig ingevuld: adapter‑initialisatie, RecyclerView‑setup, contact‑flow observer.
-  * Op `onClick` wordt `ChatActivity` gestart met `EXTRA_CONTACT_ID`.
+  * Intent extra gewijzigd naar key `"conversationId"` (matcht `ChatViewModel`).
+  * RecyclerView-id gecorrigeerd van `recyclerViewContacts` naar `recyclerViewFilms`.
 
-Resultaat: startscherm toont nu dynamische contactenlijst i.p.v. lege UI.
+## Geen andere bestanden gewijzigd.
+
+2025-05-24

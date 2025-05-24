@@ -1,3 +1,4 @@
+
 package com.example.phoneforfilm.adapter
 
 import android.view.LayoutInflater
@@ -19,9 +20,9 @@ class ContactAdapter(
 
         fun bind(item: Contact) = with(binding) {
             textViewName.text = item.name
-            imageViewAvatar.load(item.avatarUrl) {
-                placeholder(R.drawable.ic_avatar_placeholder)
-                error(R.drawable.ic_avatar_placeholder)
+            imageViewAvatar.load(item.avatarUri) {
+                placeholder(R.drawable.avatar_placeholder)
+                error(R.drawable.avatar_placeholder)
                 crossfade(true)
             }
             root.setOnClickListener { onClick(item) }
@@ -29,7 +30,13 @@ class ContactAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH =
-        VH(ItemContactBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        VH(
+            ItemContactBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
 
     override fun onBindViewHolder(holder: VH, position: Int) = holder.bind(items[position])
 

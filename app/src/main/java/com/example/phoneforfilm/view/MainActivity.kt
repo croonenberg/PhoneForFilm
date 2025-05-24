@@ -29,13 +29,13 @@ class MainActivity : AppCompatActivity() {
 
         adapter = ContactAdapter { contact ->
             val intent = Intent(this, ChatActivity::class.java).apply {
-                putExtra(ChatActivity.EXTRA_CONTACT_ID, contact.id)
+                putExtra("conversationId", contact.id)
             }
             startActivity(intent)
         }
 
-        binding.recyclerViewContacts.layoutManager = LinearLayoutManager(this)
-        binding.recyclerViewContacts.adapter = adapter
+        binding.recyclerViewFilms.layoutManager = LinearLayoutManager(this)
+        binding.recyclerViewFilms.adapter = adapter
 
         lifecycleScope.launch {
             viewModel.contacts.collectLatest { contacts ->
