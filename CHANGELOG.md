@@ -1,17 +1,11 @@
-# CHANGELOG – v20A.0.23-min (Compile errors fix)
+# CHANGELOG – v20A.0.24-min (MainActivity layout fix)
 
-## Updated
-* **adapter/ContactAdapter.kt**
-  * Property `avatarUrl` → `avatarUri` (in lijn met entity).
-  * Drawable refs `ic_avatar_placeholder` → `avatar_placeholder`.
+## Added / Replaced
+* **res/layout/activity_main.xml**
+  * Volwaardige `ConstraintLayout` met `RecyclerView` (`@id/recyclerViewFilms`).
+  * Verwijdert statische placeholder‑tekst “Chat met Acteur A”.
 
-* **view/MainActivity.kt**
-  * Binding-id `recyclerViewContacts` → `recyclerViewFilms` (match layout).
-  * Rest ongewijzigd.
-
-* **ui/chat/ChatActivity.kt**
-  * Companion object toegevoegd: `EXTRA_CONTACT_ID = "conversationId"` zodat MainActivity compileert.
-
-Geen verdere code gewijzigd.
+Hiermee krijgt `MainActivity` een échte lijstcontainer zodat `ContactAdapter` de volledige contactenlijst kan tonen.
+No code‑wijzigingen of nieuwe imports nodig.
 
 Generated 2025-05-24.
