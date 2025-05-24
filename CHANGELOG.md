@@ -1,10 +1,13 @@
-# CHANGELOG – v20A.0.29-min (Layout compile-fix)
+# CHANGELOG – v20A.0.30-min (Beginscherm compile‑fix)
+
+## Added
+* **view/ThemeSettingsActivity.kt** – lege Activity die `activity_theme_settings` laadt. Zorgt dat de thema‑knop compileert.
 
 ## Updated
-* **res/layout/activity_chat_list.xml**
-  * Verwijderd custom `style` attribuut dat in project niet bestaat.
-  * `android:layout_marginBottom` gebruikt i.p.v. foutieve `android:marginBottom`.
+* **view/ChatListActivity.kt**
+  * Imports toegevoegd voor `ChatActivity` (ui.chat) en `ContactPickerActivity` (ui.contact).
+  * Klik voor thema‑knop verwijst nu naar nieuwe `ThemeSettingsActivity`.
 
-Geen code-wijzigingen. Compileert nu zonder AAPT-errors.
+Geen overige wijzigingen.
 
 Generated 2025-05-24.
