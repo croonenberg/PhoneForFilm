@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PhoneForFilm">
 
-        <!-- Launcher activity -->
+        <!-- Launcher -->
         <activity
             android:name=".view.ChatListActivity"
             android:exported="true">
@@ -20,13 +20,13 @@
             </intent-filter>
         </activity>
 
-        <!-- Other activities -->
+        <!-- Feature screens -->
         <activity android:name=".ui.chat.ChatActivity" android:exported="false" />
         <activity android:name=".ui.contact.ContactPickerActivity" android:exported="false" />
-        <activity android:name=".view.IncomingCallActivity" android:exported="false" />
-        <activity android:name=".view.CallActivity" android:exported="false" />
         <activity android:name=".view.LanguageSelectionActivity" android:exported="false" />
         <activity android:name=".view.ThemeSettingsActivity" android:exported="false" />
+        <activity android:name=".view.CallActivity" android:exported="false" />
+        <activity android:name=".view.IncomingCallActivity" android:exported="false" />
 
     </application>
 

@@ -1,11 +1,12 @@
-# CHANGELOG – v20A.0.32-min (Beginscherm zichtbaar)
+# CHANGELOG – v20A.0.33-min (Crash fix wit scherm)
 
 ## Updated
-* **res/layout/activity_chat_list.xml**
-  * Buttons krijgen nu **backgroundTint=?attr/colorPrimary** en `android:textColor="#fff"` zodat ze zichtbaar zijn op wit thema.
-  * Root verpakt in `ScrollView` voor kleinere schermen.
-  * Standaard `Widget.MaterialComponents.Button` style gebruikt.
+* **AndroidManifest.xml**
+  * Launcher-activity is nu `view.ChatListActivity`.
+  * `android:name=".PhoneForFilmApp"` toegevoegd voor Hilt.
+* **ui/chat/ChatActivity.kt**
+  * Vroege guard: sluit activity met toast als `conversationId` ontbreekt, voorkomt crash.
 
-Geen code-wijzigingen.
+Geen andere wijzigingen.
 
 Generated 2025-05-24.
