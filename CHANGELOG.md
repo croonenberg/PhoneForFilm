@@ -1,8 +1,10 @@
-# CHANGELOG – v20A.0.13-min (ContactAdapter + theme dialog hot-fix)
+# CHANGELOG – v20A.0.14 (ChatActivity syntax fix)
 
-## Modified
-* **app/build.gradle.kts** – Added Coil dependency (`implementation("io.coil-kt:coil:2.5.0")`) so ContactAdapter compiles.
-* **app/src/main/res/values/strings.xml** – Added `action_theme` and `select_theme` strings used by chat menu & theme dialog.
+## Fixed
+* **ui/chat/ChatActivity.kt**
+  * Removed stray "private" token and duplicate `.show()` call that caused Kotlin syntax errors.
+  * Ensured correct braces and member declarations.
+  * Added explicit imports and safer preselect logic.
 
 No other files changed.
 

@@ -1,7 +1,9 @@
-
 package com.example.phoneforfilm.ui.chat
 
 import android.os.Bundle
+import android.view.View
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -28,11 +30,13 @@ class ChatActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.toolbar.inflateMenu(R.menu.menu_chat)
-        binding.toolbar.setOnMenuItemClickListener {
-            if (it.itemId == R.id.action_theme) {
+        binding.toolbar.setOnMenuItemClickListener { item ->
+            if (item.itemId == R.id.action_theme) {
                 showThemeDialog()
                 true
-            } else false
+            } else {
+                false
+            }
         }
 
         setupRecyclerView()
@@ -67,35 +71,35 @@ class ChatActivity : AppCompatActivity() {
         }
     }
 
-    private 
     private fun showThemeDialog() {
         val themes = arrayOf("default", "greenroom", "bluestage")
         val dialogView = layoutInflater.inflate(R.layout.dialog_chat_settings, null)
-        val radioGroup = dialogView.findViewById<android.widget.RadioGroup>(R.id.radioGroupThemes)
+        val radioGroup = dialogView.findViewById<RadioGroup>(R.id.radioGroupThemes)
 
-        themes.forEachIndexed { index, key ->
-            val rb = android.widget.RadioButton(this).apply {
+        themes.forEach { key ->
+            val rb = RadioButton(this).apply {
                 text = key.replaceFirstChar { it.uppercase() }
                 tag = key
-                id = android.view.View.generateViewId()
+                id = View.generateViewId()
             }
             radioGroup.addView(rb)
-            if (index == 0) radioGroup.check(rb.id) // preselect current theme if needed
         }
 
-        androidx.appcompat.app.AlertDialog.Builder(this)
+        // Preselect current theme if available
+        val currentKey = (viewModel.themeState.value as? UIState.Success)?.data ?: themes[0]
+        val preselect = radioGroup.children.find { (it as RadioButton).tag == currentKey } as? RadioButton
+        preselect?.let { radioGroup.check(it.id) }
+
+        AlertDialog.Builder(this)
             .setTitle(R.string.select_theme)
             .setView(dialogView)
             .setPositiveButton(android.R.string.ok) { _, _ ->
                 val checkedId = radioGroup.checkedRadioButtonId
-                val selectedBtn = radioGroup.findViewById<android.widget.RadioButton>(checkedId)
+                val selectedBtn = radioGroup.findViewById<RadioButton>(checkedId)
                 val selectedKey = selectedBtn?.tag as? String ?: themes[0]
                 viewModel.applyTheme(selectedKey)
             }
             .setNegativeButton(android.R.string.cancel, null)
-            .show()
-    }
-
             .show()
     }
 }
