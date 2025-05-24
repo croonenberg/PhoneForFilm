@@ -1,9 +1,11 @@
-# CHANGELOG – v20A.0.31-min (Hilt Application fix)
+# CHANGELOG – v20A.0.32-min (Beginscherm zichtbaar)
 
 ## Updated
-* **AndroidManifest.xml**
-  * `android:name=".PhoneForFilmApp"` toegevoegd aan `<application>` zodat Hilt de componenten kan initialiseren. Crash bij opstart verholpen.
+* **res/layout/activity_chat_list.xml**
+  * Buttons krijgen nu **backgroundTint=?attr/colorPrimary** en `android:textColor="#fff"` zodat ze zichtbaar zijn op wit thema.
+  * Root verpakt in `ScrollView` voor kleinere schermen.
+  * Standaard `Widget.MaterialComponents.Button` style gebruikt.
 
-Geen andere wijzigingen.
+Geen code-wijzigingen.
 
 Generated 2025-05-24.
