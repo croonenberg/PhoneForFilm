@@ -3,7 +3,6 @@ package com.example.phoneforfilm.view
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.phoneforfilm.R
 import com.example.phoneforfilm.databinding.ActivityChatListBinding
 import com.example.phoneforfilm.ui.chat.ChatActivity
 import com.example.phoneforfilm.ui.contact.ContactPickerActivity
