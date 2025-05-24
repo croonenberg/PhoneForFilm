@@ -1,11 +1,11 @@
-# CHANGELOG – v20A.0.25-min (ThemeMapper uitgebreid)
+# CHANGELOG – v20A.0.26-min (Toolbar voor MainActivity)
 
 ## Updated
-* **utils/ThemeMapper.kt**
-  * Toegevoegd mapping voor: **greycard**, **neutrallight**, **darkroom**.
-  * Keys worden case‑insensitive (`lowercase()`).
-  * TODO‑comment verwijderd; code is nu volledig.
+* **res/layout/activity_main.xml**
+  * `MaterialToolbar` (`@id/toolbar`) toegevoegd bovenaan het scherm.
+  * RecyclerView nu onder de toolbar geconstraint.
+  * Hiermee compileert `binding.toolbar` in `MainActivity.kt`.
 
-Geen andere bestanden gewijzigd of aangemaakt.
+Geen code gewijzigd; enkel layout.
 
 Generated 2025-05-24.
