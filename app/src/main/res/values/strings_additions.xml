@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_accept_call">Accept</string>
+    <string name="action_decline_call">Decline</string>
+    <string name="action_send">Send</string>
+    <string name="label_name">Name</string>
+    <string name="label_phone">Phone</string>
+    <string name="action_save">Save</string>
+    <string name="label_avatar">Avatar</string>
+    <string name="dummy_contact_name">Unknown contact</string>
+    <string name="label_online">Online</string>
+</resources>
