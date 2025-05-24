@@ -57,6 +57,7 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.2.1")
 
     implementation("com.google.dagger:hilt-android:2.56.2")
+    implementation("androidx.preference:preference-ktx:1.2.1")
     kapt("com.google.dagger:hilt-android-compiler:2.56.2")
     kapt("androidx.hilt:hilt-compiler:1.2.0")
 
