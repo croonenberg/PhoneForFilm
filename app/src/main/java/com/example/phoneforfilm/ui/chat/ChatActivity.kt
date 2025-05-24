@@ -67,13 +67,35 @@ class ChatActivity : AppCompatActivity() {
         }
     }
 
+    private 
     private fun showThemeDialog() {
         val themes = arrayOf("default", "greenroom", "bluestage")
-        AlertDialog.Builder(this)
-            .setTitle(R.string.select_theme)
-            .setItems(themes) { _, which ->
-                viewModel.applyTheme(themes[which])
+        val dialogView = layoutInflater.inflate(R.layout.dialog_chat_settings, null)
+        val radioGroup = dialogView.findViewById<android.widget.RadioGroup>(R.id.radioGroupThemes)
+
+        themes.forEachIndexed { index, key ->
+            val rb = android.widget.RadioButton(this).apply {
+                text = key.replaceFirstChar { it.uppercase() }
+                tag = key
+                id = android.view.View.generateViewId()
             }
+            radioGroup.addView(rb)
+            if (index == 0) radioGroup.check(rb.id) // preselect current theme if needed
+        }
+
+        androidx.appcompat.app.AlertDialog.Builder(this)
+            .setTitle(R.string.select_theme)
+            .setView(dialogView)
+            .setPositiveButton(android.R.string.ok) { _, _ ->
+                val checkedId = radioGroup.checkedRadioButtonId
+                val selectedBtn = radioGroup.findViewById<android.widget.RadioButton>(checkedId)
+                val selectedKey = selectedBtn?.tag as? String ?: themes[0]
+                viewModel.applyTheme(selectedKey)
+            }
+            .setNegativeButton(android.R.string.cancel, null)
+            .show()
+    }
+
             .show()
     }
 }
