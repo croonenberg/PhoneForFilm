@@ -2,7 +2,7 @@ package com.example.phoneforfilm.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.phoneforfilm.data.local.db.PhoneForFilmDatabase
+import com.example.phoneforfilm.db.PhoneForFilmDatabase
 import com.example.phoneforfilm.data.local.dao.ChatThemeDao
 import dagger.Module
 import dagger.Provides

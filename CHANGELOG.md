@@ -1,11 +1,8 @@
-# CHANGELOG – v20A.0.16-min (Fix AppModule imports)
+# CHANGELOG – v20A.0.17-min (Correct DB import path)
 
 ## Fixed
 * **di/AppModule.kt**
-  * Corrected import path to `com.example.phoneforfilm.data.local.db.PhoneForFilmDatabase`.
-  * Builder chain compiles; `fallbackToDestructiveMigration()` recognised.
-  * Dao provider unchanged.
-
-No duplicate ChatThemeRepository binding (repo provider still removed).
+  * Import path updated to `com.example.phoneforfilm.db.PhoneForFilmDatabase` (matches actual package).
+  * No other changes; ChatThemeDao provider unchanged.
 
 Generated 2025-05-24.
